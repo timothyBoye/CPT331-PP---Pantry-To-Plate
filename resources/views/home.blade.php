@@ -3,18 +3,21 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+        <div class="col-md-3">
+            <ul>
+               @foreach($ingredients as $ingredient)
+                   <li class="li-ingredient" data-id="{{$ingredient->id}}" data-name="{{$ingredient->name}}">{{$ingredient->name}}</li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <h1>Selected Ingredients</h1>
+            <div class="selected-ingredients-anchor row">
+                <ul></ul>
+            </div>
+            <div class="row">
+                <div class="alert alert-info">
+                    <p class="api-key" data-api-url="{{Config::get('constants.api_endpoint')}}">API KEY:&nbsp;{{Config::get('constants.api_endpoint')}}</p>
                 </div>
             </div>
         </div>
