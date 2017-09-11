@@ -11,7 +11,8 @@ class IngredientCategory extends Seeder
      */
     public function run()
     {
-        DB::table('ingredient_category')->insert([
+
+        DB::table('ingredient_categories')->insert([
             ['name' => 'Fruit'], //1
             ['name' => 'Vegetable'], //2
             ['name' => 'Dairy'], //3
@@ -19,5 +20,6 @@ class IngredientCategory extends Seeder
             ['name' => 'Sprice'], //5
             ['name' => 'Meat'] //6
         ]);
+
     }
 }
