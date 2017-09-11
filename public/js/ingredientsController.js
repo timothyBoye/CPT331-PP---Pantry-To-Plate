@@ -12,12 +12,11 @@
 
                 if(w.ingredientsController.selectedIngredients.indexOf(ingString) < 0){
                     addIngredient(ingString);
-                    updateDisplay();
                 }
                 else{
                     removeIngredient(ingString);
-                    updateDisplay();
                 }
+                updateDisplay();
             });
         }
 
@@ -47,7 +46,7 @@
 
         for(var i = 0; i < ingredientsList.length; i++){
             $(displayIngredientsUl).append('<li>' + ingredientsList[i] + '</li>');
-            i == 0 ? apiString += ingredientsList[i] : apiString += ingredientsList[i];
+            apiString += ingredientsList[i];
         }
 
         $(apiP).text(apiKey + apiString);
