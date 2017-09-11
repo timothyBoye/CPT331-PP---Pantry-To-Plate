@@ -16,8 +16,6 @@ class CreateIngredientCategoriesTable extends Migration
         Schema::create('ingredient_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-
-
         });
     }
 

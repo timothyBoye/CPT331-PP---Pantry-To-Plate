@@ -16,12 +16,12 @@ class IngredientCategory extends Seeder
         DB::table('ingredient_categories')->delete();
 
         DB::table('ingredient_categories')->insert([
-            ['name' => 'Fruit'], //1
-            ['name' => 'Vegetable'], //2
-            ['name' => 'Dairy'], //3
-            ['name' => 'Herb'], //4
-            ['name' => 'Sprice'], //5
-            ['name' => 'Meat'] //6
+            ['name' => 'Fruit', 'id' => Config::get('constants.fruit_category_id')], //1
+            ['name' => 'Vegetable', 'id' => Config::get('constants.veg_category_id')], //2
+            ['name' => 'Dairy', 'id' => Config::get('constants.dairy_category_id')], //3
+            ['name' => 'Herb', 'id' => Config::get('constants.herb_category_id')], //4
+            ['name' => 'Spice', 'id' => Config::get('constants.spice_category_id')], //5
+            ['name' => 'Meat', 'id' => Config::get('constants.meat_category_id')] //6
         ]);
 
     }
