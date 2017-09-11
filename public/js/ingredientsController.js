@@ -4,17 +4,18 @@
 (function($, w){
     w.ingredientsController = {
         selectedIngredients: [],
-
+        appendIngredientToURLString: '&allowedIngredient=',
         watch: function(){
             $('.li-ingredient').click(function(e){
                 var ingredientName = $(e.target).attr('data-name');
+                var ingString = w.ingredientsController.appendIngredientToURLString.concat(ingredientName);
 
-                if(w.ingredientsController.selectedIngredients.indexOf(ingredientName) < 0){
-                    addIngredient(ingredientName);
+                if(w.ingredientsController.selectedIngredients.indexOf(ingString) < 0){
+                    addIngredient(ingString);
                     updateDisplay();
                 }
                 else{
-                    removeIngredient(ingredientName);
+                    removeIngredient(ingString);
                     updateDisplay();
                 }
             });
@@ -46,7 +47,7 @@
 
         for(var i = 0; i < ingredientsList.length; i++){
             $(displayIngredientsUl).append('<li>' + ingredientsList[i] + '</li>');
-            i == 0 ? apiString += ingredientsList[i] : apiString += '+' + ingredientsList[i];
+            i == 0 ? apiString += ingredientsList[i] : apiString += ingredientsList[i];
         }
 
         $(apiP).text(apiKey + apiString);
