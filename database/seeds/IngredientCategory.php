@@ -11,6 +11,9 @@ class IngredientCategory extends Seeder
      */
     public function run()
     {
+        // Allows us to run db:seed without having to re-do the migrations. If omitted, it will just
+        // add new categories along with the existing ones.
+        DB::table('ingredient_categories')->delete();
 
         DB::table('ingredient_categories')->insert([
             ['name' => 'Fruit'], //1

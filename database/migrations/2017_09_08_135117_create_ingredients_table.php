@@ -16,10 +16,8 @@ class CreateIngredientsTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('ingredient_category_id')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('ingredient_category_id')->references('id')->on('ingredient_category');
         });
     }
 
