@@ -14,14 +14,20 @@ class IngredientsTableSeeder extends Seeder
 
     public function run()
     {
-
         DB::table('ingredients')->delete();
 
+        $fruit = 'constants.fruit_category_id';
+        $veg = 'constants.veg_category_id';
+        $dairy = 'constants.dairy_category_id';
+        $herb = 'constants.herb_category_id';
+        $spice = 'constants.spice_category_id';
+        $meat = 'constants.meat_category_id';
+
         $ingredients = array(
-            array('name' => 'romaine lettuce', 'ingredient_category_id'=> 2),
-            array('name' => 'black olives', 'ingredient_category_id'=> 1),
-            array('name' => 'grape tomatoes', 'ingredient_category_id'=> 2),
-//            'garlic',
+            array('name' => 'romaine lettuce', 'ingredient_category_id'=> Config::get($veg)),
+            array('name' => 'black olives', 'ingredient_category_id'=> Config::get($fruit)),
+            array('name' => 'grape tomatoes', 'ingredient_category_id'=> Config::get($fruit)),
+            array('name' => 'garlic', 'ingredient_category_id' => Config::get($spice)),
 //            'pepper',
 //            'purple onion',
 //            'salt',
