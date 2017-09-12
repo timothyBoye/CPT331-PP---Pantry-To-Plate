@@ -18,8 +18,8 @@ class YummlyApiController extends Controller
                 'Content-type' => 'application/json'
             ]
         ]);
-
-        //$json = json_decode(file_get_contents('http://api.yummly.com/v1/api/recipes?_app_id=3f7a00b4&_app_key=552f071f149a489995d4c5c258c23179&q=&allowedIngredient[]=garlic&allowedIngredient[]=cognac'), true);
+        // Return a json response here so we are returning the data to the caller, because it was an ajax call,
+        // if we redirect or return a view, the view will change before the ajax call has finished
         return response()->json(['data' => json_decode($res->getBody()->getContents())]);
     }
 }

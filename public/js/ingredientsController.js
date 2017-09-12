@@ -52,7 +52,8 @@
         }
 
         $(apiP).text(apiKey + apiString);
-
+        
+        // makes the call to our php controller, which then hits the api
         $.ajax({
             url: apiP.attr('data-api-controller-url'),
             type: 'POST',
@@ -63,12 +64,6 @@
                 $('#json-results').text(JSON.stringify(response.data.matches));
             }
         });
-        // ajax call test
-        //window.location.href = "http://localhost/sites/cpt331_PoC/public/result?api="+<?php echo urlencode(apiKey + apiString)?>;
-        /*$.ajax({url: apiKey + apiString, success: function(result){
-            console.log(result);
-            $("#json-results").text('json here: ' + JSON.stringify(result));
-        }});*/
     }
 
     w.ingredientsController.watch();
