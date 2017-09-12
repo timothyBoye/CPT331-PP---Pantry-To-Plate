@@ -10,7 +10,7 @@ class Ingredient extends Model
         return $this->belongsTo('App\IngredientCategory');
     }
 
-    public function ingredient(){
+    public function recipe(){
         return $this->belongsTo('App\Recipe');
     }
 

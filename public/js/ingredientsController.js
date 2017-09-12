@@ -17,6 +17,8 @@
                     removeIngredient(ingString);
                 }
                 updateDisplay();
+
+
             });
         }
 
@@ -50,6 +52,12 @@
         }
 
         $(apiP).text(apiKey + apiString);
+
+        // ajax call test
+        $.ajax({url: apiKey + apiString, success: function(result){
+            console.log(result);
+            $("#json-results").text('json here: ' + JSON.stringify(result));
+        }});
     }
 
     w.ingredientsController.watch();
