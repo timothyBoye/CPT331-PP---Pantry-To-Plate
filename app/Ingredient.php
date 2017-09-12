@@ -9,4 +9,12 @@ class Ingredient extends Model
     public function category(){
         return $this->belongsTo('App\IngredientCategory');
     }
+
+    public function ingredient(){
+        return $this->belongsTo('App\Recipe');
+    }
+
+    public function ingredientAmount(){
+        return $this->hasMany('App\MeasurementType');
+    }
 }
