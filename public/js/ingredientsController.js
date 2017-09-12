@@ -53,11 +53,14 @@
 
         $(apiP).text(apiKey + apiString);
 
+
+
         // ajax call test
-        $.ajax({url: apiKey + apiString, success: function(result){
+        //window.location.href = "http://localhost/sites/cpt331_PoC/public/result?api="+<?php echo urlencode(apiKey + apiString)?>;
+        /*$.ajax({url: apiKey + apiString, success: function(result){
             console.log(result);
             $("#json-results").text('json here: ' + JSON.stringify(result));
-        }});
+        }});*/
     }
 
     w.ingredientsController.watch();
