@@ -53,8 +53,16 @@
 
         $(apiP).text(apiKey + apiString);
 
-
-
+        $.ajax({
+            url: apiP.attr('data-api-controller-url'),
+            type: 'POST',
+            data: {
+                apiUrl: apiKey.concat(apiString)
+            },
+            success: function(response){
+                $('#json-results').text(JSON.stringify(response.data.matches));
+            }
+        });
         // ajax call test
         //window.location.href = "http://localhost/sites/cpt331_PoC/public/result?api="+<?php echo urlencode(apiKey + apiString)?>;
         /*$.ajax({url: apiKey + apiString, success: function(result){

@@ -22,7 +22,7 @@
             </div>
             <div class="row">
                 <div class="alert alert-info">
-                    <p class="api-key" data-api-url="{{Config::get('constants.api_endpoint')}}">API KEY:&nbsp;{{Config::get('constants.api_endpoint')}}</p>
+                    <p class="api-key" data-api-url="{{Config::get('constants.api_endpoint')}}" data-api-controller-url="{{URL::route('result')}}">API KEY:&nbsp;{{Config::get('constants.api_endpoint')}}</p>
                 </div>
                 <div id="json-results"></div>
             </div>

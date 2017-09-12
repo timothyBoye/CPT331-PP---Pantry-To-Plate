@@ -10,13 +10,7 @@
         <div class="col-md-9">
             <h1>Results</h1>
             <div class="selected-ingredients-anchor row">
-                @foreach($json["matches"] as $j)
-                    <p>{{$j["recipeName"]}}</p>
-                    <p>{{$j["rating"]}}</p>
-                @endforeach
-                <?php
-                echo $json["totalMatchCount"];
-                ?>
+
             </div>
             <div class="row">
 
