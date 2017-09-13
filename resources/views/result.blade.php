@@ -8,7 +8,7 @@
         </div>
 
         <div class="col-md-9">
-            <h1>Results</h1>
+            <h1>Results</span></h1>
             <div class="selected-ingredients-anchor row">
 
             </div>
