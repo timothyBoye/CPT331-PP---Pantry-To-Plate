@@ -7,16 +7,16 @@ use GuzzleHttp;
 class YummlyApiController extends Controller
 {
 
-    public $maxResultsPerPage = 10;
+    //public $maxResultsPerPage = 10;
     //public $pageIndex = 1;
 
     public function getResults(Request $request)
     {
         // test passing the constructed url as "api" query string
-        $pageIndex = (int)$request['page'];
+        //$pageIndex = (int)$request['page'];
         //$pageIndex = $request->input('page');
-        $startOffset = $pageIndex * $this->maxResultsPerPage;
-        $apiUrl = $request['apiUrl'].'&maxResult='.$this->maxResultsPerPage.'&start='.$startOffset;
+        //$startOffset = $pageIndex * $this->maxResultsPerPage;
+        $apiUrl = $request['apiUrl']; //.'&maxResult='.$this->maxResultsPerPage.'&start='.$startOffset;
         $guzClient = new GuzzleHttp\Client(['base_uri' => $apiUrl]);
         $res = $guzClient->request('GET', $apiUrl, [
             'headers' => [

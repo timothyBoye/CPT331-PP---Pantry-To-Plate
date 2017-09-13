@@ -4,6 +4,9 @@
 (function($, w){
 
     var currentPageIndex = 1;
+    var totalPageCount = 1;
+    var maxResultsPerPage = 10;
+
 
     w.ingredientsController = {
         selectedIngredients: [],
@@ -25,16 +28,19 @@
 
             });
 
-            // on page button update display + get json for page index
-            $('.li-page').click(function(e){
 
-                currentPageIndex = $(this).text();
-                alert(currentPageIndex);
-                updateDisplay();
-            });
         }
 
     };
+
+    function addPageButtonListeners() {
+        // on page button update display + get json for page index
+        $('.li-page').click(function(e){
+
+            currentPageIndex = $(this).text();
+            updateDisplay();
+        });
+    }
 
     function addIngredient(ingredientName){
         w.ingredientsController.selectedIngredients.push(ingredientName);
@@ -65,6 +71,7 @@
         $(displayIngredientsUl).empty();
         $('#json-results').empty();
         $("#json-results-count").empty();
+        $("#pagination-list").empty();
 
         var ingredientsList = w.ingredientsController.selectedIngredients;
 
@@ -73,9 +80,12 @@
             apiString += ingredientsList[i];
         }
 
-        // apiString += "&maxResult=2&start=10";
+        // add pagination to the url query string
+        var startOffset = maxResultsPerPage * currentPageIndex;
+        apiString += "&maxResult=" + maxResultsPerPage + "&start=" + startOffset;
 
         $(apiP).text(apiKey + apiString);
+
 
         // use the saved page index
         var pageIndex = currentPageIndex;
@@ -98,10 +108,22 @@
             },
             success: function(response){
 
-                var matchesJson = response.data.matches
+                var matchesJson = response.data.matches;
+                var totalResults = response.data.totalMatchCount;
+                totalPageCount = totalResults / maxResultsPerPage;
                 //$('#json-results').text(JSON.stringify(matchesJson));
 
-                $("#json-results-count").text(JSON.stringify(response.data.totalMatchCount) + ' results');
+                // results count / title
+                $("#json-results-count").text(totalResults + ' results, pages: ' + totalPageCount);
+
+                // create pagination buttons
+                var maxPageButtons = 10;
+                for(var i = 0; i < totalPageCount; i++) {
+                    if(i < maxPageButtons) {
+                        $("#pagination-list").append("<li class='li-page'><a href='#'>"+(i+1)+"</a></li>");
+                    }
+                }
+                addPageButtonListeners();
 
                 // loop results display in container
                 for(var i = 0; i < matchesJson.length; i++) {
