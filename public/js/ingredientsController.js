@@ -3,7 +3,7 @@
  */
 (function($, w){
 
-    var currentPageIndex = 1;
+    var currentPageIndex = 0;
     var totalPageCount = 1;
     var maxResultsPerPage = 10;
 
@@ -37,7 +37,7 @@
         // on page button update display + get json for page index
         $('.li-page').click(function(e){
 
-            currentPageIndex = $(this).text();
+            currentPageIndex = parseInt($(this).text()) - 1;
             updateDisplay();
         });
     }
@@ -103,16 +103,15 @@
                 url: apiP.attr('data-api-controller-url'),
                 type: 'POST',
                 data: {
-                    apiUrl: apiUrl,
-                    page: pageIndex
+                    apiUrl: apiUrl
                 },
                 success: function(response){
-                    $('#json-results').text(JSON.stringify(response.yummly_results.matches));
+                    //$('#json-results').text(JSON.stringify(response.yummly_results.matches));
                     console.log(response.yummly_results.matches);
 
                     var matchesJson = response.yummly_results.matches;
                     var totalResults = response.yummly_results.totalMatchCount;
-                    totalPageCount = totalResults / maxResultsPerPage;
+                    totalPageCount = Math.ceil(totalResults / maxResultsPerPage);
                     //$('#json-results').text(JSON.stringify(matchesJson));
 
                     // results count / title
