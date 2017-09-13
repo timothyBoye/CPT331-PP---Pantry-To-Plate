@@ -51,6 +51,8 @@
             apiString += ingredientsList[i];
         }
 
+        apiString += "&maxResult=2&start=10";
+
         $(apiP).text(apiKey + apiString);
         
         // makes the call to our php controller, which then hits the api
