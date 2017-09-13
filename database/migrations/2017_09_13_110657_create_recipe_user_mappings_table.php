@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIngredientPreparationTypesTable extends Migration
+class CreateRecipeUserMappingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateIngredientPreparationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingredient_preparation_types', function (Blueprint $table) {
+        Schema::create('recipe_user_mappings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->integer('recipe_id');
+            $table->integer('user_id');
+
+            $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateIngredientPreparationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredient_preparation_types');
+        Schema::dropIfExists('recipe_user_mappings');
     }
 }

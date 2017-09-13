@@ -15,4 +15,4 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/result', 'YummlyApiController@getResults')->name('result');
+Route::post('/result', 'RecipeResultsController@getResults')->name('result');

@@ -18,7 +18,6 @@
                 }
                 updateDisplay();
 
-
             });
         }
 
@@ -52,7 +51,7 @@
         }
 
         $(apiP).text(apiKey + apiString);
-        
+
         // makes the call to our php controller, which then hits the api
         $.ajax({
             url: apiP.attr('data-api-controller-url'),
@@ -61,7 +60,8 @@
                 apiUrl: apiKey.concat(apiString)
             },
             success: function(response){
-                $('#json-results').text(JSON.stringify(response.data.matches));
+                $('#json-results').text(JSON.stringify(response.yummly_results.matches));
+                console.log(response.yummly_results.matches);
             }
         });
     }

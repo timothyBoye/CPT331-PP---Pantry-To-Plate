@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp;
-class YummlyApiController extends Controller
+class RecipeResultsController extends Controller
 {
 
     public function getResults(Request $request)
@@ -20,6 +20,6 @@ class YummlyApiController extends Controller
         ]);
         // Return a json response here so we are returning the data to the caller, because it was an ajax call,
         // if we redirect or return a view, the view will change before the ajax call has finished
-        return response()->json(['data' => json_decode($res->getBody()->getContents())]);
+        return response()->json(['yummly_results' => json_decode($res->getBody()->getContents())]);
     }
 }

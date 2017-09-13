@@ -15,10 +15,7 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('meal_name');
-            $table->string('method');
-            $table->string('description');
-            $table->integer('serving_size')->unsigned()->nullable();
+            $table->string('yummly_id');
             $table->timestamps();
         });
     }
