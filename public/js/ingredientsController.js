@@ -98,41 +98,44 @@
         console.log("apiUrl: ", apiUrl);
 
         // makes the call to our php controller, which then hits the api
-        $.ajax({
-            url: apiP.attr('data-api-controller-url'),
-            type: 'POST',
-            data: {
-                apiUrl: apiUrl,
-                page: pageIndex
-            },
-            success: function(response){
-                $('#json-results').text(JSON.stringify(response.yummly_results.matches));
-                console.log(response.yummly_results.matches);
+        if(w.ingredientsController.selectedIngredients.length > 0){
+            $.ajax({
+                url: apiP.attr('data-api-controller-url'),
+                type: 'POST',
+                data: {
+                    apiUrl: apiUrl,
+                    page: pageIndex
+                },
+                success: function(response){
+                    $('#json-results').text(JSON.stringify(response.yummly_results.matches));
+                    console.log(response.yummly_results.matches);
 
-                var matchesJson = response.data.matches;
-                var totalResults = response.data.totalMatchCount;
-                totalPageCount = totalResults / maxResultsPerPage;
-                //$('#json-results').text(JSON.stringify(matchesJson));
+                    var matchesJson = response.yummly_results.matches;
+                    var totalResults = response.yummly_results.totalMatchCount;
+                    totalPageCount = totalResults / maxResultsPerPage;
+                    //$('#json-results').text(JSON.stringify(matchesJson));
 
-                // results count / title
-                $("#json-results-count").text(totalResults + ' results, pages: ' + totalPageCount);
+                    // results count / title
+                    $("#json-results-count").text(totalResults + ' results, pages: ' + totalPageCount);
 
-                // create pagination buttons
-                var maxPageButtons = 10;
-                for(var i = 0; i < totalPageCount; i++) {
-                    if(i < maxPageButtons) {
-                        $("#pagination-list").append("<li class='li-page'><a href='#'>"+(i+1)+"</a></li>");
+                    // create pagination buttons
+                    var maxPageButtons = 10;
+                    for(var i = 0; i < totalPageCount; i++) {
+                        if(i < maxPageButtons) {
+                            $("#pagination-list").append("<li class='li-page'><a href='#'>"+(i+1)+"</a></li>");
+                        }
                     }
-                }
-                addPageButtonListeners();
+                    addPageButtonListeners();
 
-                // loop results display in container
-                for(var i = 0; i < matchesJson.length; i++) {
-                    $('#json-results').append( '<h1>'+matchesJson[i].recipeName +'</h1>');
-                }
+                    // loop results display in container
+                    for(var i = 0; i < matchesJson.length; i++) {
+                        $('#json-results').append( '<h1>'+matchesJson[i].recipeName +'</h1>');
+                    }
 
-            }
-        });
+                }
+            });
+        }
+
     }
 
     w.ingredientsController.watch();
