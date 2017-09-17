@@ -12,4 +12,11 @@ return [
     'herb_category_id' => 4,
     'spice_category_id' => 5,
     'meat_category_id' => 6,
+
+    // Flavours
+    'sweet_flavour_id' => 1,
+    'spicy_flavour_id' => 2,
+    'bitter_flavour_id' => 3,
+    'sour_flavour_id' => 4,
+
 ];
