@@ -57,8 +57,18 @@
                 data: {
                     ingredients: w.ingredientsController.selectedIngredients
                 },
+                // this is hacky and will change in future, just a demo of output after refactor
                 success: function(response){
-                    console.log(response);
+                    $('.recipes').empty();
+                    $.each(response.recipes, function(k, v){
+                        $.each(v, function(key, value){
+                            $('.recipes').append(
+                                  '<div class="col-md-3">'
+                                  +'<h4>' + value.name + '</h4>'
+                                  +'</div>'
+                            );
+                        })
+                    });
                 }
             });
         }
