@@ -17,22 +17,8 @@
         </div>
         <div class="col-md-9">
             <h1>Selected Ingredients</h1>
-            <div class="selected-ingredients-anchor row">
-                <ul></ul>
-            </div>
-            <div class="row">
-                <div class="alert alert-info">
-                    <p class="api-key" data-api-url="{{Config::get('constants.api_endpoint')}}" data-api-controller-url="{{URL::route('result')}}">API KEY:&nbsp;{{Config::get('constants.api_endpoint')}}</p>
-                </div>
-                <h1 id="json-results-count"></h1>
-                <div id="json-results"></div>
-                <ul class="pagination" id="pagination-list">
-                    {{--<li class="li-page"><a href="#">1</a></li>--}}
-                    {{--<li class="li-page"><a href="#">2</a></li>--}}
-                    {{--<li class="li-page"><a href="#">3</a></li>--}}
-                    {{--<li class="li-page"><a href="#">4</a></li>--}}
-                    {{--<li class="li-page"><a href="#">5</a></li>--}}
-                </ul>
+            <div class="selected-ingredients-anchor row" data-api-controller-url="{{URL::route('result')}}">
+                <ul class="clearable"></ul>
             </div>
         </div>
     </div>

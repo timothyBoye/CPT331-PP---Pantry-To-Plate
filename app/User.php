@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // Get the user-saved recipes that match with the selected ingredients and return the recipe ids
+    public function getSavedRecipes($selectedIngredients){
+        return [];
+    }
 }
