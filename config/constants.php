@@ -19,4 +19,5 @@ return [
     'bitter_flavour_id' => 3,
     'sour_flavour_id' => 4,
 
+    'recipe_method_delimiter' => ';'
 ];

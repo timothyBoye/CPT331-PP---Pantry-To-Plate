@@ -15,7 +15,6 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('yummly_id');
             $table->timestamps();
         });
     }

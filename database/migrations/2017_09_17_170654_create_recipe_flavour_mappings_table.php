@@ -17,7 +17,7 @@ class CreateRecipeFlavourMappingsTable extends Migration
             $table->integer('recipe_id');
             $table->integer('flavour_id');
             $table->primary(['recipe_id', 'flavour_id']);
-            $table->float('flavour_intensity');
+            $table->float('flavour_intensity'); // Between 0 and 1
             $table->foreign('recipe_id')->references('id')->on('recipes');
             $table->foreign('flavour_id')->references('id')->on('flavours');
         });

@@ -14,10 +14,9 @@ class CreateIngredientRecipeMappingsTable extends Migration
     public function up()
     {
         Schema::create('ingredient_recipe_mappings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('ingredient_id')->unsigned()->nullable();
-            $table->integer('recipe_id')->unsigned()->nullable();
-
+            $table->integer('ingredient_id');
+            $table->integer('recipe_id');
+            $table->primary(['ingredient_id', 'recipe_id']);
             $table->foreign('ingredient_id')->references('id')->on('ingredients');
             $table->foreign('recipe_id')->references('id')->on('recipes');
             $table->timestamps();
