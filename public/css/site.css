@@ -1,3 +1,15 @@
 ul{
     list-style-type: none;
 }
+
+.li-ingredient-added {
+    background-color: white;
+    display: inline;
+    padding: 5px;
+    margin: 5px;
+}
+
+.cross-button {
+    float: none !important;
+    padding-left: 5px !important;
+}

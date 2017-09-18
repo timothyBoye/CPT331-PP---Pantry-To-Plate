@@ -5,23 +5,28 @@
     w.ingredientsController = {
         selectedIngredients: [],
 
-        watch: function(){
+        watch: function() {
 
             // on dropdown click update display + get json
-            $('.li-ingredient').click(function(e){
-                var ingredientName = $(e.target).attr('data-name');;
+            $('.li-ingredient').click(function (e) {
+                var ingredientName = $(e.target).attr('data-name');
 
-                if(!w.ingredientsController.selectedIngredients.includes(ingredientName)){
+                if (!w.ingredientsController.selectedIngredients.includes(ingredientName)) {
                     addIngredient(ingredientName);
                 }
-                else{
+                else {
                     removeIngredient(ingredientName);
                 }
                 updateDisplay();
 
             });
 
-
+            // on ingredient close button remove from list
+            $('.selected-ingredients-anchor ul').on('click', 'li .cross-button', function (e) {
+                var ingredientName = $(this).attr('data-name');
+                removeIngredient(ingredientName);
+                updateDisplay();
+            });
         }
 
     };
@@ -46,7 +51,8 @@
 
         var ingredientsList = w.ingredientsController.selectedIngredients;
         for(var i = 0; i < ingredientsList.length; i++){
-            $(displayIngredientsUl).append('<li>' + ingredientsList[i] + '</li>');
+            var listItem = '<li class="li-ingredient-added">' + ingredientsList[i] + '<button data-name="' + ingredientsList[i] + '" type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>';
+            $(displayIngredientsUl).append(listItem);
         }
 
         // makes the call to our php controller, which then hits the db
