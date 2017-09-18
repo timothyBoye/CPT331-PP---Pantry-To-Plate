@@ -22,7 +22,10 @@ class RecipeResultsController extends Controller
         $recipes = [];
         foreach($mappings as $mapping) {
             foreach($mapping as $mapping_obj) {
-                array_push($recipes, Recipe::where('id', $mapping_obj->recipe_id)->get());
+                $recipe = Recipe::where('id', $mapping_obj->recipe_id)->get();
+                if(!in_array($recipe, $recipes)){
+                    array_push($recipes, $recipe);
+                }
             }
         }
 
