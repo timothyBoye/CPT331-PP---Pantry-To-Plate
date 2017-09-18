@@ -16,6 +16,18 @@
                     </div>
                 </div>
                 <div class="row">
+                    <h2>Ingredients</h2>
+                    <div id="recipe-ingredients">
+                        <ul>
+                            @foreach($recipe->ingredients as $ingredient)
+                            <li>
+                                {{ $ingredient->ingredient->name }}
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
                     <h2>Method</h2>
                     <div id="recipe-method">
                         <ol>

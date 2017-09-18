@@ -28,7 +28,8 @@ class User extends Authenticatable
     ];
 
     // Get the user-saved recipes that match with the selected ingredients and return the recipe ids
-    public function getSavedRecipes($selectedIngredients){
+    public function getSavedRecipes($selectedIngredients)
+    {
         return [];
     }
 }

@@ -17,7 +17,7 @@ class FlavoursTableSeeder extends Seeder
             'sweet', 'spicy', 'bitter', 'sour'
         ];
 
-        foreach($flavours as $flavour){
+        foreach($flavours as $flavour) {
             Flavour::create(array('id' => Config::get('constants.'.$flavour.'_flavour_id'), 'name' => $flavour));
         }
     }

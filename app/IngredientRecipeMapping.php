@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class IngredientRecipeMapping extends Model
 {
-    public function recipe(){
+    public function recipe()
+    {
         return $this->belongsTo('App\Recipe');
     }
 
-    public function ingredient(){
+    public function ingredient()
+    {
         return $this->belongsTo('App\Ingredient');
     }
 }
