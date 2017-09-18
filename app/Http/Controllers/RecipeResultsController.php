@@ -14,18 +14,29 @@ class RecipeResultsController extends Controller
         $ingredients = $request['ingredients'];
 
         $mappings = [];
-        foreach($ingredients as $ingredient){
+        foreach($ingredients as $ingredient) {
             $ingredient_id = Ingredient::where('name', $ingredient)->value('id');
             array_push($mappings, IngredientRecipeMapping::where('ingredient_id', $ingredient_id)->get());
         }
 
         $recipes = [];
-        foreach($mappings as $mapping){
-            foreach($mapping as $mapping_obj){
+        foreach($mappings as $mapping) {
+            foreach($mapping as $mapping_obj) {
                 array_push($recipes, Recipe::where('id', $mapping_obj->recipe_id)->get());
             }
         }
 
         return response()->json(array('recipes' => $recipes));
+    }
+
+
+    public function show($id)
+    {
+        $recipe = Recipe::find($id);
+        if ($recipe) {
+            return view('recipe', compact('recipe'));
+        } else {
+            return redirect()->route('home');
+        }
     }
 }

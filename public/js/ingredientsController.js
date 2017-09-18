@@ -64,7 +64,9 @@
                         $.each(v, function(key, value){
                             $('.recipes').append(
                                   '<div class="col-md-3">'
+                                  +'<a href="recipe/'+value.id+'">'
                                   +'<h4>' + value.name + '</h4>'
+                                  +'</a>'
                                   +'</div>'
                             );
                         })
