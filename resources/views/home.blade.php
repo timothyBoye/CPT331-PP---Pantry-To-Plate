@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-9">
             <h2>Recipes</h2>
-            <div class="recipes"></div>
+            <div class="recipes clearable"></div>
         </div>
     </div>
 </div>

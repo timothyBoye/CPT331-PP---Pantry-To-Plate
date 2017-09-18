@@ -8,28 +8,26 @@
         watch: function() {
 
             // on dropdown click update display + get json
-            $('.li-ingredient').click(function (e) {
-                var ingredientName = $(e.target).attr('data-name');
-
-                if (!w.ingredientsController.selectedIngredients.includes(ingredientName)) {
-                    addIngredient(ingredientName);
-                }
-                else {
-                    removeIngredient(ingredientName);
-                }
-                updateDisplay();
-
-            });
+            $('.li-ingredient').on('click', handleIngredientClick);
 
             // on ingredient close button remove from list
-            $('.selected-ingredients-anchor ul').on('click', 'li .cross-button', function (e) {
-                var ingredientName = $(this).attr('data-name');
-                removeIngredient(ingredientName);
-                updateDisplay();
-            });
+            $('.selected-ingredients-anchor ul').on('click', 'li .cross-button', handleIngredientClick);
+
         }
 
     };
+
+    function handleIngredientClick(e){
+        var ingredientName = $(e.target).attr('data-name');
+
+        if (!w.ingredientsController.selectedIngredients.includes(ingredientName)) {
+            addIngredient(ingredientName);
+        }
+        else {
+            removeIngredient(ingredientName);
+        }
+        updateDisplay();
+    }
 
     function addIngredient(ingredientName){
         w.ingredientsController.selectedIngredients.push(ingredientName);
@@ -44,14 +42,13 @@
 
     function updateDisplay(){
         var displayIngredientsUl = $('.selected-ingredients-anchor ul:first');
-        var ingredientsHook = $('.ingredients-output');
 
         // clear html containers
         $('.clearable').empty();
 
         var ingredientsList = w.ingredientsController.selectedIngredients;
         for(var i = 0; i < ingredientsList.length; i++){
-            var listItem = '<li class="li-ingredient-added">' + ingredientsList[i] + '<button data-name="' + ingredientsList[i] + '" type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>';
+            var listItem = '<li class="li-ingredient">' + ingredientsList[i] + '<button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></li>';
             $(displayIngredientsUl).append(listItem);
         }
 
@@ -62,22 +59,21 @@
                 type: 'POST',
                 data: {
                     ingredients: w.ingredientsController.selectedIngredients
-                },
-                // this is hacky and will change in future, just a demo of output after refactor
-                success: function(response){
-                    $('.recipes').empty();
+                }
+            }).done(function(response){
                     $.each(response.recipes, function(k, v){
                         $.each(v, function(key, value){
                             $('.recipes').append(
-                                  '<div class="col-md-3">'
-                                  +'<a href="recipe/'+value.id+'">'
-                                  +'<h4>' + value.name + '</h4>'
-                                  +'</a>'
-                                  +'</div>'
+                                '<div class="col-md-3">'
+                                +'<a href="recipe/'+value.id+'">'
+                                +'<h4>' + value.name + '</h4>'
+                                +'</a>'
+                                +'</div>'
                             );
                         })
-                    });
-                }
+                    })
+            }).fail(function(response){
+                console.log(response);
             });
         }
 
