@@ -61,18 +61,18 @@
                     ingredients: w.ingredientsController.selectedIngredients
                 }
             }).done(function(response){
-                    $.each(response.recipes, function(k, v){
-                        $.each(v, function(key, value){
-                            $('.recipes').append(
-                                '<div class="col-md-3">'
-                                +'<a href="recipe/'+value.id+'">'
-                                +'<h4>' + value.name + '</h4>'
-                                +'</a>'
-                                +'<q>'+ value.short_description +'</q>'
-                                +'</div>'
-                            );
-                        })
+                $.each(response.recipes, function(k, v){
+                    $.each(v, function(key, value){
+                        $('.recipes').append(
+                            '<div class="col-md-3">'
+                            +'<a href="recipe/'+value.id+'">'
+                            +'<h4>' + value.name + '</h4>'
+                            +'</a>'
+                            +'<q>'+ value.short_description +'</q>'
+                            +'</div>'
+                        );
                     })
+                })
             }).fail(function(response){
                 console.log(response);
             });
