@@ -8,7 +8,7 @@
                 <div class="li-category dropdown" data-id="{{$category->id}}">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        @foreach($category->ingredients as $ingredient)
+                        @foreach($category->recipeIngredients as $ingredient)
                             <li class="li-ingredient" role="presentation"><a href="#" data-id="{{$ingredient->id}}" data-name="{{$ingredient->name}}">{{$ingredient->name}}</a></li>
                         @endforeach
                     </ul>

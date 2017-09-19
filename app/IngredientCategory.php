@@ -11,4 +11,11 @@ class IngredientCategory extends Model
         return $this->hasMany('App\Ingredient');
     }
 
+    public function recipeIngredients()
+    {
+        return $this->ingredients()
+            ->join('ingredient_recipe_mappings', 'id', '=', 'ingredient_id')
+            ->groupBy('id');
+    }
+
 }
