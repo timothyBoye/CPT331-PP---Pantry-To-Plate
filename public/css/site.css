@@ -1,15 +1,41 @@
+body {
+    background-color: #ffffff;
+
+}
+
 ul{
     list-style-type: none;
 }
 
 .li-ingredient-added {
-    background-color: white;
+    background-color: #8dae6a;
     display: inline;
     padding: 5px;
     margin: 5px;
 }
 
+.btn-default {
+    background-color: #8dae6a !important;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.caret-right {
+    float: right;
+    margin-top: 9px;
+}
+
+
 .cross-button {
     float: none !important;
     padding-left: 5px !important;
+}
+
+.dropdown-buttons {
+    width:100%;
+}
+
+.dropdown {
+    padding-top: 10px;
 }
