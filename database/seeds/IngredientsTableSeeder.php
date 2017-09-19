@@ -22,6 +22,8 @@ class IngredientsTableSeeder extends Seeder
         $herb = 'constants.herb_category_id';
         $spice = 'constants.spice_category_id';
         $meat = 'constants.meat_category_id';
+        $oil = 'constants.oil_category_id';
+        $sweetener = 'constants.sweetener_category_id';
 
         $ingredients = array(
             array('name' => 'romaine lettuce', 'ingredient_category_id'=> Config::get($veg)),
@@ -252,7 +254,21 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'turnip greens', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'water chestnut', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'watercress', 'ingredient_category_id'=> Config::get($veg)),
-            array('name' => 'zucchini', 'ingredient_category_id'=> Config::get($veg))
+            array('name' => 'zucchini', 'ingredient_category_id'=> Config::get($veg)),
+            //oils
+            array('name' => 'olive oil', 'ingredient_category_id'=> Config::get($oil)),
+            //spices
+            array('name' => 'garlic powder', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'onion powder', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'salt', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'pepper', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'chili flakes', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'dried basil', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'dried oregano', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'dried parsley', 'ingredient_category_id'=> Config::get($spice)),
+            //sweeteners
+            array('name' => 'sugar', 'ingredient_category_id'=> Config::get($sweetener))
+
         );
 
         foreach ($ingredients as $ingredient) {
