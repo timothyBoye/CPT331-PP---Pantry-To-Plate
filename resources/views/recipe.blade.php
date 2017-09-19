@@ -32,8 +32,7 @@
                     <div id="recipe-method">
                         <ol>
                             <li>
-                                {{-- Can use Config::get('constants.recipe_method_delimiter') in case we change it/use it elsewhere --}}
-                                {!! str_replace(';', "</li><li>", $recipe->method) !!}
+                                {!! str_replace(Config::get('constants.recipe_method_delimiter'), "</li><li>", $recipe->method) !!}
                             </li>
                         </ol>
                     </div>

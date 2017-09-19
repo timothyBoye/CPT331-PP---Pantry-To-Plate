@@ -68,6 +68,7 @@
                                 +'<a href="recipe/'+value.id+'">'
                                 +'<h4>' + value.name + '</h4>'
                                 +'</a>'
+                                +'<q>'+ value.short_description +'</q>'
                                 +'</div>'
                             );
                         })
