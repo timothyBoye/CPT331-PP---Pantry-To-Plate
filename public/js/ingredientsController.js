@@ -48,7 +48,7 @@
 
         var ingredientsList = w.ingredientsController.selectedIngredients;
         for(var i = 0; i < ingredientsList.length; i++){
-            var listItem = '<li class="li-ingredient">' + ingredientsList[i] + '<button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></li>';
+            var listItem = '<li class="li-ingredient-added">' + ingredientsList[i] + '<button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></li>';
             $(displayIngredientsUl).append(listItem);
         }
 
