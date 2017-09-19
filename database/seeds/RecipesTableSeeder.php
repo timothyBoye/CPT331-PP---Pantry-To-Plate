@@ -38,6 +38,16 @@ class RecipesTableSeeder extends Seeder
                 'serving_size' => 2
             )
         );
+        Recipe::create(
+            array(
+                'id' => 3,
+                'name' => 'Easy Pizza Sauce',
+                'short_description' => 'Quick and easy pizza sauce.',
+                'long_description' => 'This easy pizza sauce recipe gets cooked right on your stove top, and takes about 10 minutes from start to finish. You’ll love how delicious this is. MUCH better than anything you’ll find in a can.',
+                'method' => 'Heat the olive oil over medium heat, and saute the garlic for 2 minutes.;Add the rest of the ingredients, stir, and simmer for 10-15 minutes.',
+                'serving_size' => 4
+            )
+        );
 
         // Ingredient mappings should be seeded with recipes to ensure no recipes are unsearchable
         DB::table('ingredient_recipe_mappings')->delete();
@@ -67,6 +77,114 @@ class RecipesTableSeeder extends Seeder
                 'quantity' => 50,
                 'description' => 'crumbled',
                 'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'olive oil')->value('id'),
+                'quantity' => 3,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),
+                'quantity' => 2,
+                'description' => 'minced',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'tomato')->value('id'),
+                'quantity' => 28,
+                'description' => 'canned, crushed',
+                'measurement_type_id' => MeasurementType::where('name', 'ounce')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'garlic powder')->value('id'),
+                'quantity' => 0.5,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'onion powder')->value('id'),
+                'quantity' => 0.5,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),
+                'quantity' => 1,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'pepper')->value('id'),
+                'quantity' => 0.5,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'chili flakes')->value('id'),
+                'quantity' => 1,
+                'description' => 'crushed',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'dried basil')->value('id'),
+                'quantity' => 1,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'dried oregano')->value('id'),
+                'quantity' => 1,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'dried parsley')->value('id'),
+                'quantity' => 1,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 3,
+                'ingredient_id' => Ingredient::where('name', 'sugar')->value('id'),
+                'quantity' => 2,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
             )
         );
     }
