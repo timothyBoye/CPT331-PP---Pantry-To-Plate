@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Recipe;
 use App\IngredientRecipeMapping;
 use App\Ingredient;
+use App\MeasurementType;
 
 class RecipesTableSeeder extends Seeder
 {
@@ -44,19 +45,28 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 1,
-                'ingredient_id' => Ingredient::where('name', 'onion')->value('id')
+                'ingredient_id' => Ingredient::where('name', 'onion')->value('id'),
+                'quantity' => 0.5,
+                'description' => 'coarsely chopped',
+                'measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')
             )
         );
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 1,
-                'ingredient_id' => Ingredient::where('name', 'celery')->value('id')
+                'ingredient_id' => Ingredient::where('name', 'celery')->value('id'),
+                'quantity' => 150,
+                'description' => 'coarsely chopped',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
             )
         );
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 2,
-                'ingredient_id' => Ingredient::where('name', 'feta cheese')->value('id')
+                'ingredient_id' => Ingredient::where('name', 'feta cheese')->value('id'),
+                'quantity' => 50,
+                'description' => 'crumbled',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
             )
         );
     }

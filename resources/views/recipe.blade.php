@@ -21,7 +21,18 @@
                         <ul>
                             @foreach($recipe->ingredients as $ingredient)
                             <li>
-                                {{ $ingredient->ingredient->name }}
+                                @if(intval($ingredient->quantity, 0) == $ingredient->quantity)
+                                    {{ intval($ingredient->quantity) }}
+                                @else
+                                    {{ $ingredient->quantity }}
+                                @endif
+
+                                @if($ingredient->quantity > 1)
+                                    {{ $ingredient->measure->name }}s
+                                @else
+                                    {{ $ingredient->measure->name }}
+                                @endif
+                                {{ $ingredient->ingredient->name }}, {{ $ingredient->description }}
                             </li>
                             @endforeach
                         </ul>

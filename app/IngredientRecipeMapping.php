@@ -15,4 +15,9 @@ class IngredientRecipeMapping extends Model
     {
         return $this->belongsTo('App\Ingredient');
     }
+
+    public function measure()
+    {
+        return $this->belongsTo('App\MeasurementType', 'measurement_type_id', 'id');
+    }
 }
