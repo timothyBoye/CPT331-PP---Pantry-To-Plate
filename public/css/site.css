@@ -8,17 +8,29 @@ ul{
 }
 
 .li-ingredient-added {
-    background-color: #8dae6a;
+    background-color: transparent;
     display: inline;
     padding: 5px;
     margin: 5px;
 }
 
+.circle {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+
+}
+
 .btn-default {
-    background-color: #8dae6a !important;
-    color: #ffffff;
+    background-color: #ffffff !important;
+    color: #00000;
     text-transform: uppercase;
     text-align: left;
+    border-bottom: 1px solid #ccc !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-left: none !important;
 }
 
 .caret-right {
@@ -90,3 +102,12 @@ ul{
     display:none;
 
 }
+
+.drop-down-full-width {
+    width:100%;
+}
+
+.home-recipe-container {
+    text-align:center;
+}
+
