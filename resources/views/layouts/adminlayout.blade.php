@@ -56,7 +56,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="{{ route('home') }}" class="logo">
+        <a href="{{ route('admin') }}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>P</b>2<b>P</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -131,12 +131,12 @@ desired effect
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Navigation</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                <li><a href="#"><i class="ion ion-ios-list"></i> <span>Recipes</span></a></li>
-                <li><a href="#"><i class="ion ion-ios-nutrition"></i> <span>Ingredients</span></a></li>
-                <li><a href="#"><i class="ion ion-pizza"></i> <span>Cuisines</span></a></li>
-                <li><a href="#"><i class="ion ion-spoon"></i> <span>Measurements</span></a></li>
-                <li><a href="#"><i class="ion ion-person"></i> <span>Users</span></a></li>
+                <li class="{{ $title == 'Dashboard' ? 'active' : '' }}"><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                <li class="{{ $title == 'Recipes' ? 'active' : '' }}"><a href="{{ route('admin.recipes') }}"><i class="ion ion-ios-list"></i> <span>Recipes</span></a></li>
+                <li class="{{ $title == 'Ingredients' ? 'active' : '' }}"><a href="{{ route('admin.ingredients') }}"><i class="ion ion-ios-nutrition"></i> <span>Ingredients</span></a></li>
+                <li class="{{ $title == 'Cuisines' ? 'active' : '' }}"><a href="{{ route('admin.cuisines') }}"><i class="ion ion-pizza"></i> <span>Cuisines</span></a></li>
+                <li class="{{ $title == 'Measurements' ? 'active' : '' }}"><a href="{{ route('admin.measurements') }}"><i class="ion ion-spoon"></i> <span>Measurements</span></a></li>
+                <li class="{{ $title == 'Users' ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="ion ion-person"></i> <span>Users</span></a></li>
                 <li><a href="{{ route('home') }}"><i class="fa fa-level-up"></i> <span>Back to P2P</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->

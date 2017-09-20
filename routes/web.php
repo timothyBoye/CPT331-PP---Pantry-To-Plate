@@ -21,3 +21,8 @@ Route::post('/result', 'RecipeResultsController@getResults')->name('result');
 Route::get('/recipe/{id}', 'RecipeResultsController@show')->name('recipe');
 
 Route::get('/dashboard', 'AdminController@index')->name('admin');
+Route::get('/dashboard/cuisines', 'AdminController@cuisines')->name('admin.cuisines');
+Route::get('/dashboard/ingredients', 'AdminController@ingredients')->name('admin.ingredients');
+Route::get('/dashboard/measurements', 'AdminController@measurements')->name('admin.measurements');
+Route::get('/dashboard/recipes', 'AdminController@recipes')->name('admin.recipes');
+Route::get('/dashboard/users', 'AdminController@users')->name('admin.users');
