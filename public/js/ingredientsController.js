@@ -3,7 +3,7 @@
  */
 (function($, w){
     w.ingredientsController = {
-        selectedIngredients: [],
+        selectedIngredients: storageObject.getSelectedIngredients(),
 
         watch: function() {
 
@@ -12,7 +12,7 @@
 
             // on ingredient close button remove from list
             $('.selected-ingredients-anchor ul').on('click', 'li .cross-button', handleIngredientClick);
-
+            updateDisplay(storageObject.getRecipes());
         }
 
     };
@@ -21,29 +21,19 @@
         var ingredientName = $(e.target).attr('data-name');
 
         if (!w.ingredientsController.selectedIngredients.includes(ingredientName)) {
-            addIngredient(ingredientName);
+            w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientName);
         }
         else {
-            removeIngredient(ingredientName);
+            w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientName);
         }
-        updateDisplay();
+        makeCall();
+        updateDisplay(storageObject.getRecipes());
     }
 
-    function addIngredient(ingredientName){
-        w.ingredientsController.selectedIngredients.push(ingredientName);
-    };
-
-    function removeIngredient(ingredientName){
-        var index = w.ingredientsController.selectedIngredients.indexOf(ingredientName);
-        if(index >= 0){
-            w.ingredientsController.selectedIngredients.splice(index, 1);
-        }
-    };
-
-    function updateDisplay(){
+    function updateDisplay(recipes){
         var displayIngredientsUl = $('.selected-ingredients-anchor ul:first');
         displayIngredientsUl.hide();
-
+        storageObject.setRecipes(recipes);
         // clear html containers
         $('.clearable').empty();
 
@@ -54,6 +44,31 @@
             $(displayIngredientsUl).append(listItem);
         }
 
+        if(recipes !== undefined && recipes !== null){
+            $.each(recipes, function(k, v){
+                $.each(v, function(key, value){
+                    $('.recipes').append(
+                        '<div class="col-md-3">'
+                        +'<div class="recipe-container">'
+                        +'<div class="recipe-image">'
+                        +'<div class="white-triangle">'
+                        +'</div>'
+                        +'</div>'
+                        +'<a href="recipe/'+value.id+'">'
+                        +'<div class="recipe-text">'
+                        +'<h4>' + value.name + '</h4>'
+                        +'</a>'
+                        +'<q>'+ value.short_description +'</q>'
+                        +'</div>'
+                        +'</div>'
+                    );
+                })
+            })
+        }
+
+    }
+
+    function makeCall(){
         // makes the call to our php controller, which then hits the db
         if(w.ingredientsController.selectedIngredients.length > 0){
             $.ajax({
@@ -63,28 +78,13 @@
                     ingredients: w.ingredientsController.selectedIngredients
                 }
             }).done(function(response){
-                $.each(response.recipes, function(k, v){
-                    $.each(v, function(key, value){
-                        $('.recipes').append(
-                            '<div class="col-md-3">'
-                            +'<div class="recipe-container">'
-                            +'<div class="recipe-image">'
-                            +'<div class="white-triangle">'
-                            +'</div>'
-                            +'</div>'
-                            +'<a href="recipe/'+value.id+'">'
-                            +'<div class="recipe-text">'
-                            +'<h4>' + value.name + '</h4>'
-                            +'</a>'
-                            +'<q>'+ value.short_description +'</q>'
-                            +'</div>'
-                            +'</div>'
-                        );
-                    })
-                })
+                updateDisplay(response.recipes);
             }).fail(function(response){
                 console.log(response);
             });
+        }
+        else{
+            storageObject.setRecipes([]);
         }
 
     }

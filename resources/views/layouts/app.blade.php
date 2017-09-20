@@ -77,7 +77,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jsCookie.js') }}"></script>
     <script src="{{ asset('js/csrf_init.js') }}"></script>
+    <script src="{{ asset('js/storageService.js') }}"></script>
     <script src="{{ asset('js/ingredientsController.js') }}"></script>
 </body>
 </html>
