@@ -21,7 +21,10 @@ class MeasurementTypeSeeder extends Seeder
             array('name' => 'teaspoon', 'comparable_size' => 5),
             array('name' => 'ml', 'comparable_size' => 1),
             array('name' => 'gram', 'comparable_size' => 1), // subjective: this only works for water, probably fine
-            array('name' => 'ounce', 'comparable_size' => 30) // Ounce/grams conversion issue
+            array('name' => 'ounce', 'comparable_size' => 30), // Ounce/grams conversion issue
+            array('name' => 'dash', 'comparable_size' => 0.2), // Dash == 1/8 tsp
+            array('name' => 'splash', 'comparable_size' => 0.5), // Splash  == 2-3mL
+            array('name' => 'slice', 'comparable_size' => '')
         );
 
         foreach ($measures as $measure) {

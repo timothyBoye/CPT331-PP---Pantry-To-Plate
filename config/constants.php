@@ -14,6 +14,11 @@ return [
     'meat_category_id' => 6,
     'oil_category_id' => 7,
     'sweetener_category_id' => 8,
+    'liquid_category_id' => 9,
+    'condiment_category_id' => 10,
+    'grain_category_id' => 11,
+    'seeds_category_id' => 12,
+
 
     // Flavours
     'sweet_flavour_id' => 1,
