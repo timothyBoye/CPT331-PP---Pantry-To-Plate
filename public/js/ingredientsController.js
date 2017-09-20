@@ -42,12 +42,14 @@
 
     function updateDisplay(){
         var displayIngredientsUl = $('.selected-ingredients-anchor ul:first');
+        displayIngredientsUl.hide();
 
         // clear html containers
         $('.clearable').empty();
 
         var ingredientsList = w.ingredientsController.selectedIngredients;
         for(var i = 0; i < ingredientsList.length; i++){
+            displayIngredientsUl.show();
             var listItem = '<li class="li-ingredient-added">' + ingredientsList[i] + '<button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></li>';
             $(displayIngredientsUl).append(listItem);
         }
@@ -65,10 +67,17 @@
                     $.each(v, function(key, value){
                         $('.recipes').append(
                             '<div class="col-md-3">'
+                            +'<div class="recipe-container">'
+                            +'<div class="recipe-image">'
+                            +'<div class="white-triangle">'
+                            +'</div>'
+                            +'</div>'
                             +'<a href="recipe/'+value.id+'">'
+                            +'<div class="recipe-text">'
                             +'<h4>' + value.name + '</h4>'
                             +'</a>'
                             +'<q>'+ value.short_description +'</q>'
+                            +'</div>'
                             +'</div>'
                         );
                     })
