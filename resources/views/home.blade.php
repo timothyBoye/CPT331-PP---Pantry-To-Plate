@@ -17,13 +17,23 @@
         </div>
         <div class="col-md-9">
             <h1>Selected Ingredients</h1>
-            <div class="selected-ingredients-anchor row" data-api-controller-url="{{URL::route('result')}}">
-                <ul class="clearable"></ul>
-            </div>
+            {{--<div class="selected-ingredients-anchor row" data-api-controller-url="{{URL::route('result')}}">--}}
+                {{--<ul class="clearable"></ul>--}}
+            {{--</div>--}}
         </div>
         <div class="col-md-9">
             <h2>Recipes</h2>
             <div class="recipes clearable"></div>
+            {{--<div class = "recipe-container">--}}
+                {{--<div class = "recipe-image">--}}
+                    {{--<div class = "white-triangle">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+
+            </div>
+        </div>
+        <div class = "selected-ingredients-anchor" data-api-controller-url="{{URL::route('result')}}">
+            <ul class = "clearable"></ul>
         </div>
     </div>
 </div>
