@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret"></span></button>
+                    <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
                     <ul class="dropdown-menu">
                         @foreach($category->recipeIngredients as $ingredient)
                             <li class="li-ingredient" role="presentation"><a href="#" data-id="{{$ingredient->id}}" data-name="{{$ingredient->name}}">{{$ingredient->name}}</a></li>
