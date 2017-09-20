@@ -65,10 +65,17 @@
                     $.each(v, function(key, value){
                         $('.recipes').append(
                             '<div class="col-md-3">'
+                            +'<div class="recipe-container">'
+                            +'<div class="recipe-image">'
+                            +'<div class="white-triangle">'
+                            +'</div>'
+                            +'</div>'
                             +'<a href="recipe/'+value.id+'">'
+                            +'<div class="recipe-text">'
                             +'<h4>' + value.name + '</h4>'
                             +'</a>'
                             +'<q>'+ value.short_description +'</q>'
+                            +'</div>'
                             +'</div>'
                         );
                     })
