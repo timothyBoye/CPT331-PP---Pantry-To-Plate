@@ -10,4 +10,8 @@ class Recipe extends Model
     {
         return $this->hasMany('App\IngredientRecipeMapping');
     }
+
+    public function cuisine_type(){
+        return $this->belongsTo('App\CuisineType');
+    }
 }
