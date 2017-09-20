@@ -21,18 +21,27 @@
                         <ul>
                             @foreach($recipe->ingredients as $ingredient)
                             <li>
+                                {{-- Display ingredient quantity
+                                     Check if whole number or fraction and display accordingly
+                                     TODO: display fractions as fractions not decimals --}}
                                 @if(intval($ingredient->quantity, 0) == $ingredient->quantity)
                                     {{ intval($ingredient->quantity) }}
                                 @else
                                     {{ $ingredient->quantity }}
                                 @endif
-
+                                {{-- Display measurement name
+                                     Check if quantity is a multiple and if so add an s to the measure --}}
                                 @if($ingredient->quantity > 1)
                                     {{ $ingredient->measure->name }}s
                                 @else
                                     {{ $ingredient->measure->name }}
                                 @endif
-                                {{ $ingredient->ingredient->name }}, {{ $ingredient->description }}
+                                {{-- Display ingredient name
+                                     if there is a description also show that with a comma seperator
+                                     NOTE: This line is messy for a reason, having it setup nice on
+                                     new lines was adding a space before the comma, if you clean this
+                                     ensure you don't reintroduce that bug --}}
+                                {{ $ingredient->ingredient->name }}@if($ingredient->description), {{ $ingredient->description }}@endif
                             </li>
                             @endforeach
                         </ul>
