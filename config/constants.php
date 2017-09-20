@@ -12,6 +12,8 @@ return [
     'herb_category_id' => 4,
     'spice_category_id' => 5,
     'meat_category_id' => 6,
+    'oil_category_id' => 7,
+    'sweetener_category_id' => 8,
 
     // Flavours
     'sweet_flavour_id' => 1,
