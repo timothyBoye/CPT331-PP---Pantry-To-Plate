@@ -47,12 +47,10 @@
         if(recipes !== undefined && recipes !== null){
             $.each(recipes, function(k, v){
                 $.each(v, function(key, value){
-                    $('.recipes').append(
-                        '<div class="col-md-3">'
+                    $('#recipes').append(
+                        '<div class="col-lg-3 col-md-6 col-sm-12">'
                         +'<div class="recipe-container">'
                         +'<div class="recipe-image">'
-                        +'<div class="white-triangle">'
-                        +'</div>'
                         +'</div>'
                         +'<a href="recipe/'+value.id+'">'
                         +'<div class="recipe-text">'
