@@ -21,14 +21,9 @@
                         <ul>
                             @foreach($recipe->ingredients as $ingredient)
                             <li>
-                                {{-- Display ingredient quantity
-                                     Check if whole number or fraction and display accordingly
-                                     TODO: display fractions as fractions not decimals --}}
-                                @if(intval($ingredient->quantity, 0) == $ingredient->quantity)
-                                    {{ intval($ingredient->quantity) }}
-                                @else
-                                    {{ $ingredient->quantity }}
-                                @endif
+                                {{-- Display ingredient quantity --}}
+                                {!! \App\Utilities::approximatedFractionString($ingredient->quantity) !!}
+
                                 {{-- Display measurement name
                                      Check if quantity is a multiple and if so add an s to the measure --}}
                                 @if($ingredient->quantity > 1)
