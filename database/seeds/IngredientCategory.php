@@ -23,8 +23,11 @@ class IngredientCategory extends Seeder
             ['name' => 'Spice', 'id' => Config::get('constants.spice_category_id')], //5
             ['name' => 'Meat', 'id' => Config::get('constants.meat_category_id')], //6
             ['name' => 'Oil', 'id' => Config::get('constants.oil_category_id')], //7
-            ['name' => 'Sweetener', 'id' => Config::get('constants.sweetener_category_id')] //8
+            ['name' => 'Sweetener', 'id' => Config::get('constants.sweetener_category_id')], //8
+            ['name' => 'Liquid', 'id' => Config::get('constants.liquid_category_id')], //9
+            ['name' => 'Condiment', 'id' => Config::get('constants.condiment_category_id')], //10
+            ['name' => 'Grain', 'id' => Config::get('constants.grain_category_id')], //11
+            ['name' => 'Seeds', 'id' => Config::get('constants.seeds_category_id')] //12
         ]);
-
     }
 }

@@ -51,7 +51,46 @@ class RecipesTableSeeder extends Seeder
                 'serving_size' => 4
             )
         );
-
+        Recipe::create(
+            array(
+                'id' => 4,
+                'name' => 'Fresh Cherry Syrup',
+                'short_description' => 'Cherry syrup for cocktails and pancakes.',
+                'long_description' => 'Fresh Cherry Syrup is such a beautiful addition to any cocktail. You can even put it over pancakes if that’s your thing. You’re going to want to make a big batch of this today while the cherries are fresh.',
+                'method' => 'In a medium saucepan, combine all ingredients. You can pit the cherries or leave them with the pits if you\'d like. Either way is fine.;Use a potato masher to squish the cherries and release some juices.;Simmer over medium heat for 5-6 minutes. Mixture will be slightly thickened, all the sugar should be dissolved, and the syrup should be a deep red color.;Strain through a fine-mesh strainer, and store in the fridge for up to 2 weeks.',
+                'serving_size' => 10
+            )
+        );
+        Recipe::create(
+            array(
+                'id' => 5,
+                'name' => 'Maple Sriracha Grilled Pork Chops',
+                'short_description' => 'Sweet, spicy and absolutely delicious!',
+                'long_description' => 'These Maple Sriracha Grilled Pork Chops are Sweet, spicy and absolutely delicious! They’re marinated in lime juice, Sriracha, pure maple syrup and fresh minced garlic, then grilled and on the table in less than 10 minutes!.',
+                'method' => 'Combine garlic, sriracha, maple syrup, and lime. Thoroughly coat the pork chops and marinate 1-8 hours.;When ready to grill, remove chops from marinade and sprinkle with salt and pepper. Spritz with cooking spray then grill on high heat for 4 minutes on the first side and 3-4 more minutes after flipping, until the internal temperature of the meat reaches at least 145 degrees F.',
+                'serving_size' => 10
+            )
+        );
+        Recipe::create(
+            array(
+                'id' => 6,
+                'name' => 'Avocado Cucumber Salsa',
+                'short_description' => 'Quick and easy salsa',
+                'long_description' => 'This Avocado Cucumber Salsa tastes so good that it will become your favourite appetiser in no time.',
+                'method' => 'Add all the ingredients to a medium size bowl and mix it with a fork.',
+                'serving_size' => 10
+            )
+        );
+        Recipe::create(
+            array(
+                'id' => 7,
+                'name' => 'Sourdough Bread with Avocado Spread',
+                'short_description' => 'Simple, health & very very tasty!',
+                'long_description' => 'Start your day with this mouth-watering toasted sourdough bread with avocado spread! Simple, healthy & very very tasty!',
+                'method' => 'Toast the bread in a toaster or in the oven.;Wash the avocados, cut them in half and remove the peck. Using fork take out the flesh and place in a bowl. Mash the flesh with fork to get a paste. Add chia seeds, olive oil, a generous splash of lemon juice (freshly squeezed) and mix all together.;Place the toasted bread onto a plate & spread the avocado mix over. Top with arugula leaves and a few slices of goat cheese.;Add some black pepper and an extra splash of olive oil, if desired.;Serve for breakfast or as a snack any time of the day!;Enjoy!',
+                'serving_size' => 4
+            )
+        );
         // Ingredient mappings should be seeded with recipes to ensure no recipes are unsearchable
         DB::table('ingredient_recipe_mappings')->delete();
 
@@ -188,6 +227,231 @@ class RecipesTableSeeder extends Seeder
                 'quantity' => 2,
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 4,
+                'ingredient_id' => Ingredient::where('name', 'water')->value('id'),
+                'quantity' => 2,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 4,
+                'ingredient_id' => Ingredient::where('name', 'sugar')->value('id'),
+                'quantity' => 2,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 4,
+                'ingredient_id' => Ingredient::where('name', 'cherries')->value('id'),
+                'quantity' => 3,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 5,
+                'ingredient_id' => Ingredient::where('name', 'pork chops')->value('id'),
+                'quantity' => 6,
+                'description' => 'one-inch thick, bone-in',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 5,
+                'ingredient_id' => Ingredient::where('name', 'garlic cloves')->value('id'),
+                'quantity' => 4,
+                'description' => 'minced',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 5,
+                'ingredient_id' => Ingredient::where('name', 'Sriracha sauce')->value('id'),
+                'quantity' => 2,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 5,
+                'ingredient_id' => Ingredient::where('name', 'maple syrup')->value('id'),
+                'quantity' => 3,
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 5,
+                'ingredient_id' => Ingredient::where('name', 'lime')->value('id'),
+                'quantity' => 0.5,
+                'description' => 'juiced',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 5,
+                'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),
+                'quantity' => '',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 5,
+                'ingredient_id' => Ingredient::where('name', 'pepper')->value('id'),
+                'quantity' => '',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 6,
+                'ingredient_id' => Ingredient::where('name', 'avocado')->value('id'),
+                'quantity' => '1',
+                'description' => 'mashed',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 6,
+                'ingredient_id' => Ingredient::where('name', 'black pepper')->value('id'),
+                'quantity' => '1',
+                'description' => 'ground',
+                'measurement_type_id' => MeasurementType::where('name', 'dash')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 6,
+                'ingredient_id' => Ingredient::where('name', 'cucumber')->value('id'),
+                'quantity' => '0.5',
+                'description' => 'grated',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 6,
+                'ingredient_id' => Ingredient::where('name', 'lemon')->value('id'),
+                'quantity' => '1',
+                'description' => 'juiced',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 6,
+                'ingredient_id' => Ingredient::where('name', 'scallion')->value('id'),
+                'quantity' => '2',
+                'description' => 'small, finely chopped',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 6,
+                'ingredient_id' => Ingredient::where('name', 'sea salt')->value('id'),
+                'quantity' => '1',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'dash')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 6,
+                'ingredient_id' => Ingredient::where('name', 'tomato')->value('id'),
+                'quantity' => '2',
+                'description' => 'finely chopped',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 7,
+                'ingredient_id' => Ingredient::where('name', 'sourdough bread')->value('id'),
+                'quantity' => '4',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'slice')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 7,
+                'ingredient_id' => Ingredient::where('name', 'avocado')->value('id'),
+                'quantity' => '2',
+                'description' => 'ripe',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 7,
+                'ingredient_id' => Ingredient::where('name', 'goat cheese')->value('id'),
+                'quantity' => '8',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'slice')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 7,
+                'ingredient_id' => Ingredient::where('name', 'rocket leaves')->value('id'),
+                'quantity' => '',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 7,
+                'ingredient_id' => Ingredient::where('name', 'extra virgin olive oil')->value('id'),
+                'quantity' => '1',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 7,
+                'ingredient_id' => Ingredient::where('name', 'chia seeds')->value('id'),
+                'quantity' => '2',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 7,
+                'ingredient_id' => Ingredient::where('name', 'lemon juice')->value('id'),
+                'quantity' => '',
+                'description' => 'generous',
+                'measurement_type_id' => MeasurementType::where('name', 'splash')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 7,
+                'ingredient_id' => Ingredient::where('name', 'black pepper')->value('id'),
+                'quantity' => '',
+                'description' => 'optional',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
         );
     }
