@@ -24,7 +24,12 @@ class MeasurementTypeSeeder extends Seeder
             array('name' => 'ounce', 'comparable_size' => 30), // Ounce/grams conversion issue
             array('name' => 'dash', 'comparable_size' => 0.2), // Dash == 1/8 tsp
             array('name' => 'splash', 'comparable_size' => 0.5), // Splash  == 2-3mL
-            array('name' => 'slice', 'comparable_size' => '')
+            array('name' => 'slice', 'comparable_size' => ''),
+            array('name' => 'can', 'comparable_size' => 350), // 350mL
+            array('name' => 'head', 'comparable_size' => ''),
+            array('name' => 'bunch', 'comparable_size' => ''),
+            array('name' => 'lb', 'comparable_size' => ''),
+            array('name' => 'stick', 'comparable_size' => 0.5) // 1/2 cup
         );
 
         foreach ($measures as $measure) {
