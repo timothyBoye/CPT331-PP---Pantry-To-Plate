@@ -1,15 +1,14 @@
-/*body {*/
-    /*background-color: #ffffff;*/
+body {
+    background-color: #F0F0F0;
+}
 
-/*}*/
-
-ul{
+ul  {
     list-style-type: none;
 }
 
 .li-ingredient-added {
     background-color: transparent;
-    display: inline;
+    display: inline-block;
     padding: 5px;
     margin: 5px;
 }
@@ -24,7 +23,7 @@ ul{
 
 .btn-default {
     background-color: #ffffff !important;
-    color: #00000;
+    color: #000000;
     text-transform: uppercase;
     text-align: left;
     border-bottom: 1px solid #ccc !important;
@@ -111,7 +110,6 @@ ul{
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
     display:none;
@@ -124,5 +122,14 @@ ul{
 
 .home-recipe-container {
     text-align:center;
+}
+
+.ingredient-img {
+    background-image: url("../img/eggs.jpeg");
+    width: 55px;
+    height:55px;
+    border-radius: 50%;
+    background-size: cover;
+    margin:auto;
 }
 
