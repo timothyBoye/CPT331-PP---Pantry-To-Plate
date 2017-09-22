@@ -28,6 +28,8 @@ class IngredientsTableSeeder extends Seeder
         $condiment = 'constants.condiment_category_id';
         $grain = 'constants.grain_category_id';
         $seeds = 'constants.seeds_category_id';
+        $nuts = 'constants.nuts_category_id';
+        $baking = 'constants.baking_category_id';
 
         $ingredients = array(
             array('name' => 'romaine lettuce', 'ingredient_category_id'=> Config::get($veg)),
@@ -36,14 +38,18 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'pepper', 'ingredient_category_id' => Config::get($veg)),
             array('name' => 'purple onion', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'beans', 'ingredient_category_id' => Config::get($veg)),
+            array('name' => 'bell peppers', 'ingredient_category_id' => Config::get($veg)),
             array('name' => 'apple', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'apricot', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'avocado', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'banana', 'ingredient_category_id' => Config::get($fruit)),
+            array('name' => 'bananas', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'bilberry', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'blackberry', 'ingredient_category_id' => Config::get($fruit)),
+            array('name' => 'blackberries', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'blackcurrant', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'blueberry', 'ingredient_category_id' => Config::get($fruit)),
+            array('name' => 'blueberries', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'boysenberry', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'cherry', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'cherries', 'ingredient_category_id' => Config::get($fruit)),
@@ -52,6 +58,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'coconut', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'cranberry', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'cucumber', 'ingredient_category_id' => Config::get($fruit)),
+            array('name' => 'dried apricots', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'sugar apple', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'damson', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'date', 'ingredient_category_id' => Config::get($fruit)),
@@ -75,6 +82,8 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'kiwifruit', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'kumquat', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'lemon', 'ingredient_category_id' => Config::get($fruit)),
+            array('name' => 'lemons', 'ingredient_category_id' => Config::get($fruit)),
+            array('name' => 'lemon zest', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'lime', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'longan', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'lychee', 'ingredient_category_id' => Config::get($fruit)),
@@ -90,6 +99,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'nance', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'olive', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'orange', 'ingredient_category_id' => Config::get($fruit)),
+            array('name' => 'oranges', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'clementine', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'mandarine', 'ingredient_category_id' => Config::get($fruit)),
             array('name' => 'tangerine', 'ingredient_category_id' => Config::get($fruit)),
@@ -131,6 +141,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'aubergine', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'eggplant', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'amaranth', 'ingredient_category_id'=> Config::get($veg)),
+            array('name' => 'mixed greens', 'ingredient_category_id'=> Config::get($veg)),
             //Legumes
             array('name' => 'alfalfa sprouts', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'azuki beans', 'ingredient_category_id'=> Config::get($veg)),
@@ -201,6 +212,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'garlic cloves', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'leek', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'onion', 'ingredient_category_id'=> Config::get($veg)),
+            array('name' => 'red onion', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'shallot', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'spring onion', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'green onion', 'ingredient_category_id'=> Config::get($veg)),
@@ -208,6 +220,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'peppers', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'green pepper', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'red pepper', 'ingredient_category_id'=> Config::get($veg)),
+            array('name' => 'yellow pepper', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'chili pepper', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'capsicum', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'jalapeño', 'ingredient_category_id'=> Config::get($veg)),
@@ -254,6 +267,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'jicama', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'jerusalem artichoke', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'potato', 'ingredient_category_id'=> Config::get($veg)),
+            array('name' => 'potatoes', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'quandong', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'sunchokes', 'ingredient_category_id'=> Config::get($veg)),
             array('name' => 'sweet potato', 'ingredient_category_id'=> Config::get($veg)),
@@ -265,8 +279,12 @@ class IngredientsTableSeeder extends Seeder
             //oils
             array('name' => 'olive oil', 'ingredient_category_id'=> Config::get($oil)),
             array('name' => 'extra virgin olive oil', 'ingredient_category_id'=> Config::get($oil)),
+            array('name' => 'vegetable oil', 'ingredient_category_id'=> Config::get($oil)),
             //condiments
             array('name' => 'Sriracha sauce', 'ingredient_category_id'=> Config::get($condiment)),
+            array('name' => 'hot sauce', 'ingredient_category_id'=> Config::get($condiment)),
+            array('name' => 'salsa', 'ingredient_category_id'=> Config::get($condiment)),
+            array('name' => 'balsamic vinegar', 'ingredient_category_id'=> Config::get($condiment)),
             //spices
             array('name' => 'garlic powder', 'ingredient_category_id'=> Config::get($spice)),
             array('name' => 'onion powder', 'ingredient_category_id'=> Config::get($spice)),
@@ -279,22 +297,60 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'dried basil', 'ingredient_category_id'=> Config::get($spice)),
             array('name' => 'dried oregano', 'ingredient_category_id'=> Config::get($spice)),
             array('name' => 'dried parsley', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'paprika', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'smoked paprika', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'cumin', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'sumac', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'cinnamon', 'ingredient_category_id'=> Config::get($spice)),
+            array('name' => 'ground cinnamon powder', 'ingredient_category_id'=> Config::get($spice)),
             //sweeteners
             array('name' => 'sugar', 'ingredient_category_id'=> Config::get($sweetener)),
             array('name' => 'maple syrup', 'ingredient_category_id'=> Config::get($sweetener)),
+            array('name' => 'Erythritol', 'ingredient_category_id'=> Config::get($sweetener)),
             //liquids
             array('name' => 'water', 'ingredient_category_id'=> Config::get($liquid)),
             array('name' => 'lime juice', 'ingredient_category_id'=> Config::get($liquid)),
             array('name' => 'lemon juice', 'ingredient_category_id'=> Config::get($liquid)),
+            array('name' => 'coconut milk', 'ingredient_category_id'=> Config::get($liquid)),
             //meats
             array('name' => 'pork chops', 'ingredient_category_id'=> Config::get($meat)),
+            array('name' => 'pork chorizo sausage', 'ingredient_category_id'=> Config::get($meat)),
+            array('name' => 'chicken thighs', 'ingredient_category_id'=> Config::get($meat)),
             //grains
             array('name' => 'sourdough bread', 'ingredient_category_id'=> Config::get($grain)),
+            array('name' => 'corn tortillas', 'ingredient_category_id'=> Config::get($grain)),
+            //baking
+            array('name' => 'whole wheat flour', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'all-purpose flour', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'flour', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'plain flour', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'coconut flour', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'cornflour', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'coconut flour', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'baking soda', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'baking powder', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'vanilla', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'powdered chocolate milk mix', 'ingredient_category_id'=> Config::get($baking)),
+            array('name' => 'cocoa powder', 'ingredient_category_id'=> Config::get($baking)),
             //seeds
             array('name' => 'chia seeds', 'ingredient_category_id'=> Config::get($seeds)),
             //dairy
             array('name' => 'feta cheese', 'ingredient_category_id' => Config::get($dairy)),
-            array('name' => 'goat cheese', 'ingredient_category_id' => Config::get($dairy))
+            array('name' => 'goat cheese', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'egg', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'eggs', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'milk', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'cheddar cheese', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'parmesan cheese', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'Halloumi cheese', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'yoghurt', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'cream', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'sour cream', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'salted butter', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'unsalted butter', 'ingredient_category_id' => Config::get($dairy)),
+            array('name' => 'butter', 'ingredient_category_id' => Config::get($dairy)),
+            //nuts
+            array('name' => 'cashew nuts', 'ingredient_category_id' => Config::get($nuts)),
         );
 
         foreach ($ingredients as $ingredient) {

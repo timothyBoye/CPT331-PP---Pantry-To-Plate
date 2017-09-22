@@ -18,6 +18,8 @@ return [
     'condiment_category_id' => 10,
     'grain_category_id' => 11,
     'seeds_category_id' => 12,
+    'nuts_category_id' => 13,
+    'baking_category_id' => 14,
 
 
     // Flavours
