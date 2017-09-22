@@ -1146,5 +1146,26 @@ class RecipesTableSeeder extends Seeder
                 'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
             )
         );
+        //Glenn attempt at putting in a recipe
+
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 16,
+                'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),
+                'quantity' => '2',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 16,
+                'ingredient_id' => Ingredient::where('name', 'bread')->value('id'),
+                'quantity' => '2',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+
     }
 }
