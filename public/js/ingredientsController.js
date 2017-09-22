@@ -13,6 +13,9 @@
             // on ingredient close button remove from list
             $('.selected-ingredients-anchor ul').on('click', 'li .cross-button', handleIngredientClick);
             updateDisplay(storageObject.getRecipes());
+            if(w.ingredientsController.selectedIngredients.length > 0){
+                makeCall();
+            }
         }
 
     };
@@ -45,7 +48,7 @@
         }
 
         if(recipes !== undefined && recipes !== null){
-            $.each(recipes, function(k, v){
+            $.each($(recipes), function(k, v){
                 $.each(v, function(key, value){
                     $('#recipes').append(
                         '<div class="col-lg-3 col-md-6 col-sm-12">'
