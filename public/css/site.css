@@ -33,15 +33,20 @@ ul  {
 }
 
 .caret-right {
-    float: right;
+    /*float: right;*/
     margin-top: 9px;
+
 }
 
 
 .cross-button {
-    float: none !important;
-    padding-left: 5px !important;
+    /*float: none !important;*/
+    /*padding-left: 5px !important;*/
+    /*position: absolute !important;*/
+    top:0 !important;
+    right:0 !important;
 }
+
 
 .dropdown-buttons {
     width:100%;
@@ -98,21 +103,27 @@ ul  {
 }
 
 .selected-ingredients-anchor {
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    bottom: 20px;
-    width: 98%;
+    /*overflow: hidden;*/
+    /*background-color: #333;*/
+    /*position: fixed;*/
+    /*width: 73%;*/
+    /*margin-right:15px;*/
+    /*z-index:1000;*/
+    overflow-x:scroll;
+    overflow-y:hidden;
+    width:100%;
+    padding: 0 15px;
 }
 
 .selected-ingredients-anchor ul {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-    display:none;
+    /*float: left;*/
+    /*display: block;*/
+    /*color: #f2f2f2;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*font-size: 17px;*/
+    /*display:none;*/
+    white-space:nowrap;
 
 }
 
@@ -132,4 +143,28 @@ ul  {
     background-size: cover;
     margin:auto;
 }
+
+.clearable {
+    padding-left:0px;
+}
+
+/*@media (max-width:1200px) and (min-width: 992px)*/
+/*{*/
+    /*.selected-ingredients-anchor {*/
+        /*bottom: 0;*/
+        /*margin-bottom: 10px;*/
+
+    /*}*/
+/*}*/
+
+/*@media (max-width:991px)*/
+/*{*/
+    /*.selected-ingredients-anchor {*/
+        /*bottom: 0;*/
+        /*margin-bottom: 10px;*/
+        /*width:93%;*/
+        /*margin-right:15px;*/
+    /*}*/
+/*}*/
+
 
