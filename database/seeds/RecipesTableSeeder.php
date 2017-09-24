@@ -171,6 +171,22 @@ class RecipesTableSeeder extends Seeder
                 'serving_size' => 4
             )
         );
+
+        //Glenn attempt to create recipe here
+        Recipe::create(
+            array(
+                'id' => 16,
+                'name' => 'Eggs on Toast',
+                'short_description' => 'A classic breakfast staple.',
+                'long_description' => 'A rich chocolate blackberry pudding baked with coconut flour. This low carb and gluten free pudding is easy to make and only takes 30 minutes to bake. Served with cream or a sugar free berry coulis, it makes a delicious dessert.',
+                'method' => 'Boil Eggs;Toast Bread;Serve.',
+                'serving_size' => 1
+            )
+        );
+
+
+
+
         // Ingredient mappings should be seeded with recipes to ensure no recipes are unsearchable
         DB::table('ingredient_recipe_mappings')->delete();
 
@@ -1146,5 +1162,26 @@ class RecipesTableSeeder extends Seeder
                 'measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')
             )
         );
+        //Glenn attempt at putting in a recipe
+
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 16,
+                'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),
+                'quantity' => '2',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 16,
+                'ingredient_id' => Ingredient::where('name', 'sourdough bread')->value('id'),
+                'quantity' => '2',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+
     }
 }

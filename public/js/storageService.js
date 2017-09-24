@@ -1,14 +1,14 @@
 /**
  * Created by Brendan on 20/09/2017.
  */
-var storageObject = (function(){
+var storageObject = (function(w){
 
     var selectedIngredients = Cookies.getJSON('selectedIngredients') || [];
     var me = {};
 
     me.addIngredient = function(ingredientName){
         selectedIngredients.push(ingredientName);
-        updateStorage();
+        updateIngredients();
         return selectedIngredients;
     };
 
@@ -17,7 +17,7 @@ var storageObject = (function(){
         if(index >= 0){
             selectedIngredients.splice(index, 1);
         }
-        updateStorage();
+        updateIngredients();
         return selectedIngredients;
     };
 
@@ -26,17 +26,15 @@ var storageObject = (function(){
     };
 
     me.setRecipes = function(recipes){
-        Cookies.set('recipes', recipes, {
-            expires: 0.5
-        });
+        w.sessionStorage.setItem('recipes', JSON.stringify(recipes));
     }
 
     me.getRecipes = function(){
-        var recipes = Cookies.getJSON('recipes');
-        return recipes;
+        var recipes = w.sessionStorage.getItem('recipes');
+        return recipes != null && recipes.length > 0 ? JSON.parse(recipes) : [];
     }
 
-    function updateStorage(){
+    function updateIngredients(){
         Cookies.set('selectedIngredients', selectedIngredients, {
             expires: 0.5
         });
@@ -44,4 +42,4 @@ var storageObject = (function(){
 
     return me;
 
-}());
+}(window));

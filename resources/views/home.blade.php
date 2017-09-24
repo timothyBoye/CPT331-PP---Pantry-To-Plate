@@ -15,25 +15,18 @@
                 </div>
             @endforeach
         </div>
-        <div class="col-md-9">
+        {{--<div class="col-md-9">--}}
             {{--<div class="selected-ingredients-anchor row" data-api-controller-url="{{URL::route('result')}}">--}}
                 {{--<ul class="clearable"></ul>--}}
             {{--</div>--}}
-        </div>
+        {{--</div>--}}
         <div class="col-md-9 home-recipe-container">
-            <h2>Recipes</h2>
-            <div class="clearable" id="recipes"></div>
-            {{--<div class = "recipe-container">--}}
-                {{--<div class = "recipe-image">--}}
-                    {{--<div class = "white-triangle">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
+            <div class = "selected-ingredients-anchor" data-api-controller-url="{{URL::route('result')}}">
+                <ul class = "clearable"></ul>
             </div>
+            <div class="clearable" id="recipes"></div>
         </div>
-        <div class = "selected-ingredients-anchor" data-api-controller-url="{{URL::route('result')}}">
-            <ul class = "clearable"></ul>
-        </div>
+
     </div>
 </div>
 @endsection

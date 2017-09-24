@@ -13,6 +13,9 @@
             // on ingredient close button remove from list
             $('.selected-ingredients-anchor ul').on('click', 'li .cross-button', handleIngredientClick);
             updateDisplay(storageObject.getRecipes());
+            if(w.ingredientsController.selectedIngredients.length > 0){
+                makeCall();
+            }
         }
 
     };
@@ -40,12 +43,12 @@
         var ingredientsList = w.ingredientsController.selectedIngredients;
         for(var i = 0; i < ingredientsList.length; i++){
             displayIngredientsUl.show();
-            var listItem = '<li class="li-ingredient-added">' + ingredientsList[i] + '<button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></li>';
+            var listItem = '<li class="li-ingredient-added"><div class="ingredient-img"></div></div>' + ingredientsList[i] + '<button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></li>';
             $(displayIngredientsUl).append(listItem);
         }
 
         if(recipes !== undefined && recipes !== null){
-            $.each(recipes, function(k, v){
+            $.each($(recipes), function(k, v){
                 $.each(v, function(key, value){
                     $('#recipes').append(
                         '<div class="col-lg-3 col-md-6 col-sm-12">'
