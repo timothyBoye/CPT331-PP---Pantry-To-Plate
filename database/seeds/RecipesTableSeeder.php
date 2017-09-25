@@ -48,7 +48,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'Quick and easy pizza sauce.',
                 'long_description' => 'This easy pizza sauce recipe gets cooked right on your stove top, and takes about 10 minutes from start to finish. You’ll love how delicious this is. MUCH better than anything you’ll find in a can.',
                 'method' => 'Heat the olive oil over medium heat, and saute the garlic for 2 minutes.;Add the rest of the ingredients, stir, and simmer for 10-15 minutes.',
-                'serving_size' => 4
+                'serving_size' => 4,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id')
             )
         );
         Recipe::create(
