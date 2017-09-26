@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -37,7 +38,16 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if(Auth::check())
+                            <li class="dropdown">
+                                <!-- Feel free to change this, if it doesn't fit the UI design!!!! -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Profile&nbsp;<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('profile.cuisines')}}">Manage Cuisine Preferences</a></li>
+                                    <li><a href="#">Manage Saved Recipes</a></li>
+                                </ul>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,6 +87,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ asset('js/sortable.js') }}"></script>
     <script src="{{ asset('js/jsCookie.js') }}"></script>
     <script src="{{ asset('js/csrf_init.js') }}"></script>
     <script src="{{ asset('js/storageService.js') }}"></script>
