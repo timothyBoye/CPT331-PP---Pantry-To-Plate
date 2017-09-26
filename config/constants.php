@@ -6,6 +6,7 @@
  * Time: 1:32 PM
  */
 return [
+    // Ingredients
     'fruit_category_id' => 1,
     'veg_category_id' => 2,
     'dairy_category_id' => 3,
@@ -28,5 +29,10 @@ return [
     'bitter_flavour_id' => 3,
     'sour_flavour_id' => 4,
 
-    'recipe_method_delimiter' => ';'
+    // Delimiter
+    'recipe_method_delimiter' => ';',
+
+    // User roles
+    'generic_user_role_id' => 1,
+    'admin_role_id' => 2
 ];
