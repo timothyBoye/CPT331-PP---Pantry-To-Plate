@@ -26,7 +26,7 @@
 
                                 {{-- Display measurement name
                                      Check if quantity is a multiple and if so add an s to the measure --}}
-                                @if($ingredient->quantity > 1)
+                                @if(($ingredient->quantity > 1) && ($ingredient->measure->name != ''))
                                     {{ $ingredient->measure->name }}s
                                 @else
                                     {{ $ingredient->measure->name }}
