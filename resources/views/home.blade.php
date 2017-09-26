@@ -4,6 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
+            @if (Auth::user())
             <div class="filter-container">
                 <form>
                     <label class="checkbox-inline">
@@ -23,6 +24,7 @@
                         </ul>
                 </div>
             </div>
+            @endif
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
                     <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>

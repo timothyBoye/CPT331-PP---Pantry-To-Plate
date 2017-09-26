@@ -17,9 +17,4 @@ class HomeController extends Controller
         return view('home', ['categories' => $categories, 'cuisine' => $cuisine_types]);
     }
 
-//    public function getCuisine()
-//    {
-//        $cuisine_types = CuisineType::all();
-//        return view('home', array('cuisine' => $cuisine_types));
-//    }
 }
