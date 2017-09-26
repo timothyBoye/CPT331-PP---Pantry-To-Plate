@@ -4,6 +4,25 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
+            <div class="filter-container">
+                <form>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="">Star Rating
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="">Cuisine
+                    </label>
+                </form>
+
+                <div class="li-category dropdown">
+                    <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>
+                        <ul class="dropdown-menu drop-down-full-width">
+                        @foreach($cuisine as $cuisineType)
+                            <li class="li-ingredient" role="presentation"><a href="#" data-id="{{$cuisineType->id}}" data-name="{{$cuisineType->name}}">{{$cuisineType->name}}</a></li>
+                        @endforeach
+                        </ul>
+                </div>
+            </div>
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
                     <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>

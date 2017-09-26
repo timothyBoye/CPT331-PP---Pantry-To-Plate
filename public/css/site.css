@@ -33,7 +33,7 @@ ul  {
 }
 
 .caret-right {
-    /*float: right;*/
+    float: right;
     margin-top: 9px;
 
 }
