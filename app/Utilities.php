@@ -23,7 +23,7 @@ class Utilities
         // Display remainder (if any) as fraction
         if ($remainder > 0) {
             // Code from https://www.designedbyaturtle.co.uk/2015/converting-a-decimal-to-a-fraction-in-php/
-            $tolerance = 1.e-1;
+            $tolerance = 1.e-2;
 
             $numerator = 1;
             $h2 = 0;

@@ -3,19 +3,14 @@
 namespace Tests\Unit;
 // http://blog.mauriziobonani.com/laravel-sql-memory-database-for-unit-tests/
 use App\UserRole;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\BaseTestCase;
 use App\User;
-use Illuminate\Support\Facades\Artisan;
 
-class UserModelTest extends TestCase
+class UserModelTest extends BaseTestCase
 {
-
     public function setUp()
     {
         parent::setUp();
-        Artisan::call('migrate');
         UserRole::create(
             array(
                 'user_role_name' => 'Generic'
@@ -42,6 +37,11 @@ class UserModelTest extends TestCase
                 'user_role_id' => 2
             )
         );
+    }
+
+    public function tearDown()
+    {
+        parent::tearDown();
     }
 
     public function testUserInsertion()
@@ -81,8 +81,4 @@ class UserModelTest extends TestCase
         // TODO
     }
 
-    public function tearDown()
-    {
-        Artisan::call('migrate:rollback');
-    }
 }

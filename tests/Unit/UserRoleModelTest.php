@@ -3,19 +3,15 @@
 namespace Tests\Unit;
 
 use App\UserRole;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\BaseTestCase;
 use App\User;
-use Illuminate\Support\Facades\Artisan;
 
-class UserRoleModelTest extends TestCase
+class UserRoleModelTest extends BaseTestCase
 {
 
     public function setUp()
     {
         parent::setUp();
-        Artisan::call('migrate');
         UserRole::create(
             array(
                 'user_role_name' => 'Generic'
@@ -52,6 +48,11 @@ class UserRoleModelTest extends TestCase
         );
     }
 
+    public function tearDown()
+    {
+        parent::tearDown();
+    }
+
     public function testUserInsertion()
     {
         $this->assertDatabaseHas('user_roles', [
@@ -70,10 +71,5 @@ class UserRoleModelTest extends TestCase
         $this->assertTrue($userRole->users->count() == 2);
         $userRole = UserRole::find(2);
         $this->assertTrue($userRole->users->count() == 1);
-    }
-
-    public function tearDown()
-    {
-        Artisan::call('migrate:rollback');
     }
 }

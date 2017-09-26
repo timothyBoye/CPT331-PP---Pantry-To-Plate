@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class IngredientCategory extends Model
 {
+    protected $fillable = [
+        'name'
+    ];
+
     public function ingredients()
     {
         return $this->hasMany('App\Ingredient');
