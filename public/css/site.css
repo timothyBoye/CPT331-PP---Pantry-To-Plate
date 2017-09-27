@@ -33,7 +33,7 @@ ul  {
 }
 
 .caret-right {
-    /*float: right;*/
+    float: right;
     margin-top: 9px;
 
 }
@@ -56,9 +56,60 @@ ul  {
     padding-top: 10px;
 }
 
+
+.rating {
+    float:left;
+    padding-right:10px;
+}
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:125%;
+    line-height:1.2;
+    color:#ddd;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+}
+
+.rating-editable:not(:checked) > label:hover,
+.rating-editable:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+
+.rating-editable > input:checked + label:hover,
+.rating-editable > input:checked + label:hover ~ label,
+.rating-editable > input:checked ~ label:hover,
+.rating-editable > input:checked ~ label:hover ~ label,
+.rating-editable > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}
+
+.rating-editable > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
 .recipe-container {
     margin-top:20px;
-    height: 350px;
+    height: 400px;
     background-color: #ffffff;
 }
 
@@ -167,4 +218,54 @@ ul  {
     /*}*/
 /*}*/
 
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #4A4848;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
 
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.nav-long {
+    width: 100%;
+    height: 57px;
+    background-color: #4A4848;
+    color: #ffffff;
+
+}
+
+.burger {
+    font-size:30px;
+    cursor:pointer;
+}
