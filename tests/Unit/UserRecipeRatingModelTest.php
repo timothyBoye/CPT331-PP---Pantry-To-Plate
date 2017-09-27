@@ -1,14 +1,18 @@
 <?php
 
 namespace Tests\Unit;
-// http://blog.mauriziobonani.com/laravel-sql-memory-database-for-unit-tests/
+
 use App\Recipe;
+use App\User;
+use App\UserRecipeRating;
 use App\UserRole;
 use Illuminate\Support\Facades\DB;
 use Tests\BaseTestCase;
-use App\User;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserModelTest extends BaseTestCase
+class UserRecipeRatingModelTest extends BaseTestCase
 {
     public function setUp()
     {
@@ -81,52 +85,17 @@ class UserModelTest extends BaseTestCase
         parent::tearDown();
     }
 
-    public function testUserInsertion()
+    public function testUserRelationship()
     {
-        $this->assertDatabaseHas('user_roles', [
-            'id' => 1,
-            'user_role_name' => 'Generic'
-        ]);
-        $this->assertDatabaseHas('user_roles', [
-            'id' => 2,
-            'user_role_name' => 'Admin'
-        ]);
-        $this->assertDatabaseHas('users', [
-            'name' => 'Abigail',
-            'email' => 'test@email.com',
-            'password' => 'x',
-            'user_role_id' => 1
-        ]);
-        $this->assertDatabaseHas('users', [
-            'name' => 'John',
-            'email' => 'test2@email.com',
-            'password' => 'xyz',
-            'user_role_id' => 2
-        ]);
+        $rating = UserRecipeRating::find(1);
+        $this->assertTrue($rating->user->name == 'Abigail');
+        $this->assertTrue($rating->rating == 5);
     }
 
-    public function testUserRoleRelationship()
+    public function testRecipeRelationship()
     {
-        $user = User::find(1);
-        $this->assertTrue($user->role->user_role_name == 'Generic');
-        $user = User::find(2);
-        $this->assertTrue($user->role->user_role_name == 'Admin');
+        $rating = UserRecipeRating::find(1);
+        $this->assertTrue($rating->recipe->name == 'Lettuce Salad');
+        $this->assertTrue($rating->rating == 5);
     }
-
-    public function testUsersSavedRecipes()
-    {
-        // TODO
-    }
-
-    public function testRatingsRelationship()
-    {
-        $abigail = User::find(1);
-        $john = User::find(2);
-        $this->assertTrue($abigail->ratings->count() == 2);
-        $this->assertTrue($abigail->ratings[0]->rating == 5);
-        $this->assertTrue($john->ratings->count() == 1);
-
-
-    }
-
 }

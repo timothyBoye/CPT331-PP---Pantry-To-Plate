@@ -19,4 +19,9 @@ class Recipe extends Model
     {
         return $this->belongsTo('App\CuisineType');
     }
+
+    public function ratings()
+    {
+        return $this->hasMany('App\UserRecipeRating');
+    }
 }
