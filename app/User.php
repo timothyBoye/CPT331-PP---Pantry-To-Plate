@@ -42,4 +42,9 @@ class User extends Authenticatable
         return $this->belongsTo('App\UserRole', 'user_role_id', 'id');
     }
 
+    public function ratings()
+    {
+        return $this->hasMany('App\UserRecipeRating');
+    }
+
 }

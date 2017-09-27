@@ -47,3 +47,7 @@
     </div>
 </div>
 @endsection
+
+@section('footer')
+    <script src="{{ asset('js/ingredientsController.js') }}"></script>
+@endsection
