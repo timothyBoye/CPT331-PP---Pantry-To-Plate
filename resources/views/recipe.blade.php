@@ -11,8 +11,35 @@
                 <div class="row">
                     <h1>{{ $recipe->name }}</h1>
                     <q>{{ $recipe->long_description }}</q>
-                    <div id="recipe-serving">
-                        <strong>Serves:</strong> {{ $recipe->serving_size }}
+                    <div id="recipe-info">
+                        <ul>
+                            <li><strong>Serves:</strong> {{ $recipe->serving_size }}</li>
+                            @if($recipe->cuisine_type)
+                                <li><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</li>
+                            @endif
+                            <li>
+                                @if($recipe->average_rating)
+                                    <strong>Rated:</strong>
+                                    <span class="rating">
+                                        @for($i = 0; $i < round($recipe->average_rating); $i++)
+                                            <span>★</span>
+                                        @endfor
+                                        @for($i = 0; $i < (5 - round($recipe->average_rating)); $i++)
+                                            <span>☆</span>
+                                        @endfor
+                                    </span>
+                                    by {{ $recipe->number_of_ratings }} users
+                                @else
+                                    <strong>Rated:</strong>
+                                    <span class="rating">
+                                        @for($i = 0; $i < (5); $i++)
+                                            <span>☆</span>
+                                        @endfor
+                                    </span>
+                                    by 0 users
+                                @endif
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="row">
