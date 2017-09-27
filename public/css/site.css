@@ -56,9 +56,60 @@ ul  {
     padding-top: 10px;
 }
 
+
+.rating {
+    float:left;
+    padding-right:10px;
+}
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:125%;
+    line-height:1.2;
+    color:#ddd;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+}
+
+.rating-editable:not(:checked) > label:hover,
+.rating-editable:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+
+.rating-editable > input:checked + label:hover,
+.rating-editable > input:checked + label:hover ~ label,
+.rating-editable > input:checked ~ label:hover,
+.rating-editable > input:checked ~ label:hover ~ label,
+.rating-editable > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}
+
+.rating-editable > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
 .recipe-container {
     margin-top:20px;
-    height: 350px;
+    height: 400px;
     background-color: #ffffff;
 }
 
