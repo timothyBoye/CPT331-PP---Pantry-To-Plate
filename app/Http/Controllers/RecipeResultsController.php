@@ -7,11 +7,10 @@ use App\UserRecipeRating;
 use Illuminate\Http\Request;
 use App\Ingredient;
 use App\Recipe;
-<<<<<<< HEAD
+
 use Illuminate\Support\Facades\DB;
-=======
+
 use Illuminate\Support\Facades\Auth;
->>>>>>> b8eb397aa23f3c0ecd92547d472fbee253fde4c8
 
 class RecipeResultsController extends Controller
 {
