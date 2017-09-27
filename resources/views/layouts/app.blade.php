@@ -28,8 +28,8 @@
 
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Logout
-                    </a>
-
+                </a>
+                <a href="{{ route('profile.cuisines')}}">Manage Cuisine Preferences</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     {{ csrf_field() }}
                 </form>
