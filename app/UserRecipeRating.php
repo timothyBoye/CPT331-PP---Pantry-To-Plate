@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserRecipeRating extends Model
 {
+
+    protected $fillable = [
+        'recipe_id', 'user_id', 'rating'
+    ];
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');

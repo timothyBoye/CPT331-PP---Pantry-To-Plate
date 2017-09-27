@@ -18,8 +18,8 @@
                                 <li><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</li>
                             @endif
                             <li>
-                                <fieldset class="rating {{Auth::check() ? 'rating-editable' : ''}}">
-                                    <strong>Rated:</strong>
+                                <strong>Rated:</strong>
+                                <fieldset class="inline-block rating {{Auth::check() ? 'rating-editable' : ''}}"  {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} id="rating-{{$recipe->id}}" >
                                     <input type="radio" id="star5-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="5" {{ round($recipe->average_rating) == 5 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star5-{{$recipe->id}}" title="Rocks!">5 stars</label>
                                     <input type="radio" id="star4-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="4" {{ round($recipe->average_rating) == 4 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star4-{{$recipe->id}}" title="Pretty good">4 stars</label>
                                     <input type="radio" id="star3-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="3" {{ round($recipe->average_rating) == 3 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star3-{{$recipe->id}}" title="Meh">3 stars</label>
@@ -71,4 +71,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('footer')
+    <script src="{{ asset('js/ratings.js') }}"></script>
 @endsection
