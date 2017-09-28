@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -27,8 +28,8 @@
 
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Logout
-                    </a>
-
+                </a>
+                <a href="{{ route('profile.cuisines')}}">Manage Cuisine Preferences</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     {{ csrf_field() }}
                 </form>
@@ -46,10 +47,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ asset('js/sortable.js') }}"></script>
     <script src="{{ asset('js/jsCookie.js') }}"></script>
     <script src="{{ asset('js/csrf_init.js') }}"></script>
     <script src="{{ asset('js/storageService.js') }}"></script>
-    <script src="{{ asset('js/ingredientsController.js') }}"></script>
     <script src="{{ asset('js/nav.js') }}"></script>
+
+    @yield('footer')
 </body>
 </html>

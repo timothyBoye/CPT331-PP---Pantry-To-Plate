@@ -20,6 +20,12 @@ Route::post('/result', 'RecipeResultsController@getResults')->name('result');
 
 Route::get('/recipe/{id}', 'RecipeResultsController@show')->name('recipe');
 
+
+Route::get('/profile/cuisines',['as' => 'profile.cuisines', 'uses' => 'UserProfileController@get_cuisines']);
+Route::post('/profile/cuisines',['as' => 'profile.cuisines.update', 'uses' => 'UserProfileController@update']);
+
+Route::post('/recipe/setRating', 'RecipeResultsController@setRating')->name('setRating');
+
 Route::get('/dashboard', 'AdminController@index')->name('admin');
 Route::get('/dashboard/cuisines', 'AdminController@cuisines')->name('admin.cuisines');
 Route::get('/dashboard/ingredients', 'AdminController@ingredients')->name('admin.ingredients');
