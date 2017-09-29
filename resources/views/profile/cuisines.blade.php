@@ -4,7 +4,6 @@
 @section('content')
     <div class="container-fluid cuisine-mappings-bg">
         <div class="row">
-<<<<<<< HEAD
             <div class="alert invisible success-message col-md-6"></div>
         </div>
 
@@ -26,7 +25,6 @@
                             </ul>
                         </div>
                     <div>
-=======
             <div class="col-md-3">
             </div>
             <div class="col-md-9">
@@ -45,7 +43,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-offset-2 col-md-2">
->>>>>>> 97299474350f9dcf2132f5b85cf0cb7a5987b618
                         <button class="update-cuisine-mappings-btn btn btn-primary">Update Preferences <span class="glyphicon glyphicon-check"></span></button>
                     </div>
                 </div>
