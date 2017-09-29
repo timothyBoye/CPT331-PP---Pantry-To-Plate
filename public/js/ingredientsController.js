@@ -12,10 +12,19 @@
 
             // on ingredient close button remove from list
             $('.selected-ingredients-anchor ul').on('click', 'li .cross-button', handleIngredientClick);
+
             updateDisplay(storageObject.getRecipes());
+
+            $('#select-cuisine-type-filter').val(storageObject.getCuisineType());
+
             if(w.ingredientsController.selectedIngredients.length > 0){
                 makeCall();
             }
+
+            $(document).on('change', '#select-cuisine-type-filter', function(){
+                storageObject.setCuisineType($('#select-cuisine-type-filter').find('option:selected').val());
+                makeCall();
+            })
         }
 
     };
@@ -56,14 +65,15 @@
                 url: $('.selected-ingredients-anchor').attr('data-api-controller-url'),
                 type: 'POST',
                 data: {
-                    ingredients: w.ingredientsController.selectedIngredients
+                    ingredients: w.ingredientsController.selectedIngredients,
+                    cuisineType: storageObject.getCuisineType()
                 }
             }).done(function(response){
-                //updateDisplay(response.recipes);
                 $('#recipes').html(response.html);
+
             }).fail(function(response){
-                console.log(response);
                 $('#recipes').html(response.responseText);
+
             });
         }
         else{

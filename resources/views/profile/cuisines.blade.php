@@ -13,9 +13,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <ul id="sortable" class='cuisine-mappings-anchor' data-controller-url="{{URL::route('profile.cuisines.update')}}">
+                        <ul id="sortable" class='cuisine-mappings-anchor ui-sortable' data-controller-url="{{URL::route('profile.cuisines.update')}}">
                             @foreach($cuisine_mappings as $mapping)
-                                <li class="ui-state-default sort-li" data-mapping-id="{{$mapping->cuisine_type_id}}" data-current-rank="{{$mapping->rating}}">{{$mapping->cuisine_type->name}}</li>
+                                <li class="ui-state-default ui-sortable-handle sort-li" data-mapping-id="{{$mapping->cuisine_type_id}}" data-current-rank="{{$mapping->rating}}">{{$mapping->cuisine_type->name}}</li>
                             @endforeach
                         </ul>
                     </div>
