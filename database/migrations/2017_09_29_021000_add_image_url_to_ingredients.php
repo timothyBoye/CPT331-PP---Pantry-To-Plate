@@ -13,14 +13,6 @@ class AddImageUrlToIngredients extends Migration
      */
     public function up()
     {
-        /*  Wrong approach i.e. not creating a new table
-        Schema::create('ingredientImage', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-        });
-        */
-
-        //Adding a column to an existing table called ingredients
         Schema::table('ingredients', function($table) {
             $table->string('ingredient_image_url')->nullable();
         });
@@ -35,6 +27,6 @@ class AddImageUrlToIngredients extends Migration
     {
         Schema::table('ingredients', function($table) {
             $table->dropColumn('ingredient_image_url');
-        });    }
+        });
+    }
 }
-
