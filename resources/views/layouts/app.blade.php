@@ -18,7 +18,8 @@
 <body>
     <div id="app">
         <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <!-- Sidenav now uses burger to toggle between open/closed
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
             <!-- Authentication Links -->
             @if (Auth::guest())
                 <a href="{{ route('login') }}">Login</a>
@@ -41,7 +42,7 @@
             @endif
         </div>
         <div class = "nav-long">
-            <span class = "burger" onclick="openNav()">&#9776;</span>
+            <span class = "burger" onclick="toggleNav()">&#9776;</span>
             <span id="nav-logo-link">
                 <a  href="{{ route('home') }}"><img src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo" id="logo-image"></a>
             </span>

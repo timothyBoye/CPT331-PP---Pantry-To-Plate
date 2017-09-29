@@ -174,7 +174,7 @@ ul  {
     /*width: 73%;*/
     /*margin-right:15px;*/
     /*z-index:1000;*/
-    overflow-x:scroll;
+    overflow-x:auto;
     overflow-y:hidden;
     width:100%;
     padding: 0 15px;
@@ -238,10 +238,13 @@ ul  {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #4A4848;
+    /* background-color: #4A4848; */
+    /* Currently changed so it matches logo-one.png */
+    background-color: #545255;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 20px;
+    margin-top: 57px;
 }
 
 .sidenav a {
@@ -251,6 +254,7 @@ ul  {
     color: #ffffff;
     display: block;
     transition: 0.3s;
+    white-space: nowrap;
 }
 
 .sidenav a:hover {
