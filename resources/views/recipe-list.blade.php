@@ -1,6 +1,14 @@
 @foreach($recipes as $recipe)
-    <div class="col-lg-3 col-md-6 col-sm-12">
+    <div class="col-lg-3 col-md-6 col-sm-12 recipes-matched-search">
         <div class="recipe-container">
+            <div class="ingredient-match" >
+                @foreach($occurrences as $key => $val)
+                    @if($key == $recipe->id)
+                        <h5 class="ingredients-match-number">{{$val}}/{{count($recipe->ingredients)}}</h5>
+                        <p class="ingredients-match-word">MATCH</p>
+                    @endif
+                @endforeach
+            </div>
             <a href="{{ route('recipe', $recipe->id) }}" class="recipe-link">
                 <div class="recipe-image">
                 </div>
@@ -8,12 +16,21 @@
             </a>
             <div class="recipe-text">
                 <div style="margin:auto auto">
-                    <fieldset class="rating">
-                        <input type="radio" id="star5-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="5" {{ round($recipe->average_rating) == 5 ? 'checked' : '' }} disabled/><label for="star5-{{$recipe->id}}" title="Rocks!">5 stars</label>
-                        <input type="radio" id="star4-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="4" {{ round($recipe->average_rating) == 4 ? 'checked' : '' }} disabled/><label for="star4-{{$recipe->id}}" title="Pretty good">4 stars</label>
-                        <input type="radio" id="star3-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="3" {{ round($recipe->average_rating) == 3 ? 'checked' : '' }} disabled/><label for="star3-{{$recipe->id}}" title="Meh">3 stars</label>
-                        <input type="radio" id="star2-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="2" {{ round($recipe->average_rating) == 2 ? 'checked' : '' }} disabled/><label for="star2-{{$recipe->id}}" title="Kinda bad">2 stars</label>
-                        <input type="radio" id="star1-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="1" {{ round($recipe->average_rating) == 1 ? 'checked' : '' }} disabled/><label for="star1-{{$recipe->id}}" title="Sucks big time">1 star</label>
+                    @php($rating = false)
+
+                    @foreach($userRatings as $userRating)
+                        @if($userRating->recipe_id == $recipe->id)
+                            @php($rating = $userRating)
+                        @endif
+                    @endforeach
+
+                    @php ($ratingValue = $rating ? $rating->rating : round($recipe->average_rating))
+                    <fieldset class="rating {{ $rating ? 'rated' : '' }}" id="rating-{{$recipe->id}}" >
+                        <input type="radio" id="star5-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="5" {{ $ratingValue == 5 ? 'checked' : '' }} disabled/><label for="star5-{{$recipe->id}}" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="4" {{ $ratingValue == 4 ? 'checked' : '' }} disabled/><label for="star4-{{$recipe->id}}" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="3" {{ $ratingValue == 3 ? 'checked' : '' }} disabled/><label for="star3-{{$recipe->id}}" title="Meh">3 stars</label>
+                        <input type="radio" id="star2-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="2" {{ $ratingValue == 2 ? 'checked' : '' }} disabled/><label for="star2-{{$recipe->id}}" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="1" {{ $ratingValue == 1 ? 'checked' : '' }} disabled/><label for="star1-{{$recipe->id}}" title="Sucks big time">1 star</label>
                     </fieldset>
                 </div>
                 <div style="clear:both;">

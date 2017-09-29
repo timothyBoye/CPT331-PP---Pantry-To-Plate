@@ -17,78 +17,55 @@ class RecipeResultsController extends Controller
     public function getResults(Request $request)
     {
         $ingredients = $request['ingredients'];
+        $cuisine_type_filter = $request['cuisineType'];
         $ingredient_ids = [];
+
         foreach ($ingredients as $ingredient) {
             array_push($ingredient_ids, Ingredient::where('name', $ingredient)->value('id'));
         }
-        $recipe_ids = [];
-        foreach ($ingredient_ids as $id) {
 
-//            foreach (IngredientRecipeMapping::select('recipe_id')->where('ingredient_id', '=', $id)->get() as $recipe_id) {
-                foreach (IngredientRecipeMapping::select('recipe_id')->where('ingredient_id', '=', $id)->get() as $recipe_id) {
+        $recipe_ids = IngredientRecipeMapping::get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter);
 
-                    //print_r($occurrences.",");
-
-                    //if (!in_array($recipe_id->recipe_id, $recipe_ids)) {
-                        array_push($recipe_ids, $recipe_id->recipe_id);
-                    //}
-                }
-        }
-
-        //print_r($recipe_ids); // 3,6,6,7
         $occurrences = array_count_values($recipe_ids);
         arsort($occurrences);
-        //print_r($occurrences); //6(2),3(1),7(1)
 
         $sorted_recipe_ids = [];
         foreach($occurrences as $key => $val) {
             array_push($sorted_recipe_ids, $key);
         }
-        //print_r($sorted_recipe_ids); //6,3,7
-
-        //$recipes = Recipe::findMany($recipe_ids)->sortByDesc("name");//$sorted_recipe_ids);
-        //$test = [2,3,1];
-        //$idsImploded = implode(',',$test);
-        //$recipes = Recipe::whereIn([3,2,1])->orderByRaw("FIND_IN_SET('id','$idsImploded')")->get();
-        //$recipes = Recipe::findMany([2,3,1]);//->orderByRaw("FIND_IN_SET('id','$idsImploded')");
-        //$recipes = Recipe::whereKey($test)->orderByRaw(DB::raw("FIELD(id, $idsImploded)"))->get(['*']);
 
         $recipes = [];
+        $userRatings = [];
         foreach($sorted_recipe_ids as $recipe_id) {
             $recipe = Recipe::find($recipe_id);
+            if (Auth::check()) {
+                $userRating = UserRecipeRating::where('recipe_id', '=', $recipe->id)
+                    ->where('user_id', '=', Auth::id())
+                    ->first();
+                if ($userRating) {
+                    array_push($userRatings, $userRating);
+                }
+            }
             array_push($recipes, $recipe);
         }
-        //print_r($recipes[0]['name']);
 
-        //print_r($occurrences);
-
-        $returnHTML = view('recipe-list', compact('recipes'))->render();
-        return response()->json(array('success' => true, 'html'=>$returnHTML));
-
-//        $mappings = [];
-//        foreach($ingredients as $ingredient) {
-//            $ingredient_id = Ingredient::where('name', $ingredient)->value('id');
-//            array_push($mappings, IngredientRecipeMapping::where('ingredient_id', $ingredient_id)->get());
-//        }
-//
-//        $recipes = [];
-//        foreach($mappings as $mapping) {
-//            foreach($mapping as $mapping_obj) {
-//                $recipe = Recipe::where('id', $mapping_obj->recipe_id)->get();
-//                if(!in_array($recipe, $recipes)){
-//                    array_push($recipes, $recipe);
-//                }
-//            }
-//        }
-//        return response()->json(array('recipes' => $recipes));
+        $returnHTML = view('recipe-list', compact('recipes', 'userRatings', 'occurrences'))->render();
+        return response()->json(array('success' => true, 'html'=>$returnHTML), 200);
     }
 
 
     public function show($id)
     {
         $recipe = Recipe::find($id);
+
         if ($recipe) {
-            return view('recipe', compact('recipe'));
+            $userRating = null;
+            if (Auth::check()) {
+                $userRating = UserRecipeRating::where('user_id', '=', Auth::id())
+                    ->where('recipe_id', '=', $recipe->id)
+                    ->first();
+            }
+            return view('recipe', compact('recipe', 'userRating'));
         } else {
             return redirect()->route('home');
         }
@@ -125,6 +102,6 @@ class RecipeResultsController extends Controller
         $recipe->number_of_ratings = $count;
         $recipe->save();
 
-        return response()->json(array('success' => true, 'html' => $userRecipeRating->user_id));
+        return response()->json(null, 200);
     }
 }
