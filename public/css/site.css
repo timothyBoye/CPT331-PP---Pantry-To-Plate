@@ -82,8 +82,14 @@ ul  {
     margin-bottom: -5px;
 }
 
+
+
 .rating:not(:checked) > label:before {
     content: '★ ';
+}
+
+.rating:not(.rating-editable) > label {
+    cursor: auto;
 }
 
 .rating > input:checked ~ label {
@@ -113,11 +119,11 @@ ul  {
     color: #ea0;
 }
 
-.rated > input:checked + label:hover,
-.rated > input:checked + label:hover ~ label,
-.rated > input:checked ~ label:hover,
-.rated > input:checked ~ label:hover ~ label,
-.rated > label:hover ~ input:checked ~ label {
+.rating-editable.rated > input:checked + label:hover,
+.rating-editable.rated > input:checked + label:hover ~ label,
+.rating-editable.rated > input:checked ~ label:hover,
+.rating-editable.rated > input:checked ~ label:hover ~ label,
+.rating-editable.rated > label:hover ~ input:checked ~ label {
     color: gold;
 }
 
