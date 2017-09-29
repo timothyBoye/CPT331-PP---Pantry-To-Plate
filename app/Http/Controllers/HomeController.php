@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\IngredientCategory;
 use App\CuisineType;
+use App\IngredientRecipeMapping;
 
 
 class HomeController extends Controller
