@@ -1,7 +1,4 @@
 function makeRatingCall(recipeID, URL) {
-    console.log('recipe_id: '+recipeID);
-    console.log('URL: '+URL);
-    console.log('val: '+$('input[name=rating-'+recipeID+']:checked').val());
     $.ajax({
         url: URL,
         type: 'POST',
@@ -10,12 +7,11 @@ function makeRatingCall(recipeID, URL) {
             rating: $('input[name=rating-'+recipeID+']:checked').val()
         }
     }).done(function(response){
-        console.log(response);
-        console.log(response.html);
+        console.log('Rating updated for recipe_id: '+recipeID+', val: '+$('input[name=rating-'+recipeID+']:checked').val()+' star');
+        $('.rating-editable').addClass('rated');
+        $('#rated-by-who').text('your rating');
     }).fail(function(response){
         console.log(response);
-        console.log(response.responseText);
-
     });
 
 }
