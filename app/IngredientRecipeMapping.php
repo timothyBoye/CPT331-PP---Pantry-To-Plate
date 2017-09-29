@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class IngredientRecipeMapping extends Model
 {
+    protected $fillable = [
+        'recipe_id'
+    ];
+
     public function recipe()
     {
         return $this->belongsTo('App\Recipe');

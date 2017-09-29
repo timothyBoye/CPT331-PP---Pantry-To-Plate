@@ -1,6 +1,25 @@
 @foreach($recipes as $recipe)
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="recipe-container">
+            <div class="ingredient-match" >
+                {{--@foreach($recipe_id as $recipe_id_counted)--}}
+                    {{--<h1>{{ $recipe_id_counted }}</h1>--}}
+                {{--@endforeach--}}
+                {{--<h1><{{$recipe->pooptest}}/h1>--}}
+                {{--<h2>{{count($recipe->ingredients)}}</h2>--}}
+                {{--@foreach($recipe->ingredients as $ingredient)--}}
+                    {{--<p>{{ $ingredient->ingredient->name }}</p>--}}
+
+                {{--@endforeach--}}
+                @foreach($occurrences as $key => $val)
+                    @if($key == $recipe->id)
+                        <h4>{{$val}} / {{count($recipe->ingredients)}}</h4>
+                    @endif
+
+
+                @endforeach
+
+            </div>
             <a href="{{ route('recipe', $recipe->id) }}" class="recipe-link">
                 <div class="recipe-image">
                 </div>

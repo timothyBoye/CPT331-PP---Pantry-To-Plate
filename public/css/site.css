@@ -328,3 +328,13 @@ ul  {
     max-height: 54px;
     margin-bottom: 7px;
 }
+
+.ingredient-match {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    position: absolute;
+    bottom:0;
+    right:0;
+}

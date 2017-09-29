@@ -51,7 +51,7 @@ class RecipeResultsController extends Controller
             array_push($recipes, $recipe);
         }
 
-        $returnHTML = view('recipe-list', compact('recipes', 'userRatings'))->render();
+        $returnHTML = view('recipe-list', compact('recipes', 'userRatings', 'occurrences'))->render();
         return response()->json(array('success' => true, 'html'=>$returnHTML), 200);
     }
 
