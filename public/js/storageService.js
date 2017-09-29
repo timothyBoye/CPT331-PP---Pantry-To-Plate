@@ -4,7 +4,9 @@
 var storageObject = (function(w){
 
     var selectedIngredients = Cookies.getJSON('selectedIngredients') || [];
-    var me = {};
+    var me = {
+        cuisineType: -1
+    };
 
     me.addIngredient = function(ingredientName){
         selectedIngredients.push(ingredientName);
@@ -32,6 +34,17 @@ var storageObject = (function(w){
     me.getRecipes = function(){
         var recipes = w.sessionStorage.getItem('recipes');
         return recipes != null && recipes.length > 0 ? JSON.parse(recipes) : [];
+    }
+
+    me.setCuisineType = function(id){
+        me.cuisineType = id;
+        Cookies.set('cuisineTypeId', me.cuisineType, {
+            exipres: 0.5
+        })
+    }
+
+    me.getCuisineType = function(){
+        return Cookies.get('cuisineTypeId');
     }
 
     function updateIngredients(){

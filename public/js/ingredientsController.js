@@ -12,10 +12,19 @@
 
             // on ingredient close button remove from list
             $('.selected-ingredients-anchor ul').on('click', 'li .cross-button', handleIngredientClick);
+
             updateDisplay(storageObject.getRecipes());
+
+            $('#select-cuisine-type-filter').val(storageObject.getCuisineType());
+
             if(w.ingredientsController.selectedIngredients.length > 0){
                 makeCall();
             }
+
+            $(document).on('change', '#select-cuisine-type-filter', function(){
+                storageObject.setCuisineType($('#select-cuisine-type-filter').find('option:selected').val());
+                makeCall();
+            })
         }
 
     };
@@ -41,31 +50,11 @@
         $('.clearable').empty();
 
         var ingredientsList = w.ingredientsController.selectedIngredients;
-        for(var i = 0; i < ingredientsList.length; i++){
+        for(var i = 0; i < ingredientsList.length; i++) {
             displayIngredientsUl.show();
             var listItem = '<li class="li-ingredient-added"><div class="ingredient-img"><button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></div></div>' + ingredientsList[i] + '</li>';
             $(displayIngredientsUl).append(listItem);
         }
-        //
-        // if(recipes !== undefined && recipes !== null){
-        //     $.each($(recipes), function(k, v){
-        //         $.each(v, function(key, value){
-        //             $('#recipes').append(
-        //                 '<div class="col-lg-3 col-md-6 col-sm-12">'
-        //                 +'<div class="recipe-container">'
-        //                 +'<div class="recipe-image">'
-        //                 +'</div>'
-        //                 +'<a href="recipe/'+value.id+'">'
-        //                 +'<div class="recipe-text">'
-        //                 +'<h4>' + value.name + '</h4>'
-        //                 +'</a>'
-        //                 +'<q>'+ value.short_description +'</q>'
-        //                 +'</div>'
-        //                 +'</div>'
-        //             );
-        //         })
-        //     })
-        // }
 
     }
 
@@ -76,14 +65,15 @@
                 url: $('.selected-ingredients-anchor').attr('data-api-controller-url'),
                 type: 'POST',
                 data: {
-                    ingredients: w.ingredientsController.selectedIngredients
+                    ingredients: w.ingredientsController.selectedIngredients,
+                    cuisineType: storageObject.getCuisineType()
                 }
             }).done(function(response){
-                //updateDisplay(response.recipes);
                 $('#recipes').html(response.html);
+
             }).fail(function(response){
-                console.log(response);
                 $('#recipes').html(response.responseText);
+
             });
         }
         else{

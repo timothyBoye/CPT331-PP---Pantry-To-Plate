@@ -17,12 +17,13 @@
                     </label>
                 </form>
                 <div class="li-category dropdown">
-                    <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>
-                        <ul class="dropdown-menu drop-down-full-width">
+                    <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
+                        <select id='select-cuisine-type-filter' class="select-cuisine-type-filter">
+                            <option value="-1">Filter by Cuisine Type</option>
                         @foreach($cuisine as $cuisineType)
-                            <li class="li-ingredient" role="presentation"><a href="#" data-id="{{$cuisineType->id}}" data-name="{{$cuisineType->name}}">{{$cuisineType->name}}</a></li>
+                            <option value="{{$cuisineType->id}}">{{$cuisineType->name}}</option>
                         @endforeach
-                        </ul>
+                        </select>
                 </div>
             </div>
 

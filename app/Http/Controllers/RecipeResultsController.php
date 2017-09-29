@@ -17,16 +17,14 @@ class RecipeResultsController extends Controller
     public function getResults(Request $request)
     {
         $ingredients = $request['ingredients'];
+        $cuisine_type_filter = $request['cuisineType'];
         $ingredient_ids = [];
+
         foreach ($ingredients as $ingredient) {
             array_push($ingredient_ids, Ingredient::where('name', $ingredient)->value('id'));
         }
-        $recipe_ids = [];
-        foreach ($ingredient_ids as $id) {
-            foreach (IngredientRecipeMapping::select('recipe_id')->where('ingredient_id', '=', $id)->get() as $recipe_id) {
-                array_push($recipe_ids, $recipe_id->recipe_id);
-            }
-        }
+
+        $recipe_ids = IngredientRecipeMapping::get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter);
 
         $occurrences = array_count_values($recipe_ids);
         arsort($occurrences);
