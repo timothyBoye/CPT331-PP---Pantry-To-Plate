@@ -43,10 +43,19 @@ ul  {
     /*float: none !important;*/
     /*padding-left: 5px !important;*/
     /*position: absolute !important;*/
-    top:0 !important;
-    right:0 !important;
+    top:-5px !important;
+    right: -5px !important;
+    position: absolute;
+    color: red;
+    opacity: 1;
+    font-size: 2em;
+    font-weight: normal;
 }
 
+.cross-button:hover {
+    color: red;
+    opacity: 0.6;
+}
 
 .dropdown-buttons {
     width:100%;
@@ -194,6 +203,10 @@ ul  {
     border-radius: 50%;
     background-size: cover;
     margin:auto;
+
+
+    /* testing */
+    position: relative;
 }
 
 .clearable {
