@@ -1,10 +1,10 @@
 @foreach($recipes as $recipe)
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="recipe-container">
-            <a href="{{ route('recipe', $recipe->id) }}">
+            <a href="{{ route('recipe', $recipe->id) }}" class="recipe-link">
                 <div class="recipe-image">
                 </div>
-                <h4>{{ $recipe->name }}</h4>
+                <h4 class="recipe-name">{{ $recipe->name }}</h4>
             </a>
             <div class="recipe-text">
                 <div style="margin:auto auto">
