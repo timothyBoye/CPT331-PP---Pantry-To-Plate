@@ -55,6 +55,8 @@
             var listItem = '<li class="li-ingredient-added"><div class="ingredient-img"><button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></div></div>' + ingredientsList[i] + '</li>';
             $(displayIngredientsUl).append(listItem);
         }
+        //console.log(ingredientsList);
+
 
     }
 

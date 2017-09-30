@@ -305,7 +305,7 @@ ul  {
 }
 
 .ingredient-img {
-    background-image: url("../img/eggs.jpeg");
+    /*background-image: url("../img/eggs.jpeg");*/
     width: 55px;
     height:55px;
     border-radius: 50%;
