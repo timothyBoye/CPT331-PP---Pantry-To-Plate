@@ -33,7 +33,7 @@
                     <ul class="dropdown-menu drop-down-full-width">
                         @foreach($category->recipeIngredients as $ingredient)
                             {{--<h1>"keh:" {{$ingredient->ingredient_image_url}}</h1>--}}
-                            <li class="li-ingredient" role="presentation"><a href="#" data-id="{{$ingredient->id}}" data-name="{{$ingredient->name}}">{{$ingredient->name}}</a></li>
+                            <li class="li-ingredient" role="presentation"><a href="#" data-image="{{$ingredient->ingredient_image_url}}" data-id="{{$ingredient->id}}" data-name="{{$ingredient->name}}">{{$ingredient->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>

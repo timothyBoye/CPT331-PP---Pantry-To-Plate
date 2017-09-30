@@ -8,14 +8,15 @@ var storageObject = (function(w){
         cuisineType: -1
     };
 
-    me.addIngredient = function(ingredientName){
-        selectedIngredients.push(ingredientName);
+    me.addIngredient = function(ingredientID, ingredientName, ingredientImageURL){
+        var ingredient = {id:ingredientID, name:ingredientName, image_url:ingredientImageURL};
+        selectedIngredients.push(ingredient);
         updateIngredients();
         return selectedIngredients;
     };
 
-    me.removeIngredient = function(ingredientName){
-        var index = selectedIngredients.indexOf(ingredientName);
+    me.removeIngredient = function(ingredientID){
+        var index = find(selectedIngredients, ingredientID, 'id');
         if(index >= 0){
             selectedIngredients.splice(index, 1);
         }

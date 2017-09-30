@@ -29,14 +29,24 @@
 
     };
 
+    function find(myArray, searchTerm, property) {
+        for(var i = 0, len = myArray.length; i < len; i++) {
+            if (myArray[i][property] === searchTerm) return i;
+        }
+        return -1;
+    }
+
     function handleIngredientClick(e){
         var ingredientName = $(e.target).attr('data-name');
+        var ingredientID = $(e.target).attr('data-id');
+        var ingredientImage = $(e.target).attr('data-image');
 
-        if (!w.ingredientsController.selectedIngredients.includes(ingredientName)) {
-            w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientName);
+
+        if (find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
+            w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientID, ingredientName, ingredientImage);
         }
         else {
-            w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientName);
+            w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
         }
         makeCall();
         updateDisplay(storageObject.getRecipes());
@@ -52,7 +62,7 @@
         var ingredientsList = w.ingredientsController.selectedIngredients;
         for(var i = 0; i < ingredientsList.length; i++) {
             displayIngredientsUl.show();
-            var listItem = '<li class="li-ingredient-added"><div class="ingredient-img"><button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i] + '">&times;</span></button></div></div>' + ingredientsList[i] + '</li>';
+            var listItem = '<li class="li-ingredient-added"><div class="ingredient-img" style="background-image:url(img/ingredients/'+ingredientsList[i].image_url+')"><button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i].name + '" data-id="' + ingredientsList[i].id + '" data-image="' + ingredientsList[i].image_url + '">&times;</span></button></div></div>' + ingredientsList[i].name + '</li>';
             $(displayIngredientsUl).append(listItem);
         }
         //console.log(ingredientsList);

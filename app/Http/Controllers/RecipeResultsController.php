@@ -21,7 +21,7 @@ class RecipeResultsController extends Controller
         $ingredient_ids = [];
 
         foreach ($ingredients as $ingredient) {
-            array_push($ingredient_ids, Ingredient::where('name', $ingredient)->value('id'));
+            array_push($ingredient_ids, $ingredient['id']);
         }
 
         $recipe_ids = IngredientRecipeMapping::get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter);
