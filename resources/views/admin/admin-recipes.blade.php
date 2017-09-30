@@ -17,21 +17,29 @@
         <div class="col-md-12">
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <a href="{{ route('admin.recipe.new') }}" class="btn btn-success">Add Recipe</a>
+                    <a href="{{ route('admin.recipe.new') }}" class="btn btn-success">New</a>
                 </div>
                 <div class="box-body">
                     <table class="table">
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
-                            <th width="280px"></th>
+                            <th></th>
                         </tr>
                         @foreach ($recipes as $recipe)
                             <tr>
                                 <td>{{ $recipe->name}}</td>
                                 <td>{{ $recipe->short_description }}</td>
                                 <td>
-                                    <a class="btn" href="{{ route('admin.recipe.get', ['id' => $recipe->id]) }}">View/Edit Recipe</a>
+                                    <form class="admin-table-buttons" action="{{ route('admin.recipe.get', ['id' => $recipe->id]) }}" method="GET">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-default btn-sm" type="submit">Edit</button>
+                                    </form>
+                                    <form class="admin-table-buttons" action="{{ route('admin.recipe.delete', ['id' => $recipe->id]) }}" method="POST">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

@@ -6,7 +6,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="{{ route('admin.measurements') }}"><i class="ion ion-ios-list"></i> Measurements</a></li>
+        <li><a href="{{ route('admin.cuisines') }}"><i class="ion ion-ios-list"></i> Cuisines</a></li>
         <li><i class="fa fa-sticky-note-o"></i> {{$title}}</li>
     </ol>
 @endsection
@@ -20,11 +20,7 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($measurement) ? $measurement->name : ''  }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="comparable-size">Comparable Size</label>
-                            <input type="text" class="form-control" id="comparable-size" name="comparable-size" placeholder="Enter comparable size" value="{{ isset($measurement) ? $measurement->comparable_size : ''  }}">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($cuisine) ? $cuisine->name : ''  }}">
                         </div>
                     </div>
                     <!-- /.box-body -->

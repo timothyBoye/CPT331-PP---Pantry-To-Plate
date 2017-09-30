@@ -43,9 +43,21 @@ class AdminController extends Controller
         return view('admin.admin-cuisines', compact('title', 'cuisines'));
     }
 
-    public function getCuisine(Request $request)
+    public function getCuisine($id, Request $request)
     {
+        $cuisine = CuisineType::find($id);
+        $title = 'Edit Cuisine Type';
+        if ($cuisine) {
+            return view('admin.admin-cuisines-form', compact('cuisine','title'));
+        } else {
+            return redirect()->route('admin.measurements');
+        }
+    }
 
+    public function addCuisine(Request $request)
+    {
+        $title = 'Add Cuisine';
+        return view('admin.admin-cuisines-form', compact('title'));
     }
 
     public function setCuisine(Request $request)
@@ -53,9 +65,15 @@ class AdminController extends Controller
 
     }
 
-    public function cuisineForm(Request $request)
+    public function deleteCuisine($id, Request $request)
     {
-
+        $cuisine = CuisineType::find($id);
+        if ($cuisine) {
+            $cuisine->delete();
+            return redirect()->route('admin.cuisines');
+        } else {
+            return redirect()->route('admin.cuisines');
+        }
     }
 
 
@@ -71,9 +89,21 @@ class AdminController extends Controller
         return view('admin.admin-ingredients', compact('title', 'ingredients'));
     }
 
-    public function getIngredient(Request $request)
+    public function getIngredient($id, Request $request)
     {
+        $ingredient = Ingredient::find($id);
+        $title = 'Edit Ingredient';
+        if ($ingredient) {
+            return view('admin.admin-ingredients-form', compact('ingredient','title'));
+        } else {
+            return redirect()->route('admin.measurements');
+        }
+    }
 
+    public function addIngredient(Request $request)
+    {
+        $title = 'Add Ingredient';
+        return view('admin.admin-ingredients-form', compact('title'));
     }
 
     public function setIngredient(Request $request)
@@ -81,9 +111,15 @@ class AdminController extends Controller
 
     }
 
-    public function ingredientForm(Request $request)
+    public function deleteIngredient($id, Request $request)
     {
-
+        $ingredient = Ingredient::find($id);
+        if ($ingredient) {
+            $ingredient->delete();
+            return redirect()->route('admin.ingredients');
+        } else {
+            return redirect()->route('admin.ingredients');
+        }
     }
 
 
@@ -99,9 +135,21 @@ class AdminController extends Controller
         return view('admin.admin-measurements', compact('title', 'measurements'));
     }
 
-    public function getMeasurement(Request $request)
+    public function getMeasurement($id, Request $request)
     {
+        $measurement = MeasurementType::find($id);
+        $title = 'Edit Measurement Type';
+        if ($measurement) {
+            return view('admin.admin-measurements-form', compact('measurement','title'));
+        } else {
+            return redirect()->route('admin.measurements');
+        }
+    }
 
+    public function addMeasurement(Request $request)
+    {
+        $title = 'Add Measurement';
+        return view('admin.admin-measurements-form', compact('title'));
     }
 
     public function setMeasurement(Request $request)
@@ -109,9 +157,15 @@ class AdminController extends Controller
 
     }
 
-    public function measurementForm(Request $request)
+    public function deleteMeasurement($id, Request $request)
     {
-
+        $measurement = MeasurementType::find($id);
+        if ($measurement) {
+            $measurement->delete();
+            return redirect()->route('admin.measurements');
+        } else {
+            return redirect()->route('admin.measurements');
+        }
     }
 
 
@@ -138,15 +192,26 @@ class AdminController extends Controller
         }
     }
 
+    public function addRecipe(Request $request)
+    {
+        $title = 'Add Recipe';
+        return view('admin.admin-recipes-form', compact('title'));
+    }
+
     public function setRecipe(Request $request)
     {
 
     }
 
-    public function addRecipe(Request $request)
+    public function deleteRecipe($id, Request $request)
     {
-        $title = 'Add Recipe';
-        return view('admin.admin-recipes-form', compact('title'));
+        $recipe = Recipe::find($id);
+        if ($recipe) {
+            $recipe->delete();
+            return redirect()->route('admin.recipes');
+        } else {
+            return redirect()->route('admin.recipes');
+        }
     }
 
     /*
@@ -161,9 +226,21 @@ class AdminController extends Controller
         return view('admin.admin-users', compact('title', 'users'));
     }
 
-    public function getUser(Request $request)
+    public function getUser($id, Request $request)
     {
+        $user = User::find($id);
+        $title = 'Edit User';
+        if ($user) {
+            return view('admin.admin-users-form', compact('user','title'));
+        } else {
+            return redirect()->route('admin.users');
+        }
+    }
 
+    public function addUser(Request $request)
+    {
+        $title = 'Add User';
+        return view('admin.admin-users-form', compact('title'));
     }
 
     public function setUser(Request $request)
@@ -171,8 +248,14 @@ class AdminController extends Controller
 
     }
 
-    public function userForm(Request $request)
+    public function deleteUser($id, Request $request)
     {
-
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('admin.users');
+        } else {
+            return redirect()->route('admin.users');
+        }
     }
 }
