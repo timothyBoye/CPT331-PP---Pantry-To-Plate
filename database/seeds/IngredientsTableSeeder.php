@@ -212,7 +212,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'garlic cloves', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'leek', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'onion-x200.jpg'),
-            array('name' => 'red onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'red-pepper-x200.jpg'),
+            array('name' => 'red onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'red-onion-x200.jpg'),
             array('name' => 'shallot', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'shallot-x200.jpg'),
             array('name' => 'spring onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'spring-onion-x200.jpg'),
             array('name' => 'green onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),

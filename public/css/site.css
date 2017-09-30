@@ -317,6 +317,21 @@ ul  {
     padding-left:0px;
 }
 
+.cuisine-button {
+    background-color: #545255;
+    color: white;
+    width:250px;
+
+}
+
+.container-button {
+    text-align: center;
+    margin: 0 auto;
+    width:100%;
+    margin-top:50px;
+}
+
+
 /*@media (max-width:1200px) and (min-width: 992px)*/
 /*{*/
     /*.selected-ingredients-anchor {*/
