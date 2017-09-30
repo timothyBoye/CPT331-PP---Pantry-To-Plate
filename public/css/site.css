@@ -191,14 +191,13 @@ ul  {
 }
 
 .recipe-image {
-    background-image: url("../img/salmon-dish-food-meal-46239.jpeg");
     width: 100%;
     height: 250px;
     background-size: cover;
     position: relative;
     overflow: hidden;
-
 }
+
 .recipe-image:before {
     content: '';
     position: absolute;

@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <a href="#" class="btn btn-success">Add Recipe</a>
+                    <a href="{{ route('admin.recipe.new') }}" class="btn btn-success">Add Recipe</a>
                 </div>
                 <div class="box-body">
                     <table class="table">
@@ -31,7 +31,7 @@
                                 <td>{{ $recipe->name}}</td>
                                 <td>{{ $recipe->short_description }}</td>
                                 <td>
-                                    <a class="btn" href="#">View Recipe</a>
+                                    <a class="btn" href="{{ route('admin.recipe.get', ['id' => $recipe->id]) }}">View/Edit Recipe</a>
                                 </td>
                             </tr>
                         @endforeach

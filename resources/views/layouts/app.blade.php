@@ -39,6 +39,9 @@
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Logout
                 </a>
+                @if (Auth::user()->role->user_role_name == "Admin")
+                    <a href="{{ route('admin') }}">Admin Dashboard</a>
+                @endif
             @endif
         </div>
         <div class = "nav-long">

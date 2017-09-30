@@ -27,7 +27,8 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'Our best-ever spaghetti Bolognese is super easy and a true classic. An Italian pasta favourite with a meaty, chilli sauce, this ultimate recipe comes courtesy of BBC Good Food user, Andrew Balmer.',
                 'method' => 'Put a large saucepan on a medium heat and add 1 tbsp olive oil. Add the bacon and fry for 10 mins until golden and crisp.;Reduce the heat and add the onion, carrot, celery, garlic and rosemary, then fry for 10 mins. Stir the veg often until it softens.;Increase the heat to medium-high, add the mince and cook stirring for 3-4 mins until the meat is browned all over.;Add the tinned tomatoes, chopped basil, oregano, bay leaves, tomato purée, stock cube, chilli, wine and cherry tomatoes. Stir with a wooden spoon, breaking up the plum tomatoes.;Bring to the boil, reduce to a gentle simmer and cover with a lid. Cook for 1 hr 15 mins stirring occasionally, until you have a rich, thick sauce. Add the Parmesan, check the seasoning and stir.;When the Bolognese is nearly finished cook the spaghetti following pack instructions. Drain the spaghetti and stir into the Bolognese sauce. Serve with grated Parmesan, the extra basil leaves and crusty bread.',
                 'serving_size' => 6,
-                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id')
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
+                'image_url' => 'spaghetti.jpg'
             )
         );
         Recipe::create(
@@ -38,7 +39,8 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'This brilliant salad is actually quite average.',
                 'method' => 'Roughly chop lettuce;Slice onion;Dice cheese',
                 'serving_size' => 2,
-                'cuisine_type_id' => CuisineType::where('name', 'like', '%Mediterranean%')->value('id')
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Mediterranean%')->value('id'),
+                'image_url' => 'lettuce-salad.jpg'
             )
         );
         Recipe::create(
@@ -49,7 +51,8 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'This easy pizza sauce recipe gets cooked right on your stove top, and takes about 10 minutes from start to finish. You’ll love how delicious this is. MUCH better than anything you’ll find in a can.',
                 'method' => 'Heat the olive oil over medium heat, and saute the garlic for 2 minutes.;Add the rest of the ingredients, stir, and simmer for 10-15 minutes.',
                 'serving_size' => 4,
-                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id')
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
+                'image_url' => 'pizza-sauce.jpg'
             )
         );
         Recipe::create(
@@ -59,7 +62,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'Cherry syrup for cocktails and pancakes.',
                 'long_description' => 'Fresh Cherry Syrup is such a beautiful addition to any cocktail. You can even put it over pancakes if that’s your thing. You’re going to want to make a big batch of this today while the cherries are fresh.',
                 'method' => 'In a medium saucepan, combine all ingredients. You can pit the cherries or leave them with the pits if you\'d like. Either way is fine.;Use a potato masher to squish the cherries and release some juices.;Simmer over medium heat for 5-6 minutes. Mixture will be slightly thickened, all the sugar should be dissolved, and the syrup should be a deep red color.;Strain through a fine-mesh strainer, and store in the fridge for up to 2 weeks.',
-                'serving_size' => 10
+                'serving_size' => 10,
+                'image_url' => 'cherry-syrup.jpg'
             )
         );
         Recipe::create(
@@ -69,7 +73,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'Sweet, spicy and absolutely delicious!',
                 'long_description' => 'These Maple Sriracha Grilled Pork Chops are Sweet, spicy and absolutely delicious! They’re marinated in lime juice, Sriracha, pure maple syrup and fresh minced garlic, then grilled and on the table in less than 10 minutes!.',
                 'method' => 'Combine garlic, sriracha, maple syrup, and lime. Thoroughly coat the pork chops and marinate 1-8 hours.;When ready to grill, remove chops from marinade and sprinkle with salt and pepper. Spritz with cooking spray then grill on high heat for 4 minutes on the first side and 3-4 more minutes after flipping, until the internal temperature of the meat reaches at least 145 degrees F.',
-                'serving_size' => 10
+                'serving_size' => 10,
+                'image_url' => 'cherry-syrup.jpg'
             )
         );
         Recipe::create(
@@ -79,7 +84,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'Quick and easy salsa',
                 'long_description' => 'This Avocado Cucumber Salsa tastes so good that it will become your favourite appetiser in no time.',
                 'method' => 'Add all the ingredients to a medium size bowl and mix it with a fork.',
-                'serving_size' => 10
+                'serving_size' => 10,
+                'image_url' => 'cucumber-avo.jpg'
             )
         );
         Recipe::create(
@@ -89,7 +95,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'Simple, health & very very tasty!',
                 'long_description' => 'Start your day with this mouth-watering toasted sourdough bread with avocado spread! Simple, healthy & very very tasty!',
                 'method' => 'Toast the bread in a toaster or in the oven.;Wash the avocados, cut them in half and remove the peck. Using fork take out the flesh and place in a bowl. Mash the flesh with fork to get a paste. Add chia seeds, olive oil, a generous splash of lemon juice (freshly squeezed) and mix all together.;Place the toasted bread onto a plate & spread the avocado mix over. Top with arugula leaves and a few slices of goat cheese.;Add some black pepper and an extra splash of olive oil, if desired.;Serve for breakfast or as a snack any time of the day!;Enjoy!',
-                'serving_size' => 4
+                'serving_size' => 4,
+                'image_url' => 'sourdough-avo.jpg'
             )
         );
         Recipe::create(
@@ -99,7 +106,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'The perfect meal anytime of day!',
                 'long_description' => 'Chorizo Breakfast Tacos with Potato Hash and Eggs are ridiculously flavorful, quick and easy. The perfect meal anytime of day!',
                 'method' => 'In a large nonstick frying pan over medium high heat, add the oil and heat until shimmering. Add the potatoes, onion, garlic powder and onion powder to one side of the pan. Salt and pepper, if needed. Add the chorizo sausage to the other side and sauté until cooked through, breaking up with the back of a spoon, about 5 minutes. Turn over the potatoes after a couple of minutes so they get brown on both sides.;In a medium bowl, combine the eggs, milk, 1 tablespoon of cilantro and season with a little salt and pepper. Reduce the heat of the frying pan to medium low and add the egg mixture. Stir the eggs until they are very softly set, about 3 minutes. Remove the pan from the heat.;To assemble the tacos, take the heated tortillas and divide the egg, chorizo and potato mixture among them. Sprinkle with remaining cilantro, and then add the cheese and salsa on top.',
-                'serving_size' => 6
+                'serving_size' => 6,
+                'image_url' => 'breakfast-hash.jpg'
             )
         );
         Recipe::create(
@@ -109,7 +117,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'An easy, healthy salad or side dish',
                 'long_description' => 'Kidney bean salad recipe is an easy, healthy salad or side dish. This salad is delicious and makes a great lunch. This salad is gestational diabetes friendly as well. This salad is perfect for hot weather. So try this tasty kidney bean salad.',
                 'method' => 'Start off with draining and rinsing the kidney beans, then toss them in a bowl or tupperware.;Mix in your diced bell peppers, onion, and parsley.;Drizzle the olive oil and mix well.;Add desired amount of lemon. I love lemon so I will use two or more lemons.;Salt to taste.',
-                'serving_size' => 6
+                'serving_size' => 6,
+                'image_url' => 'Kidney-Bean-Salad.jpg'
             )
         );
         Recipe::create(
@@ -119,7 +128,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'This is a yummy, easy veggie dish.',
                 'long_description' => 'Roasted Parmesan Broccoli - Roasted with olive oil & Parmesan cheese, and finished with lemon zest. Super simple & healthy, this is a yummy, easy veggie dish.',
                 'method' => 'Preheat the oven to 425 degrees.;Add sliced broccoli to a parchment paper-lined baking sheet.;Sprinkle with salt, pepper, red pepper flakes, and olive oil, then toss gently.;Roast for 10 minutes, add the sliced garlic to the pan, and return to the oven.;Bake 6 more minutes, then sprinkle with parmesan and bake for 2 more minutes.;Remove from the oven, dust with lemon zest and enjoy!',
-                'serving_size' => 8
+                'serving_size' => 8,
+                'image_url' => 'Roasted-Parmesan-Broccoli.jpg'
             )
         );
         Recipe::create(
@@ -129,7 +139,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'An easy, healthy salad or side dish',
                 'long_description' => 'This quick and flavor-filled smoky paprika chicken seared with bell peppers makes a perfect 30-minute dinner!',
                 'method' => 'Cut the chicken into small bite-sized pieces and place them in the mixing bowl. Add olive oil, paprika, salt and pepper and stir everything together.;Preheat a large non-stick griddle to medium-high heat. Add half of the chicken and fry it until well browned for about 4-5 minutes. At this point, the chicken doesn\'t need to be cooked through as it will be cooked with bell peppers in a later step. Transfer the chicken into a bowl, and fry the rest of the chicken.;Once the second batch of chicken is browned, remove the chicken from the pan.;To the same hot pan, with the oil leftover from the chicken, add the bell peppers. Saute the bell pepper until the char marks start appearing and then add the chicken, with the juices, on top. Place the lid on the pan.;Cook it for several minutes until the chicken is cooked fully. Then, remove the lid and keep cooking until the liquid is almost evaporated.;Sprinkle the chicken with some chopped parsley.',
-                'serving_size' => 4
+                'serving_size' => 4,
+                'image_url' => 'SmokyPaprika-Chicken.jpg'
             )
         );
         Recipe::create(
@@ -139,7 +150,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'So delicious!',
                 'long_description' => 'This Cumin Orange Cashew Salad only requires four ingredients and 10 minutes to make. So delicious!',
                 'method' => 'Cut or tear the mixed greens into small pieces. Put them in a bowl and set aside.;Peel the oranges and cut them into small bite size pieces. Roast them with cumin, salt and pepper on a dry frying pan over medium heat. No oil is required as the oranges contain enough juice to prevent them from sticking to the pan. Cook the oranges for about five minutes.;Take the oranges off the pan and add them to your bowl of greens. Roast the cashew nuts on the same pan for 3-5 minutes or until they are slightly golden.;Take the cashew nuts off the heat and mix them with the oranges and greens. Serve immediately.;This salad doesn\'t keep well even if kept in the fridge.',
-                'serving_size' => 2
+                'serving_size' => 2,
+                'image_url' => 'Cumin-Orange-Cashew-Salad.jpg'
             )
         );
         Recipe::create(
@@ -149,7 +161,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'Bright colours and rich tastes combine for a hearty dish.',
                 'long_description' => 'A vibrant Halloumi, blueberry and spinach salad that is a contrast of textures and flavours. Bright colours and rich tastes combine for a hearty dish.',
                 'method' => 'Cut the Halloumi cheese into slices or even cubes.;Heat the olive oil in either a frying pan or a griddle pan.;Gently fry the Halloumi until golden on each side. You could also BBQ these slices.;Remove from the heat.;Mix the salad dressing ingredients.;Place the spinach in a bowl, put the Halloumi cheese pieces on top of the spinach.;Sprinkle the blueberries over the salad.;Drizzle the dressing over the salad.;Sprinkle about ¼ teaspoon sumac over the salad (optional);Eat immediately.',
-                'serving_size' => 2
+                'serving_size' => 2,
+                'image_url' => 'Halloumi-Blueberry-Spinach-Salad.jpg'
             )
         );
         Recipe::create(
@@ -159,7 +172,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'A great, dense, made-from-scratch cake.',
                 'long_description' => 'Homemade marble pound cake is a great, dense, made-from-scratch cake that’ll take care of both your chocolate and vanilla cravings all at once.',
                 'method' => 'Preheat oven to 350.;Cream together the butter and sugar until light and fluffy, about five minutes. Slowly add in the flour, and mix to combine. Don\'t over-mix!;In a separate bowl, whisk together the eggs, vanilla, and sour cream. Slowly add into batter and mix just until combined. Remove 1/3 of the batter from the bowl, and put into a separate bowl. Mix in the chocolate milk mix until well combined.;Place the vanilla batter into a tube pan that\'s been prepared with baking spray. Spread out evenly in the pan. Place spoonfuls of the chocolate batter all around the top of the vanilla batter. Use a butter knife to swirl the chocolate into the vanilla. Tap the pan several times on the counter to distribute batter and eliminate any gaps.;Bake for about 30 minutes, or until a toothpick comes out with moist crumbs. Let cool in pan for 10 minutes, and then invert onto serving tray.',
-                'serving_size' => 6
+                'serving_size' => 6,
+                'image_url' => 'Homemade-Marble-Pound-Cake.jpg'
             )
         );
         Recipe::create(
@@ -169,7 +183,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'A rich chocolate blackberry pudding baked with coconut flour.',
                 'long_description' => 'A rich chocolate blackberry pudding baked with coconut flour. This low carb and gluten free pudding is easy to make and only takes 30 minutes to bake. Served with cream or a sugar free berry coulis, it makes a delicious dessert.',
                 'method' => 'Preheat the oven to 190C/385F degrees.;In a bowl cream the butter and erythritol together until smooth.;Add the eggs and beat thoroughly.;Add the coconut flour, cocoa powder, salt and baking powder. Mix well.;Add the coconut milk and combine until smooth.;Grease/butter a pudding dish (the one I used was 6 inches x 10 inches).;Spoon the pudding mixture into the dish and smooth evenly.;Poke the blackberries into the pudding mixture, evenly.;Bake for 30 minutes until firm.;Serve and enjoy!',
-                'serving_size' => 4
+                'serving_size' => 4,
+                'image_url' => 'Chocolate-Blackberry-Pudding.jpg'
             )
         );
 
@@ -181,7 +196,8 @@ class RecipesTableSeeder extends Seeder
                 'short_description' => 'A classic breakfast staple.',
                 'long_description' => 'A rich chocolate blackberry pudding baked with coconut flour. This low carb and gluten free pudding is easy to make and only takes 30 minutes to bake. Served with cream or a sugar free berry coulis, it makes a delicious dessert.',
                 'method' => 'Boil Eggs;Toast Bread;Serve.',
-                'serving_size' => 1
+                'serving_size' => 1,
+                'image_url' => 'Eggs-on-Toast.jpg'
             )
         );
 
