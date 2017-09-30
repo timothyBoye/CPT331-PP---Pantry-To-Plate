@@ -14,6 +14,7 @@ class HomeController extends Controller
     {
         $categories = IngredientCategory::all();
         $cuisine_types = CuisineType::all();
+        //dd($categories, $cuisine_types);
         //return view('home', array('categories' => $categories));//, 'cuisine' => $cuisine_types), array('cuisine' => $cuisine_types));
         return view('home', ['categories' => $categories, 'cuisine' => $cuisine_types]);
     }

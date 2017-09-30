@@ -32,7 +32,8 @@
                     <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
                     <ul class="dropdown-menu drop-down-full-width">
                         @foreach($category->recipeIngredients as $ingredient)
-                            <li class="li-ingredient" role="presentation"><a href="#" data-id="{{$ingredient->id}}" data-name="{{$ingredient->name}}">{{$ingredient->name}}</a></li>
+                            {{--<h1>"keh:" {{$ingredient->ingredient_image_url}}</h1>--}}
+                            <li class="li-ingredient" role="presentation"><a href="#" data-image="{{ $ingredient->ingredient_image_url == '' ? 'default.jpg' : $ingredient->ingredient_image_url }}" data-id="{{$ingredient->id}}" data-name="{{$ingredient->name}}">{{$ingredient->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>

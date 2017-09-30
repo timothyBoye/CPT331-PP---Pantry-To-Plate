@@ -17,19 +17,27 @@
         <div class="col-md-12">
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <a href="#" class="btn btn-success">Add Measurement Type</a>
+                    <a href="{{ route('admin.measurement.new') }}" class="btn btn-success">New</a>
                 </div>
                 <div class="box-body">
                     <table class="table">
                         <tr>
                             <th>Name</th>
-                            <th width="280px"></th>
+                            <th></th>
                         </tr>
                         @foreach ($measurements as $measurement)
                             <tr>
                                 <td>{{ $measurement->name}}</td>
                                 <td>
-                                    <a class="btn" href="#">View Measurement</a>
+                                    <form class="admin-table-buttons" action="{{ route('admin.measurement.get', ['id' => $measurement->id]) }}" method="GET">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-default btn-sm" type="submit">Edit</button>
+                                    </form>
+                                    <form class="admin-table-buttons" action="{{ route('admin.measurement.delete', ['id' => $measurement->id]) }}" method="POST">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

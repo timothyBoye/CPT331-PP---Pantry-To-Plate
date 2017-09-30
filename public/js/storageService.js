@@ -8,14 +8,16 @@ var storageObject = (function(w){
         cuisineType: -1
     };
 
-    me.addIngredient = function(ingredientName){
-        selectedIngredients.push(ingredientName);
+    me.addIngredient = function(ingredientID, ingredientName, ingredientImageURL){
+        var ingredient = {id:ingredientID, name:ingredientName, image_url:ingredientImageURL};
+        selectedIngredients.push(ingredient);
         updateIngredients();
         return selectedIngredients;
     };
 
-    me.removeIngredient = function(ingredientName){
-        var index = selectedIngredients.indexOf(ingredientName);
+    me.removeIngredient = function(ingredientID){
+        var index = me.find(selectedIngredients, ingredientID, 'id');
+        console.log('index: '+index);
         if(index >= 0){
             selectedIngredients.splice(index, 1);
         }
@@ -52,6 +54,21 @@ var storageObject = (function(w){
             expires: 0.5
         });
     };
+
+    me.find = function find(myArray, searchTerm, property) {
+        console.log('array: '+myArray);
+        console.log('term: '+searchTerm);
+        console.log('property: '+property);
+
+        for(var i = 0, len = myArray.length; i < len; i++) {
+            if (myArray[i][property] === searchTerm) {
+                console.log('found: '+i);
+                return i;
+            }
+        }
+        console.log('didnt find anything');
+        return -1;
+    }
 
     return me;
 
