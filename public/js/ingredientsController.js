@@ -29,20 +29,13 @@
 
     };
 
-    function find(myArray, searchTerm, property) {
-        for(var i = 0, len = myArray.length; i < len; i++) {
-            if (myArray[i][property] === searchTerm) return i;
-        }
-        return -1;
-    }
-
     function handleIngredientClick(e){
         var ingredientName = $(e.target).attr('data-name');
         var ingredientID = $(e.target).attr('data-id');
         var ingredientImage = $(e.target).attr('data-image');
 
 
-        if (find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
+        if (storageObject.find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
             w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientID, ingredientName, ingredientImage);
         }
         else {
