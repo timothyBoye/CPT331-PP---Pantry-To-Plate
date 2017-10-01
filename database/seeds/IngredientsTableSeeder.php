@@ -134,7 +134,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'ugli fruit', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'yuzu', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'artichoke', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
-            array('name' => 'arugula', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
+            array('name' => 'arugula', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'baby-kale-2-x200.jpg'),
             array('name' => 'rocket', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'rocket_salad_1024-x200.jpg'),
             array('name' => 'rocket leaves', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'rocket_salad_1024-x200.jpg'),
             array('name' => 'asparagus', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'Asparagus-2-x200.jpg'),
@@ -319,6 +319,8 @@ class IngredientsTableSeeder extends Seeder
             //grains
             array('name' => 'sourdough bread', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'sourdough.jpg'),
             array('name' => 'corn tortillas', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'Taco_CrispyCornTortilla.jpg'),
+            array('name' => 'farfalle pasta', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'farfalle-pasta.jpeg'),
+
             //baking
             array('name' => 'whole wheat flour', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => ''),
             array('name' => 'all-purpose flour', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'cornflour-x200.jpg'),
@@ -349,8 +351,16 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'salted butter', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'butter.jpg'),
             array('name' => 'unsalted butter', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'butter.jpg'),
             array('name' => 'butter', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'butter.jpg'),
+            array('name' => 'mozzarella', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'mozzarella-ball-x200.jpg'),
+            array('name' => 'parmigiano cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'rennet-free-parmesan-x200.jpg'),
+            array('name' => 'pecorino cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
+
+
+
             //nuts
             array('name' => 'cashew nuts', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'Cashew_3.jpg'),
+            array('name' => 'pignoli nuts', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'ttar_pinenuts_03_h_launch.jpg'),
+
         );
 
         foreach ($ingredients as $ingredient) {
