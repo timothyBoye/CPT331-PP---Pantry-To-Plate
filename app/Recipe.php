@@ -24,4 +24,8 @@ class Recipe extends Model
     {
         return $this->hasMany('App\UserRecipeRating');
     }
+
+    public function nutritional_info_panel(){
+        return $this->hasOne('App\NutritionalInfoPanel');
+    }
 }

@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RecipesTableSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(UserRecipeRatingSeeder::class);
+        $this->call(NutritionalInfoPanelsTableSeeder::class);
     }
 }
