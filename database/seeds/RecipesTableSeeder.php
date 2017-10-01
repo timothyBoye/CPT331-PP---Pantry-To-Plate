@@ -74,7 +74,7 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'These Maple Sriracha Grilled Pork Chops are Sweet, spicy and absolutely delicious! They’re marinated in lime juice, Sriracha, pure maple syrup and fresh minced garlic, then grilled and on the table in less than 10 minutes!.',
                 'method' => 'Combine garlic, sriracha, maple syrup, and lime. Thoroughly coat the pork chops and marinate 1-8 hours.;When ready to grill, remove chops from marinade and sprinkle with salt and pepper. Spritz with cooking spray then grill on high heat for 4 minutes on the first side and 3-4 more minutes after flipping, until the internal temperature of the meat reaches at least 145 degrees F.',
                 'serving_size' => 10,
-                'image_url' => 'cherry-syrup.jpg'
+                'image_url' => 'Maple-Sriracha-Grilled-Bone-In-Pork-Chops-OT-chop-and-limes-3.jpg'
             )
         );
         Recipe::create(
