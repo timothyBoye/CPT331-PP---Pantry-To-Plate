@@ -1,15 +1,10 @@
 $(document).ready(function(){
-    $('.next').on('click',function(){
-        var currentRecipe = $('.active');
-        var nextRecipe = currentRecipe.next();
+    $('.next').on('click', getNext);
+    $('.prev').on('click', getPrev);
+    $('.slider-outer').on('swipeleft', getNext);
+    $('.slider-outer').on('swiperight', getPrev);
 
-        if(nextRecipe.length == 0) {
-            nextRecipe = $('.slider-inner .item:first');
-        }
-        currentRecipe.removeClass('active').css('z-index, -1');
-        nextRecipe.addClass('active').css('z-index, 1');
-    });
-    $('.prev').on('click',function(){
+    function getPrev() {
         var currentRecipe = $('.active');
         var prevRecipe = currentRecipe.prev();
 
@@ -18,5 +13,16 @@ $(document).ready(function(){
         }
         currentRecipe.removeClass('active').css('z-index, -1');
         prevRecipe.addClass('active').css('z-index, 1');
-    });
+    }
+
+    function getNext() {
+        var currentRecipe = $('.active');
+        var nextRecipe = currentRecipe.next();
+
+        if(nextRecipe.length == 0) {
+            nextRecipe = $('.slider-inner .item:first');
+        }
+        currentRecipe.removeClass('active').css('z-index, -1');
+        nextRecipe.addClass('active').css('z-index, 1');
+    }
 });
