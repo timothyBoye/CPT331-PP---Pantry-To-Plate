@@ -39,8 +39,12 @@ class AdminController extends Controller
     {
         $title = "Cuisines";
         $cuisines = CuisineType::paginate(10);
-
-        return view('admin.admin-cuisines', compact('title', 'cuisines'));
+        if (session('cuisine')) {
+            $cuisine = session('cuisine');
+            return view('admin.admin-cuisines', compact('title', 'cuisines', 'cuisine'));
+        } else {
+            return view('admin.admin-cuisines', compact('title', 'cuisines'));
+        }
     }
 
     public function getCuisine($id, Request $request)
@@ -60,9 +64,20 @@ class AdminController extends Controller
         return view('admin.admin-cuisines-form', compact('title'));
     }
 
-    public function setCuisine(Request $request)
+    public function postCuisine(Request $request)
     {
+        $cuisine = CuisineType::create($request->all());
+        $cuisine->save();
+        return redirect()->route('admin.cuisines')->with(['cuisine' => $cuisine]);
+    }
 
+    public function putCuisine($id, Request $request)
+    {
+        $cuisine = CuisineType::find($id);
+        $cuisine->update($request->all());
+        $cuisine->save();
+
+        return redirect()->route('admin.cuisines')->with(['cuisine' => $cuisine]);
     }
 
     public function deleteCuisine($id, Request $request)
@@ -106,7 +121,14 @@ class AdminController extends Controller
         return view('admin.admin-ingredients-form', compact('title'));
     }
 
-    public function setIngredient(Request $request)
+    public function postIngredient(Request $request)
+    {
+        $ingredient = Ingredient::create($request->all());
+        $ingredient->save();
+        return response()->json($ingredient, 201);
+    }
+
+    public function putIngredient(Request $request)
     {
 
     }
@@ -131,8 +153,12 @@ class AdminController extends Controller
     {
         $title = "Measurements";
         $measurements = MeasurementType::paginate(10);
-
-        return view('admin.admin-measurements', compact('title', 'measurements'));
+        if (session('measurement')) {
+            $measurement = session('measurement');
+            return view('admin.admin-measurements', compact('title', 'measurements', 'measurement'));
+        } else {
+            return view('admin.admin-measurements', compact('title', 'measurements'));
+        }
     }
 
     public function getMeasurement($id, Request $request)
@@ -152,9 +178,21 @@ class AdminController extends Controller
         return view('admin.admin-measurements-form', compact('title'));
     }
 
-    public function setMeasurement(Request $request)
+    public function postMeasurement(Request $request)
     {
+        $measurement = MeasurementType::create($request->all());
+        $measurement->save();
 
+        return redirect()->route('admin.measurements')->with(['measurement' => $measurement]);
+    }
+
+    public function putMeasurement($id, Request $request)
+    {
+        $measurement = MeasurementType::find($id);
+        $measurement->update($request->all());
+        $measurement->save();
+
+        return redirect()->route('admin.measurements')->with(['measurement' => $measurement]);
     }
 
     public function deleteMeasurement($id, Request $request)
@@ -198,7 +236,14 @@ class AdminController extends Controller
         return view('admin.admin-recipes-form', compact('title'));
     }
 
-    public function setRecipe(Request $request)
+    public function postRecipe(Request $request)
+    {
+        $recipe = Recipe::create($request->all());
+        $recipe->save();
+        return response()->json($recipe, 201);
+    }
+
+    public function putRecipe(Request $request)
     {
 
     }
@@ -243,7 +288,14 @@ class AdminController extends Controller
         return view('admin.admin-users-form', compact('title'));
     }
 
-    public function setUser(Request $request)
+    public function postUser(Request $request)
+    {
+        $user = User::create($request->all());
+        $user->save();
+        return response()->json($user, 201);
+    }
+
+    public function putUser(Request $request)
     {
 
     }

@@ -15,6 +15,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+            @if(isset($measurement))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-check"></i> Success!</h4>
+                Measurement type "{{ $measurement->name }}" stored in the database.
+            </div>
+            @endif
             <div class="box box-success">
                 <div class="box-header with-border">
                     <a href="{{ route('admin.measurement.new') }}" class="btn btn-success">New</a>
@@ -23,11 +30,13 @@
                     <table class="table">
                         <tr>
                             <th>Name</th>
+                            <th>Comparable Size</th>
                             <th></th>
                         </tr>
                         @foreach ($measurements as $measurement)
                             <tr>
                                 <td>{{ $measurement->name}}</td>
+                                <td>{{ $measurement->comparable_size }}</td>
                                 <td>
                                     <form class="admin-table-buttons" action="{{ route('admin.measurement.get', ['id' => $measurement->id]) }}" method="GET">
                                         {{ csrf_field() }}
