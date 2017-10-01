@@ -74,6 +74,7 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'These Maple Sriracha Grilled Pork Chops are Sweet, spicy and absolutely delicious! They’re marinated in lime juice, Sriracha, pure maple syrup and fresh minced garlic, then grilled and on the table in less than 10 minutes!.',
                 'method' => 'Combine garlic, sriracha, maple syrup, and lime. Thoroughly coat the pork chops and marinate 1-8 hours.;When ready to grill, remove chops from marinade and sprinkle with salt and pepper. Spritz with cooking spray then grill on high heat for 4 minutes on the first side and 3-4 more minutes after flipping, until the internal temperature of the meat reaches at least 145 degrees F.',
                 'serving_size' => 10,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%American%')->value('id'),
                 'image_url' => 'Maple-Sriracha-Grilled-Bone-In-Pork-Chops-OT-chop-and-limes-3.jpg'
             )
         );
@@ -85,6 +86,7 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'This Avocado Cucumber Salsa tastes so good that it will become your favourite appetiser in no time.',
                 'method' => 'Add all the ingredients to a medium size bowl and mix it with a fork.',
                 'serving_size' => 10,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Mexican%')->value('id'),
                 'image_url' => 'cucumber-avo.jpg'
             )
         );
@@ -107,6 +109,7 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'Chorizo Breakfast Tacos with Potato Hash and Eggs are ridiculously flavorful, quick and easy. The perfect meal anytime of day!',
                 'method' => 'In a large nonstick frying pan over medium high heat, add the oil and heat until shimmering. Add the potatoes, onion, garlic powder and onion powder to one side of the pan. Salt and pepper, if needed. Add the chorizo sausage to the other side and sauté until cooked through, breaking up with the back of a spoon, about 5 minutes. Turn over the potatoes after a couple of minutes so they get brown on both sides.;In a medium bowl, combine the eggs, milk, 1 tablespoon of cilantro and season with a little salt and pepper. Reduce the heat of the frying pan to medium low and add the egg mixture. Stir the eggs until they are very softly set, about 3 minutes. Remove the pan from the heat.;To assemble the tacos, take the heated tortillas and divide the egg, chorizo and potato mixture among them. Sprinkle with remaining cilantro, and then add the cheese and salsa on top.',
                 'serving_size' => 6,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Mexican%')->value('id'),
                 'image_url' => 'breakfast-hash.jpg'
             )
         );
@@ -118,6 +121,7 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'Kidney bean salad recipe is an easy, healthy salad or side dish. This salad is delicious and makes a great lunch. This salad is gestational diabetes friendly as well. This salad is perfect for hot weather. So try this tasty kidney bean salad.',
                 'method' => 'Start off with draining and rinsing the kidney beans, then toss them in a bowl or tupperware.;Mix in your diced bell peppers, onion, and parsley.;Drizzle the olive oil and mix well.;Add desired amount of lemon. I love lemon so I will use two or more lemons.;Salt to taste.',
                 'serving_size' => 6,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%American%')->value('id'),
                 'image_url' => 'Kidney-Bean-Salad.jpg'
             )
         );
@@ -129,6 +133,7 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'Roasted Parmesan Broccoli - Roasted with olive oil & Parmesan cheese, and finished with lemon zest. Super simple & healthy, this is a yummy, easy veggie dish.',
                 'method' => 'Preheat the oven to 425 degrees.;Add sliced broccoli to a parchment paper-lined baking sheet.;Sprinkle with salt, pepper, red pepper flakes, and olive oil, then toss gently.;Roast for 10 minutes, add the sliced garlic to the pan, and return to the oven.;Bake 6 more minutes, then sprinkle with parmesan and bake for 2 more minutes.;Remove from the oven, dust with lemon zest and enjoy!',
                 'serving_size' => 8,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%American%')->value('id'),
                 'image_url' => 'Roasted-Parmesan-Broccoli.jpg'
             )
         );
@@ -140,6 +145,7 @@ class RecipesTableSeeder extends Seeder
                 'long_description' => 'This quick and flavor-filled smoky paprika chicken seared with bell peppers makes a perfect 30-minute dinner!',
                 'method' => 'Cut the chicken into small bite-sized pieces and place them in the mixing bowl. Add olive oil, paprika, salt and pepper and stir everything together.;Preheat a large non-stick griddle to medium-high heat. Add half of the chicken and fry it until well browned for about 4-5 minutes. At this point, the chicken doesn\'t need to be cooked through as it will be cooked with bell peppers in a later step. Transfer the chicken into a bowl, and fry the rest of the chicken.;Once the second batch of chicken is browned, remove the chicken from the pan.;To the same hot pan, with the oil leftover from the chicken, add the bell peppers. Saute the bell pepper until the char marks start appearing and then add the chicken, with the juices, on top. Place the lid on the pan.;Cook it for several minutes until the chicken is cooked fully. Then, remove the lid and keep cooking until the liquid is almost evaporated.;Sprinkle the chicken with some chopped parsley.',
                 'serving_size' => 4,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Spanish%')->value('id'),
                 'image_url' => 'SmokyPaprika-Chicken.jpg'
             )
         );
@@ -198,6 +204,19 @@ class RecipesTableSeeder extends Seeder
                 'method' => 'Boil Eggs;Toast Bread;Serve.',
                 'serving_size' => 1,
                 'image_url' => 'Eggs-on-Toast.jpg'
+            )
+        );
+
+        Recipe::create(
+            array(
+                'id' => 17,
+                'name' => 'Arugula Pesto Pasta Salad',
+                'short_description' => 'Bow tie pasta salad with arugula pesto',
+                'long_description' => 'A light salad with bow tie pasta, arugula and a variety of cheese',
+                'method' => 'Cook the pasta in salted boiling water until al dente. Drain and rinse with cold water. Set aside.; In a food processor combine the first 6 ingredients and process until smooth.; Combine the cooked pasta with the pesto, tomatoes and mozzarella. Serve chilled.',
+                'serving_size' => 4,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
+                'image_url' => 'graysonpesto.jpg'
             )
         );
 
@@ -1197,6 +1216,87 @@ class RecipesTableSeeder extends Seeder
                 'quantity' => '2',
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'arugula')->value('id'),
+                'quantity' => '140',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'lemon zest')->value('id'),
+                'quantity' => '1',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'pecorino cheese')->value('id'),
+                'quantity' => '0.5',
+                'description' => 'grated',
+                'measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'parmigiano cheese')->value('id'),
+                'quantity' => '0.5',
+                'description' => 'grated',
+                'measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'garlic cloves')->value('id'),
+                'quantity' => '3',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'pignoli nuts')->value('id'),
+                'quantity' => '0.5',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'farfalle pasta')->value('id'),
+                'quantity' => '450',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'mozzarella')->value('id'),
+                'quantity' => '230',
+                'description' => 'balls',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 17,
+                'ingredient_id' => Ingredient::where('name', 'grape tomatoes')->value('id'),
+                'quantity' => '230',
+                'description' => 'halved',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
             )
         );
 
