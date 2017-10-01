@@ -15,6 +15,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+            @if(isset($cuisine))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> Success!</h4>
+                    Cuisine "{{ $cuisine->name }}" stored in the database.
+                </div>
+            @endif
             <div class="box box-success">
                 <div class="box-header with-border">
                     <a href="{{ route('admin.cuisine.new') }}" class="btn btn-success">New</a>
