@@ -7,6 +7,7 @@
 
         watch: function() {
 
+
             // on dropdown click update display + get json
             $('.li-ingredient').on('click', handleIngredientClick);
 
@@ -19,6 +20,8 @@
 
             if(w.ingredientsController.selectedIngredients.length > 0){
                 makeCall();
+            } else {
+                $('.intro-message').show();
             }
 
             $(document).on('change', '#select-cuisine-type-filter', function(){
@@ -37,12 +40,21 @@
 
         if (storageObject.find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
             w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientID, ingredientName, ingredientImage);
+
         }
         else {
             w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
         }
-        makeCall();
-        updateDisplay(storageObject.getRecipes());
+            makeCall();
+            updateDisplay(storageObject.getRecipes());
+
+            if(w.ingredientsController.selectedIngredients.length == 0) {
+                $('.intro-message').show();
+            } else {
+                $('.intro-message').hide();
+            }
+
+
     }
 
     function updateDisplay(recipes){
@@ -58,7 +70,6 @@
             var listItem = '<li class="li-ingredient-added"><div class="ingredient-img" style="background-image:url(img/ingredients/'+ingredientsList[i].image_url+')"><button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i].name + '" data-id="' + ingredientsList[i].id + '" data-image="' + ingredientsList[i].image_url + '">&times;</span></button></div></div>' + ingredientsList[i].name + '</li>';
             $(displayIngredientsUl).append(listItem);
         }
-        //console.log(ingredientsList);
 
 
     }

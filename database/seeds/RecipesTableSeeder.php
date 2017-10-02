@@ -200,7 +200,7 @@ class RecipesTableSeeder extends Seeder
                 'id' => 16,
                 'name' => 'Eggs on Toast',
                 'short_description' => 'A classic breakfast staple.',
-                'long_description' => 'A rich chocolate blackberry pudding baked with coconut flour. This low carb and gluten free pudding is easy to make and only takes 30 minutes to bake. Served with cream or a sugar free berry coulis, it makes a delicious dessert.',
+                'long_description' => ' Bailed to perfection eggs on sourdough bread',
                 'method' => 'Boil Eggs;Toast Bread;Serve.',
                 'serving_size' => 1,
                 'image_url' => 'Eggs-on-Toast.jpg'

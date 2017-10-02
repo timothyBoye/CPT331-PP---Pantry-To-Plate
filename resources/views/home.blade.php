@@ -44,13 +44,16 @@
             </div>
         </div>
         <div class="col-md-9 home-recipe-container">
+            <div class ="intro-message">
+                <p class="intro-text"> Select an ingredient to get started.</p>
+                <a class="btn btn-large btn-success tour-button" href="#" id="demo">Click me! I'm a Demo</a>
+            </div>
+
             <div class="selected-ingredients-anchor" data-api-controller-url="{{URL::route('result')}}">
                 <ul class="clearable"></ul>
             </div>
             <div class="clearable" id="recipes"></div>
         </div>
-        <a class="btn btn-large btn-success" href="#" id="demo">Click me! I'm a Demo</a>
-
     </div>
 </div>
 @endsection

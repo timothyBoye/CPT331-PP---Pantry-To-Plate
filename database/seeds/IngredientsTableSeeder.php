@@ -344,8 +344,6 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'parmigiano cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'rennet-free-parmesan-x200.jpg'),
             array('name' => 'pecorino cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
 
-
-
             //nuts
             array('name' => 'cashew nuts', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'Cashew_3.jpg'),
             array('name' => 'pignoli nuts', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'ttar_pinenuts_03_h_launch.jpg'),
