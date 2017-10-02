@@ -96,3 +96,5 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/slider.js') }}"></script>
+<!--Hammer library used to implement swipe functionality on touch screens -->
+<script src="{{ asset('js/hammer.min.js') }}"></script>
