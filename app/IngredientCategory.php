@@ -22,4 +22,5 @@ class IngredientCategory extends Model
             ->groupBy('id');
     }
 
+
 }

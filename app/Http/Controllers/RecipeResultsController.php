@@ -18,12 +18,15 @@ class RecipeResultsController extends Controller
     {
         $ingredients = $request['ingredients'];
         $cuisine_type_filter = $request['cuisineType'];
-        $ingredient_ids = [];
+        $ingredient_names = [];
+        //$ingredient_ids = [];
 
         foreach ($ingredients as $ingredient) {
-            array_push($ingredient_ids, $ingredient['id']);
+            array_push($ingredient_names, $ingredient['name']);
+            //array_push($ingredient_ids, $ingredient['id']);
         }
 
+        $ingredient_ids = IngredientRecipeMapping::get_matching_recipe_names($ingredient_names);
         $recipe_ids = IngredientRecipeMapping::get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter);
 
         $occurrences = array_count_values($recipe_ids);

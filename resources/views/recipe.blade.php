@@ -75,6 +75,11 @@
                         </ol>
                     </div>
                 </div>
+                <div class="row">
+                    @if($recipe->nutritional_info_panel)
+                        @include('partials.nutritionalInfoPanel', ['nutritional_info_panel' => $recipe->nutritional_info_panel])
+                    @endif
+                </div>
             </div>
         </div>
     </div>

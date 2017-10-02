@@ -20,6 +20,7 @@
         <div id="mySidenav" class="sidenav">
             <!-- Sidenav now uses burger to toggle between open/closed
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+            <a href="{{ route('home') }}">Home</a>
             <!-- Authentication Links -->
             @if (Auth::guest())
                 <a href="{{ route('login') }}">Login</a>
@@ -32,7 +33,6 @@
                 </form>
                 <a href="#">Recipes</a>
             @endif
-            <a href="{{ route('home') }}">Home</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
             @if (Auth::user())

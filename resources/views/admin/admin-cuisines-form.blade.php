@@ -1,5 +1,26 @@
 @extends('layouts.adminlayout')
 
+@section('head')
+    <script>
+        $().ready(function() {
+            $("#form").validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 3
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Please enter a name for the cuisine",
+                        minlength: "A cuisine name must be at least 3 characters"
+                    }
+                }
+            });
+        });
+    </script>
+@endsection
+
 @section('content-header')
     <h1>
         {{$title}}
@@ -16,11 +37,19 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-success">
-                <form role="form" action="" method="post">
+                <form role="form" action="{{ isset($cuisine) ? route('admin.cuisine.put', ['id' => $cuisine->id]) : route('admin.cuisine.post') }}" id="form" method="post">
+                    {{ csrf_field() }}
+                    @if(isset($cuisine))
+                        {{ method_field('PUT') }}
+                        <input type="text" id="id" name="id" value="{{ $cuisine->id }}" hidden disabled>
+                    @endif
                     <div class="box-body">
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($cuisine) ? $cuisine->name : ''  }}">
+                            @if ($errors->has('name'))
+                                <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
+                            @endif
                         </div>
                     </div>
                     <!-- /.box-body -->

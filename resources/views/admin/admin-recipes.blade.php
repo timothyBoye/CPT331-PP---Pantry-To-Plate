@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <a href="{{ route('admin.recipe.new') }}" class="btn btn-success">New</a>
+                    {{--<a href="{{ route('admin.recipe.new') }}" class="btn btn-success">New</a>--}}
                 </div>
                 <div class="box-body">
                     <table class="table">
@@ -31,10 +31,10 @@
                                 <td>{{ $recipe->name}}</td>
                                 <td>{{ $recipe->short_description }}</td>
                                 <td>
-                                    <form class="admin-table-buttons" action="{{ route('admin.recipe.get', ['id' => $recipe->id]) }}" method="GET">
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-default btn-sm" type="submit">Edit</button>
-                                    </form>
+                                    {{--<form class="admin-table-buttons" action="{{ route('admin.recipe.get', ['id' => $recipe->id]) }}" method="GET">--}}
+                                        {{--{{ csrf_field() }}--}}
+                                        {{--<button class="btn btn-default btn-sm" type="submit">Edit</button>--}}
+                                    {{--</form>--}}
                                     <form class="admin-table-buttons" action="{{ route('admin.recipe.delete', ['id' => $recipe->id]) }}" method="POST">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ingredient extends Model
 {
     protected $fillable = [
-        'name', 'ingredient_category_id', 'ingredient_image_url'
+       'id', 'name', 'ingredient_category_id', 'ingredient_image_url'
     ];
 
     public function category()
@@ -19,4 +19,6 @@ class Ingredient extends Model
     {
         return $this->hasMany('App\IngredientRecipeMapping');
     }
+
+
 }
