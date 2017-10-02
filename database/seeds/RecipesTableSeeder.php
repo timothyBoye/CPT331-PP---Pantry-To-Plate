@@ -382,7 +382,7 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 4,
-                'ingredient_id' => Ingredient::where('name', 'cherries')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'cherry')->value('id'),
                 'quantity' => 3,
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')
@@ -400,9 +400,9 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 5,
-                'ingredient_id' => Ingredient::where('name', 'garlic cloves')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),
                 'quantity' => 4,
-                'description' => 'minced',
+                'description' => 'cloves minced',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
         );
@@ -598,7 +598,7 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 8,
-                'ingredient_id' => Ingredient::where('name', 'potatoes')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'potato')->value('id'),
                 'quantity' => '2',
                 'description' => 'baked, then chopped',
                 'measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')
@@ -661,7 +661,7 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 8,
-                'ingredient_id' => Ingredient::where('name', 'eggs')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),
                 'quantity' => '5',
                 'description' => 'large',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
@@ -760,7 +760,7 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 9,
-                'ingredient_id' => Ingredient::where('name', 'lemons')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'lemon')->value('id'),
                 'quantity' => '2',
                 'description' => 'juiced',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
@@ -796,9 +796,9 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 10,
-                'ingredient_id' => Ingredient::where('name', 'garlic cloves')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),
                 'quantity' => '4',
-                'description' => 'thinly sliced',
+                'description' => 'cloves thinly sliced',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
         );
@@ -922,7 +922,7 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 12,
-                'ingredient_id' => Ingredient::where('name', 'oranges')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'orange')->value('id'),
                 'quantity' => '2',
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
@@ -1066,7 +1066,7 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 14,
-                'ingredient_id' => Ingredient::where('name', 'eggs')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),
                 'quantity' => '4',
                 'description' => 'large',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
@@ -1138,7 +1138,7 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 15,
-                'ingredient_id' => Ingredient::where('name', 'eggs')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),
                 'quantity' => '4',
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
@@ -1257,9 +1257,9 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 17,
-                'ingredient_id' => Ingredient::where('name', 'garlic cloves')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),
                 'quantity' => '3',
-                'description' => '',
+                'description' => 'cloves',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
         );
