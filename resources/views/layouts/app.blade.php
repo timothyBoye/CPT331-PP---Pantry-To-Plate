@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstro.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -44,7 +45,7 @@
                 @endif
             @endif
         </div>
-        <div class = "nav-long">
+        <div class = "nav-long" >
             <span class = "burger" onclick="toggleNav()">&#9776;</span>
             <span id="nav-logo-link">
                 <a  href="{{ route('home') }}"><img src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo" id="logo-image"></a>
@@ -63,6 +64,7 @@
     <script src="{{ asset('js/jsCookie.js') }}"></script>
     <script src="{{ asset('js/csrf_init.js') }}"></script>
     <script src="{{ asset('js/storageService.js') }}"></script>
+    <script src="{{ asset('js/bootstro.js') }}"></script>
     <script src="{{ asset('js/nav.js') }}"></script>
 
     @yield('footer')
