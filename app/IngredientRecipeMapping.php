@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class IngredientRecipeMapping extends Model
 {
     protected $fillable = [
-        'recipe_id'
+        'recipe_id', 'ingredient_id'
     ];
 
     public function recipe()
@@ -58,26 +58,11 @@ class IngredientRecipeMapping extends Model
         $ingredient_ids = [];
 
         foreach ($ingredient_names as $name) {
-
             foreach (Ingredient::select(['name', 'id'])
                          ->where('name', 'LIKE', '%'.$name.'%')->get() as $ingredient) {
-//                // If the user has selected a cuisine type filter, include appropriate recipes. This should
-//                // really be done at query stage above, so we are only hitting the db for the results we will use.
-//                // Will refactor later.
-//                if($cuisine_type_filter >= 0){
-//                    if($ingredient_recipe_mapping->recipe->cuisine_type_id == $cuisine_type_filter){
-//                        array_push($recipe_ids, $ingredient_recipe_mapping->recipe_id);
-//                    }
-//
-//                }
-//                else{
                     array_push($ingredient_ids, $ingredient->id);
-
                 }
-
-
         }
-
         return $ingredient_ids;
 
     }

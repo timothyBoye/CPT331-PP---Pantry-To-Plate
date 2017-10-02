@@ -841,9 +841,9 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 10,
-                'ingredient_id' => Ingredient::where('name', 'lemon zest')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'lemon')->value('id'),
                 'quantity' => '',
-                'description' => 'from half a lemon',
+                'description' => 'zest from half a lemon',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
         );
@@ -1230,9 +1230,9 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 17,
-                'ingredient_id' => Ingredient::where('name', 'lemon zest')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'lemon')->value('id'),
                 'quantity' => '1',
-                'description' => '',
+                'description' => 'zested',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
         );
