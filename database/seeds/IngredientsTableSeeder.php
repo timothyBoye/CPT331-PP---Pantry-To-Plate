@@ -374,6 +374,7 @@ class IngredientsTableSeeder extends Seeder
             // DB::table('industries')->insert($industry);
         }
 
+
 //        for($i = 0; $i < count($ingredients); $i++){
 //            Ingredient::create(array(
 //               'name' => $ingredients[$i]
