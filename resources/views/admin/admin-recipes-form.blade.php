@@ -14,8 +14,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-success">
-                <form role="form" action="{{ isset($recipe) ? route('admin.recipe.put', ['id' => $recipe->id]) : route('admin.recipe.post') }}" method="POST" id="form" novalidate>
+            <form role="form" action="{{ isset($recipe) ? route('admin.recipe.put', ['id' => $recipe->id]) : route('admin.recipe.post') }}" method="POST" id="form" novalidate>
+                <div class="box box-success">
                     {{ csrf_field() }}
                     @if(isset($recipe))
                         {{ method_field('PUT') }}
@@ -68,7 +68,19 @@
                                 <span class="help-block"><strong>{{ $errors->first('cuisine_type_id') }}</strong></span>
                             @endif
                         </div>
+                    </div>
+                </div>
 
+                <div class="box box-default box-solid">
+                    <a data-widget="collapse" href="">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Recipe Method</h3>
+                            <div class="box-tools pull-right">
+                                <span><i class="fa fa-minus"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="box-body" style="">
                         <div id="method_container">
                             <h4>Method</h4>
                         </div>
@@ -78,7 +90,19 @@
                                 <a id="remove_method_step" class="btn btn-warning btn-sm"  href="#remove_method_step"><span>(-) Remove Step</span></a>
                             </p>
                         </div>
+                    </div>
+                </div>
 
+                <div class="box box-default box-solid">
+                    <a data-widget="collapse" href="">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Recipe Ingredients</h3>
+                            <div class="box-tools pull-right">
+                                <span><i class="fa fa-minus"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="box-body" style="">
                         <div id="ingredients_container">
                             <h4>Ingredients</h4>
                         </div>
@@ -90,14 +114,82 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.box-body -->
 
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <input class="btn btn-default" type="reset">
+                <div class="box box-default box-solid">
+                    <a data-widget="collapse" href="">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Nutritional Info</h3>
+                            <div class="box-tools pull-right">
+                                <span><i class="fa fa-minus"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="box-body" style="">
+                        <div class="form-group {{ $errors->has('calories') ? 'has-error' : '' }}">
+                            <label for="calories">Calories</label>
+                            <input type="text" class="form-control" id="calories" name="calories" placeholder="Enter calories" value="{{ isset($recipe) ? $recipe->nutritional_info_panel->calories : ''  }}">
+                            @if ($errors->has('calories'))
+                                <span class="help-block"><strong>{{ $errors->first('calories') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('gram_total_fat') ? 'has-error' : '' }}">
+                            <label for="gram_total_fat">Grams Total Fat</label>
+                            <input type="text" class="form-control" id="gram_total_fat" name="gram_total_fat" placeholder="Enter grams total fat" value="{{ isset($recipe) ? $recipe->nutritional_info_panel->gram_total_fat : ''  }}">
+                            @if ($errors->has('gram_total_fat'))
+                                <span class="help-block"><strong>{{ $errors->first('gram_total_fat') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('gram_saturated_fat') ? 'has-error' : '' }}">
+                            <label for="gram_saturated_fat">Grams Saturated Fats</label>
+                            <input type="text" class="form-control" id="gram_saturated_fat" name="gram_saturated_fat" placeholder="Enter grams saturated fat" value="{{ isset($recipe) ? $recipe->nutritional_info_panel->gram_saturated_fat : ''  }}">
+                            @if ($errors->has('gram_saturated_fat'))
+                                <span class="help-block"><strong>{{ $errors->first('gram_saturated_fat') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('gram_fiber') ? 'has-error' : '' }}">
+                            <label for="gram_fiber">Grams Fibre</label>
+                            <input type="text" class="form-control" id="gram_fiber" name="gram_fiber" placeholder="Enter grams fibre" value="{{ isset($recipe) ? $recipe->nutritional_info_panel->gram_fiber : ''  }}">
+                            @if ($errors->has('gram_fiber'))
+                                <span class="help-block"><strong>{{ $errors->first('gram_fiber') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('gram_total_carbohydrates') ? 'has-error' : '' }}">
+                            <label for="gram_total_carbohydrates">Grams Total Carbohydrates</label>
+                            <input type="text" class="form-control" id="gram_total_carbohydrates" name="gram_total_carbohydrates" placeholder="Enter grams total fat" value="{{ isset($recipe) ? $recipe->nutritional_info_panel->gram_total_carbohydrates : ''  }}">
+                            @if ($errors->has('gram_total_carbohydrates'))
+                                <span class="help-block"><strong>{{ $errors->first('gram_total_carbohydrates') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('gram_sugars') ? 'has-error' : '' }}">
+                            <label for="gram_sugars">Grams Sugar</label>
+                            <input type="text" class="form-control" id="gram_sugars" name="gram_sugars" placeholder="Enter grams sugar" value="{{ isset($recipe) ? $recipe->nutritional_info_panel->gram_sugars : ''  }}">
+                            @if ($errors->has('gram_sugars'))
+                                <span class="help-block"><strong>{{ $errors->first('gram_sugars') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('gram_protein') ? 'has-error' : '' }}">
+                            <label for="gram_protein">Grams Protein</label>
+                            <input type="text" class="form-control" id="gram_protein" name="gram_protein" placeholder="Enter grams protein" value="{{ isset($recipe) ? $recipe->nutritional_info_panel->gram_protein : ''  }}">
+                            @if ($errors->has('gram_protein'))
+                                <span class="help-block"><strong>{{ $errors->first('gram_protein') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('mg_sodium') ? 'has-error' : '' }}">
+                            <label for="mg_sodium">Milligrams Sodium</label>
+                            <input type="text" class="form-control" id="mg_sodium" name="mg_sodium" placeholder="Enter mg sodium" value="{{ isset($recipe) ? $recipe->nutritional_info_panel->mg_sodium : ''  }}">
+                            @if ($errors->has('mg_sodium'))
+                                <span class="help-block"><strong>{{ $errors->first('mg_sodium') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="box box-solid">
+                    <div class="box-body">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <input class="btn btn-default" type="reset">
+                    </div>
                 </div>
             </form>
-            </div>
         </div>
     </div>
 @endsection

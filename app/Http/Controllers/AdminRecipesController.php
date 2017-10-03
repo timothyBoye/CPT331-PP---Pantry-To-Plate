@@ -7,6 +7,7 @@ use App\Ingredient;
 use App\IngredientCategory;
 use App\IngredientRecipeMapping;
 use App\MeasurementType;
+use App\NutritionalInfoPanel;
 use App\Recipe;
 use App\User;
 use App\UserRole;
@@ -88,6 +89,19 @@ class AdminRecipesController extends Controller
             $ingredient->save();
         }
 
+        $nutrition = NutritionalInfoPanel::create(array(
+            'recipe_id'=>$recipe->id,
+            'gram_total_fat'=>$request['gram_total_fat'],
+            'gram_saturated_fat'=>$request['gram_saturated_fat'],
+            'gram_total_carbohydrates'=>$request['gram_total_carbohydrates'],
+            'gram_sugars'=>$request['gram_sugars'],
+            'gram_fiber'=>$request['gram_fiber'],
+            'mg_sodium'=>$request['mg_sodium'],
+            'gram_protein'=>$request['gram_protein'],
+            'calories' => $request['calories']
+        ));
+        $nutrition->save();
+
         return redirect()->route('admin.recipes')->with(['recipe' => $recipe]);
     }
 
@@ -123,6 +137,19 @@ class AdminRecipesController extends Controller
             ));
             $ingredient->save();
         }
+
+        $nutrition = NutritionalInfoPanel::where('recipe_id', '=', $id)->first();
+        $nutrition->update(array(
+            'gram_total_fat'=>$request['gram_total_fat'],
+            'gram_saturated_fat'=>$request['gram_saturated_fat'],
+            'gram_total_carbohydrates'=>$request['gram_total_carbohydrates'],
+            'gram_sugars'=>$request['gram_sugars'],
+            'gram_fiber'=>$request['gram_fiber'],
+            'mg_sodium'=>$request['mg_sodium'],
+            'gram_protein'=>$request['gram_protein'],
+            'calories' => $request['calories']
+        ));
+        $nutrition->save();
 
         return redirect()->route('admin.recipes')->with(['recipe' => $recipe]);
     }
