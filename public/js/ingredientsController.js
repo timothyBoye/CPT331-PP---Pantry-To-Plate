@@ -71,11 +71,12 @@
                 type: 'POST',
                 data: {
                     ingredients: w.ingredientsController.selectedIngredients,
-                    cuisineType: storageObject.getCuisineType()
+                    cuisineType: storageObject.getCuisineType(),
+                    cuisinePreference: $('#cuisine-preference-checkbox').is(':checked')
                 }
             }).done(function(response){
                 $('#recipes').html(response.html);
-
+                console.log(response);
             }).fail(function(response){
                 $('#recipes').html(response.responseText);
 

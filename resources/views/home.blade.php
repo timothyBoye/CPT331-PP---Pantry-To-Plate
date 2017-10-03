@@ -5,17 +5,16 @@
     <div class="row">
         <div class="col-md-3">
             <div class="filter-container">
-                {{--<form>--}}
-                    {{-- Check if user is logged in, if they are display the Cuisine checkbox--}}
-                    {{--@if (Auth::user())--}}
-                    {{--<label class="checkbox-inline">--}}
-                        {{--<input type="checkbox" value="">Cuisine--}}
-                    {{--</label>--}}
-                    {{--@endif--}}
-                    {{--<label class="checkbox-inline">--}}
-                        {{--<input type="checkbox" value="">Star Rating--}}
-                    {{--</label>--}}
-                {{--</form>--}}
+
+                @if (Auth::user())
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="cuisine-preference-checkbox">Cuisine
+                    </label>
+                @endif
+                <label class="checkbox-inline">
+                    <input type="checkbox">Star Rating
+                </label>
+
                 <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
                         <select id='select-cuisine-type-filter' class="select-cuisine-type-filter">

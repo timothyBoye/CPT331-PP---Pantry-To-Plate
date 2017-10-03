@@ -18,6 +18,38 @@ class RecipeResultsController extends Controller
     {
         $ingredients = $request['ingredients'];
         $cuisine_type_filter = $request['cuisineType'];
+        $cuisine_preference_checked = $request['cuisinePreference'];
+
+        $returnHTML = null;
+        $occurrences = $this->get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter);
+        $sorted_recipe_ids = [];
+
+        // Strangely, the value coming from the checkbox is a string, not bool
+        if($cuisine_preference_checked == 'true'){
+            $preferences = Recipe::sort_recipe_ids_by_cuisine_algorithm($occurrences);
+            foreach($preferences as $key => $val){
+                array_push($sorted_recipe_ids, $key);
+            }
+        }
+        else{
+            foreach($occurrences as $key => $val) {
+                array_push($sorted_recipe_ids, $key);
+            }
+
+        }
+
+        $recipes = Recipe::get_recipes_from_ids($sorted_recipe_ids);
+        $userRatings = UserRecipeRating::get_ratings_for_user($recipes);
+        $returnHTML = $this->build_html($recipes, $userRatings, $occurrences);
+
+        return response()->json(array('success' => true, 'html'=>$returnHTML), 200);
+    }
+
+    private function build_html($recipes, $userRatings, $occurrences){
+        return view('recipe-list', compact('recipes', 'userRatings', 'occurrences'))->render();
+    }
+
+    private function get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter){
         $ingredient_ids = [];
 
         foreach ($ingredients as $ingredient) {
@@ -29,30 +61,9 @@ class RecipeResultsController extends Controller
         $occurrences = array_count_values($recipe_ids);
         arsort($occurrences);
 
-        $sorted_recipe_ids = [];
-        foreach($occurrences as $key => $val) {
-            array_push($sorted_recipe_ids, $key);
-        }
+        return $occurrences;
 
-        $recipes = [];
-        $userRatings = [];
-        foreach($sorted_recipe_ids as $recipe_id) {
-            $recipe = Recipe::find($recipe_id);
-            if (Auth::check()) {
-                $userRating = UserRecipeRating::where('recipe_id', '=', $recipe->id)
-                    ->where('user_id', '=', Auth::id())
-                    ->first();
-                if ($userRating) {
-                    array_push($userRatings, $userRating);
-                }
-            }
-            array_push($recipes, $recipe);
-        }
-
-        $returnHTML = view('recipe-list', compact('recipes', 'userRatings', 'occurrences'))->render();
-        return response()->json(array('success' => true, 'html'=>$returnHTML), 200);
     }
-
 
     public function show($id)
     {
