@@ -1,6 +1,11 @@
 $(document).ready(function(){
     $('.next').on('click', getNext);
     $('.prev').on('click', getPrev);
+
+    // Uses the hammer library for swipe functionality
+    new Hammer( $( '.slider-outer' )[ 0 ], {
+        domEvents: true
+    });
     $('.slider-outer').on('swipeleft', getNext);
     $('.slider-outer').on('swiperight', getPrev);
 

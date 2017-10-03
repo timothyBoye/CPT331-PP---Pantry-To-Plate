@@ -12,7 +12,6 @@ class UserRolesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_roles')->delete();
 
         UserRole::create(array(
             'id' => 1, 'user_role_name' => 'Generic'

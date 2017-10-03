@@ -15,7 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->delete();
 
         $faker = Faker::create();
         foreach (range(1, 10) as $index) {
@@ -26,5 +25,14 @@ class UserSeeder extends Seeder
                 'user_role_id' => UserRole::where('user_role_name', '=', 'Generic')->first()->value('id')
             ]);
         }
+
+        \App\User::create(
+            array(
+                'name' => 'Amir Homayoon Ashrafzadeh',
+                'email' => 'homy@admin.com',
+                'password' => Hash::make('adminadmin'),
+                'user_role_id' => UserRole::where('user_role_name', '=', 'Admin')->first()->id
+            )
+        );
     }
 }

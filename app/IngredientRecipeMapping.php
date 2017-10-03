@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class IngredientRecipeMapping extends Model
 {
     protected $fillable = [
-        'recipe_id'
+        'recipe_id', 'ingredient_id', 'measurement_type_id', 'quantity', 'description'
     ];
 
     public function recipe()
@@ -50,6 +51,19 @@ class IngredientRecipeMapping extends Model
         }
 
         return $recipe_ids;
+
+    }
+
+    public static function get_matching_recipe_names($ingredient_names){
+        $ingredient_ids = [];
+
+        foreach ($ingredient_names as $name) {
+            foreach (Ingredient::select(['name', 'id'])
+                         ->where('name', 'LIKE', '%'.$name.'%')->get() as $ingredient) {
+                    array_push($ingredient_ids, $ingredient->id);
+                }
+        }
+        return $ingredient_ids;
 
     }
 }

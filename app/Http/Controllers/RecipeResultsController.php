@@ -50,12 +50,13 @@ class RecipeResultsController extends Controller
     }
 
     private function get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter){
-        $ingredient_ids = [];
+        $ingredient_names = [];
 
         foreach ($ingredients as $ingredient) {
-            array_push($ingredient_ids, $ingredient['id']);
+            array_push($ingredient_names, $ingredient['name']);
         }
 
+        $ingredient_ids = IngredientRecipeMapping::get_matching_recipe_names($ingredient_names);
         $recipe_ids = IngredientRecipeMapping::get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter);
 
         $occurrences = array_count_values($recipe_ids);
