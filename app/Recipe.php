@@ -47,21 +47,24 @@ class Recipe extends Model
         $results = $occurrences;
         $cuisine_prefs = UserCuisineTypeMapping::where('user_id', Auth::user()->id)
             ->get();
+        
+        if($cuisine_prefs->count() > 0){
+            $num_cuisines = $cuisine_prefs->count() - 1;
 
-        $num_cuisines = $cuisine_prefs->count() - 1;
+            foreach($occurrences as $key => $val){
+                $recipe = Recipe::find($key);
 
-        foreach($occurrences as $key => $val){
-            $recipe = Recipe::find($key);
-
-            if($recipe->cuisine_type_id != null){
-                $cuisine = $cuisine_prefs->whereStrict('cuisine_type_id', $recipe->cuisine_type_id)->first();
-                $results[$key] += $num_cuisines - $cuisine->rating;
+                if($recipe->cuisine_type_id != null){
+                    $cuisine = $cuisine_prefs->whereStrict('cuisine_type_id', $recipe->cuisine_type_id)->first();
+                    $results[$key] += $num_cuisines - $cuisine->rating;
+                }
             }
+
+            arsort($results);
+
         }
-
-        arsort($results);
-
         return $results;
+
     }
 
     public function method_steps()
