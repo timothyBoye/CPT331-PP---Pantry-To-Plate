@@ -17,7 +17,7 @@
                         {{--<input type="checkbox" value="">Star Rating--}}
                     {{--</label>--}}
                 {{--</form>--}}
-                <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="I am simple" data-bootstro-content="hello" data-bootstro-step="1" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
+                <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="2" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
                 <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
                         <select id='select-cuisine-type-filter' class="select-cuisine-type-filter">
@@ -29,7 +29,7 @@
                 </div>
                 </div>
             </div>
-            <div class="bootstro" data-bootstro-title="I am simple" data-bootstro-content="hello" data-bootstro-step="0" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
+            <div class="bootstro" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
                     <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
@@ -44,15 +44,15 @@
             </div>
         </div>
         <div class="col-md-9 home-recipe-container">
-            <div class ="intro-message">
-                <p class="intro-text"> Select an ingredient to get started.</p>
-                <a class="btn btn-large btn-success tour-button" href="#" id="demo">Click me! I'm a Demo</a>
-            </div>
-
-            <div class="selected-ingredients-anchor" data-api-controller-url="{{URL::route('result')}}">
+            <div class="selected-ingredients-anchor bootstro" data-api-controller-url="{{URL::route('result')}}" data-bootstro-title="Selected Ingredients" data-bootstro-content="Your selected ingredients will appear here, you can remove them by clicking on the X" data-bootstro-step="1" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next">
                 <ul class="clearable"></ul>
             </div>
             <div class="clearable" id="recipes"></div>
+            <div class ="intro-message">
+                <div class="intro-header"><p class="intro-heading"> Get Started</p></div>
+                <div class ="into-text"> Start by selecting an ingredient from the dropdowns on the left.</div>
+                <a class="btn btn-large btn-success tour-button" href="#" id="demo">First time here? Take a tour</a>
+            </div>
         </div>
     </div>
 </div>

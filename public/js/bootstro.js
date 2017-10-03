@@ -21,11 +21,11 @@ $(document).ready(function(){
         var bootstrapVersion = 3;
 
         var defaults = {
-            nextButtonText : 'Next &raquo;', //will be wrapped with button as below
+            nextButtonText : 'Next;', // &raquo will be wrapped with button as below
             //nextButton : '<button class="btn btn-primary btn-xs bootstro-next-btn">Next &raquo;</button>',
-            prevButtonText : '&laquo; Prev',
+            prevButtonText : 'Prev', //&laquo;
             //prevButton : '<button class="btn btn-primary btn-xs bootstro-prev-btn">&laquo; Prev</button>',
-            finishButtonText : '<i class="icon-ok"></i> Ok I got it, get back to the site',
+            finishButtonText : '<i class="icon-ok"></i> Finished? Click here to find a recipe.',
             //finishButton : '<button class="btn btn-xs btn-success bootstro-finish-btn"><i class="icon-ok"></i> Ok I got it, get back to the site</button>',
             stopOnBackdropClick : true,
             stopOnEsc : true,
@@ -63,9 +63,9 @@ $(document).ready(function(){
             var $el = get_element(i);
             var nextButton, prevButton, finishButton, defaultBtnClass;
             if (bootstrapVersion == 2)
-                defaultBtnClass = "btn btn-primary btn-mini";
+                defaultBtnClass = "btn btn-success btn-mini";
             else
-                defaultBtnClass = "btn btn-primary btn-xs"; //default bootstrap version 3
+                defaultBtnClass = "btn btn-success btn-xs"; //default bootstrap version 3
             content = content + "<div class='bootstro-nav-wrapper'>";
             if ($el.attr('data-bootstro-nextButton'))
             {
