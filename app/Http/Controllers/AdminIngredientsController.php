@@ -81,4 +81,15 @@ class AdminIngredientsController extends Controller
     }
 
 
+    public function seedString(Request $request)
+    {
+        $response = "\App\Ingredient::create(array(";
+        $response = $response."'name' => '".$request["name"]."', ";
+        $response = $response."'ingredient_category_id' => '".$request["ingredient_category_id"]."', ";
+        $response = $response."'ingredient_image_url' => '".$request["ingredient_image_url"]."'";
+        $response = $response."));";
+
+        return response()->json($response, 200);
+    }
+
 }
