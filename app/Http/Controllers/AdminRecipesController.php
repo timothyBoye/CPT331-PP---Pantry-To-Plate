@@ -220,7 +220,7 @@ class AdminRecipesController extends Controller
         $response = $response."'mg_sodium' => '".$request["mg_sodium"]."', ";
         $response = $response."'gram_protein' => '".$request["gram_protein"]."', ";
         $response = $response."'calories' => '".$request["calories"]."'";
-
+        $response = $response."));";
 
         return response()->json($response, 200);
     }

@@ -13,7 +13,6 @@ class IngredientCategory extends Seeder
     {
         // Allows us to run db:seed without having to re-do the migrations. If omitted, it will just
         // add new categories along with the existing ones.
-        DB::table('ingredient_categories')->delete();
 
         DB::table('ingredient_categories')->insert([
             ['name' => 'Fruit', 'id' => Config::get('constants.fruit_category_id')], //1

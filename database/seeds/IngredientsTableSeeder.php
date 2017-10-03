@@ -14,8 +14,6 @@ class IngredientsTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('ingredients')->delete();
-
         $fruit = 'constants.fruit_category_id';
         $veg = 'constants.veg_category_id';
         $dairy = 'constants.dairy_category_id';

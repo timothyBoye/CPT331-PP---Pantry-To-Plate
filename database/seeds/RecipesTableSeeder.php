@@ -16,8 +16,6 @@ class RecipesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('recipes')->delete();
-
         // bbc goodfood used for seeder recipes:
         Recipe::create(
             array(
@@ -219,12 +217,6 @@ class RecipesTableSeeder extends Seeder
                 'image_url' => 'graysonpesto.jpg'
             )
         );
-
-
-
-
-        // Ingredient mappings should be seeded with recipes to ensure no recipes are unsearchable
-        DB::table('ingredient_recipe_mappings')->delete();
 
         IngredientRecipeMapping::create(
             array(

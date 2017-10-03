@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('recipes')->delete();
+        DB::table('ingredient_recipe_mappings')->delete();
+        DB::table('cuisine_types')->delete();
+        DB::table('flavours')->delete();
+        DB::table('ingredient_categories')->delete();
+        DB::table('ingredients')->delete();
+        DB::table('measurement_types')->delete();
+        DB::table('nutritional_info_panels')->delete();
+        DB::table('user_recipe_ratings')->delete();
+        DB::table('user_roles')->delete();
+        DB::table('users')->delete();
+
         // $this->call(UsersTableSeeder::class);
         $this->call(UserRolesTableSeeder::class);
         $this->call(MeasurementTypeSeeder::class);
