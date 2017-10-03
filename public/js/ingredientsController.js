@@ -48,7 +48,7 @@
             makeCall();
             updateDisplay(storageObject.getRecipes());
 
-            if(w.ingredientsController.selectedIngredients.length == 0) {
+            if(w.ingredientsController.selectedIngredients.length === 0) {
                 $('.intro-message').show();
             } else {
                 $('.intro-message').hide();
