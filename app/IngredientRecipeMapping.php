@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class IngredientRecipeMapping extends Model
 {
     protected $fillable = [
-        'recipe_id', 'ingredient_id'
+        'recipe_id', 'ingredient_id', 'measurement_type_id', 'quantity', 'description'
     ];
 
     public function recipe()
