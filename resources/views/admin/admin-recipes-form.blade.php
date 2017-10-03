@@ -185,7 +185,11 @@
                 </div>
                 <div class="box box-solid">
                     <div class="box-body">
+                        <div id="seed_file_string">
+
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" id="seed_button" class="btn btn-info" data-api-controller-url="{{route('admin.recipe.seeder')}}">Get Seed File String</button>
                         <input class="btn btn-default" type="reset">
                     </div>
                 </div>
@@ -201,6 +205,18 @@
         var method_steps_count = 0;
         var ingredients_count = 0;
         $(function() {
+            $('#seed_button').click(function(){
+                $.ajax({
+                    url: $('#seed_button').attr('data-api-controller-url'),
+                    type: 'POST',
+                    data: $(form).serialize()
+                }).done(function(response){
+                    $('#seed_file_string').html('<pre>'+response+'</pre>');
+                }).fail(function(response){
+                    $('#seed_file_string').html(response.responseText);
+                });
+            });
+
             // Recipe method steps functions
             @if(isset($recipe))
             @foreach($recipe->method_steps() as $step)

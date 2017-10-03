@@ -14,7 +14,6 @@ class UserRecipeRatingSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_recipe_ratings')->delete();
 
         $faker = Faker::create();
         $users = \App\User::all();

@@ -12,7 +12,6 @@ class CuisineTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cuisine_types')->delete();
 
         $cuisine_types = array(
             'German', 'French', 'Italian', 'Spanish', 'American', 'Mediterranean','Mexican','Chinese','Japanese','Indian','Thai'

@@ -77,4 +77,14 @@ class AdminCuisinesController extends Controller
             return redirect()->route('admin.cuisines');
         }
     }
+
+
+    public function seedString(Request $request)
+    {
+        $response = "\App\CuisineType::create(array(";
+        $response = $response."'name' => '".$request["name"]."'";
+        $response = $response."));";
+
+        return response()->json($response, 200);
+    }
 }

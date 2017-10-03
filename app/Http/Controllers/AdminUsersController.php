@@ -80,4 +80,16 @@ class AdminUsersController extends Controller
             return redirect()->route('admin.users');
         }
     }
+
+    public function seedString(Request $request)
+    {
+        $response = "\App\User::create(array(";
+        $response = $response."'name' => '".$request["name"]."', ";
+        $response = $response."'email' => '".$request["email"]."', ";
+        $response = $response."'password' => '".Hash::make('$request["password"]')."', ";
+        $response = $response."'user_role_id' => '".$request["user_role_id"]."'";
+        $response = $response."));";
+
+        return response()->json($response, 200);
+    }
 }

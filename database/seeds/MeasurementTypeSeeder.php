@@ -12,7 +12,6 @@ class MeasurementTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('measurement_types')->delete();
 
         $measures = array(
             array('name' => '', 'comparable_size' => 100), // Currently used when there is no measure i.e. 1 onion
