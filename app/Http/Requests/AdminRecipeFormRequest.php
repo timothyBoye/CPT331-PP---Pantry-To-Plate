@@ -23,19 +23,25 @@ class AdminRecipeFormRequest extends FormRequest
      */
     public function rules()
     {
+
         $rules = [
             'name' => 'required|max:255',
             'short_description' => 'required|max:255',
             'long_description' => 'required',
-
-            'user_role_id' => 'required|exists:user_roles,id|integer',
+            'serving_size' => 'required|integer',
+            'cuisine_type_id' => 'required|exists:cuisine_types,id|integer',
+            'image_url' => 'required',
+            'calories' => 'integer|nullable',
+            'mg_sodium' => 'integer|nullable',
+            'gram_total_fat' => 'numeric|nullable',
+            'gram_saturated_fat' => 'numeric|nullable',
+            'gram_fibre' => 'numeric|nullable',
+            'gram_total_carbohydrates' => 'numeric|nullable',
+            'gram_sugar' => 'numeric|nullable',
+            'gram_protein' => 'numeric|nullable',
         ];
-
-        foreach($this->request->get('methods') as $key => $val)
-        {
-            $rules['method_'.$key] = 'required';
-        }
 
         return $rules;
     }
+
 }

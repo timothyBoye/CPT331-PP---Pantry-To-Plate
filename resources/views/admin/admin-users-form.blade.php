@@ -14,56 +14,56 @@
                     $('#seed_file_string').html(response.responseText);
                 });
             });
-//            $("#form").validate({
-//                rules: {
-//                    name: {
-//                        required: true,
-//                        minlength: 3
-//                    },
-//                    email: {
-//                        required: true,
-//                        minlength: 6,
-//                        email: true
-//                    },
-//                    password: {
-//                        required: true,
-//                        minlength: 8
-//                    },
-//                    password_confirmation: {
-//                        required: true,
-//                        minlength: 8,
-//                        equalTo: "#password"
-//                    },
-//                    user_role_id: {
-//                        required: true,
-//                        digits: true
-//                    }
-//                },
-//                messages: {
-//                    name: {
-//                        required: "Please enter the user's name",
-//                        minlength: "A name name must be at least 3 characters"
-//                    },
-//                    email: {
-//                        required: "Please enter user's email address",
-//                        minlength: "An email address must be at least 6 characters",
-//                        email: "Please enter a valid email address i.e. hello@example.org"
-//                    },
-//                    password: {
-//                        required: "Please enter the user's password",
-//                        minlength: "A password must be at least 8 characters long"
-//                    },
-//                    password_confirmation: {
-//                        required: "Please enter the user's password a second time",
-//                        minlength: "A password must be at least 8 characters long",
-//                        equalTo: "The passwords must match"
-//                    },
-//                    user_role_id: {
-//                        required: "Please select the user's role type",
-//                        digits: "Doesn't appear to be a valid user role id"
-//                    }
-//                }
-//            });
+            $("#form").validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 3
+                    },
+                    email: {
+                        required: true,
+                        minlength: 6,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    },
+                    password_confirmation: {
+                        required: true,
+                        minlength: 8,
+                        equalTo: "#password"
+                    },
+                    user_role_id: {
+                        required: true,
+                        digits: true
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Please enter the user's name",
+                        minlength: "A name name must be at least 3 characters"
+                    },
+                    email: {
+                        required: "Please enter user's email address",
+                        minlength: "An email address must be at least 6 characters",
+                        email: "Please enter a valid email address i.e. hello@example.org"
+                    },
+                    password: {
+                        required: "Please enter the user's password",
+                        minlength: "A password must be at least 8 characters long"
+                    },
+                    password_confirmation: {
+                        required: "Please enter the user's password a second time",
+                        minlength: "A password must be at least 8 characters long",
+                        equalTo: "The passwords must match"
+                    },
+                    user_role_id: {
+                        required: "Please select the user's role type",
+                        digits: "Doesn't appear to be a valid user role id"
+                    }
+                }
+            });
         });
     </script>
 @endsection
