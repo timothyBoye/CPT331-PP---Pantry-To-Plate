@@ -14,56 +14,56 @@
                     $('#seed_file_string').html(response.responseText);
                 });
             });
-            $("#form").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3
-                    },
-                    email: {
-                        required: true,
-                        minlength: 6,
-                        email: true
-                    },
-                    password: {
-                        required: true,
-                        minlength: 8
-                    },
-                    confirm_password: {
-                        required: true,
-                        minlength: 8,
-                        equalTo: "#password"
-                    },
-                    user_role_id: {
-                        required: true,
-                        digits: true
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter the user's name",
-                        minlength: "A name name must be at least 3 characters"
-                    },
-                    email: {
-                        required: "Please enter user's email address",
-                        minlength: "An email address must be at least 6 characters",
-                        email: "Please enter a valid email address i.e. hello@example.org"
-                    },
-                    password: {
-                        required: "Please enter the user's password",
-                        minlength: "A password must be at least 8 characters long"
-                    },
-                    confirm_password: {
-                        required: "Please enter the user's password a second time",
-                        minlength: "A password must be at least 8 characters long",
-                        equalTo: "The passwords must match"
-                    },
-                    user_role_id: {
-                        required: "Please select the user's role type",
-                        digits: "Doesn't appear to be a valid user role id"
-                    }
-                }
-            });
+//            $("#form").validate({
+//                rules: {
+//                    name: {
+//                        required: true,
+//                        minlength: 3
+//                    },
+//                    email: {
+//                        required: true,
+//                        minlength: 6,
+//                        email: true
+//                    },
+//                    password: {
+//                        required: true,
+//                        minlength: 8
+//                    },
+//                    password_confirmation: {
+//                        required: true,
+//                        minlength: 8,
+//                        equalTo: "#password"
+//                    },
+//                    user_role_id: {
+//                        required: true,
+//                        digits: true
+//                    }
+//                },
+//                messages: {
+//                    name: {
+//                        required: "Please enter the user's name",
+//                        minlength: "A name name must be at least 3 characters"
+//                    },
+//                    email: {
+//                        required: "Please enter user's email address",
+//                        minlength: "An email address must be at least 6 characters",
+//                        email: "Please enter a valid email address i.e. hello@example.org"
+//                    },
+//                    password: {
+//                        required: "Please enter the user's password",
+//                        minlength: "A password must be at least 8 characters long"
+//                    },
+//                    password_confirmation: {
+//                        required: "Please enter the user's password a second time",
+//                        minlength: "A password must be at least 8 characters long",
+//                        equalTo: "The passwords must match"
+//                    },
+//                    user_role_id: {
+//                        required: "Please select the user's role type",
+//                        digits: "Doesn't appear to be a valid user role id"
+//                    }
+//                }
+//            });
         });
     </script>
 @endsection
@@ -93,14 +93,14 @@
                     <div class="box-body">
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($user) ? $user->name : ''  }}">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($user) ? $user->name : old('name')  }}">
                             @if ($errors->has('name'))
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="{{ isset($user) ? $user->email : ''  }}">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="{{ isset($user) ? $user->email : old('email')  }}">
                             @if ($errors->has('email'))
                                 <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
                             @endif
@@ -112,18 +112,18 @@
                                 <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
                             @endif
                         </div>
-                        <div class="form-group {{ $errors->has('confirm_password') ? 'has-error' : '' }}">
-                            <label for="confirm_password">Confirm Password</label>
-                            <input type="text" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" >
-                            @if ($errors->has('confirm_password'))
-                                <span class="help-block"><strong>{{ $errors->first('confirm_password') }}</strong></span>
+                        <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+                            <label for="password_confirmation">Confirm Password</label>
+                            <input type="text" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" >
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help-block"><strong>{{ $errors->first('password_confirmation') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group {{ $errors->has('user_role_id') ? 'has-error' : '' }}">
                             <label for="user_role_id">User Role</label>
                             <select id="user_role_id" name="user_role_id" class="form-control">
                                 @foreach ($userRoles as $userRole)
-                                <option {{ isset($user) ? ($userRole->id == $user->user_role_id ? 'selected' : '') : '' }} value="{{$userRole->id}}">{{$userRole->user_role_name}}</option>
+                                <option {{ ((isset($user) && $userRole->id == $user->user_role_id) || (old('user_role_id') == $userRole->id)) ? 'selected' : '' }} value="{{$userRole->id}}">{{$userRole->user_role_name}}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('user_role_id'))

@@ -12,6 +12,7 @@ use App\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AdminMeasurementFormRequest;
 
 class AdminMeasurementsController extends Controller
 {
@@ -51,7 +52,7 @@ class AdminMeasurementsController extends Controller
         return view('admin.admin-measurements-form', compact('title'));
     }
 
-    public function postMeasurement(Request $request)
+    public function postMeasurement(AdminMeasurementFormRequest $request)
     {
         $measurement = MeasurementType::create($request->all());
         $measurement->save();
@@ -59,7 +60,7 @@ class AdminMeasurementsController extends Controller
         return redirect()->route('admin.measurements')->with(['measurement' => $measurement]);
     }
 
-    public function putMeasurement($id, Request $request)
+    public function putMeasurement($id, AdminMeasurementFormRequest $request)
     {
         $measurement = MeasurementType::find($id);
         $measurement->update($request->all());

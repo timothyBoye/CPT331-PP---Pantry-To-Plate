@@ -73,14 +73,14 @@
                     <div class="box-body">
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($ingredient) ? $ingredient->name : ''  }}">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($ingredient) ? $ingredient->name : old('name') }}">
                             @if ($errors->has('name'))
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group {{ $errors->has('ingredient_image_url') ? 'has-error' : '' }}">
                             <label for="ingredient_image_url">Image name</label>
-                            <input type="text" class="form-control" id="ingredient_image_url" name="ingredient_image_url" placeholder="Enter image name" value="{{ isset($ingredient) ? $ingredient->ingredient_image_url : ''  }}">
+                            <input type="text" class="form-control" id="ingredient_image_url" name="ingredient_image_url" placeholder="Enter image name" value="{{ isset($ingredient) ? $ingredient->ingredient_image_url : old('ingredient_image_url')  }}">
                             @if ($errors->has('ingredient_image_url'))
                                 <span class="help-block"><strong>{{ $errors->first('ingredient_image_url') }}</strong></span>
                             @endif
@@ -89,7 +89,7 @@
                             <label for="ingredient_category_id">Ingredient Category ID</label>
                             <select id="ingredient_category_id" name="ingredient_category_id" class="form-control">
                                 @foreach ($categories as $category)
-                                    <option {{ isset($ingredient) ? ($category->id == $ingredient->ingredient_category_id ? 'selected' : '') : '' }} value="{{$category->id}}">{{$category->name}}</option>
+                                    <option {{ ((isset($ingredient) && $category->id == $ingredient->ingredient_category_id) || (old('ingredient_category_id') == $category->id)) ? 'selected' : '' }} value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('ingredient_category_id'))

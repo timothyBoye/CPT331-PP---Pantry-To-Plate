@@ -12,6 +12,7 @@ use App\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AdminCuisinesFormRequest;
 
 class AdminCuisinesController extends Controller
 {
@@ -19,8 +20,6 @@ class AdminCuisinesController extends Controller
     {
         $this->middleware(['auth', 'admin']);
     }
-
-
 
     public function cuisines(Request $request)
     {
@@ -51,14 +50,14 @@ class AdminCuisinesController extends Controller
         return view('admin.admin-cuisines-form', compact('title'));
     }
 
-    public function postCuisine(Request $request)
+    public function postCuisine(AdminCuisinesFormRequest $request)
     {
         $cuisine = CuisineType::create($request->all());
         $cuisine->save();
         return redirect()->route('admin.cuisines')->with(['cuisine' => $cuisine]);
     }
 
-    public function putCuisine($id, Request $request)
+    public function putCuisine($id, AdminCuisinesFormRequest $request)
     {
         $cuisine = CuisineType::find($id);
         $cuisine->update($request->all());

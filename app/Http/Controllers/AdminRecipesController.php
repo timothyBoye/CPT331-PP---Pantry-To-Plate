@@ -16,6 +16,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AdminRecipeFormRequest;
 
 class AdminRecipesController extends Controller
 {
@@ -60,7 +61,7 @@ class AdminRecipesController extends Controller
         return view('admin.admin-recipes-form', compact('title', 'cuisine_types', 'measurement_types', 'ingredients'));
     }
 
-    public function postRecipe(Request $request)
+    public function postRecipe(AdminRecipeFormRequest $request)
     {
         $method = $this->collapseMethod($request['methods']);
         $recipe = Recipe::create(array(
@@ -106,7 +107,7 @@ class AdminRecipesController extends Controller
         return redirect()->route('admin.recipes')->with(['recipe' => $recipe]);
     }
 
-    public function putRecipe($id, Request $request)
+    public function putRecipe($id, AdminRecipeFormRequest $request)
     {
         $method = $this->collapseMethod($request['methods']);
         $recipe = Recipe::find($id);

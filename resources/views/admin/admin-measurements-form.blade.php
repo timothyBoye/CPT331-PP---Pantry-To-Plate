@@ -64,14 +64,14 @@
                     <div class="box-body">
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($measurement) ? $measurement->name : ''  }}">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ isset($measurement) ? $measurement->name : old('name')  }}">
                                 @if ($errors->has('name'))
                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                         </div>
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                                 <label for="comparable_size">Comparable Size</label>
-                                <input type="text" class="form-control" id="comparable_size" name="comparable_size" placeholder="Enter comparable size" value="{{ isset($measurement) ? $measurement->comparable_size : ''  }}">
+                                <input type="text" class="form-control" id="comparable_size" name="comparable_size" placeholder="Enter comparable size" value="{{ isset($measurement) ? $measurement->comparable_size : old('comparable_size')  }}">
                                 @if ($errors->has('comparableSize'))
                                     <span class="help-block"><strong>{{ $errors->first('comparableSize') }}</strong></span>
                                 @endif

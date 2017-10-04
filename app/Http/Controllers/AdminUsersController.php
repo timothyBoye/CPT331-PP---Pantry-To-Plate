@@ -12,6 +12,7 @@ use App\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AdminUserFormRequest;
 
 class AdminUsersController extends Controller
 {
@@ -53,7 +54,7 @@ class AdminUsersController extends Controller
         return view('admin.admin-users-form', compact('title', 'userRoles'));
     }
 
-    public function postUser(Request $request)
+    public function postUser(AdminUserFormRequest $request)
     {
         $request['password'] = Hash::make($request['password']);
         $user = User::create($request->all());
@@ -61,11 +62,18 @@ class AdminUsersController extends Controller
         return redirect()->route('admin.users')->with(['user' => $user]);
     }
 
-    public function putUser($id, Request $request)
+    public function putUser($id, AdminUserFormRequest $request)
     {
         $user = User::find($id);
-        $request['password'] = Hash::make($request['password']);
-        $user->update($request->all());
+        $requestArray = [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'user_role_id' => $request['user_role_id'],
+            ];
+        if (!empty($request['password'])) {
+            $requestArray = array_add($requestArray, 'password',Hash::make($request['password']));
+        }
+        $user->update($requestArray);
         $user->save();
         return redirect()->route('admin.users')->with(['user' => $user]);
     }

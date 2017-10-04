@@ -12,6 +12,7 @@ use App\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AdminIngredientFormRequest;
 
 class AdminIngredientsController extends Controller
 {
@@ -54,14 +55,14 @@ class AdminIngredientsController extends Controller
         return view('admin.admin-ingredients-form', compact('title', 'categories'));
     }
 
-    public function postIngredient(Request $request)
+    public function postIngredient(AdminIngredientFormRequest $request)
     {
         $ingredient = Ingredient::create($request->all());
         $ingredient->save();
         return redirect()->route('admin.ingredients')->with(['ingredient' => $ingredient]);
     }
 
-    public function putIngredient($id, Request $request)
+    public function putIngredient($id, AdminIngredientFormRequest $request)
     {
         $ingredient = Ingredient::find($id);
         $ingredient->update($request->all());
