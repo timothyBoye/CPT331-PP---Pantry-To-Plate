@@ -15,7 +15,7 @@
                     <input type="checkbox">Star Rating
                 </label>
 
-                <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="2" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
+                <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
 
                 <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
@@ -43,10 +43,12 @@
             </div>
         </div>
         <div class="col-md-9 home-recipe-container">
-            <div class="selected-ingredients-anchor bootstro" data-api-controller-url="{{URL::route('result')}}" data-bootstro-title="Selected Ingredients" data-bootstro-content="Your selected ingredients will appear here, you can remove them by clicking on the X" data-bootstro-step="1" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next">
+            <div class="selected-ingredients-anchor bootstro" data-api-controller-url="{{URL::route('result')}}" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="Your selected ingredients <img class ='bootstro-ingredient-img' src='../public/img/tomato.png'/> will appear here, you can remove them by clicking on the X." data-bootstro-step="1" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next">
                 <ul class="clearable"></ul>
             </div>
             <div class="clearable" id="recipes"></div>
+            <div class="bootstro overlay" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="All of your matched recipes will appear here. <img class ='bootstro-recipe-img' src='../public/img/result-recipe.png'/><img class = 'match-show-count' src='../public/img/match-show-count.png'/> Indicates how many of your selected ingredients match the total ingredients needed for the recipe" data-bootstro-step="2" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next"></div>
+
             <div class ="intro-message">
                 <div class="intro-header"><p class="intro-heading"> Get Started</p></div>
                 <div class ="into-text"> Start by selecting an ingredient from the dropdowns on the left.</div>

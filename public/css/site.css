@@ -522,3 +522,25 @@ ul  {
     background-color:#545255;
 
 }
+
+.bootstro-ingredient-img {
+    width:60px;
+    height:auto;
+}
+
+.bootstro-recipe-img {
+    width:240px;
+    height:auto;
+
+}
+
+.match-show-count {
+    width:50px;
+    height:auto;
+}
+
+.overlay {
+    width:10px;
+    margin-left:50%;
+}
+
