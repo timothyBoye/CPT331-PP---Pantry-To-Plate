@@ -1436,7 +1436,7 @@ class RecipesTableSeeder extends Seeder
             array(
                 'recipe_id' => 18,
                 'ingredient_id' => Ingredient::where('name', 'vegetable oil')->value('id'),
-                'quantity' => '',
+                'quantity' => '1',
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
