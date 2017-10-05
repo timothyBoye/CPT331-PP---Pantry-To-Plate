@@ -42,9 +42,9 @@ class AdminRecipesController extends Controller
     {
         $recipe = Recipe::find($id);
         $title = 'Edit Recipe';
-        $cuisine_types = CuisineType::all();
-        $measurement_types = MeasurementType::all();
-        $ingredients = Ingredient::all();
+        $cuisine_types = CuisineType::orderBy('name', 'asc')->get();
+        $measurement_types = MeasurementType::orderBy('name', 'asc')->get();
+        $ingredients = Ingredient::orderBy('name', 'asc')->get();
         if ($recipe) {
             return view('admin.admin-recipes-form', compact('recipe', 'title', 'cuisine_types', 'measurement_types', 'ingredients'));
         } else {
@@ -55,9 +55,9 @@ class AdminRecipesController extends Controller
     public function addRecipe(Request $request)
     {
         $title = 'Add Recipe';
-        $cuisine_types = CuisineType::all();
-        $measurement_types = MeasurementType::all();
-        $ingredients = Ingredient::all();
+        $cuisine_types = CuisineType::orderBy('name', 'asc')->get();
+        $measurement_types = MeasurementType::orderBy('name', 'asc')->get();
+        $ingredients = Ingredient::orderBy('name', 'asc')->get();
         return view('admin.admin-recipes-form', compact('title', 'cuisine_types', 'measurement_types', 'ingredients'));
     }
 
