@@ -6,10 +6,11 @@
             <div class="col-md-3">
 
             </div>
-<!--Begin Attempt at a back button to go home-->
-            <a href="{{ route('home') }}">Go Back</a>
-<!--End Attempt-->
+
             <div class="col-md-9">
+                <!--Begin Attempt at a back button to go home-->
+                <a href="{{ route('home') }}">Go Back</a> <!--Working but needs better styling-->
+                <!--End Attempt-->
                 <div class="row">
                     <h1>{{ $recipe->name }}</h1>
                     <q>{{ $recipe->long_description }}</q>
