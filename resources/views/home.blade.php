@@ -13,12 +13,12 @@
                 @endif
                 <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
                     <label class="checkbox-inline">
-                         <input type="checkbox">Star Rating
+                         <input type="checkbox">STAR RATING
                     </label>
                     <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
-                        <select id='select-cuisine-type-filter'>
-                            <option value="0" selected>Filter by Cuisine Type</option>
+                        <select id='select-cuisine-type-filter' class = "cuisine-dropdown">
+                            <option class = "cuisine-title-value" value="0" selected>Filter by Cuisine Type</option>
                         @foreach($cuisine as $cuisineType)
                             <option value="{{$cuisineType->id}}">{{$cuisineType->name}}</option>
                         @endforeach
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bootstro" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
+            <div class="bootstro all-dropdowns" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
                     <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>

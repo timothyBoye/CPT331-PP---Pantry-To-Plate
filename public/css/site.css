@@ -110,7 +110,7 @@ ul  {
 }
 
 .dropdown {
-    padding-top: 10px;
+    padding-top: 0px;
 }
 .inline-block {
     display: inline-block;
@@ -545,5 +545,27 @@ ul  {
 }
 .red {
     color:red;
+}
+
+.cuisine-dropdown {
+    width:100%;
+    background-color: #545255 !important;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: left;
+    border-bottom: 1px solid #ccc !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    height: 37px;
+}
+
+.checkbox-inline {
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+.all-dropdowns {
+    padding-top:20px !important;
 }
 
