@@ -21,12 +21,12 @@
                     <div class="recipe-text">
 
                         <!--Begin cuisine-->
-                        <!--<div style="clear:both;">
-                            <q>{{ $recipe->cuisine_type_id }}</q>
-                        </div>-->
-                        @if($recipe->cuisine_type)
-                            <li><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</li>
-                        @endif
+                        <div style="clear:both;">
+                            @if($recipe->cuisine_type)
+                                <li><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</li>
+                            @endif
+                        </div>
+
                         <!--End Cuisine-->
 
                         <div style="margin:auto auto">
