@@ -17,14 +17,15 @@
                         <div class="recipe-image" style="background-image: url({{ URL::asset('img/recipes/'.($recipe->image_url == '' ? 'default.jpg' : $recipe->image_url)) }});">
                         </div>
                         <h4 class="recipe-name">{{ $recipe->name }}</h4>
+                        <p><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</p>
                     </a>
                     <div class="recipe-text">
 
                         <!--Begin cuisine-->
-                        <div style="clear:both;">
+                        <!--<div style="clear:both;">
                             @if($recipe->cuisine_type)
                                 <li><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</li>
-                            @endif
+                            @endif-->
                         </div>
 
                         <!--End Cuisine-->
