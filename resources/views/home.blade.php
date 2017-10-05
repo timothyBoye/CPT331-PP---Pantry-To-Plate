@@ -11,13 +11,11 @@
                         <input type="checkbox" id="cuisine-preference-checkbox">Cuisine
                     </label>
                 @endif
-                <label class="checkbox-inline">
-                    <input type="checkbox">Star Rating
-                </label>
-
                 <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
-
-                <div class="li-category dropdown">
+                    <label class="checkbox-inline">
+                         <input type="checkbox">Star Rating
+                    </label>
+                    <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
                         <select id='select-cuisine-type-filter'>
                             <option value="0" selected>Filter by Cuisine Type</option>
@@ -25,9 +23,7 @@
                             <option value="{{$cuisineType->id}}">{{$cuisineType->name}}</option>
                         @endforeach
                         </select>
-
-
-                </div>
+                    </div>
                 </div>
             </div>
             <div class="bootstro" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
@@ -45,7 +41,7 @@
             </div>
         </div>
         <div class="col-md-9 home-recipe-container">
-            <div class="selected-ingredients-anchor bootstro" data-api-controller-url="{{URL::route('result')}}" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="Your selected ingredients <img class ='bootstro-ingredient-img' src='../public/img/tomato.png'/> will appear here, you can remove them by clicking on the X." data-bootstro-step="1" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next">
+            <div class="selected-ingredients-anchor bootstro" data-api-controller-url="{{URL::route('result')}}" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="Your selected ingredients <img class ='bootstro-ingredient-img' src='../public/img/tomato.png'/> will appear here, you can remove them by clicking on the  <b class = red>X</b>" data-bootstro-step="1" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next">
                 <ul class="clearable"></ul>
             </div>
             <div class="clearable" id="recipes"></div>
