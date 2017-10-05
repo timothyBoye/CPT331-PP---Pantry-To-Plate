@@ -21,9 +21,12 @@
                     <div class="recipe-text">
 
                         <!--Begin cuisine-->
-                        <div style="clear:both;">
+                        <!--<div style="clear:both;">
                             <q>{{ $recipe->cuisine_type_id }}</q>
-                        </div>
+                        </div>-->
+                        @if($recipe->cuisine_type)
+                            <li><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</li>
+                        @endif
                         <!--End Cuisine-->
 
                         <div style="margin:auto auto">
