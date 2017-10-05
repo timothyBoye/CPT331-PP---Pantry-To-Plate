@@ -32,9 +32,21 @@
                 makeCall();
             });
 
+            $('#cuisine-preference-checkbox').change(function(){
+                storageObject.setCuisinePreferenceCheckStatus($('#cuisine-preference-checkbox').is(':checked'));
+                makeCall();
+            });
+
+            initCuisinePreferenceCheckbox();
+
         }
 
     };
+
+    function initCuisinePreferenceCheckbox(){
+        var checked = storageObject.getCuisinePreferenceCheckStatus();
+        $('#cuisine-preference-checkbox').prop('checked', checked);
+    }
 
     function handleIngredientClick(e){
         var ingredientName = $(e.target).attr('data-name');
@@ -83,13 +95,15 @@
 
         // makes the call to our php controller, which then hits the db
         if(w.ingredientsController.selectedIngredients.length > 0){
+            var cuisineType = storageObject.getCuisineType();
+            var cuisinePreference = storageObject.getCuisinePreferenceCheckStatus();
             $.ajax({
                 url: $('.selected-ingredients-anchor').attr('data-api-controller-url'),
                 type: 'POST',
                 data: {
                     ingredients: w.ingredientsController.selectedIngredients,
-                    cuisineType: storageObject.getCuisineType(),
-                    cuisinePreference: $('#cuisine-preference-checkbox').is(':checked')
+                    cuisineType: cuisineType,
+                    cuisinePreference: cuisinePreference
                 }
             }).done(function(response){
                 $('#recipes').html(response.html);

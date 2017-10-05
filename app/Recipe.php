@@ -44,10 +44,13 @@ class Recipe extends Model
     // Should return a bunch of recipe ids which have been sorted based on the points system
     // used by the algorithm, so it's compatible with the current view
     public static function sort_recipe_ids_by_cuisine_algorithm($occurrences){
+        if(!Auth::check()){
+            return $occurrences;
+        }
         $results = $occurrences;
         $cuisine_prefs = UserCuisineTypeMapping::where('user_id', Auth::user()->id)
             ->get();
-        
+
         if($cuisine_prefs->count() > 0){
             $num_cuisines = $cuisine_prefs->count() - 1;
 
