@@ -19,6 +19,13 @@
                         <h4 class="recipe-name">{{ $recipe->name }}</h4>
                     </a>
                     <div class="recipe-text">
+
+                        <!--Begin cuisine-->
+                        <div style="clear:both;">
+                            <q>{{ $recipe->cuisine_type_id }}</q>
+                        </div>
+                        <!--End Cuisine-->
+
                         <div style="margin:auto auto">
                             @php($rating = false)
 
