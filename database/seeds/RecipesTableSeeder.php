@@ -1345,9 +1345,9 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(
             array(
                 'recipe_id' => 18,
-                'ingredient_id' => Ingredient::where('name', 'garlic cloves')->value('id'),
+                'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),
                 'quantity' => '3',
-                'description' => '',
+                'description' => 'cloves',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
         );
