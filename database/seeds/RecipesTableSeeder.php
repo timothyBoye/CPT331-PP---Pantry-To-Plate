@@ -1409,7 +1409,7 @@ class RecipesTableSeeder extends Seeder
             array(
                 'recipe_id' => 18,
                 'ingredient_id' => Ingredient::where('name', 'butter')->value('id'),
-                'quantity' => '',
+                'quantity' => '1',
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
@@ -1418,7 +1418,7 @@ class RecipesTableSeeder extends Seeder
             array(
                 'recipe_id' => 18,
                 'ingredient_id' => Ingredient::where('name', 'pepper')->value('id'),
-                'quantity' => '',
+                'quantity' => '1',
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
@@ -1427,7 +1427,7 @@ class RecipesTableSeeder extends Seeder
             array(
                 'recipe_id' => 18,
                 'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),
-                'quantity' => '',
+                'quantity' => '1',
                 'description' => '',
                 'measurement_type_id' => MeasurementType::where('name', '')->value('id')
             )
