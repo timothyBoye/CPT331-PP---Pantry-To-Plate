@@ -26,6 +26,8 @@ class UserSeeder extends Seeder
             ]);
         }
 
+        $this->call(UserRecipeRatingSeeder::class);
+
         \App\User::create(
             array(
                 'name' => 'Amir Homayoon Ashrafzadeh',

@@ -19,6 +19,15 @@
                         <h4 class="recipe-name">{{ $recipe->name }}</h4>
                     </a>
                     <div class="recipe-text">
+
+                        <!--Begin cuisine-->
+                        <div style="clear:both;">
+                            @if($recipe->cuisine_type)
+                                <p><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</p>
+                            @endif
+                        </div>
+                        <!--End Cuisine-->
+
                         <div style="margin:auto auto">
                             @php($rating = false)
 
@@ -66,6 +75,15 @@
                     </div>
                     <h4 class="recipe-name">{{ $recipe->name }}</h4>
                 </a>
+
+                <!--Begin cuisine-->
+                <div style="clear:both;">
+                    @if($recipe->cuisine_type)
+                        <p><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</p>
+                    @endif
+                </div>
+                <!--End Cuisine-->
+
                 <div class="recipe-text">
                     <div style="margin:auto auto">
                         @php($rating = false)

@@ -14,7 +14,7 @@ class CuisineTypesTableSeeder extends Seeder
     {
 
         $cuisine_types = array(
-            'German', 'French', 'Italian', 'Spanish', 'American', 'Mediterranean','Mexican','Chinese','Japanese','Indian','Thai'
+            'German', 'French', 'Italian', 'Spanish', 'Western', 'Mediterranean','Mexican','Chinese','Japanese','Indian','Thai'
         );
 
         foreach($cuisine_types as $type){
