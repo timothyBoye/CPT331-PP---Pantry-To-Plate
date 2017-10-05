@@ -192,13 +192,12 @@ class RecipesTableSeeder extends Seeder
             )
         );
 
-        //Glenn attempt to create recipe here
         Recipe::create(
             array(
                 'id' => 16,
                 'name' => 'Eggs on Toast',
                 'short_description' => 'A classic breakfast staple.',
-                'long_description' => ' Bailed to perfection eggs on sourdough bread',
+                'long_description' => ' Boiled to perfection eggs on sourdough bread',
                 'method' => 'Boil Eggs;Toast Bread;Serve.',
                 'serving_size' => 1,
                 'image_url' => 'Eggs-on-Toast.jpg'
@@ -217,6 +216,28 @@ class RecipesTableSeeder extends Seeder
                 'image_url' => 'graysonpesto.jpg'
             )
         );
+
+        Recipe::create(
+            array(
+                'id' => 18,
+                'name' => 'Creamy Two-Mushroom Risotto',
+                'short_description' => 'Without fail, the best Risotto we have ever created',
+                'long_description' => 'This decadent mushroom risotto is fool-proof. The trick is to cook the mushrooms in a hot pan first, then bake them in the oven so that their flavour intensifies. Tearing the mushrooms rather than slicing them not only saves time but gives a lovely, rustic aesthetic, so theres not mushroom for error!',
+                'method' =>
+                    'Preheat the oven to 150°C/140°C (fan) /300°F/Gas 2. Boil a kettle. Trim and finely slice the spring onion[s] and chop the chives finely. Peel and finely chop (or grate) the garlic. Dissolve the vegetable stock cube[s] in 700ml [1.4L] boiled water.;
+                     Heat a large, wide-based pan (preferably non-stick) with a drizzle of vegetable oil over a high heat. Once hot, tear and crumble both the portobello and white mushrooms directly into the pan with a big pinch of salt. Cook over a high heat for 3-5 min or until starting to brown and caramelise.;
+                     Once caramelised, transfer the mushrooms to a baking tray (use tin foil to avoid mess!), put it in the oven until step 7 and reserve the pan. Return the pan to a medium heat and add the sliced spring onion and half of the chopped chives (keep the rest for garnish) with a knob of butter. Cook for a few sec or until softened.;
+                     Add the arborio rice and chopped garlic to the pan and cook for 30 sec, stirring to coat the grains in the butter. Add the Shaoxing wine and cook for a further 30 sec or until its evaporated.;
+                     Add 1/3 of the stock and stir continuously with a wooden spoon until it has absorbed. Continue to add the stock, a little at a time, stirring more or less continuously for 20-25 min, until all the stock is absorbed and the rice is cooked - this is your risotto.;
+                     Meanwhile, grate the cheddar cheese.;
+                     Once cooked, remove the risotto from the heat and stir in the grated cheese, clotted cream and half of the mushrooms (keep the other half for garnish). Tip: add a little more boiled water if your risotto is too clumpy - a risotto should have an almost porridge-like consistency. Season with pepper.;
+                     Serve the risotto in bowls and top with the remaining mushrooms, a sprinkle of the remaining chives and a good grind of pepper. Enjoy!;',
+                'serving_size' => 4,
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
+                'image_url' => 'graysonpesto.jpg'
+            )
+        );
+
 
         IngredientRecipeMapping::create(
             array(
@@ -1292,5 +1313,133 @@ class RecipesTableSeeder extends Seeder
             )
         );
 
+
+
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'arborio rice')->value('id'),
+                'quantity' => '160',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'vegetable stock cube')->value('id'),
+                'quantity' => '1',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'fresh chives')->value('id'),
+                'quantity' => '10',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'garlic cloves')->value('id'),
+                'quantity' => '3',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'cornish clotted cream')->value('id'),
+                'quantity' => '40',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'shaoxing wine')->value('id'),
+                'quantity' => '2',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'tbsp')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'irish mature cheddar cheese')->value('id'),
+                'quantity' => '40',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'white mushrooms')->value('id'),
+                'quantity' => '160',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'spring onion')->value('id'),
+                'quantity' => '1',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'portobello mushrooms')->value('id'),
+                'quantity' => '150',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'butter')->value('id'),
+                'quantity' => '',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'pepper')->value('id'),
+                'quantity' => '',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),
+                'quantity' => '',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
+        IngredientRecipeMapping::create(
+            array(
+                'recipe_id' => 18,
+                'ingredient_id' => Ingredient::where('name', 'vegetable oil')->value('id'),
+                'quantity' => '',
+                'description' => '',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')
+            )
+        );
     }
 }
