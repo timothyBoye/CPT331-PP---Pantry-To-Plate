@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'name' => 'Amir Homayoon Ashrafzadeh',
                 'email' => 'homy@admin.com',
                 'password' => Hash::make('adminadmin'),
-                'user_role_id' => UserRole::where('user_role_name', '=', 'Admin')->first()->id
+                'user_role_id' => UserRole::where('user_role_name', '=', 'Admin')->value('id')
             )
         );
     }

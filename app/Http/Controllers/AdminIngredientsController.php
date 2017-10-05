@@ -86,7 +86,8 @@ class AdminIngredientsController extends Controller
     {
         $response = "\App\Ingredient::create(array(";
         $response = $response."'name' => '".$request["name"]."', ";
-        $response = $response."'ingredient_category_id' => '".$request["ingredient_category_id"]."', ";
+        $category = IngredientCategory::where('id', '=', $request["ingredient_category_id"])->value('name');
+        $response = $response."'ingredient_category_id' => IngredientCategory::where('name', '=', '".$category."')->value('id'), ";
         $response = $response."'ingredient_image_url' => '".$request["ingredient_image_url"]."'";
         $response = $response."));";
 

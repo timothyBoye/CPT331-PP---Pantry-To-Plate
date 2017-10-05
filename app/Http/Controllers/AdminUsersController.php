@@ -94,8 +94,9 @@ class AdminUsersController extends Controller
         $response = "\App\User::create(array(";
         $response = $response."'name' => '".$request["name"]."', ";
         $response = $response."'email' => '".$request["email"]."', ";
-        $response = $response."'password' => '".Hash::make('$request["password"]')."', ";
-        $response = $response."'user_role_id' => '".$request["user_role_id"]."'";
+        $response = $response."'password' => Hash::make('".$request["password"]."'), ";
+        $userRole = UserRole::where('id', '=', $request["user_role_id"])->value('user_role_name');
+        $response = $response."'user_role_id' => UserRole::where('user_role_name', '=', '".$userRole."')->value('id')";
         $response = $response."));";
 
         return response()->json($response, 200);

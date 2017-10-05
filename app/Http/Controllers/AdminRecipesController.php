@@ -192,7 +192,8 @@ class AdminRecipesController extends Controller
         $response = $response."'long_description' => '".$request["long_description"]."', ";
         $response = $response."'method' => '".$method."', ";
         $response = $response."'serving_size' => '".$request["serving_size"]."', ";
-        $response = $response."'cuisine_type_id' => '".$request["cuisine_type_id"]."', ";
+        $cuisineType = CuisineType::where('id', '=', $request["cuisine_type_id"])->value('name');
+        $response = $response."'cuisine_type_id' => CuisineType::where('name', '=', '".$cuisineType."')->value('id'), ";
         $response = $response."'image_url' => '".$request["image_url"]."'";
         $response = $response."));\n";
 
@@ -203,16 +204,18 @@ class AdminRecipesController extends Controller
         $count = count($ingredient_quantities);
         for ($i = 0; $i < $count; $i++) {
             $response = $response."\App\IngredientRecipeMapping::create(array(";
-            $response = $response."'recipe_id' => '".$recipe_id."', ";
-            $response = $response."'ingredient_id' => '".$ingredient_names[$i]."', ";
-            $response = $response."'measurement_type_id' => '".$ingredient_measures[$i]."', ";
+            $response = $response."'recipe_id' => Recipe::where('name', '=', '".$request["name"]."')->value('id'), ";
+            $ingredientName = Ingredient::where('id', '=', $ingredient_names[$i])->value('name');
+            $response = $response."'ingredient_id' => Ingredient::where('name', '=', '".$ingredientName."')->value('id'), ";
+            $ingredientMeasure = MeasurementType::where('id', '=', $ingredient_measures[$i])->value('name');
+            $response = $response."'measurement_type_id' => MeasurementType::where('name', '=', '".$ingredientMeasure."')->value('id'), ";
             $response = $response."'quantity' => '".$ingredient_quantities[$i]."', ";
             $response = $response."'description' => '".$ingredient_descriptions[$i]."'";
             $response = $response."));\n";
         }
 
         $response = $response."\App\NutritionalInfoPanel::create(array(";
-        $response = $response."'recipe_id' => '".$recipe_id."', ";
+        $response = $response."'recipe_id' => Recipe::where('name', '=', '".$request["name"]."')->value('id'), ";
         $response = $response."'gram_total_fat' => '".$request["gram_total_fat"]."', ";
         $response = $response."'gram_saturated_fat' => '".$request["gram_saturated_fat"]."', ";
         $response = $response."'gram_total_carbohydrates' => '".$request["gram_total_carbohydrates"]."', ";
