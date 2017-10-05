@@ -16,7 +16,10 @@
 
             updateDisplay(storageObject.getRecipes());
 
-            $('#select-cuisine-type-filter').val(storageObject.getCuisineType());
+            // this was causing the flash on a cleared session- need to check if value exists before setting select menu
+            if(storageObject.getCuisineType()) {
+                $('#select-cuisine-type-filter').val(storageObject.getCuisineType());
+            }
 
             if(w.ingredientsController.selectedIngredients.length > 0){
                 makeCall();
@@ -27,7 +30,8 @@
             $(document).on('change', '#select-cuisine-type-filter', function(){
                 storageObject.setCuisineType($('#select-cuisine-type-filter').find('option:selected').val());
                 makeCall();
-            })
+            });
+
         }
 
     };
@@ -75,6 +79,8 @@
     }
 
     function makeCall(){
+
+
         // makes the call to our php controller, which then hits the db
         if(w.ingredientsController.selectedIngredients.length > 0){
             $.ajax({

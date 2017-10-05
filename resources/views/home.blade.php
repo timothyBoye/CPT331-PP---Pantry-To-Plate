@@ -19,12 +19,14 @@
 
                 <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
-                        <select id='select-cuisine-type-filter' class="select-cuisine-type-filter">
-                            <option value="-1">Filter by Cuisine Type</option>
+                        <select id='select-cuisine-type-filter'>
+                            <option value="0" selected>Filter by Cuisine Type</option>
                         @foreach($cuisine as $cuisineType)
                             <option value="{{$cuisineType->id}}">{{$cuisineType->name}}</option>
                         @endforeach
                         </select>
+
+
                 </div>
                 </div>
             </div>

@@ -36,7 +36,7 @@ class IngredientRecipeMapping extends Model
                 // If the user has selected a cuisine type filter, include appropriate recipes. This should
                 // really be done at query stage above, so we are only hitting the db for the results we will use.
                 // Will refactor later.
-                if($cuisine_type_filter >= 0){
+                if($cuisine_type_filter > 0){
                     if($ingredient_recipe_mapping->recipe->cuisine_type_id == $cuisine_type_filter){
                         array_push($recipe_ids, $ingredient_recipe_mapping->recipe_id);
                     }
