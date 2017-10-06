@@ -5,7 +5,8 @@ var storageObject = (function(w){
 
     var selectedIngredients = Cookies.getJSON('selectedIngredients') || [];
     var me = {
-        cuisineType: -1
+        cuisineType: -1,
+        cookieExpiry: 0.5
     };
 
     me.addIngredient = function(ingredientID, ingredientName, ingredientImageURL){
@@ -41,7 +42,7 @@ var storageObject = (function(w){
     me.setCuisineType = function(id){
         me.cuisineType = id;
         Cookies.set('cuisineTypeId', me.cuisineType, {
-            exipres: 0.5
+            exipres: me.cookieExpiry
         })
     }
 
@@ -49,24 +50,28 @@ var storageObject = (function(w){
         return Cookies.get('cuisineTypeId');
     }
 
+    me.setCuisinePreferenceCheckStatus = function(inputChecked){
+        Cookies.set('cuisinePreferenceCheckStatus', inputChecked, me.cookieExpiry);
+    }
+
+    me.getCuisinePreferenceCheckStatus = function(){
+        var isChecked = Cookies.get('cuisinePreferenceCheckStatus');
+        return /^true$/.test(isChecked);
+    }
+
     function updateIngredients(){
         Cookies.set('selectedIngredients', selectedIngredients, {
-            expires: 0.5
+            expires: me.cookieExpiry
         });
     };
 
     me.find = function find(myArray, searchTerm, property) {
-        console.log('array: '+myArray);
-        console.log('term: '+searchTerm);
-        console.log('property: '+property);
-
         for(var i = 0, len = myArray.length; i < len; i++) {
             if (myArray[i][property] === searchTerm) {
-                console.log('found: '+i);
                 return i;
             }
         }
-        console.log('didnt find anything');
+
         return -1;
     }
 

@@ -15,3 +15,4 @@ function makeRatingCall(recipeID, URL) {
     });
 
 }
+

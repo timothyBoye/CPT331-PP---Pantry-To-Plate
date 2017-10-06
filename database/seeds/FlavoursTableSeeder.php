@@ -11,7 +11,6 @@ class FlavoursTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('flavours')->delete();
 
         $flavours = [
             'sweet', 'spicy', 'bitter', 'sour'

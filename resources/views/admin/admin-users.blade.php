@@ -15,23 +15,34 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+            @if(isset($user))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> Success!</h4>
+                    User "{{ $user->name }}" stored in the database.
+                </div>
+            @endif
             <div class="box box-success">
                 <div class="box-header with-border">
-                    {{--<a href="{{ route('admin.user.new') }}" class="btn btn-success">New</a>--}}
+                    <a href="{{ route('admin.user.new') }}" class="btn btn-success">New</a>
                 </div>
                 <div class="box-body"><table class="table">
                         <tr>
                             <th>Name</th>
+                            <th>Email</th>
+                            <th>User Role</th>
                             <th></th>
                         </tr>
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->name}}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->role->user_role_name }}</td>
                                 <td>
-                                    {{--<form class="admin-table-buttons" action="{{ route('admin.user.get', ['id' => $user->id]) }}" method="GET">--}}
-                                        {{--{{ csrf_field() }}--}}
-                                        {{--<button class="btn btn-default btn-sm" type="submit">Edit</button>--}}
-                                    {{--</form>--}}
+                                    <form class="admin-table-buttons" action="{{ route('admin.user.get', ['id' => $user->id]) }}" method="GET">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-default btn-sm" type="submit">Edit</button>
+                                    </form>
                                     <form class="admin-table-buttons" action="{{ route('admin.user.delete', ['id' => $user->id]) }}" method="POST">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}

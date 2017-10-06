@@ -12,7 +12,6 @@ class NutritionalInfoPanelsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('nutritional_info_panels')->delete();
 
         NutritionalInfoPanel::create(array('recipe_id'=>1,'gram_total_fat'=>25,'gram_saturated_fat'=>10,'gram_total_carbohydrates'=>58,'gram_sugars'=>12,'gram_fiber'=>6,'mg_sodium'=>1600,'gram_protein'=>35,'calories' => 624));
 

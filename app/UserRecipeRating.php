@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class UserRecipeRating extends Model
 {
@@ -19,4 +20,20 @@ class UserRecipeRating extends Model
     {
         return $this->belongsTo('App\Recipe', 'recipe_id', 'id');
     }
+
+    public static function get_ratings_for_user($recipes){
+        $userRatings = [];
+        foreach($recipes as $recipe) {
+            if (Auth::check()) {
+                $userRating = UserRecipeRating::where('recipe_id', '=', $recipe->id)
+                    ->where('user_id', '=', Auth::id())
+                    ->first();
+                if ($userRating) {
+                    array_push($userRatings, $userRating);
+                }
+            }
+        }
+        return $userRatings;
+    }
+
 }

@@ -14,8 +14,6 @@ class IngredientsTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('ingredients')->delete();
-
         $fruit = 'constants.fruit_category_id';
         $veg = 'constants.veg_category_id';
         $dairy = 'constants.dairy_category_id';
@@ -43,7 +41,6 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'apricot', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'apricot.jpeg'),
             array('name' => 'avocado', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'avocado.jpg'),
             array('name' => 'banana', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'banana.jpg'),
-            array('name' => 'bananas', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'banana.jpg'),
             array('name' => 'bilberry', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'blueberry.jpg'),
             array('name' => 'blackberry', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'blackberry.jpg'),
             array('name' => 'blackberries', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'blackberry.jpg'),
@@ -52,7 +49,6 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'blueberries', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'blueberry.jpg'),
             array('name' => 'boysenberry', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'cherry', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'cherries.jpg'),
-            array('name' => 'cherries', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'cherries.jpg'),
             array('name' => 'currant', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'chico fruit', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'coconut', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
@@ -82,8 +78,6 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'kiwifruit', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'kumquat', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'lemon', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'lemon-x200.jpg'),
-            array('name' => 'lemons', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'lemon-x200.jpg'),
-            array('name' => 'lemon zest', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'lemon-x200.jpg'),
             array('name' => 'lime', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'lime-x200.jpg'),
             array('name' => 'longan', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'lychee', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
@@ -131,8 +125,6 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'strawberry', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'tamarillo', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'tamarind', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => 'tamarind-x200.jpg'),
-            array('name' => 'ugli fruit', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
-            array('name' => 'yuzu', 'ingredient_category_id' => Config::get($fruit), 'ingredient_image_url' => ''),
             array('name' => 'artichoke', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'arugula', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'baby-kale-2-x200.jpg'),
             array('name' => 'rocket', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'rocket_salad_1024-x200.jpg'),
@@ -142,6 +134,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'eggplant', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'aubergine-x200.jpg'),
             array('name' => 'amaranth', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'mixed greens', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'baby-kale-2-x200.jpg'),
+
             //Legumes
             array('name' => 'alfalfa sprouts', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'azuki beans', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
@@ -166,6 +159,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'peas', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'garden-peas-2-x200.jpg'),
             array('name' => 'mangetout', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'snap peas', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'mange-tout-2-x200.jpg'),
+
             //veg
             array('name' => 'beet greens', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'bok choy', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
@@ -183,33 +177,17 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'fiddleheads', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'frisee', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'fennel', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
-            //herbs
-            array('name' => 'anise', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
-            array('name' => 'basil', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-basil-x200.jpg'),
-            array('name' => 'cilantro', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-coriander-x200.jpg'),
-            array('name' => 'coriander', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-coriander-x200.jpg'),
-            array('name' => 'chamomile', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
-            array('name' => 'dill', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
-            array('name' => 'fennel', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
-            array('name' => 'lemon grass', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
-            array('name' => 'marjoram', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
-            array('name' => 'oregano', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'dried-oregano-x200.jpg'),
-            array('name' => 'parsley', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-parsley-x200.jpg'),
-            array('name' => 'rosemary', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-rosemary-x200.jpg'),
-            array('name' => 'sage', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
-            array('name' => 'thyme', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
-            //veg
             array('name' => 'kale', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'baby-kale-2-x200.jpg'),
             array('name' => 'kohlrabi', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'sweetcorn', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'sorn', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'mushrooms', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'white-mushrooms-x200.jpg'),
+            array('name' => 'portobello mushrooms', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'white-mushrooms-x200.jpg'),
             array('name' => 'okra', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'nettles', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'mustard greens', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'chives', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'fresh-chives-x200.jpg'),
             array('name' => 'garlic', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'garlic-1712365_1280.jpg'),
-            array('name' => 'garlic cloves', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'garlic-clove-x200.jpg'),
             array('name' => 'leek', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'onion-x200.jpg'),
             array('name' => 'red onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'red-onion-x200.jpg'),
@@ -249,6 +227,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'salsify', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'skirret', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'spinach', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'spinach-x200.jpg'),
+            array('name' => 'baby spinach', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'spinach-x200.jpg'),
             array('name' => 'topinambur', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'acorn squash', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'butternut squash', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
@@ -261,13 +240,11 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'squash', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'pumpkin', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'spaghetti squash', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
-            array('name' => 'tat soi', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'tomato', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'tomato-x200.jpg'),
             array('name' => 'tubers', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'jicama', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'jerusalem artichoke', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'artichoke-hearts-x200.jpg'),
             array('name' => 'potato', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'potatoes-x200.jpg'),
-            array('name' => 'potatoes', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'waxy-potatoes-x200.jpg'),
             array('name' => 'quandong', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'sunchokes', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'sweet potato', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'sweet-potato-x200.jpg'),
@@ -276,15 +253,35 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'water chestnut', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'watercress', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'zucchini', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'courgette-x200.jpg'),
+
+            //herbs
+            array('name' => 'mint', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'mint.jpg'),
+            array('name' => 'anise', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
+            array('name' => 'basil', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-basil-x200.jpg'),
+            array('name' => 'cilantro', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-coriander-x200.jpg'),
+            array('name' => 'coriander', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-coriander-x200.jpg'),
+            array('name' => 'chamomile', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
+            array('name' => 'dill', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
+            array('name' => 'fennel', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
+            array('name' => 'lemon grass', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
+            array('name' => 'marjoram', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
+            array('name' => 'oregano', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'dried-oregano-x200.jpg'),
+            array('name' => 'parsley', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-parsley-x200.jpg'),
+            array('name' => 'rosemary', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'fresh-rosemary-x200.jpg'),
+            array('name' => 'sage', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
+            array('name' => 'thyme', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => ''),
+
             //oils
             array('name' => 'olive oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'olive-oil.jpg'),
             array('name' => 'extra virgin olive oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'olive-oil.jpg'),
             array('name' => 'vegetable oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'veg-oil.jpg'),
+
             //condiments
-            array('name' => 'Sriracha sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'spice-sauce-brown-bowl-isolated-white-background-closeup-72906255.jpg'),
+            array('name' => 'sriracha sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'spice-sauce-brown-bowl-isolated-white-background-closeup-72906255.jpg'),
             array('name' => 'hot sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'tomato-paste-x200.jpg'),
             array('name' => 'salsa', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => ''),
             array('name' => 'balsamic vinegar', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'balsamic-vinegar-x200.jpg'),
+
             //spices
             array('name' => 'garlic powder', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'garlic-powder-loose.jpg'),
             array('name' => 'onion powder', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'onion-powder.jpg'),
@@ -303,23 +300,39 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'sumac', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'sumac-x200.jpg'),
             array('name' => 'cinnamon', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'ras-el-hanout-x200.jpg'),
             array('name' => 'ground cinnamon powder', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
+            array('name' => 'vegetable stock cube', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
+            array('name' => 'mustard seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
+            array('name' => 'dill seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
+            array('name' => 'coriander seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
+
             //sweeteners
             array('name' => 'sugar', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
             array('name' => 'maple syrup', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'fish-sauce-x200.jpg'),
-            array('name' => 'Erythritol', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
+            array('name' => 'erythritol', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
+
             //liquids
             array('name' => 'water', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'rice-vinegar-x200.jpg'),
             array('name' => 'lime juice', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'lime-juice.jpg'),
             array('name' => 'lemon juice', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'benefits-of-lemon1.jpg'),
             array('name' => 'coconut milk', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'coconut-milk.jpeg'),
+            array('name' => 'shaoxing wine', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => ''),
+
             //meats
+            array('name' => 'lamb chops', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'lamb-chop.jpg'),
             array('name' => 'pork chops', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'pork-loin-steaks-x200.jpg'),
+            array('name' => 'pork', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'pork-loin-steaks-x200.jpg'),
             array('name' => 'pork chorizo sausage', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'mini-cooking-chorizo-x200.jpg'),
             array('name' => 'chicken thighs', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'British-chicken-thigh-fillets-2-x200.jpg'),
+            array('name' => 'rump steak', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'rump-steak.jpg'),
+            array('name' => 'salmon', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'salmon.jpg'),
+
             //grains
             array('name' => 'sourdough bread', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'sourdough.jpg'),
             array('name' => 'corn tortillas', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'Taco_CrispyCornTortilla.jpg'),
             array('name' => 'farfalle pasta', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'farfalle-pasta.jpeg'),
+            array('name' => 'arborio rice', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => ''),
+            array('name' => 'fettuccine', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'fettuccine.jpg'),
+            array('name' => 'couscous', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'couscous.jpg'),
 
             //baking
             array('name' => 'whole wheat flour', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => ''),
@@ -328,23 +341,23 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'plain flour', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'cornflour-x200.jpg'),
             array('name' => 'coconut flour', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'coconut-flour.jpg'),
             array('name' => 'cornflour', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'cornflour-x200.jpg'),
-            array('name' => 'coconut flour', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'coconut-flour.jpg'),
             array('name' => 'baking soda', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'baking-soda.jpeg'),
             array('name' => 'baking powder', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'baking-soda.jpeg'),
             array('name' => 'vanilla', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'vanilla.jpg'),
             array('name' => 'powdered chocolate milk mix', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'Cacao-powder-and-coconut-sugar.jpg'),
             array('name' => 'cocoa powder', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'ras-el-hanout-x200.jpg'),
+
             //seeds
             array('name' => 'chia seeds', 'ingredient_category_id'=> Config::get($seeds), 'ingredient_image_url' => 'chia-seeds.jpg'),
+
             //dairy
             array('name' => 'feta cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'feta-cheese-x200.jpg'),
             array('name' => 'goat cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'goats-cheese-soft-x200.jpg'),
             array('name' => 'egg', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'egg-x200.jpg'),
-            array('name' => 'eggs', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'eggs.jpeg'),
             array('name' => 'milk', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'milk.jpeg'),
             array('name' => 'cheddar cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
             array('name' => 'parmesan cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'rennet-free-parmesan-x200.jpg'),
-            array('name' => 'Halloumi cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'halloumi-x200.jpg'),
+            array('name' => 'halloumi cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'halloumi-x200.jpg'),
             array('name' => 'yoghurt', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'greek-yoghurt-x200.jpg'),
             array('name' => 'cream', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => ''),
             array('name' => 'sour cream', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'sour-cream-x200.jpg'),
@@ -354,12 +367,13 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'mozzarella', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'mozzarella-ball-x200.jpg'),
             array('name' => 'parmigiano cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'rennet-free-parmesan-x200.jpg'),
             array('name' => 'pecorino cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
-
-
+            array('name' => 'clotted cream', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => ''),
+            array('name' => 'mature cheddar cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
 
             //nuts
             array('name' => 'cashew nuts', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'Cashew_3.jpg'),
             array('name' => 'pignoli nuts', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'ttar_pinenuts_03_h_launch.jpg'),
+            array('name' => 'walnut', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'walnut.jpg'),
 
         );
 
