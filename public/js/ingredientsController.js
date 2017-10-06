@@ -1,7 +1,27 @@
 /**
  * Created by Brendan on 9/09/2017.
  */
+var updateIngredients;
 (function($, w){
+
+    updateIngredients = function (ingredientID, ingredientName, ingredientImage) {
+        if (storageObject.find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
+            w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientID, ingredientName, ingredientImage);
+
+        }
+        else {
+            w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
+        }
+        makeCall();
+        updateDisplay(storageObject.getRecipes());
+
+        if(w.ingredientsController.selectedIngredients.length === 0) {
+            $('.intro-message').show();
+        } else {
+            $('.intro-message').hide();
+        }
+    };
+
     w.ingredientsController = {
         selectedIngredients: storageObject.getSelectedIngredients(),
 
@@ -53,24 +73,7 @@
         var ingredientID = $(e.target).attr('data-id');
         var ingredientImage = $(e.target).attr('data-image');
 
-
-        if (storageObject.find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
-            w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientID, ingredientName, ingredientImage);
-
-        }
-        else {
-            w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
-        }
-            makeCall();
-            updateDisplay(storageObject.getRecipes());
-
-            if(w.ingredientsController.selectedIngredients.length === 0) {
-                $('.intro-message').show();
-            } else {
-                $('.intro-message').hide();
-            }
-
-
+        updateIngredients(ingredientID, ingredientName, ingredientImage);
     }
 
     function updateDisplay(recipes){
@@ -121,4 +124,21 @@
 
     w.ingredientsController.watch();
 
-})(jQuery, window)
+})(jQuery, window);
+
+function runSearch(ingredient){
+    $.ajax({
+        url: $('.input-group').attr('data-api-controller-url'),
+        type: 'GET',
+        data: {
+            ingredient: ingredient
+        }
+    }).done(function(response){
+        if (response != null) {
+            var ingredientID = response['id'].toString();
+            updateIngredients(ingredientID, response['name'], response['ingredient-url']);
+        }
+    }).fail(function(response){
+
+    });
+}

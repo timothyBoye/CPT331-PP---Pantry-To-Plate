@@ -23,6 +23,7 @@ Route::post('/recipe/setRating', 'RecipeResultsController@setRating')->name('set
 Route::get('/profile/cuisines',['as' => 'profile.cuisines', 'uses' => 'UserProfileController@get_cuisines']);
 Route::post('/profile/cuisines',['as' => 'profile.cuisines.update', 'uses' => 'UserProfileController@update']);
 
+Route::get('search','SearchResultsController@getSearchResults')->name('search');
 
 
 

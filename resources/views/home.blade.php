@@ -4,6 +4,16 @@
 <div class="container-fluid">
     <div class="row">
         <div  class="col-md-3 " >
+            <form>
+                <div class="input-group" data-api-controller-url="{{URL::route('search')}}">
+                    <input type="text" class="form-control" name="ingredient" id="ingredient" pattern="^[-A-z\s]+$" title="Invalid characters in search term." placeholder="Search by ingredient name...">
+                    <span class="input-group-btn">
+                         <button type="submit" class="btn btn-default search-button" id="search-button" onclick="runSearch(document.getElementById('ingredient').value);">
+                            <span class="search">Go</span>
+                        </button>
+                    </span>
+                </div>
+            </form>
             {{--<button class="btn btn-primary btn-mini bootstro-next-btn">Next »</button>--}}
             <div class="filter-container">
                 @if (Auth::user())
