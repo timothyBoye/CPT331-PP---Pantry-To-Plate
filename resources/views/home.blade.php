@@ -27,7 +27,7 @@
                 </div>
             </div>
             <form>
-                <div class="input-group" id="search-container"data-api-controller-url="{{URL::route('search')}}">
+                <div class="input-group" id="search-container" data-api-controller-url="{{URL::route('search')}}">
                     <input type="text" class="form-control" name="ingredient" id="ingredient" pattern="^[-A-z\s]+$" title="Invalid characters in search term." placeholder="Search by ingredient name...">
                     <span class="input-group-btn">
                          <button type="submit" class="btn btn-default search-button" id="search-button" onclick="runSearch(document.getElementById('ingredient').value);">
