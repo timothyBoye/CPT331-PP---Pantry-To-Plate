@@ -8,7 +8,7 @@ class SearchResultsController extends Controller
 {
     public function getSearchResults(Request $request) {
         $searchInput = $request['ingredient'];
-        $match = Ingredient::where('name', '=', $searchInput)->first();
+        $match = Ingredient::where(strtolower('name'), '=', $searchInput)->first();
         if($match !== null) {
             return response()->json([
                 'id' => $match->id,

@@ -136,7 +136,7 @@ function runSearch(ingredient){
     }).done(function(response){
         if (response != null) {
             var ingredientID = response['id'].toString();
-            updateIngredients(ingredientID, response['name'], response['ingredient-url']);
+            updateIngredients(ingredientID, response['name'].toLowerCase(), response['ingredient-url']);
         }
     }).fail(function(response){
 
