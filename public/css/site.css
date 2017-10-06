@@ -434,6 +434,15 @@ ul  {
     opacity: 0.7;
 }
 
+.source-link {
+    color: #5B834F;
+}
+
+.source-link:hover {
+    text-decoration: none;
+    opacity: 0.7;
+}
+
 #logo-image {
     max-height: 54px;
     margin-bottom: 7px;

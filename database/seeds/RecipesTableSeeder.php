@@ -87,7 +87,8 @@ class RecipesTableSeeder extends Seeder
             When ready to grill, remove chops from marinade and sprinkle with salt and pepper. Spritz with cooking spray then grill on high heat for 4 minutes on the first side and 3-4 more minutes after flipping, until the internal temperature of the meat reaches at least 145 degrees F.',
             'serving_size' => 10,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Western%')->value('id'),
-            'image_url' => 'Maple-Sriracha-Grilled-Bone-In-Pork-Chops-OT-chop-and-limes-3.jpg'));
+            'image_url' => 'Maple-Sriracha-Grilled-Bone-In-Pork-Chops-OT-chop-and-limes-3.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/5YYRT8D3/maple-sriracha-grilled-pork-chops'));
         IngredientRecipeMapping::create(array('recipe_id' => 5,'ingredient_id' => Ingredient::where('name', 'pork chops')->value('id'),'quantity' => 6,'description' => 'one-inch thick, bone-in','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 5,'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),'quantity' => 4,'description' => 'cloves minced','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 5,'ingredient_id' => Ingredient::where('name', 'sriracha sauce')->value('id'),'quantity' => 2,'description' => '','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
@@ -394,7 +395,8 @@ class RecipesTableSeeder extends Seeder
             Cook peas in boiling water for 2 minutes and drain. Add mint, garlic, lemon zest and juice to the peas. Season with salt and pepper and mix well.',
              'serving_size' => '4',
              'cuisine_type_id' => CuisineType::where('name', '=', 'Western')->value('id'),
-             'image_url' => 'chops-peas-wedges.jpg'));
+             'image_url' => 'chops-peas-wedges.jpg',
+            'recipe_source' => 'Thomas Farms Kitchen'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'potato')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '8', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'olive oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '4', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'salt')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '1', 'description' => 'to taste'));
@@ -419,7 +421,8 @@ class RecipesTableSeeder extends Seeder
             Add spinach to the pan to wilt. Fold the creamy sauce through the pasta and serve immediately.',
              'serving_size' => '4',
              'cuisine_type_id' => CuisineType::where('name', '=', 'Italian')->value('id'),
-             'image_url' => 'pork-mushroom-alfredo.jpg'));
+             'image_url' => 'pork-mushroom-alfredo.jpg',
+            'recipe_source' => 'Thomas Farms Kitchen'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'fettuccine')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '400', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'salt')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '1', 'description' => 'to taste'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'purple onion')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '1', 'description' => ''));
@@ -446,7 +449,8 @@ class RecipesTableSeeder extends Seeder
             Slice steak and serve on a bed of the couscous.',
              'serving_size' => '4',
              'cuisine_type_id' => CuisineType::where('name', '=', 'Western')->value('id'),
-             'image_url' => 'montreal-steak.jpg'));
+             'image_url' => 'montreal-steak.jpg',
+            'recipe_source' => 'Thomas Farms Kitchen'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'couscous')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '200', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'cranberry')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '45', 'description' => 'dried'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'water')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1', 'description' => 'boiling'));
@@ -479,7 +483,8 @@ class RecipesTableSeeder extends Seeder
             Serve tacos with salad.',
              'serving_size' => '4',
              'cuisine_type_id' => CuisineType::where('name', '=', 'Mexican')->value('id'),
-             'image_url' => 'salmon-taco.jpg'));
+             'image_url' => 'salmon-taco.jpg',
+            'recipe_source' => 'Thomas Farms Kitchen'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'purple onion')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '1', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'chili pepper')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '1', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'grape tomatoes')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '150', 'description' => ''));

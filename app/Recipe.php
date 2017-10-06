@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Config;
 class Recipe extends Model
 {
     protected $fillable = [
-        'id', 'name', 'short_description', 'long_description', 'method', 'serving_size', 'cuisine_type_id', 'image_url'
+        'id', 'name', 'short_description', 'long_description', 'method', 'serving_size', 'cuisine_type_id', 'image_url', 'recipe_source'
     ];
 
     public function ingredients()
