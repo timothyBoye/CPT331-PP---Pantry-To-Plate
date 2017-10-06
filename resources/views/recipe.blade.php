@@ -38,6 +38,13 @@
                                 @endif
                                 </span>
                             </li>
+                            <li><strong>Source:</strong>
+                                @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
+                                    <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
+                                @else
+                                    {{$recipe->recipe_source}}
+                                @endif
+                            </li>
                         </ul>
                     </div>
                 </div>
