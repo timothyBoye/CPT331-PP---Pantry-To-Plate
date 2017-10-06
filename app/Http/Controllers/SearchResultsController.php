@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class SearchResultsController extends Controller
 {
     public function getSearchResults(Request $request) {
-        $searchInput = $request['ingredient'];
+        $searchInput = strtolower($request['ingredient']);
         $match = Ingredient::where(strtolower('name'), '=', $searchInput)->first();
         if($match !== null) {
             return response()->json([

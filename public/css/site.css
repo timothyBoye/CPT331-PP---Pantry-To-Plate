@@ -304,6 +304,14 @@ ul  {
     text-align:center;
 }
 
+#search-container {
+    margin-top: 20px;
+}
+
+#search-button {
+    margin-top: 1px;
+}
+
 .ingredient-img {
     /*background-image: url("../img/eggs.jpeg");*/
     width: 55px;
