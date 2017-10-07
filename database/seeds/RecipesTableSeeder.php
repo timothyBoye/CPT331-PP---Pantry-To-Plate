@@ -26,7 +26,8 @@ class RecipesTableSeeder extends Seeder
             When the Bolognese is nearly finished cook the spaghetti following pack instructions. Drain the spaghetti and stir into the Bolognese sauce. Serve with grated Parmesan, the extra basil leaves and crusty bread.',
             'serving_size' => 6,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
-            'image_url' => 'spaghetti.jpg'));
+            'image_url' => 'spaghetti.jpg',
+            'recipe_source' => 'https://www.bbcgoodfood.com/recipes/1502640/the-best-spaghetti-bolognese'));
         IngredientRecipeMapping::create(array('recipe_id' => 1,'ingredient_id' => Ingredient::where('name', '=', 'onion')->value('id'),'quantity' => 0.5,'description' => 'coarsely chopped','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 1,'ingredient_id' => Ingredient::where('name', 'celery')->value('id'),'quantity' => 150,'description' => 'coarsely chopped','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
 
@@ -39,7 +40,8 @@ class RecipesTableSeeder extends Seeder
             Dice cheese',
             'serving_size' => 2,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Mediterranean%')->value('id'),
-            'image_url' => 'lettuce-salad.jpg'));
+            'image_url' => 'lettuce-salad.jpg',
+            'recipe_source' => ''));
         IngredientRecipeMapping::create(array('recipe_id' => 2,'ingredient_id' => Ingredient::where('name', 'feta cheese')->value('id'),'quantity' => 50,'description' => 'crumbled','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
         
 
@@ -50,7 +52,8 @@ class RecipesTableSeeder extends Seeder
             Add the rest of the ingredients, stir, and simmer for 10-15 minutes.',
             'serving_size' => 4,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
-            'image_url' => 'pizza-sauce.jpg'));
+            'image_url' => 'pizza-sauce.jpg',
+            'recipe_source' => 'https://www.orwhateveryoudo.com/2017/05/easy-pizza-sauce-recipe-homemade.html'));
         IngredientRecipeMapping::create(array('recipe_id' => 3,'ingredient_id' => Ingredient::where('name', 'olive oil')->value('id'),'quantity' => 3,'description' => '','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 3,'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),'quantity' => 2,'description' => 'minced','measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 3,'ingredient_id' => Ingredient::where('name', 'tomato')->value('id'),'quantity' => 28,'description' => 'canned, crushed','measurement_type_id' => MeasurementType::where('name', 'ounce')->value('id')));
@@ -74,7 +77,8 @@ class RecipesTableSeeder extends Seeder
             Strain through a fine-mesh strainer, and store in the fridge for up to 2 weeks.',
             'serving_size' => 10,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
-            'image_url' => 'cherry-syrup.jpg'));
+            'image_url' => 'cherry-syrup.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/T2BYWGQC/fresh-cherry-syrup'));
         IngredientRecipeMapping::create(array('recipe_id' => 4,'ingredient_id' => Ingredient::where('name', 'water')->value('id'),'quantity' => 2,'description' => '','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 4,'ingredient_id' => Ingredient::where('name', 'sugar')->value('id'),'quantity' => 2,'description' => '','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 4,'ingredient_id' => Ingredient::where('name', 'cherry')->value('id'),'quantity' => 3,'description' => '','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
@@ -104,7 +108,8 @@ class RecipesTableSeeder extends Seeder
             'method' => 'Add all the ingredients to a medium size bowl and mix it with a fork.',
             'serving_size' => 10,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Mexican%')->value('id'),
-            'image_url' => 'cucumber-avo.jpg'));
+            'image_url' => 'cucumber-avo.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/HMTJV3W2/avocado-cucumber-salsa'));
         IngredientRecipeMapping::create(array('recipe_id' => 6,'ingredient_id' => Ingredient::where('name', 'avocado')->value('id'),'quantity' => '1','description' => 'mashed','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 6,'ingredient_id' => Ingredient::where('name', 'black pepper')->value('id'),'quantity' => '1','description' => 'ground','measurement_type_id' => MeasurementType::where('name', 'dash')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 6,'ingredient_id' => Ingredient::where('name', 'cucumber')->value('id'),'quantity' => '0.5','description' => 'grated','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
@@ -125,7 +130,8 @@ class RecipesTableSeeder extends Seeder
             Enjoy!',
             'serving_size' => 4,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%French%')->value('id'),
-            'image_url' => 'sourdough-avo.jpg'));
+            'image_url' => 'sourdough-avo.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/CZBQTVCD/sourdough-bread-with-avocado-spread'));
         IngredientRecipeMapping::create(array('recipe_id' => 7,'ingredient_id' => Ingredient::where('name', 'sourdough bread')->value('id'),'quantity' => '4','description' => '','measurement_type_id' => MeasurementType::where('name', 'slice')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 7,'ingredient_id' => Ingredient::where('name', 'avocado')->value('id'),'quantity' => '2','description' => 'ripe','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 7,'ingredient_id' => Ingredient::where('name', 'goat cheese')->value('id'),'quantity' => '8','description' => '','measurement_type_id' => MeasurementType::where('name', 'slice')->value('id')));
@@ -144,7 +150,8 @@ class RecipesTableSeeder extends Seeder
             To assemble the tacos, take the heated tortillas and divide the egg, chorizo and potato mixture among them. Sprinkle with remaining cilantro, and then add the cheese and salsa on top.',
             'serving_size' => 6,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Mexican%')->value('id'),
-            'image_url' => 'breakfast-hash.jpg'));
+            'image_url' => 'breakfast-hash.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/F4KXJJG6/chorizo-breakfast-tacos-with-potato-hash-and-eggs'));
         IngredientRecipeMapping::create(array('recipe_id' => 8,'ingredient_id' => Ingredient::where('name', 'vegetable oil')->value('id'),'quantity' => '2','description' => '','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 8,'ingredient_id' => Ingredient::where('name', 'potato')->value('id'),'quantity' => '2','description' => 'baked, then chopped','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 8,'ingredient_id' => Ingredient::where('name', 'onion')->value('id'),'quantity' => '0.5','description' => 'chopped','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
@@ -171,7 +178,8 @@ class RecipesTableSeeder extends Seeder
             Salt to taste.',
             'serving_size' => 6,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Western%')->value('id'),
-            'image_url' => 'Kidney-Bean-Salad.jpg'));
+            'image_url' => 'Kidney-Bean-Salad.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/QRH3XW2K/kidney-bean-salad-recipe'));
         IngredientRecipeMapping::create(array('recipe_id' => 9,'ingredient_id' => Ingredient::where('name', 'kidney beans')->value('id'),'quantity' => '3','description' => '','measurement_type_id' => MeasurementType::where('name', 'can')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 9,'ingredient_id' => Ingredient::where('name', 'red pepper')->value('id'),'quantity' => '1','description' => 'diced','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 9,'ingredient_id' => Ingredient::where('name', 'yellow pepper')->value('id'),'quantity' => '1','description' => 'diced','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
@@ -193,7 +201,8 @@ class RecipesTableSeeder extends Seeder
             Remove from the oven, dust with lemon zest and enjoy!',
             'serving_size' => 8,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Western%')->value('id'),
-            'image_url' => 'Roasted-Parmesan-Broccoli.jpg'));
+            'image_url' => 'Roasted-Parmesan-Broccoli.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/Y3QXVYPS/roasted-parmesan-broccoli'));
         IngredientRecipeMapping::create(array('recipe_id' => 10,'ingredient_id' => Ingredient::where('name', 'broccoli')->value('id'),'quantity' => '1','description' => 'large, sliced into 1 inch thick steaks','measurement_type_id' => MeasurementType::where('name', 'head')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 10,'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),'quantity' => '4','description' => 'cloves thinly sliced','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 10,'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')));
@@ -215,7 +224,8 @@ class RecipesTableSeeder extends Seeder
             Sprinkle the chicken with some chopped parsley.',
             'serving_size' => 4,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Spanish%')->value('id'),
-            'image_url' => 'SmokyPaprika-Chicken.jpg'));
+            'image_url' => 'SmokyPaprika-Chicken.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/ZXRLGYRF/smoky-paprika-chicken'));
         IngredientRecipeMapping::create(array('recipe_id' => 11,'ingredient_id' => Ingredient::where('name', 'chicken thighs')->value('id'),'quantity' => '1','description' => 'boneless','measurement_type_id' => MeasurementType::where('name', 'lb')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 11,'ingredient_id' => Ingredient::where('name', 'olive oil')->value('id'),'quantity' => '2','description' => '','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 11,'ingredient_id' => Ingredient::where('name', 'smoked paprika')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
@@ -234,7 +244,8 @@ class RecipesTableSeeder extends Seeder
             This salad doesn\'t keep well even if kept in the fridge.',
             'serving_size' => 2,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Mexican%')->value('id'),
-            'image_url' => 'Cumin-Orange-Cashew-Salad.jpg'));
+            'image_url' => 'Cumin-Orange-Cashew-Salad.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/5YW6RQFQ/cumin-orange-cashew-salad'));
         IngredientRecipeMapping::create(array('recipe_id' => 12,'ingredient_id' => Ingredient::where('name', 'mixed greens')->value('id'),'quantity' => '3','description' => '','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 12,'ingredient_id' => Ingredient::where('name', 'orange')->value('id'),'quantity' => '2','description' => '','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 12,'ingredient_id' => Ingredient::where('name', 'cashew nuts')->value('id'),'quantity' => '0.33','description' => '','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
@@ -258,7 +269,8 @@ class RecipesTableSeeder extends Seeder
             Eat immediately.',
             'serving_size' => 2,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Mediterranean%')->value('id'),
-            'image_url' => 'Halloumi-Blueberry-Spinach-Salad.jpg'));
+            'image_url' => 'Halloumi-Blueberry-Spinach-Salad.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/X4N7FNX8/halloumi-blueberry-spinach-salad'));
         IngredientRecipeMapping::create(array('recipe_id' => 13,'ingredient_id' => Ingredient::where('name', 'halloumi cheese')->value('id'),'quantity' => '250','description' => '','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 13,'ingredient_id' => Ingredient::where('name', 'blueberries')->value('id'),'quantity' => '100','description' => 'fresh','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 13,'ingredient_id' => Ingredient::where('name', 'spinach')->value('id'),'quantity' => '1','description' => 'fresh','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
@@ -280,7 +292,8 @@ class RecipesTableSeeder extends Seeder
             Bake for about 30 minutes, or until a toothpick comes out with moist crumbs. Let cool in pan for 10 minutes, and then invert onto serving tray.',
             'serving_size' => 6,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Western%')->value('id'),
-            'image_url' => 'Homemade-Marble-Pound-Cake.jpg'));
+            'image_url' => 'Homemade-Marble-Pound-Cake.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/68V3RN8C/homemade-marble-pound-cake'));
         IngredientRecipeMapping::create(array('recipe_id' => 14,'ingredient_id' => Ingredient::where('name', 'salted butter')->value('id'),'quantity' => '2','description' => 'softened','measurement_type_id' => MeasurementType::where('name', 'stick')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 14,'ingredient_id' => Ingredient::where('name', 'sugar')->value('id'),'quantity' => '1.33','description' => '','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 14,'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),'quantity' => '4','description' => 'large','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
@@ -306,7 +319,8 @@ class RecipesTableSeeder extends Seeder
             Serve and enjoy!',
             'serving_size' => 4,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Western%')->value('id'),
-            'image_url' => 'Chocolate-Blackberry-Pudding.jpg'));
+            'image_url' => 'Chocolate-Blackberry-Pudding.jpg',
+            'recipe_source' => 'http://www.foodista.com/recipe/SXRJV6HH/chocolate-blackberry-pudding'));
         IngredientRecipeMapping::create(array('recipe_id' => 15,'ingredient_id' => Ingredient::where('name', 'butter')->value('id'),'quantity' => '0.5','description' => 'softened','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 15,'ingredient_id' => Ingredient::where('name', 'erythritol')->value('id'),'quantity' => '0.5','description' => 'or sugar substitute','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 15,'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),'quantity' => '4','description' => '','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
@@ -320,13 +334,14 @@ class RecipesTableSeeder extends Seeder
 
         Recipe::create(array('id' => 16,'name' => 'Eggs on Toast',
             'short_description' => 'A classic breakfast staple.',
-            'long_description' => ' Boiled to perfection eggs on sourdough bread',
+            'long_description' => 'Boiled to perfection eggs on sourdough bread',
             'method' => 'Boil Eggs;
             Toast Bread;
             Serve.',
             'serving_size' => 1,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Western%')->value('id'),
-            'image_url' => 'Eggs-on-Toast.jpg'));
+            'image_url' => 'Eggs-on-Toast.jpg',
+            'recipe_source' => ''));
         IngredientRecipeMapping::create(array('recipe_id' => 16,'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),'quantity' => '2','description' => '','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 16,'ingredient_id' => Ingredient::where('name', 'sourdough bread')->value('id'),'quantity' => '2','description' => '','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
 
@@ -339,7 +354,8 @@ class RecipesTableSeeder extends Seeder
              Combine the cooked pasta with the pesto, tomatoes and mozzarella. Serve chilled.',
             'serving_size' => 4,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
-            'image_url' => 'graysonpesto.jpg'));
+            'image_url' => 'graysonpesto.jpg',
+            'recipe_source' => 'https://www.cookingwithnonna.com/italian-cuisine/arugula-pesto-pasta-salad.html'));
         IngredientRecipeMapping::create(array('recipe_id' => 17,'ingredient_id' => Ingredient::where('name', 'arugula')->value('id'),'quantity' => '140','description' => '','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 17,'ingredient_id' => Ingredient::where('name', 'lemon')->value('id'),'quantity' => '1','description' => 'zested','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 17,'ingredient_id' => Ingredient::where('name', 'pecorino cheese')->value('id'),'quantity' => '0.5','description' => 'grated','measurement_type_id' => MeasurementType::where('name', 'cup')->value('id')));
@@ -365,7 +381,8 @@ class RecipesTableSeeder extends Seeder
                      Serve the risotto in bowls and top with the remaining mushrooms, a sprinkle of the remaining chives and a good grind of pepper. Enjoy!;',
             'serving_size' => 4,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
-            'image_url' => 'graysonpesto.jpg'));
+            'image_url' => 'graysonpesto.jpg',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/vegetarian-recipes/creamy-two-mushroom-risotto'));
         IngredientRecipeMapping::create(array('recipe_id' => 18,'ingredient_id' => Ingredient::where('name', 'arborio rice')->value('id'),'quantity' => '160','description' => '','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 18,'ingredient_id' => Ingredient::where('name', 'vegetable stock cube')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 18,'ingredient_id' => Ingredient::where('name', 'chives')->value('id'),'quantity' => '10','description' => '','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
