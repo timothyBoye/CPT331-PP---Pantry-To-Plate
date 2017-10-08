@@ -26,6 +26,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="ingredient-search-group" class="input-group">
                 <input type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
                 <span class="input-group-btn">
@@ -34,6 +35,7 @@
                     </button>
                 </span>
             </div>
+
             <div class="bootstro all-dropdowns" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
