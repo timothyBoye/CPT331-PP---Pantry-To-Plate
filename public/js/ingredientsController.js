@@ -1,26 +1,7 @@
 /**
  * Created by Brendan on 9/09/2017.
  */
-var updateIngredients;
 (function($, w){
-
-    updateIngredients = function (ingredientID, ingredientName, ingredientImage) {
-        if (storageObject.find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
-            w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientID, ingredientName, ingredientImage);
-
-        }
-        else {
-            w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
-        }
-        makeCall();
-        updateDisplay(storageObject.getRecipes());
-
-        if(w.ingredientsController.selectedIngredients.length === 0) {
-            $('.intro-message').show();
-        } else {
-            $('.intro-message').hide();
-        }
-    };
 
     w.ingredientsController = {
         selectedIngredients: storageObject.getSelectedIngredients(),
@@ -57,11 +38,18 @@ var updateIngredients;
                 makeCall();
             });
 
+            $('#ingredient-search-button').on('click', handleSearchInput);// TODO: add on enter to input, otherwise they have to click each time
+
             initCuisinePreferenceCheckbox();
 
         }
 
     };
+
+    function handleSearchInput(){
+        var typedIngredientName = $('#ingredient-input').val();
+        $(".li-ingredient").find("a[data-name='"+ typedIngredientName +"']").click();
+    }
 
     function initCuisinePreferenceCheckbox(){
         var checked = storageObject.getCuisinePreferenceCheckStatus();
@@ -73,7 +61,21 @@ var updateIngredients;
         var ingredientID = $(e.target).attr('data-id');
         var ingredientImage = $(e.target).attr('data-image');
 
-        updateIngredients(ingredientID, ingredientName, ingredientImage);
+        if (storageObject.find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
+            w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientID, ingredientName, ingredientImage);
+
+        }
+        else {
+            w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
+        }
+        makeCall();
+        updateDisplay(storageObject.getRecipes());
+
+        if(w.ingredientsController.selectedIngredients.length === 0) {
+            $('.intro-message').show();
+        } else {
+            $('.intro-message').hide();
+        }
     }
 
     function updateDisplay(recipes){
@@ -94,8 +96,6 @@ var updateIngredients;
     }
 
     function makeCall(){
-
-
         // makes the call to our php controller, which then hits the db
         if(w.ingredientsController.selectedIngredients.length > 0){
             var cuisineType = storageObject.getCuisineType();
@@ -110,7 +110,7 @@ var updateIngredients;
                 }
             }).done(function(response){
                 $('#recipes').html(response.html);
-                console.log(response);
+
             }).fail(function(response){
                 $('#recipes').html(response.responseText);
 
@@ -126,19 +126,3 @@ var updateIngredients;
 
 })(jQuery, window);
 
-function runSearch(ingredient){
-    $.ajax({
-        url: $('.input-group').attr('data-api-controller-url'),
-        type: 'GET',
-        data: {
-            ingredient: ingredient
-        }
-    }).done(function(response){
-        if (response != null) {
-            var ingredientID = response['id'].toString();
-            updateIngredients(ingredientID, response['name'], response['ingredient-url']);
-        }
-    }).fail(function(response){
-
-    });
-}

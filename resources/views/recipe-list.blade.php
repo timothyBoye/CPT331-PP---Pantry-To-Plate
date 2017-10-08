@@ -51,6 +51,7 @@
                         </div>
                     </div>
                 </div>
+                {{array_search($recipe, $recipes) + 1}} / {{count($recipes)}}
             </div>
             </div>
         @endforeach
