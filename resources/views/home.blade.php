@@ -24,6 +24,20 @@
                         @endforeach
                         </select>
                     </div>
+                    <div class="li-category dropdown">
+                        <select id='select-rating-type-filter' class = "cuisine-dropdown">
+                            <option class = "cuisine-title-value" value="0" selected>Filter by Recipe Rating</option>
+                            @for($i = 1; $i < 6; $i++)
+                                <option class="cuisine-title-value" value="{{$i}}">{{$i}}
+                                    @if($i == 5)
+                                        Stars Only
+                                    @else
+                                        Stars Or Better
+                                    @endif
+                                </option>
+                            @endfor
+                        </select>
+                    </div>
                 </div>
             </div>
 

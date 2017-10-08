@@ -6,7 +6,8 @@ var storageObject = (function(w){
     var selectedIngredients = Cookies.getJSON('selectedIngredients') || [];
     var me = {
         cuisineType: -1,
-        cookieExpiry: 0.5
+        cookieExpiry: 0.5,
+        ratingFilterValue: -1
     };
 
     me.addIngredient = function(ingredientID, ingredientName, ingredientImageURL){
@@ -39,6 +40,7 @@ var storageObject = (function(w){
         return recipes != null && recipes.length > 0 ? JSON.parse(recipes) : [];
     }
 
+    // Cuisine types
     me.setCuisineType = function(id){
         me.cuisineType = id;
         Cookies.set('cuisineTypeId', me.cuisineType, {
@@ -64,6 +66,18 @@ var storageObject = (function(w){
             expires: me.cookieExpiry
         });
     };
+
+    // Ratings
+    me.getRatingFilterValue = function(){
+        return Cookies.get('ratingFilterValue');
+    }
+
+    me.setRatingFilter = function(id){
+        me.ratingFilterValue = id;
+        Cookies.set('ratingFilterValue', me.ratingFilterValue, {
+            expires: me.cookieExpiry
+        })
+    }
 
     me.find = function find(myArray, searchTerm, property) {
         for(var i = 0, len = myArray.length; i < len; i++) {
