@@ -11,7 +11,7 @@
                         <input type="checkbox" id="cuisine-preference-checkbox">Cuisine
                     </label>
                 @endif
-                <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
+                <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
                     <label class="checkbox-inline">
                          <input type="checkbox">STAR RATING
                     </label>
@@ -27,16 +27,16 @@
                 </div>
             </div>
 
-            <div id="ingredient-search-group" class="input-group">
-                <input type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
-                <span class="input-group-btn">
+
+            <div class="bootstro all-dropdowns" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
+                <div id="ingredient-search-group" class="input-group">
+                    <input type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
+                    <span class="input-group-btn">
                      <button class="btn btn-info btn-flat search-button" id="ingredient-search-button">
                         Go
                     </button>
                 </span>
-            </div>
-
-            <div class="bootstro all-dropdowns" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="right" data-bootstro-nextButtonText="Next">
+                </div>
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
                     <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
