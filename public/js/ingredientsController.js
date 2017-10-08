@@ -38,7 +38,7 @@
                 makeCall();
             });
 
-            $('#ingredient-search-button').on('click', handleSearchInput);// TODO: add on enter to input, otherwise they have to click each time
+            $('#ingredient-search-button').on('click', handleSearchInput);
 
             initCuisinePreferenceCheckbox();
 
