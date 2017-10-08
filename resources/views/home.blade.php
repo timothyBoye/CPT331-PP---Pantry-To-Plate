@@ -27,10 +27,10 @@
                 </div>
             </div>
 
-            <div class="input-group">
+            <div id="ingredient-search-group" class="input-group">
                 <input type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
                 <span class="input-group-btn">
-                     <button class="btn btn-default search-button" id="ingredient-search-button">
+                     <button class="btn btn-info btn-flat search-button" id="ingredient-search-button">
                         Go
                     </button>
                 </span>
