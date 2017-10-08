@@ -312,6 +312,10 @@ ul  {
     margin-top: 1px;
 }
 
+#ingredient-search-group {
+    margin-top: 20px;
+}
+
 .ingredient-img {
     /*background-image: url("../img/eggs.jpeg");*/
     width: 55px;
