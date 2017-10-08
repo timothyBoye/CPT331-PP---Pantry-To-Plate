@@ -309,7 +309,7 @@ ul  {
 }
 
 #ingredient-search-group {
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .ingredient-img {
@@ -582,7 +582,6 @@ ul  {
     border-top: none !important;
     border-left: none !important;
     height: 37px;
-    margin-top:20px;
 }
 
 .checkbox-inline {

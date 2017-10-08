@@ -69,6 +69,7 @@
 
         if (storageObject.find(w.ingredientsController.selectedIngredients, ingredientID, 'id') < 0 ) {
             w.ingredientsController.selectedIngredients = storageObject.addIngredient(ingredientID, ingredientName, ingredientImage);
+
         }
         else {
             w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
