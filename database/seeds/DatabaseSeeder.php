@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('recipes')->delete();
+        DB::table('recipe_methods')->delete();
         DB::table('ingredient_recipe_mappings')->delete();
         DB::table('cuisine_types')->delete();
         DB::table('flavours')->delete();

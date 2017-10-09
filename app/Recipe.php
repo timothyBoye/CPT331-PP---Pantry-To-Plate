@@ -72,6 +72,7 @@ class Recipe extends Model
 
     public function method_steps()
     {
-        return explode(Config::get('constants.recipe_method_delimiter'), $this->method);
+        return $this->hasMany('App\RecipeMethod', 'recipe_id', 'id')->orderBy('step_number');
     }
+
 }

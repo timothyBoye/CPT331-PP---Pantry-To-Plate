@@ -150,7 +150,7 @@ ul  {
 }
 
 .rating > input:checked ~ label {
-    color: #f70;
+    color: #ff4f00;
 }
 
 .rating-editable > input:checked + label:hover,
