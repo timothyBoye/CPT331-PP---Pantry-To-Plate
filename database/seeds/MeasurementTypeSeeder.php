@@ -28,7 +28,8 @@ class MeasurementTypeSeeder extends Seeder
             array('name' => 'head', 'comparable_size' => ''),
             array('name' => 'bunch', 'comparable_size' => ''),
             array('name' => 'lb', 'comparable_size' => ''),
-            array('name' => 'stick', 'comparable_size' => 0.5) // 1/2 cup
+            array('name' => 'stick', 'comparable_size' => 0.5), // 1/2 cup
+            array('name' => 'pinch', 'comparable_size' => 0.2), // Pinch == 1/8 tsp
         );
 
         foreach ($measures as $measure) {

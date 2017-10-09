@@ -304,6 +304,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'mustard seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
             array('name' => 'dill seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
             array('name' => 'coriander seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
+            array('name' => 'nutmeg', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'nutmeg.jpg'),
 
             //sweeteners
             array('name' => 'sugar', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
@@ -325,6 +326,8 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'chicken thighs', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'British-chicken-thigh-fillets-2-x200.jpg'),
             array('name' => 'rump steak', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'rump-steak.jpg'),
             array('name' => 'salmon', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'salmon.jpg'),
+            array('name' => 'bacon', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'bacon.jpg'),
+            array('name' => 'speck', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'speck.jpg'),
 
             //grains
             array('name' => 'sourdough bread', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'sourdough.jpg'),
@@ -356,6 +359,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'egg', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'egg-x200.jpg'),
             array('name' => 'milk', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'milk.jpeg'),
             array('name' => 'cheddar cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
+            array('name' => 'cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
             array('name' => 'parmesan cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'rennet-free-parmesan-x200.jpg'),
             array('name' => 'halloumi cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'halloumi-x200.jpg'),
             array('name' => 'yoghurt', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'greek-yoghurt-x200.jpg'),
