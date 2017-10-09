@@ -79,9 +79,9 @@
                     <h2>Method</h2>
                     <div id="recipe-method">
                         <ol>
-                            <li>
-                                {!! str_replace(Config::get('constants.recipe_method_delimiter'), "</li><li>", $recipe->method) !!}
-                            </li>
+                            @foreach($recipe->method_steps as $step)
+                            <li>{{$step->description}}</li>
+                            @endforeach
                         </ol>
                     </div>
                 </div>

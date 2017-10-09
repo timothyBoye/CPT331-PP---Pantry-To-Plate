@@ -150,7 +150,7 @@ ul  {
 }
 
 .rating > input:checked ~ label {
-    color: #ff4f00;
+    color: #f70;
 }
 
 .rating-editable > input:checked + label:hover,
@@ -309,7 +309,7 @@ ul  {
 }
 
 #ingredient-search-group {
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .ingredient-img {
@@ -582,7 +582,6 @@ ul  {
     border-top: none !important;
     border-left: none !important;
     height: 37px;
-    margin-top:20px;
 }
 
 .checkbox-inline {

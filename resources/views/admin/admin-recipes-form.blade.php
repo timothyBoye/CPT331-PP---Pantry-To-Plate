@@ -200,34 +200,106 @@
 
 @section('head')
     <script>
+
+        // Validation
+        $("#form").validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 3
+                },
+                short_description: {
+                    required: true,
+                    minlength: 3
+                },
+                long_description: {
+                    required: true,
+                    minlength: 3
+                },
+                image_url: {
+                    required: true,
+                    minlength: 3
+                },
+                serving_size: {
+                    required: true,
+                    digits: true
+                },
+                cuisine_type_id: {
+                    required: true,
+                    digits: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Please enter a name for the recipe",
+                    minlength: "A recipe name must be at least 3 characters"
+                },
+                short_description: {
+                    required: "Please enter a description",
+                    minlength: "A description must be at least 3 characters"
+                },
+                long_description: {
+                    required: "Please enter a description",
+                    minlength: "A description must be at least 3 characters"
+                },
+                image_url: {
+                    required: "Please enter an image file name (include the file extension)",
+                    minlength: "A image name must be at least 3 characters (include the file extension)"
+                },
+                serving_size: {
+                    required: "Please enter how many people the recipe serves",
+                    digits: "Doesn't appear to be a number"
+                },
+                cuisine_type_id: {
+                    required: "Please enter a cuisine type",
+                    digits: "Doesn't appear to be a valid cuisine type id"
+                }
+            }
+        });
+
+
         var method_steps_count = 0;
         var ingredients_count = 0;
         $(function() {
             $('#seed_button').click(function(){
+                if($("input[name=_method]").length) {
+                    $("input[name=_method]").val('POST');
+                }
                 $.ajax({
                     url: $('#seed_button').attr('data-api-controller-url'),
                     type: 'POST',
                     data: $(form).serialize()
                 }).done(function(response){
                     $('#seed_file_string').html('<pre>'+response+'</pre>');
+                    if($("input[name=_method]").length) {
+                        $("input[name=_method]").val('PUT');
+                    }
                 }).fail(function(response){
                     $('#seed_file_string').html(response.responseText);
+                    if($("input[name=_method]").length) {
+                        $("input[name=_method]").val('PUT');
+                    }
                 });
             });
 
             // Recipe method steps functions
             @if(isset($recipe))
-                @foreach($recipe->method_steps() as $step)
-                    $('#method_container').append(addStep('{{$step}}'));
+                @foreach($recipe->method_steps as $step)
+                    $('#method_container').append(addStep('{{$step->description}}', '{{$step->image_url}}'));
                 @endforeach
-            @elseif(old('methods'))
-                @foreach(old('methods') as $method)
-                    $('#method_container').append(addStep('{{$method}}'));
-                @endforeach
+            @elseif(old('method_descriptions'))
+                @for($i = 0; $i < count(old('method_descriptions')); $i++)
+                    @php($image = old('method_images.'.$i))
+                    @php($description = old('method_descriptions.'.$i))
+                    $('#method_container').append(addStep('{{$description}}', '{{$image}}'));
+                @endfor
             @endif
 
-            $('#add_method_step').click(function(){
-                $('#method_container').append(addStep(''));
+            $('#add_method_step').click(function() {
+                $('#method_container').append(addStep('', ''));
+                $('.method_descriptions').each(function(key, element) {
+                    $(element).append("hello");
+                });
             });
 
             $('#remove_method_step').click(function(){
@@ -237,12 +309,14 @@
                 }
             });
 
-            function addStep(text) {
+            function addStep(description, image_name) {
                 method_steps_count += 1;
                 return '<div class="form-group">' +
                     '<h5>Step ' + method_steps_count + ': </h5>' +
-                    '<label for="method_' + method_steps_count + '">Description</label>\n' +
-                    '<input id="method_' + method_steps_count + '" class="form-control" name="methods[]' + '" type="text" placeholder="Enter step description" value="'+ text +'" />' +
+                    '<label for="method_description_' + method_steps_count + '">Description</label>\n' +
+                    '<input id="method_description_' + method_steps_count + '" class="form-control method_descriptions" name="method_descriptions[]' + '" type="text" placeholder="Enter step description" value="'+ description +'" />' +
+                    '<label for="method_image_' + method_steps_count + '">Image name</label>\n' +
+                    '<input id="method_image_' + method_steps_count + '" class="form-control" name="method_images[]' + '" type="text" placeholder="Enter step image name" value="'+ image_name +'" />' +
                     '</div>';
             }
 
@@ -313,91 +387,53 @@
 
                 return ingredient_box;
             }
-
-            // Validation
-            $("#form").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3
-                    },
-                    short_description: {
-                        required: true,
-                        minlength: 3
-                    },
-                    long_description: {
-                        required: true,
-                        minlength: 3
-                    },
-                    image_url: {
-                        required: true,
-                        minlength: 3
-                    },
-                    serving_size: {
-                        required: true,
-                        digits: true
-                    },
-                    cuisine_type_id: {
-                        required: true,
-                        digits: true
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter a name for the recipe",
-                        minlength: "A recipe name must be at least 3 characters"
-                    },
-                    short_description: {
-                        required: "Please enter a description",
-                        minlength: "A description must be at least 3 characters"
-                    },
-                    long_description: {
-                        required: "Please enter a description",
-                        minlength: "A description must be at least 3 characters"
-                    },
-                    image_url: {
-                        required: "Please enter an image file name (include the file extension)",
-                        minlength: "A image name must be at least 3 characters (include the file extension)"
-                    },
-                    serving_size: {
-                        required: "Please enter how many people the recipe serves",
-                        digits: "Doesn't appear to be a number"
-                    },
-                    cuisine_type_id: {
-                        required: "Please enter a cuisine type",
-                        digits: "Doesn't appear to be a valid cuisine type id"
-                    }
-                }
-            });
-            $("input[id*='ingredient_quantity']").each(function() {
-                $(this).validate();
-                $(this).rules('add', {
-                    required: true,
-                    number: true,
-                    messages: {
-                        required: "Please enter a quantity",
-                        number: "Doesn't appear to be a valid number"
-                    }
-                });
-            });
-            $("input[id*='ingredient_measure']").each(function() {
-                $(this).validate();
-                $(this).rules('add', {
-                    required: true,
-                    messages: {
-                        required: "Please select a measure"
-                    }
-                });
-            });
-            $("input[id*='ingredient_name']").each(function() {
-                $(this).validate();
-                $(this).rules('add', {
-                    required: true,
-                    messages: {
-                        required: "Please select an ingredient"
-                    }
-                });
-            });
+//
+//            $("input[id*='ingredient_quantity']").each(function() {
+//                $(this).validate();
+//                $(this).rules('add', {
+//                    required: true,
+//                    number: true,
+//                    messages: {
+//                        required: "Please enter a quantity",
+//                        number: "Doesn't appear to be a valid number"
+//                    }
+//                });
+//            });
+//            $("input[id*='ingredient_measure']").each(function() {
+//                $(this).validate();
+//                $(this).rules('add', {
+//                    required: true,
+//                    messages: {
+//                        required: "Please select a measure"
+//                    }
+//                });
+//            });
+//            $("input[id*='ingredient_name']").each(function() {
+//                $(this).validate();
+//                $(this).rules('add', {
+//                    required: true,
+//                    messages: {
+//                        required: "Please select an ingredient"
+//                    }
+//                });
+//            });
+//            $("input[id*='method_desciption']").each(function() {
+//                $(this).validate();
+//                $(this).rules('add', {
+//                    required: true,
+//                    messages: {
+//                        required: "Please enter an ingredient"
+//                    }
+//                });
+//            });
+//            $("input[id*='method_image']").each(function() {
+//                $(this).validate();
+//                $(this).rules('add', {
+//                    required: false,
+//                    messages: {
+//                    }
+//                });
+//            });
         });
     </script>
 @endsection

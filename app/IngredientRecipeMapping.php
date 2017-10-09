@@ -26,23 +26,28 @@ class IngredientRecipeMapping extends Model
         return $this->belongsTo('App\MeasurementType', 'measurement_type_id', 'id');
     }
 
-    public static function get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter){
+    public static function get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value){
         $recipe_ids = [];
 
         foreach ($ingredient_ids as $id) {
 
             foreach (IngredientRecipeMapping::select('recipe_id')
                          ->where('ingredient_id', '=', $id)->get() as $ingredient_recipe_mapping) {
-                // If the user has selected a cuisine type filter, include appropriate recipes. This should
-                // really be done at query stage above, so we are only hitting the db for the results we will use.
-                // Will refactor later.
-                if($cuisine_type_filter > 0){
-                    if($ingredient_recipe_mapping->recipe->cuisine_type_id == $cuisine_type_filter){
-                        array_push($recipe_ids, $ingredient_recipe_mapping->recipe_id);
-                    }
+                $include = true;
 
+                if($cuisine_type_filter > 0){
+                    if($ingredient_recipe_mapping->recipe->cuisine_type_id != $cuisine_type_filter){
+                        $include = false;
+                    }
                 }
-                else{
+
+                if($rating_filter_value >= 0){
+                    if($ingredient_recipe_mapping->recipe->average_rating < $rating_filter_value){
+                        $include = false;
+                    }
+                }
+
+                if($include){
                     array_push($recipe_ids, $ingredient_recipe_mapping->recipe_id);
 
                 }
