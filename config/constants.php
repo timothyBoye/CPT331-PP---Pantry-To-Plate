@@ -21,6 +21,7 @@ return [
     'seeds_category_id' => 12,
     'nuts_category_id' => 13,
     'baking_category_id' => 14,
+    'misc_category_id' => 15,
 
 
     // Flavours

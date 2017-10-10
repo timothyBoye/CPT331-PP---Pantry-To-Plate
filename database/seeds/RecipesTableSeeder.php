@@ -368,7 +368,7 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Arugula Pesto Pasta Salad')->value('id'), 'step_number' => 2, 'description' => 'In a food processor combine the first 6 ingredients and process until smooth.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Arugula Pesto Pasta Salad')->value('id'), 'step_number' => 3, 'description' => 'Combine the cooked pasta with the pesto, tomatoes and mozzarella. Serve chilled.', 'image_url' => ''));
 
-        
+
         Recipe::create(array('id' => 18,'name' => 'Creamy Two-Mushroom Risotto',
             'short_description' => 'Without fail, the best Risotto we have ever created',
             'long_description' => 'This decadent mushroom risotto is fool-proof. The trick is to cook the mushrooms in a hot pan first, then bake them in the oven so that their flavour intensifies. Tearing the mushrooms rather than slicing them not only saves time but gives a lovely, rustic aesthetic, so theres not mushroom for error!',
@@ -399,8 +399,8 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Creamy Two-Mushroom Risotto')->value('id'), 'step_number' => 7, 'description' => 'Once cooked, remove the risotto from the heat and stir in the grated cheese, clotted cream and half of the mushrooms (keep the other half for garnish). Tip: add a little more boiled water if your risotto is too clumpy - a risotto should have an almost porridge-like consistency. Season with pepper.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Creamy Two-Mushroom Risotto')->value('id'), 'step_number' => 8, 'description' => 'Serve the risotto in bowls and top with the remaining mushrooms, a sprinkle of the remaining chives and a good grind of pepper. Enjoy!', 'image_url' => ''));
 
-        
-        
+
+
         // Chops With Minted Peas and Wedges
         \App\Recipe::create(array('id' => 19, 'name' => 'Chops With Minted Peas and Wedges',
              'short_description' => 'Quick and easy lamb with wedges and peas',
@@ -526,7 +526,7 @@ class RecipesTableSeeder extends Seeder
             'serving_size' => '2',
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Chinese%')->value('id'),
             'image_url' => 'honeywalnutshrimpwalnutprawns.jpg',
-            'recipe_source' => 'Honey Walnut Shrimp'));
+            'recipe_source' => 'RasaMalaysia    '));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'prawn')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'lb')->value('id'), 'quantity' => '1', 'description' => 'peeled and deveined'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'walnut')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1/2', 'description' => 'halves'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'mayonnaise')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '3', 'description' => ''));
@@ -551,16 +551,16 @@ class RecipesTableSeeder extends Seeder
             'serving_size' => '2',
             'cuisine_type_id' => CuisineType::where('name', 'like', '%Chinese%')->value('id'),
             'image_url' => 'friedrice2-1.jpg',
-            'recipe_source' => 'Fried Rice'));
+            'recipe_source' => 'RasaMalaysia'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'garlic')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '2', 'description' => 'cloves minced'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'chicken breast')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '120', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'prawn')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '120', 'description' => 'peeled, shelled and deveined'));
-        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'mixed vegetables')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1', 'description' => 'frozen, thawed'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'mixed vegetables')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1', 'description' => 'frozen thawed'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'rice')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '340', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'fish sauce')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '1', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'egg')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '2', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'soy sauce')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '2', 'description' => ''));
-        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'for deep frying'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '2', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oyster sauce')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '1/4', 'description' => 'for Caramel Glaze'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'white pepper')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '3', 'description' => 'dashes'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'salt')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'to taste'));
@@ -602,5 +602,26 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 10, 'description' => 'Pour the onion and speck mixture onto the pastry.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 11, 'description' => 'Combine milk, cream, egg and flour in a bowl. Stir with a whisk to combine, then add salt, white pepper, nutmeg and paprika.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 12, 'description' => 'Pour milk mixture over the onions and speck and bake for 40 minutes, or until cooked through.', 'image_url' => ''));
+
+        // Crab Rangoon
+        \App\Recipe::create(array('id' => 26, 'name' => 'Crab Rangoon',
+            'short_description' => 'crab rangoon recipe with cream cheese and wonton wrapper',
+            'long_description' => 'Crab Rangoon is an appetizer found in many Chinese restaurants in the United States. A classic American creation, crab rangoon is basically cream cheese wontons with tiny bits of crab meat, deep-fried to golden perfection.',
+            'serving_size' => '20',
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Chinese%')->value('id'),
+            'image_url' => 'crab_rangoon1.jpg',
+            'recipe_source' => 'RasaMalaysia'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'cream cheese')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '230', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'crab')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '60', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'sugar')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '1', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'wonton wrappers')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '20', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'for deep frying'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'salt')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'pinch'));
+        \App\NutritionalInfoPanel::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'gram_total_fat' => '37.7', 'gram_saturated_fat' => '10.7', 'gram_total_carbohydrates' => '20.8', 'gram_sugars' => '13', 'gram_fiber' => '', 'mg_sodium' => '398', 'gram_protein' => '50.3', 'calories' => '645'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'step_number' => 1, 'description' => 'Mix all the cream cheese, crab meat, sugar, and salt in a bowl. Stir to blend well. Place about 1 tablespoon of the cream cheese filling in the middle of a wonton wrapper. Dab some water on the outer edges of the wonton wrapper and fold the two ends of the wrapper together. Fold the other two ends to make a tiny parcel pictured below.  Pinch to seal tight and make sure that there is no leakage.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'step_number' => 2, 'description' => 'Heat up a pot of oil for deep-frying and fry the crab rangoon until golden brown. Dish out with a strainer or slotted spoon, draining the excess oil by laying the crab rangoon on a dish lined with paper towels. Let the crab rangoon cools down a bit before serving them with sweet and sour sauce.', 'image_url' => ''));
+
+
+
     }
 }

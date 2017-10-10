@@ -28,6 +28,8 @@ class IngredientsTableSeeder extends Seeder
         $seeds = 'constants.seeds_category_id';
         $nuts = 'constants.nuts_category_id';
         $baking = 'constants.baking_category_id';
+        $misc = 'constants.misc_category_id';
+
 
         $ingredients = array(
             array('name' => 'romaine lettuce', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'cosberg-lettuce-x200.jpg'),
@@ -341,6 +343,8 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'chicken breast', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'British-diced-chicken-breast-2-x200.jpg'),
             array('name' => 'bacon', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'bacon.jpg'),
             array('name' => 'speck', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'speck.jpg'),
+            array('name' => 'crab', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'carb.jpeg'),
+
 
             //grains
             array('name' => 'sourdough bread', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'sourdough.jpg'),
@@ -381,6 +385,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'yoghurt', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'greek-yoghurt-x200.jpg'),
             array('name' => 'cream', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => ''),
             array('name' => 'sour cream', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'sour-cream-x200.jpg'),
+            array('name' => 'cream cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'tofu-x200.jpg'),
             array('name' => 'salted butter', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'butter.jpg'),
             array('name' => 'unsalted butter', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'butter.jpg'),
             array('name' => 'butter', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'butter.jpg'),
@@ -394,6 +399,9 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'cashew nuts', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'Cashew_3.jpg'),
             array('name' => 'pignoli nuts', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'ttar_pinenuts_03_h_launch.jpg'),
             array('name' => 'walnut', 'ingredient_category_id' => Config::get($nuts), 'ingredient_image_url' => 'walnut.jpg'),
+
+            //misc
+            array('name' => 'wonton wrappers', 'ingredient_category_id' => Config::get($misc), 'ingredient_image_url' => 'wontonwrappers.jpg'),
 
         );
 
