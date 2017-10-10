@@ -34,7 +34,7 @@
                 </form>
                 <a href="#">Recipes</a>
             @endif
-            <a href="#">About</a>
+            <a href="{{ route('about') }}">About</a>
             <a href="#">Contact</a>
             @if (Auth::user())
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
