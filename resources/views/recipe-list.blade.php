@@ -8,7 +8,8 @@
                         <div class="ingredient-match" >
                             @foreach($occurrences as $key => $val)
                                 @if($key == $recipe->id)
-                                    <h5 class="ingredients-match-number">{{$val}}/{{count($recipe->ingredients)}}</h5>
+                                    <h5 class="ingredients-match-number">{{$val}}</h5>
+                                    <p class="ingredients-match-word">INGREDIENT</p>
                                     <p class="ingredients-match-word">MATCH</p>
                                 @endif
                             @endforeach
@@ -17,6 +18,11 @@
                             <div class="recipe-image" style="background-image: url({{ URL::asset('img/recipes/'.($recipe->image_url == '' ? 'default.jpg' : $recipe->image_url)) }});">
                             </div>
                             <h4 class="recipe-name">{{ $recipe->name }}</h4>
+                            @foreach($occurrences as $key => $val)
+                                @if($key == $recipe->id)
+                                    <h5>{{count($recipe->ingredients)}} Ingredient Recipe</h5>
+                                @endif
+                            @endforeach
                         </a>
                         <div class="recipe-text">
 

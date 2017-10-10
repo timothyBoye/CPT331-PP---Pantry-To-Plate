@@ -5,7 +5,8 @@
 
     <div class="container-fluid cuisine-mappings-bg">
         <div class="row">
-            <div class="alert invisible success-message col-md-6"></div>
+            <div class="alert invisible success-message"></div>
+            {{--col-md-6--}}
         </div>
 
         <div class="row">

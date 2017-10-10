@@ -141,12 +141,13 @@ ul  {
 
 .ingredients-match-number {
     color: #ffffff;
+    margin-top: 4px;
 }
 
 .ingredient-match {
     border-radius: 50%;
-    height: 59px;
-    width: 59px;
+    height: 66px;
+    width: 66px;
     background-color: #545255;
     position: absolute;
     top: 43%;
@@ -157,8 +158,8 @@ ul  {
 
 .ingredients-match-word {
     color: #ffffff;
-    font-size: 11px;
-    margin: -13px 0 11px;
+    font-size: 9px;
+    margin: -9px 0 8px;
 }
 
 .recipes-matched-search {
@@ -600,4 +601,12 @@ ul  {
 .rating-editable.rated > input:checked ~ label:hover ~ label,
 .rating-editable.rated > label:hover ~ input:checked ~ label {
     color: gold;
+}
+
+.alert-success {
+    /*border-color: #d6e9c6;*/
+    background-color: #2ab27b;
+    color: #ffffff;
+    width:30%
+    height:300px;
 }
