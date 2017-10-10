@@ -524,7 +524,7 @@ class RecipesTableSeeder extends Seeder
             'short_description' => 'Healthy homemade Chinese chicken in savory and spicy Kung Pao sauce',
             'long_description' => 'Kung Pao Chicken recipe is easy, authentic and delicious. The Kung Pao sauce is a bit spicy so feel free to cut down the quantity of dried chilies in the recipe. The secret ingredient of Kung Pao chicken is the Chinese vinegar in the sauce. You may use rice vinegar, red wine vinegar or apple cider vinegar for equally delicious result.',
             'serving_size' => '2',
-            'cuisine_type_id' => CuisineType::where('name', '=', 'Chinese')->value('id'),
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Chinese%')->value('id'),
             'image_url' => 'honeywalnutshrimpwalnutprawns.jpg',
             'recipe_source' => 'Honey Walnut Shrimp'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'prawn')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'lb')->value('id'), 'quantity' => '1', 'description' => 'peeled and deveined'));
@@ -549,7 +549,7 @@ class RecipesTableSeeder extends Seeder
             'short_description' => 'Healthy homemade Chinese chicken in savory and spicy Kung Pao sauce',
             'long_description' => 'Kung Pao Chicken recipe is easy, authentic and delicious. The Kung Pao sauce is a bit spicy so feel free to cut down the quantity of dried chilies in the recipe. The secret ingredient of Kung Pao chicken is the Chinese vinegar in the sauce. You may use rice vinegar, red wine vinegar or apple cider vinegar for equally delicious result.',
             'serving_size' => '2',
-            'cuisine_type_id' => CuisineType::where('name', '=', 'Chinese')->value('id'),
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Chinese%')->value('id'),
             'image_url' => 'friedrice2-1.jpg',
             'recipe_source' => 'Fried Rice'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'garlic')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '2', 'description' => 'cloves minced'));
@@ -569,5 +569,38 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'step_number' => 2, 'description' => 'Using the spatula, push the rice to the side of the wok and make a “well” in the middle of the fried rice. Pour the beaten eggs in the “well.” Wait for 30 seconds and then cover the eggs with the fried rice. Leave it for 30 seconds to 1 minute and continue to stir-fry so the eggs form into small pieces and mix well with the fried rice. Add in salt to taste and do some quick stirs, dish out and serve hot.', 'image_url' => ''));
 
 
+        Recipe::create(array('id' => 25,'name' => 'German Onion Tart',
+            'short_description' => 'Onion tart is served in the southern part of Germany at wine festivals.',
+            'long_description' => 'Onion tart (zwiebelkuchen) is served in the southern part of Germany at wine festivals. To achieve the perfect flavour use smoked speck, rather than bacon.',
+            'serving_size' => 4,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%German%')->value('id'),
+            'image_url' => 'german_onion_tart.jpg',
+            'recipe_source' => 'http://www.sbs.com.au/food/recipes/german-onion-tart-zwiebelkuchen'));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'butter')->value('id'),'quantity' => '80','description' => 'cold diced','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'plain flour')->value('id'),'quantity' => '175','description' => '','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'water')->value('id'),'quantity' => '40','description' => 'iced','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),'quantity' => '1','description' => 'half tsp for pastry, half tsp for filling','measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'onion')->value('id'),'quantity' => '350','description' => 'or 2 medium onions','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'speck')->value('id'),'quantity' => '70','description' => 'smoked, rind removed, cut into 5mm dice','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'cheese')->value('id'),'quantity' => '40','description' => 'such as Gruyere, grated','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'milk')->value('id'),'quantity' => '100','description' => '','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'cream')->value('id'),'quantity' => '100','description' => '','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'flour')->value('id'),'quantity' => '1.5','description' => '','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'white pepper')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'nutmeg')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'paprika')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 1, 'description' => 'To make the dough, combine butter and flour in a bowl. Use your hands to rub in the butter and lard into the flour until it resembles fine breadcrumbs.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 2, 'description' => 'Add water and salt, quickly knead until smooth.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 3, 'description' => 'Roll out dough on a lightly floured bench.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 4, 'description' => 'Grease a 24 cm round tart tin. Ease the pastry into the tin so it comes up the sides and press into corners. Trim pastry to top of tin and set aside in the fridge for 30 minutes.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 5, 'description' => 'To make the filling, preheat the oven to 190ºC.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 6, 'description' => 'Cut onions in half and then in 3 mm slices.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 7, 'description' => 'Fry the smoked speck in a non-stick pan over medium heat until lightly browned.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 8, 'description' => 'Add onions, reduce heat to low and fry until softened and fragrant.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 9, 'description' => 'Remove speck and onions from the pan and set aside to cool. Add cheese and mix well.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 10, 'description' => 'Pour the onion and speck mixture onto the pastry.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 11, 'description' => 'Combine milk, cream, egg and flour in a bowl. Stir with a whisk to combine, then add salt, white pepper, nutmeg and paprika.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 12, 'description' => 'Pour milk mixture over the onions and speck and bake for 40 minutes, or until cooked through.', 'image_url' => ''));
     }
 }

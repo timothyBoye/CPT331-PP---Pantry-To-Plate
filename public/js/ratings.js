@@ -11,7 +11,7 @@ function makeRatingCall(recipeID, URL) {
         $('.rating-editable').addClass('rated');
         $('#rated-by-who').text('your rating');
     }).fail(function(response){
-        console.log(response);
+        console.log('Rating call failed: '+response);
     });
 
 }
