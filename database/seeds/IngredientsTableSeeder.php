@@ -253,6 +253,9 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'water chestnut', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'watercress', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'zucchini', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'courgette-x200.jpg'),
+            array('name' => 'mixed vegetables', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'mixvegitable_large.jpg'),
+
+
 
             //herbs
             array('name' => 'mint', 'ingredient_category_id'=> Config::get($herb), 'ingredient_image_url' => 'mint.jpg'),
@@ -275,12 +278,19 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'olive oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'olive-oil.jpg'),
             array('name' => 'extra virgin olive oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'olive-oil.jpg'),
             array('name' => 'vegetable oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'veg-oil.jpg'),
+            array('name' => 'oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'veg-oil.jpg'),
 
             //condiments
             array('name' => 'sriracha sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'spice-sauce-brown-bowl-isolated-white-background-closeup-72906255.jpg'),
             array('name' => 'hot sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'tomato-paste-x200.jpg'),
             array('name' => 'salsa', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => ''),
             array('name' => 'balsamic vinegar', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'balsamic-vinegar-x200.jpg'),
+            array('name' => 'mayonnaise', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'use-mayonnaise-facial-mask-1.jpg'),
+            array('name' => 'condensed milk', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'condensed-milk.jpg'),
+            array('name' => 'fish sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'fish-sauce-x200.jpg'),
+            array('name' => 'soy sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'balsamic-vinegar-x200.jpg'),
+            array('name' => 'oyster sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'balsamic-vinegar-x200.jpg'),
+
 
             //spices
             array('name' => 'garlic powder', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'garlic-powder-loose.jpg'),
@@ -289,7 +299,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'sea salt', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'sea-salt.jpg'),
             array('name' => 'pepper', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'black-pepper.jpg'),
             array('name' => 'black pepper', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'black-pepper.jpg'),
-            array('name' => 'white pepper', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
+            array('name' => 'white pepper', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'WHITE_PEPPER_GROUND_1.jpg'),
             array('name' => 'chili flakes', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'chilli-flakes-250x250.jpg'),
             array('name' => 'dried basil', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'dried-basil.jpg'),
             array('name' => 'dried oregano', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'dried-oregano-x200.jpg'),
@@ -309,6 +319,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'sugar', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
             array('name' => 'maple syrup', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'fish-sauce-x200.jpg'),
             array('name' => 'erythritol', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
+            array('name' => 'honey', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'honey-pot-x200.jpg'),
 
             //liquids
             array('name' => 'water', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'rice-vinegar-x200.jpg'),
@@ -325,14 +336,18 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'chicken thighs', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'British-chicken-thigh-fillets-2-x200.jpg'),
             array('name' => 'rump steak', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'rump-steak.jpg'),
             array('name' => 'salmon', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'salmon.jpg'),
+            array('name' => 'prawn', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'king-prawns-x200.jpg'),
+            array('name' => 'chicken breast', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'British-diced-chicken-breast-2-x200.jpg'),
 
             //grains
             array('name' => 'sourdough bread', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'sourdough.jpg'),
             array('name' => 'corn tortillas', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'Taco_CrispyCornTortilla.jpg'),
             array('name' => 'farfalle pasta', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'farfalle-pasta.jpeg'),
-            array('name' => 'arborio rice', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => ''),
+            array('name' => 'arborio rice', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'arborio-rice-x200.jpg'),
             array('name' => 'fettuccine', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'fettuccine.jpg'),
             array('name' => 'couscous', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'couscous.jpg'),
+            array('name' => 'rice', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'arborio-rice-x200.jpg'),
+
 
             //baking
             array('name' => 'whole wheat flour', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => ''),
@@ -346,6 +361,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'vanilla', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'vanilla.jpg'),
             array('name' => 'powdered chocolate milk mix', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'Cacao-powder-and-coconut-sugar.jpg'),
             array('name' => 'cocoa powder', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'ras-el-hanout-x200.jpg'),
+            array('name' => 'corn starch', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'cornflour-x200.jpg'),
 
             //seeds
             array('name' => 'chia seeds', 'ingredient_category_id'=> Config::get($seeds), 'ingredient_image_url' => 'chia-seeds.jpg'),
