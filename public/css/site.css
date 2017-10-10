@@ -116,74 +116,6 @@ ul  {
     display: inline-block;
 }
 
-.rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    padding-right: 10px;
-}
-
-.rating:not(:checked) > input {
-    position: absolute;
-    top: -9999px;
-    clip: rect(0,0,0,0);
-}
-
-.rating:not(:checked) > label {
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 125%;
-    line-height: 1.2;
-    color: #ddd;
-    margin-bottom: -5px;
-}
-
-
-
-.rating:not(:checked) > label:before {
-    content: '★ ';
-}
-
-.rating:not(.rating-editable) > label {
-    cursor: auto;
-}
-
-.rating > input:checked ~ label {
-    color: #ff4f00;
-}
-
-.rating-editable > input:checked + label:hover,
-.rating-editable > input:checked + label:hover ~ label,
-.rating-editable > input:checked ~ label:hover,
-.rating-editable > input:checked ~ label:hover ~ label,
-.rating-editable > label:hover ~ input:checked ~ label {
-    color: #ea0;
-}
-
-.rating-editable > label:active {
-    position: relative;
-    top: 2px;
-    left: 2px;
-}
-
-.rating-editable:not(:checked) > label:hover,
-.rating-editable:not(:checked) > label:hover ~ label {
-    color: gold;
-}
-
-.rated > input:checked ~ label {
-    color: #ea0;
-}
-
-.rating-editable.rated > input:checked + label:hover,
-.rating-editable.rated > input:checked + label:hover ~ label,
-.rating-editable.rated > input:checked ~ label:hover,
-.rating-editable.rated > input:checked ~ label:hover ~ label,
-.rating-editable.rated > label:hover ~ input:checked ~ label {
-    color: gold;
-}
-
 .recipe-container {
     margin-top: 20px;
     height: 400px;
@@ -265,7 +197,7 @@ ul  {
 
 }
 
-    .recipe-text {
+.recipe-text {
     margin-bottom:50px;
     padding-left:20px;
     padding-right:20px;
@@ -449,46 +381,56 @@ ul  {
 }
 
 /* Slider */
-.slider-outer{
-    overflow: auto;
-    width: 100%;
-    margin: 0 auto;
-    position:relative;
+@media screen and (min-width: 992px) {
+    .prev,.next {
+        display:none;
+    }
+    .slider-recipe-count {
+        display:none;
+    }
 }
+@media screen and (max-width: 991px) {
+    .slider-outer{
+        overflow: auto;
+        width: 100%;
+        margin: 0 auto;
+        position:relative;
+    }
 
-.slider-inner {
-    overflow: hidden;
-    float: left;
-    width: 100%;
-}
+    .slider-inner {
+        overflow: hidden;
+        float: left;
+        width: 100%;
+    }
 
-.slider-inner div.item {
-    display:none;
-    width: 100%;
-}
+    .slider-inner div.item {
+        display:none;
+        width: 100%;
+    }
 
-.slider-inner div.active {
-    display:inline-block;
-}
+    .slider-inner div.active {
+        display:inline-block;
+    }
 
-.prev,.next {
-    cursor: pointer;
-    margin-top: 240px;
-    max-width: 25px;
-    max-height: 25px;
-    float:left;
-}
+    .prev,.next {
+        cursor: pointer;
+        margin-top: 240px;
+        max-width: 25px;
+        max-height: 25px;
+        float:left;
+    }
 
-.prev {
-    position: absolute;
-    left: 5px;
-    z-index: 1;
-}
+    .prev {
+        position: absolute;
+        left: 5px;
+        z-index: 1;
+    }
 
-.next {
-    position: absolute;
-    margin-left: -30px;
-    z-index: 1;
+    .next {
+        position: absolute;
+        margin-left: -30px;
+        z-index: 1;
+    }
 }
 
 .intro-message {
@@ -594,3 +536,68 @@ ul  {
     padding-top:20px !important;
 }
 
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    padding-right: 10px;
+}
+
+.rating:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+    clip: rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 125%;
+    line-height: 1.2;
+    color: #ddd;
+    margin-bottom: -5px;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating:not(.rating-editable) > label {
+    cursor: auto;
+}
+
+.rating > input:checked ~ label {
+    color: #ff4f00;
+}
+
+.rating-editable > input:checked + label:hover,
+.rating-editable > input:checked + label:hover ~ label,
+.rating-editable > input:checked ~ label:hover,
+.rating-editable > input:checked ~ label:hover ~ label,
+.rating-editable > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}
+
+.rating-editable > label:active {
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
+.rating-editable:not(:checked) > label:hover,
+.rating-editable:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+
+.rated > input:checked ~ label {
+    color: #ea0;
+}
+
+.rating-editable.rated > input:checked + label:hover,
+.rating-editable.rated > input:checked + label:hover ~ label,
+.rating-editable.rated > input:checked ~ label:hover,
+.rating-editable.rated > input:checked ~ label:hover ~ label,
+.rating-editable.rated > label:hover ~ input:checked ~ label {
+    color: gold;
+}

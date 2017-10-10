@@ -11,10 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="{{ asset('css/bootstro.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstro.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -54,8 +54,6 @@
 
         @yield('content')
     </div>
-
-
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
