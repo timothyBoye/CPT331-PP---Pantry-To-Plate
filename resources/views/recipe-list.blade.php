@@ -3,7 +3,7 @@
     <div class="slider-inner">
         @foreach($recipes as $rkey => $recipe)
             <div class="item{{ $rkey == 0 ? ' active' : '' }}">
-                <div class="col-lg-3 col-md-6 col-sm-12 recipes-matched-search">
+                <div class="col-lg-4 col-md-6 col-sm-12 recipes-matched-search">
                     <div class="recipe-container">
                         <div class="ingredient-match" >
                             @foreach($occurrences as $key => $val)
