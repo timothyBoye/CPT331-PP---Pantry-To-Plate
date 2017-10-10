@@ -621,6 +621,103 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'step_number' => 1, 'description' => 'Mix all the cream cheese, crab meat, sugar, and salt in a bowl. Stir to blend well. Place about 1 tablespoon of the cream cheese filling in the middle of a wonton wrapper. Dab some water on the outer edges of the wonton wrapper and fold the two ends of the wrapper together. Fold the other two ends to make a tiny parcel pictured below.  Pinch to seal tight and make sure that there is no leakage.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'step_number' => 2, 'description' => 'Heat up a pot of oil for deep-frying and fry the crab rangoon until golden brown. Dish out with a strainer or slotted spoon, draining the excess oil by laying the crab rangoon on a dish lined with paper towels. Let the crab rangoon cools down a bit before serving them with sweet and sour sauce.', 'image_url' => ''));
 
+        //Pulled Chicken Teriyaki Donburi Bowl
+        /*Recipe::create(array('id' => 27,'name' => 'Pulled Chicken Teriyaki Donburi Bowl',
+           'short_description' => 'Tasty Japanese Rich Bowl',
+            'long_description' => 'Donburi is a Japanese rice bowl dish, where rice is topped with a variety of meats, fish and vegetables. We have kept it classic and topped ours with delicious pulled Chicken Teriyaki. You will pickle the ginger and radishes, to cut through the sweet and intense flavour of the teriyaki, which creates a perfectly balanced bowl. Chopsticks at the ready!',
+            'serving_size' => 2,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Japanese%')->value('id'),
+           'image_url' => '',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/chicken-recipes/pulled-chicken-teriyaki-donburi-bowl’));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'chicken thigh fillets')->value('id'),'quantity' => '4','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'basmati rice')->value('id'),'quantity' => '150','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'carrot')->value('id'),'quantity' => '100','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),'quantity' => '1','description' => 'clove','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'mirin rice wine')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', ‘tbsp’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'soy sauce')->value('id'),'quantity' => '24','description' => '','measurement_type_id' => MeasurementType::where('name', ‘ml’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'spring onion')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'ginger')->value('id'),'quantity' => '15','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'radish')->value('id'),'quantity' => '150','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'sesame seeds')->value('id'),'quantity' => '10','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'honey')->value('id'),'quantity' => '28','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'red wine vinegar')->value('id'),'quantity' => '2','description' => '','measurement_type_id' => MeasurementType::where('name', ‘tbsp’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'mange tout')->value('id'),'quantity' => '80','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'sugar')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'vegetable oil')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 1, 'description' => 'Boil a kettle; Add the basmati rice, 350ml [700ml] cold water and a generous pinch of salt to a pot with a lid and bring to the boil over a high heat; Once boiling, reduce the heat to very low and cook, covered, for 10-15 min or until all the water has absorbed and the rice is cooked; Once cooked, remove from the heat and keep covered until serving;', 'image_url' => ‘'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 2, 'description' => 'Meanwhile, peel the ginger (scrape the skin off with a teaspoon) and chop into thin matchsticks; Slice the radishes as finely as you can!;
+        ', 'image_url' => ‘'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 3, 'description' => 'Combine 1 tbsp [2 tbsp] sugar with 100ml [200ml] boiled water in a heatproof bowl and stir until the sugar has dissolved; Add the red wine vinegar, ginger matchsticks and sliced radishes and set aside until serving - these are your pickled vegetables;
+        ', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 4, 'description' => 'Meanwhile, heat a large, wide-based pan (preferably non-stick) with a matching lid, with a drizzle of vegetable oil over a medium-high heat; Once hot, add the chicken thigh fillets and season them with a pinch of salt; Cook for 3-4 min or until lightly browned on both sides; Meanwhile, peel and finely chop (or grate) the garlic;
+        ', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 5, 'description' => 'Once the chicken has browned, reduce the heat to medium and add the chopped garlic, soy sauce, mirin, honey and 2 tbsp [4 tbsp] boiled water; Cook, covered, for 8-10 min or until the chicken is cooked through and the sauce is thick and sticky;
+        ', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 6, 'description' => 'Meanwhile, top, tail, peel and grate the carrot[s]; Trim, then slice the spring onion[s] finely; Slice the mange tout in half lengthways; Add the sliced mange tout to a large bowl, cover with boiled water and set aside to cook;
+        ', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 7, 'description' => 'Once done, shred the chicken apart in the pan, using two forks - this technique is known as ‘pulling’; Once pulled, mix the chicken into the pan juices - this is your chicken teriyaki; Drain the pickled vegetables through a sieve; Drain the mange tout; Serve the chicken teriyaki over the cooked rice, with the grated carrot, pickled vegetables and mange tout to the side; Sprinkle the toasted sesame seeds over the chicken teriyaki and garnish with the chopped spring onion; Enjoy!;
+        ', 'image_url' => ''));
+        */
+
+
+        // Three Vegetable Miso & Sesame Ramen ----> Beware smart quotes when adding
+        /*
+          Recipe::create(array('id' => 28,'name' => 'Three Vegetable Miso & Sesame Ramen',
+            'short_description' => 'INSERT',
+            'long_description' => 'INSERT',
+            'serving_size' => XX,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Japanese%')->value('id'),
+            'image_url' => 'INSERT',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/vegetarian-recipes/three-vegetable-miso-sesame-ramen'));
+
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+         */
+
+
+        // Miso-Glazed Aubergine With Noodles ----> Beware smart quotes when adding
+        /*
+          Recipe::create(array('id' => 29,'name' => 'Miso-Glazed Aubergine With Noodles',
+            'short_description' => 'Yummy Japanese Noodles',
+            'long_description' => 'Japanese flavours are often deep, salty, sweet and hot but always balanced. This dish elevates aubergine to the next level. Once scored, its spongy surface absorbs the miso marinade and turns it into a glaze when baked.',
+            'serving_size' => XX,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Japanese%')->value('id'),
+            'image_url' => 'INSERT',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/vegetarian-recipes/miso-glazed-aubergine-with-noodles'));
+
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+         */
+
+        // Nutty Peanut & Vegetable Noodles ----> Beware smart quotes when adding
+        /*
+          Recipe::create(array('id' => 30,'name' => 'Nutty Peanut & Vegetable Noodles',
+            'short_description' => 'Tasty noodles',
+            'long_description' => 'A healthy yet tasty dish with colourful vegetables and silky noodles: crunchy, nutty and a little bit spicy – a simple, satisfying number for your weekday noodle fix.',
+            'serving_size' => XX,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Japanese%')->value('id'),
+            'image_url' => 'INSERT',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/vegetarian-recipes/nutty-peanut-vegetable-noodles'));
+
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+         */
 
 
     }
