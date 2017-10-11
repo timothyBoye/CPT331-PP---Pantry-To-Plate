@@ -11,7 +11,7 @@
 
                 <!--Begin Attempt at a back button to go home. -->
                 <div>
-                <a href="{{ route('home') }}"><---- Go Home</a><!--Working but needs better styling i.e. add glyphicon-->
+                    <a href="{{ route('home') }}"><---- Go Home</a><!--Working but needs better styling i.e. add glyphicon-->
                     <a href="{{ route('home') }}">Next Recipe ----></a><!--Need to implement scroll through to the next recipe option.-->
                 </div>
                 <!--End Attempt-->
