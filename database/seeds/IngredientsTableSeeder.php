@@ -426,6 +426,7 @@ class IngredientsTableSeeder extends Seeder
         \App\Ingredient::create(array('name' => 'white rice vinegar', 'ingredient_image_url' => 'white-rice-vinegar.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Liquid')->value('id')));
         \App\Ingredient::create(array('name' => 'wheat noodle nest', 'ingredient_image_url' => 'wheat-noodle-nest.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
         \App\Ingredient::create(array('name' => 'white miso paste', 'ingredient_image_url' => 'white-miso-paste.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Misc')->value('id')));
+        \App\Ingredient::create(array('name' => 'chestnut mushrooms', 'ingredient_image_url' => 'chestnut-mushrooms.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Vegetable')->value('id')));
 
 
         foreach ($ingredients as $ingredient) {
