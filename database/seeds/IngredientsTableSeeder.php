@@ -403,7 +403,20 @@ class IngredientsTableSeeder extends Seeder
             //misc
             array('name' => 'wonton wrappers', 'ingredient_category_id' => Config::get($misc), 'ingredient_image_url' => 'wontonwrappers.jpg'),
 
-        );
+
+
+
+    );
+
+        //To Be sorted into categories above
+        \App\Ingredient::create(array('name' => 'basmati rice', 'ingredient_image_url' => 'basmati-rice.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
+        \App\Ingredient::create(array('name' => 'sesame seeds', 'ingredient_image_url' => 'sesame-seeds.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Seeds')->value('id')));
+        \App\Ingredient::create(array('name' => 'red wine vinegar', 'ingredient_image_url' => 'red-wine-vinegar.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Liquid')->value('id')));
+        \App\Ingredient::create(array('name' => 'peanut butter', 'ingredient_image_url' => 'peanut-butter.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Nuts')->value('id')));
+        \App\Ingredient::create(array('name' => 'toasted sesame oil', 'ingredient_image_url' => 'toasted-sesame-oil.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Oil')->value('id')));
+        \App\Ingredient::create(array('name' => 'rice noodles', 'ingredient_image_url' => 'rice-noodles.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
+        \App\Ingredient::create(array('name' => 'peanut', 'ingredient_image_url' => 'peanut.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Nuts')->value('id')));
+
 
         foreach ($ingredients as $ingredient) {
 
