@@ -8,9 +8,25 @@
             </div>
 
             <div class="col-md-9">
-                <!--Begin Attempt at a back button to go home-->
-                <a href="{{ route('home') }}">Go Back</a> <!--Working but needs better styling-->
+
+                <!--Begin Attempt at a back button to go home. -->
+                <div>
+                <a href="{{ route('home') }}"><---- Go Home</a><!--Working but needs better styling i.e. add glyphicon-->
+                    <a href="{{ route('home') }}">Next Recipe ----></a><!--Need to implement scroll through to the next recipe option.-->
+                </div>
                 <!--End Attempt-->
+
+
+                <!-- Begin Image insertion-->
+                <div>
+                <img src="{{ URL::asset('img/recipes/'.($recipe->image_url == '' ? 'default.jpg' : $recipe->image_url)) }}" style="width: 30vw;"> <!--Working but requires better styling to format all picture to the same width and height-->
+                </div>
+                <!--End Image Insertion-->
+
+
+
+
+
                 <div class="row">
                     <h1>{{ $recipe->name }}</h1>
                     <q>{{ $recipe->long_description }}</q>
