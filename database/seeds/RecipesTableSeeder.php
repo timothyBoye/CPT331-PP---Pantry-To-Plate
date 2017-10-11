@@ -613,8 +613,25 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'step_number' => 1, 'description' => 'Mix all the cream cheese, crab meat, sugar, and salt in a bowl. Stir to blend well. Place about 1 tablespoon of the cream cheese filling in the middle of a wonton wrapper. Dab some water on the outer edges of the wonton wrapper and fold the two ends of the wrapper together. Fold the other two ends to make a tiny parcel pictured below.  Pinch to seal tight and make sure that there is no leakage.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'step_number' => 2, 'description' => 'Heat up a pot of oil for deep-frying and fry the crab rangoon until golden brown. Dish out with a strainer or slotted spoon, draining the excess oil by laying the crab rangoon on a dish lined with paper towels. Let the crab rangoon cools down a bit before serving them with sweet and sour sauce.', 'image_url' => ''));
 
+
+        // Cauliflower Fritters
+        \App\Recipe::create(array('id' => 27, 'name' => 'Cauliflower Fritters', 'short_description' => 'A sure winner!', 'long_description' => 'These crisp fritters studded with coriander seeds are a sure winner!', 'serving_size' => '8', 'cuisine_type_id' => CuisineType::where('name', '=', 'Indian')->value('id'), 'image_url' => 'cauliflower-fritters.jpeg'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'cauliflower')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '1', 'description' => 'large, or 2 small'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'chickpea flour')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '235', 'description' =>''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'peanut oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '2', 'description' =>''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'coriander seed')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '2', 'description' => 'crushed'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'cayenne pepper')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '0.25', 'description' =>''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'salt')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '2', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'water')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'ml')->value('id'), 'quantity' => '300', 'description' => 'cold'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'enough to fill a kadhai, chicken fryer or large casserole pan to a depth of 5cm'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'step_number' => 1, 'description' => 'Break and separate the cauliflower into florets. Cut the large florets into 2.5cm/1-inch pieces. Wash them under running cold water, drain and set aside.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'step_number' => 2, 'description' => 'Sift the flour into a large bowl. Rub oil or shortening into it. Stir in coriander, cayenne pepper and salt. Gradually add water in a thin, slow, steady stream, beating the mixture all the while with an electric beater, whisk or with your hands. The batter should be thin and smooth, like crepe batter. Transfer the batter to a large bowl.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'step_number' => 3, 'description' => 'Cover the bowl and let the batter rest for at least half an hour in a warm place.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'step_number' => 4, 'description' => 'Heath the oil in a kadhai, chicken fryer or large casserole pan until very hot but not smoking (190 degrees celsius). Dip cauliflower in batter and slip the coated floret into the hot oil. When several florets are added, the temperature of the oil will drop to around 150 degrees celsius. Keep the oil at this temperature by regulating the heat between med-high and med-low. This will allow the fritters to cook slowly and brown gently. Fry, stirring and turning the fritters until they are pale golden all over - about 10 to 12 minutes.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Cauliflower Fritters')->value('id'), 'step_number' => 5, 'description' => 'Transfer the fritters with a slotted spoon to a baking sheet lined with several sheets of kitchen paper, to drain. Continue with the rest of the cauliflower pieces the same way. Serve hot.', 'image_url' => ''));
+
         //Pulled Chicken Teriyaki Donburi Bowl
-        /*Recipe::create(array('id' => 27,'name' => 'Pulled Chicken Teriyaki Donburi Bowl',
+        /*Recipe::create(array('id' => 28,'name' => 'Pulled Chicken Teriyaki Donburi Bowl',
            'short_description' => 'Tasty Japanese Rich Bowl',
             'long_description' => 'Donburi is a Japanese rice bowl dish, where rice is topped with a variety of meats, fish and vegetables. We have kept it classic and topped ours with delicious pulled Chicken Teriyaki. You will pickle the ginger and radishes, to cut through the sweet and intense flavour of the teriyaki, which creates a perfectly balanced bowl. Chopsticks at the ready!',
             'serving_size' => 2,
@@ -655,7 +672,7 @@ class RecipesTableSeeder extends Seeder
 
         // Three Vegetable Miso & Sesame Ramen ----> Beware smart quotes when adding
         /*
-          Recipe::create(array('id' => 28,'name' => 'Three Vegetable Miso & Sesame Ramen',
+          Recipe::create(array('id' => 29,'name' => 'Three Vegetable Miso & Sesame Ramen',
             'short_description' => 'INSERT',
             'long_description' => 'INSERT',
             'serving_size' => XX,
@@ -675,7 +692,7 @@ class RecipesTableSeeder extends Seeder
 
         // Miso-Glazed Aubergine With Noodles ----> Beware smart quotes when adding
         /*
-          Recipe::create(array('id' => 29,'name' => 'Miso-Glazed Aubergine With Noodles',
+          Recipe::create(array('id' => 30,'name' => 'Miso-Glazed Aubergine With Noodles',
             'short_description' => 'Yummy Japanese Noodles',
             'long_description' => 'Japanese flavours are often deep, salty, sweet and hot but always balanced. This dish elevates aubergine to the next level. Once scored, its spongy surface absorbs the miso marinade and turns it into a glaze when baked.',
             'serving_size' => XX,
@@ -694,7 +711,7 @@ class RecipesTableSeeder extends Seeder
 
         // Nutty Peanut & Vegetable Noodles ----> Beware smart quotes when adding
         /*
-          Recipe::create(array('id' => 30,'name' => 'Nutty Peanut & Vegetable Noodles',
+          Recipe::create(array('id' => 31,'name' => 'Nutty Peanut & Vegetable Noodles',
             'short_description' => 'Tasty noodles',
             'long_description' => 'A healthy yet tasty dish with colourful vegetables and silky noodles: crunchy, nutty and a little bit spicy – a simple, satisfying number for your weekday noodle fix.',
             'serving_size' => XX,
