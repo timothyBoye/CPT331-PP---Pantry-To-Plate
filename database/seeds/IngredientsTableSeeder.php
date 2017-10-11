@@ -427,6 +427,11 @@ class IngredientsTableSeeder extends Seeder
         \App\Ingredient::create(array('name' => 'wheat noodle nest', 'ingredient_image_url' => 'wheat-noodle-nest.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
         \App\Ingredient::create(array('name' => 'white miso paste', 'ingredient_image_url' => 'white-miso-paste.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Misc')->value('id')));
         \App\Ingredient::create(array('name' => 'chestnut mushrooms', 'ingredient_image_url' => 'chestnut-mushrooms.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Vegetable')->value('id')));
+        \App\Ingredient::create(array('name' => 'chicken stock cube', 'ingredient_image_url' => 'chicken-stock-cube.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Misc')->value('id')));
+        \App\Ingredient::create(array('name' => 'pancetta lardons', 'ingredient_image_url' => 'pancetta-lardons.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
+        \App\Ingredient::create(array('name' => 'dried bay leaves', 'ingredient_image_url' => 'dried-bay-leaves.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Herb')->value('id')));
+        \App\Ingredient::create(array('name' => 'basa fillets', 'ingredient_image_url' => 'basa-fillets.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
+        \App\Ingredient::create(array('name' => 'caper buds', 'ingredient_image_url' => 'caper-buds.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Spice')->value('id')));
 
 
         foreach ($ingredients as $ingredient) {
