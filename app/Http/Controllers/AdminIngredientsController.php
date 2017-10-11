@@ -104,18 +104,14 @@ class AdminIngredientsController extends Controller
     }
 
 
-    public function seedString(Request $request)
+    public function seedString($id, Request $request)
     {
-        $imageName = $request["name"] . '.' .
-            $request->file('ingredient_image')->getClientOriginalExtension();
-        $file = $request->file('ingredient_image');
-        $file->move(base_path() . '/public/img/ingredients/', $imageName);
-
+        $ingredient = Ingredient::find($id);
         $response = "\App\Ingredient::create(array(";
-        $response = $response."'name' => '".$request["name"]."', ";
-        $category = IngredientCategory::where('id', '=', $imageName)->value('name');
-        $response = $response."'ingredient_category_id' => IngredientCategory::where('name', '=', '".$category."')->value('id'), ";
-        $response = $response."'ingredient_image_url' => '".$request["ingredient_image_url"]."'";
+        $response = $response."'name' => '$ingredient->name', ";
+        $response = $response."'ingredient_image_url' => '$ingredient->ingredient_image_url', ";
+        $category = IngredientCategory::where('id', '=', $ingredient->ingredient_category_id)->value('name');
+        $response = $response."'ingredient_category_id' => IngredientCategory::where('name', '=', '".$category."')->value('id')";
         $response = $response."));";
 
         return response()->json($response, 200);

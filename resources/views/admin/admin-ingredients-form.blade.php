@@ -3,25 +3,6 @@
 @section('head')
     <script>
         $().ready(function() {
-//            $('#seed_button').click(function(){
-//                var form = $(form)[0];
-//                var data = new FormData(form);
-//                $.ajax({
-//                    headers: {
-//                        'X-CSRF-TOKEN': $('input[name="_token"]').attr('value')
-//                    },
-//                    url: $('#seed_button').attr('data-api-controller-url'),
-//                    type: 'POST',
-//                    data: data,
-//                    cache: false,
-//                    contentType: false,
-//                    processData: false
-//                }).done(function(response){
-//                    $('#seed_file_string').html('<pre>'+response+'</pre>');
-//                }).fail(function(response){
-//                    $('#seed_file_string').html(response.responseText);
-//                });
-//            });
             $("#form").validate({
                 rules: {
                     name: {
@@ -105,8 +86,6 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        {{--SEEDer string is no longer working as I can't figure out file upload via ajaz--}}
-                        {{--<button type="button" id="seed_button" class="btn btn-info" data-api-controller-url="{{route('admin.ingredient.seeder')}}">Get Seed File String</button>--}}
                         <input class="btn btn-default" type="reset">
                     </div>
                 </form>

@@ -38,7 +38,7 @@ Route::get('/dashboard/newCuisine', 'AdminCuisinesController@addCuisine')->name(
 Route::get('/dashboard/cuisines/{id}', 'AdminCuisinesController@getCuisine')->name('admin.cuisine.get');
 Route::post('/dashboard/cuisines/', 'AdminCuisinesController@postCuisine')->name('admin.cuisine.post');
 Route::put('/dashboard/cuisines/{id}', 'AdminCuisinesController@putCuisine')->name('admin.cuisine.put');
-Route::post('/dashboard/cuisines/seeder', 'AdminCuisinesController@seedString')->name('admin.cuisine.seeder');
+Route::post('/dashboard/cuisines/seeder/{id}', 'AdminCuisinesController@seedString')->name('admin.cuisine.seeder');
 
 // Ingredients
 Route::get('/dashboard/ingredients', 'AdminIngredientsController@ingredients')->name('admin.ingredients');
@@ -47,7 +47,7 @@ Route::get('/dashboard/newIngredient', 'AdminIngredientsController@addIngredient
 Route::get('/dashboard/ingredients/{id}', 'AdminIngredientsController@getIngredient')->name('admin.ingredient.get');
 Route::post('/dashboard/ingredients/', 'AdminIngredientsController@postIngredient')->name('admin.ingredient.post');
 Route::put('/dashboard/ingredients/{id}', 'AdminIngredientsController@putIngredient')->name('admin.ingredient.put');
-Route::post('/dashboard/ingredients/seeder', 'AdminIngredientsController@seedString')->name('admin.ingredient.seeder');
+Route::post('/dashboard/ingredients/seeder/{id}', 'AdminIngredientsController@seedString')->name('admin.ingredient.seeder');
 
 // Measurements
 Route::get('/dashboard/measurements', 'AdminMeasurementsController@measurements')->name('admin.measurements');
@@ -56,7 +56,7 @@ Route::get('/dashboard/newMeasurement', 'AdminMeasurementsController@addMeasurem
 Route::get('/dashboard/measurements/{id}', 'AdminMeasurementsController@getMeasurement')->name('admin.measurement.get');
 Route::post('/dashboard/measurements/', 'AdminMeasurementsController@postMeasurement')->name('admin.measurement.post');
 Route::put('/dashboard/measurements/{id}', 'AdminMeasurementsController@putMeasurement')->name('admin.measurement.put');
-Route::post('/dashboard/measurements/seeder', 'AdminMeasurementsController@seedString')->name('admin.measurement.seeder');
+Route::post('/dashboard/measurements/seeder/{id}', 'AdminMeasurementsController@seedString')->name('admin.measurement.seeder');
 
 // Recipes
 Route::get('/dashboard/recipes', 'AdminRecipesController@recipes')->name('admin.recipes');
@@ -64,8 +64,10 @@ Route::get('/dashboard/recipes/{id}', 'AdminRecipesController@getRecipe')->name(
 Route::get('/dashboard/newRecipe', 'AdminRecipesController@addRecipe')->name('admin.recipe.new');
 Route::delete('/dashboard/recipes/{id}', 'AdminRecipesController@deleteRecipe')->name('admin.recipe.delete');
 Route::post('/dashboard/recipes/', 'AdminRecipesController@postRecipe')->name('admin.recipe.post');
+Route::post('/dashboard/recipes/ingredients/{id}', 'AdminRecipesController@postRecipeIngredients')->name('admin.recipe.ingredients.post');
+Route::post('/dashboard/recipes/methods/{id}', 'AdminRecipesController@postRecipeMethods')->name('admin.recipe.methods.post');
 Route::put('/dashboard/recipes/{id}', 'AdminRecipesController@putRecipe')->name('admin.recipe.put');
-Route::post('/dashboard/recipes/seeder', 'AdminRecipesController@seedString')->name('admin.recipe.seeder');
+Route::post('/dashboard/recipes/seeder/{id}', 'AdminRecipesController@seedString')->name('admin.recipe.seeder');
 
 // Users
 Route::get('/dashboard/users', 'AdminUsersController@users')->name('admin.users');
@@ -74,5 +76,5 @@ Route::get('/dashboard/newUser', 'AdminUsersController@addUser')->name('admin.us
 Route::get('/dashboard/users/{id}', 'AdminUsersController@getUser')->name('admin.user.get');
 Route::post('/dashboard/users/', 'AdminUsersController@postUser')->name('admin.user.post');
 Route::put('/dashboard/users/{id}', 'AdminUsersController@putUser')->name('admin.user.put');
-Route::post('/dashboard/users/seeder', 'AdminUsersController@seedString')->name('admin.user.seeder');
+Route::post('/dashboard/users/seeder/{id}', 'AdminUsersController@seedString')->name('admin.user.seeder');
 

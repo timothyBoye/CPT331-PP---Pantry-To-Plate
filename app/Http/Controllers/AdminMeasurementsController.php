@@ -81,11 +81,12 @@ class AdminMeasurementsController extends Controller
     }
 
 
-    public function seedString(Request $request)
+    public function seedString($id, Request $request)
     {
+        $measure = MeasurementType::find($id);
         $response = "\App\MeasurementType::create(array(";
-        $response = $response."'name' => '".$request["name"]."', ";
-        $response = $response."'comparable_size' => '".$request["comparable_size"]."'";
+        $response = $response."'name' => '$measure->name', ";
+        $response = $response."'comparable_size' => '$measure->comparable_size'";
         $response = $response."));";
 
         return response()->json($response, 200);

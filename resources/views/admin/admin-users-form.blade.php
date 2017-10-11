@@ -3,17 +3,6 @@
 @section('head')
     <script>
         $().ready(function() {
-            $('#seed_button').click(function(){
-                $.ajax({
-                    url: $('#seed_button').attr('data-api-controller-url'),
-                    type: 'POST',
-                    data: $(form).serialize()
-                }).done(function(response){
-                    $('#seed_file_string').html('<pre>'+response+'</pre>');
-                }).fail(function(response){
-                    $('#seed_file_string').html(response.responseText);
-                });
-            });
             $("#form").validate({
                 rules: {
                     name: {
@@ -134,7 +123,6 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" id="seed_button" class="btn btn-info" data-api-controller-url="{{route('admin.user.seeder')}}">Get Seed File String</button>
                         <input class="btn btn-default" type="reset">
                     </div>
                 </form>

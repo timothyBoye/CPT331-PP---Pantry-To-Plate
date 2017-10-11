@@ -30,7 +30,7 @@ class AdminRecipeFormRequest extends FormRequest
             'long_description' => 'required',
             'serving_size' => 'required|integer',
             'cuisine_type_id' => 'required|exists:cuisine_types,id|integer',
-            'image_url' => 'required',
+            'image' => 'image',
             'calories' => 'integer|nullable',
             'mg_sodium' => 'integer|nullable',
             'gram_total_fat' => 'numeric|nullable',
