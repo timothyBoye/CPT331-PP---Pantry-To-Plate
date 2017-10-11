@@ -432,6 +432,8 @@ class IngredientsTableSeeder extends Seeder
         \App\Ingredient::create(array('name' => 'dried bay leaves', 'ingredient_image_url' => 'dried-bay-leaves.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Herb')->value('id')));
         \App\Ingredient::create(array('name' => 'basa fillets', 'ingredient_image_url' => 'basa-fillets.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
         \App\Ingredient::create(array('name' => 'caper buds', 'ingredient_image_url' => 'caper-buds.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Spice')->value('id')));
+        \App\Ingredient::create(array('name' => 'chorizo', 'ingredient_image_url' => 'chorizo.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
+        \App\Ingredient::create(array('name' => 'apple cider vinegar', 'ingredient_image_url' => 'apple-cider-vinegar.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Liquid')->value('id')));
 
 
         foreach ($ingredients as $ingredient) {
