@@ -423,6 +423,9 @@ class IngredientsTableSeeder extends Seeder
         \App\Ingredient::create(array('name' => 'toasted sesame oil', 'ingredient_image_url' => 'toasted-sesame-oil.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Oil')->value('id')));
         \App\Ingredient::create(array('name' => 'rice noodles', 'ingredient_image_url' => 'rice-noodles.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
         \App\Ingredient::create(array('name' => 'peanut', 'ingredient_image_url' => 'peanut.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Nuts')->value('id')));
+        \App\Ingredient::create(array('name' => 'white rice vinegar', 'ingredient_image_url' => 'white-rice-vinegar.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Liquid')->value('id')));
+        \App\Ingredient::create(array('name' => 'wheat noodle nest', 'ingredient_image_url' => 'wheat-noodle-nest.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
+        \App\Ingredient::create(array('name' => 'white miso paste', 'ingredient_image_url' => 'white-miso-paste.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Misc')->value('id')));
 
 
         foreach ($ingredients as $ingredient) {
