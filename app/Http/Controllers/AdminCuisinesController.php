@@ -24,7 +24,7 @@ class AdminCuisinesController extends Controller
     public function cuisines(Request $request)
     {
         $title = "Cuisines";
-        $cuisines = CuisineType::paginate(10);
+        $cuisines = CuisineType::all();
         if (session('cuisine')) {
             $cuisine = session('cuisine');
             return view('admin.admin-cuisines', compact('title', 'cuisines', 'cuisine'));
@@ -78,10 +78,11 @@ class AdminCuisinesController extends Controller
     }
 
 
-    public function seedString(Request $request)
+    public function seedString($id, Request $request)
     {
+        $cuisine = CuisineType::find($id);
         $response = "\App\CuisineType::create(array(";
-        $response = $response."'name' => '".$request["name"]."'";
+        $response = $response."'name' => '$cuisine->name'";
         $response = $response."));";
 
         return response()->json($response, 200);

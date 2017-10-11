@@ -3,26 +3,12 @@
 @section('head')
     <script>
         $().ready(function() {
-            $('#seed_button').click(function(){
-                $.ajax({
-                    url: $('#seed_button').attr('data-api-controller-url'),
-                    type: 'POST',
-                    data: $(form).serialize()
-                }).done(function(response){
-                    $('#seed_file_string').html('<pre>'+response+'</pre>');
-                }).fail(function(response){
-                    $('#seed_file_string').html(response.responseText);
-                });
-            });
             $("#form").validate({
                 rules: {
                     name: {
                         required: true,
-                        minlength: 3
-                    },
-                    ingredient_image_url: {
-                        required: true,
-                        minlength: 5
+                        minlength: 3,
+                        alpha_international: true
                     },
                     ingredient_category_id: {
                         required: true,
@@ -33,10 +19,6 @@
                     name: {
                         required: "Please enter the ingredient's name",
                         minlength: "A name must be at least 3 characters"
-                    },
-                    ingredient_image_url: {
-                        required: "Please enter the ingredient's image name (include the file extension)",
-                        minlength: "An image name must be at least 5 characters (include the file extension)"
                     },
                     ingredient_category_id: {
                         required: "Please select the ingredient's category",
@@ -64,7 +46,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-success">
-                <form role="form" action="{{ isset($ingredient) ? route('admin.ingredient.put', ['id' => $ingredient->id]) : route('admin.ingredient.post') }}" id="form" method="post">
+                <form role="form" action="{{ isset($ingredient) ? route('admin.ingredient.put', ['id' => $ingredient->id]) : route('admin.ingredient.post') }}" id="form" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @if(isset($ingredient))
                         {{ method_field('PUT') }}
@@ -78,11 +60,11 @@
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                             @endif
                         </div>
-                        <div class="form-group {{ $errors->has('ingredient_image_url') ? 'has-error' : '' }}">
-                            <label for="ingredient_image_url">Image name</label>
-                            <input type="text" class="form-control" id="ingredient_image_url" name="ingredient_image_url" placeholder="Enter image name" value="{{ isset($ingredient) ? $ingredient->ingredient_image_url : old('ingredient_image_url')  }}">
-                            @if ($errors->has('ingredient_image_url'))
-                                <span class="help-block"><strong>{{ $errors->first('ingredient_image_url') }}</strong></span>
+                        <div class="form-group {{ $errors->has('ingredient_image') ? 'has-error' : '' }}">
+                            <label for="ingredient_image">Image</label>
+                            <input type="file" class="form-control" id="ingredient_image" name="ingredient_image" >
+                            @if ($errors->has('ingredient_image'))
+                                <span class="help-block"><strong>{{ $errors->first('ingredient_image') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group {{ $errors->has('ingredient_category_id') ? 'has-error' : '' }}">
@@ -104,7 +86,6 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" id="seed_button" class="btn btn-info" data-api-controller-url="{{route('admin.ingredient.seeder')}}">Get Seed File String</button>
                         <input class="btn btn-default" type="reset">
                     </div>
                 </form>

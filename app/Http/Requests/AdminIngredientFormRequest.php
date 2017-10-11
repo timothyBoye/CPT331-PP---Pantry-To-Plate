@@ -28,10 +28,11 @@ class AdminIngredientFormRequest extends FormRequest
             'name' => [
                 'required',
                 'max:255',
+                'alpha_international',
                 Rule::unique('ingredients')->ignore($this->id)
                 ],
             'ingredient_category_id' => 'required|exists:ingredient_categories,id|integer',
-            'ingredient_image_url' => 'required|max:255',
+            'ingredient_image' => 'image',
         ];
     }
 }

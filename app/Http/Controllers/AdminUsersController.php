@@ -26,7 +26,7 @@ class AdminUsersController extends Controller
     public function users(Request $request)
     {
         $title = "Users";
-        $users = User::paginate(10);
+        $users = User::all();
         if (session('user')) {
             $user = session('user');
             return view('admin.admin-users', compact('title', 'users', 'user'));
@@ -89,13 +89,14 @@ class AdminUsersController extends Controller
         }
     }
 
-    public function seedString(Request $request)
+    public function seedString($id, Request $request)
     {
+        $user = User::find($id);
         $response = "\App\User::create(array(";
-        $response = $response."'name' => '".$request["name"]."', ";
-        $response = $response."'email' => '".$request["email"]."', ";
-        $response = $response."'password' => Hash::make('".$request["password"]."'), ";
-        $userRole = UserRole::where('id', '=', $request["user_role_id"])->value('user_role_name');
+        $response = $response."'name' => '$user->name', ";
+        $response = $response."'email' => '$user->email', ";
+        $response = $response."'password' => '$user->password', ";
+        $userRole = UserRole::where('id', '=', $user->user_role_id)->value('user_role_name');
         $response = $response."'user_role_id' => UserRole::where('user_role_name', '=', '".$userRole."')->value('id')";
         $response = $response."));";
 

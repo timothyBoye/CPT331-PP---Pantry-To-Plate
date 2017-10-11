@@ -36,10 +36,17 @@
     <script src="{{ asset('admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/dist/js/jquery.validate.js') }}"></script>
     <script src="{{ asset('admin/dist/js/additional-methods.js') }}"></script>
+    <script src="{{ asset('admin/dist/js/admin.js') }}"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="{{ asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <!-- AdminLTE App -->
     <script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+    <!-- DataTables -->
+    <script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
     @yield('head')
 </head>
 <!--
@@ -105,8 +112,12 @@ desired effect
 
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Log out</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
                                 </div>
+
                             </li>
                         </ul>
                     </li>

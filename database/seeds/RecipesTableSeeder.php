@@ -45,7 +45,6 @@ class RecipesTableSeeder extends Seeder
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Lettuce Salad')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'grape tomatoes')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '100', 'description' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Lettuce Salad')->value('id'), 'step_number' => 1, 'description' => 'Roughly chop lettuce and halve tomatoes.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Lettuce Salad')->value('id'), 'step_number' => 2, 'description' => 'Place lettuce and tomato into a bowl then crumble over the feta and serve.', 'image_url' => ''));
-        \App\NutritionalInfoPanel::create(array('recipe_id' => Recipe::where('name', '=', 'Lettuce Salad')->value('id'), 'gram_total_fat' => '25.0', 'gram_saturated_fat' => '10.0', 'gram_total_carbohydrates' => '58.0', 'gram_sugars' => '12.0', 'gram_fiber' => '6.0', 'mg_sodium' => '1600', 'gram_protein' => '35.0', 'calories' => '35'));
 
 
         Recipe::create(array('id' => 3,'name' => 'Easy Pizza Sauce',
@@ -368,7 +367,7 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Arugula Pesto Pasta Salad')->value('id'), 'step_number' => 2, 'description' => 'In a food processor combine the first 6 ingredients and process until smooth.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Arugula Pesto Pasta Salad')->value('id'), 'step_number' => 3, 'description' => 'Combine the cooked pasta with the pesto, tomatoes and mozzarella. Serve chilled.', 'image_url' => ''));
 
-        
+
         Recipe::create(array('id' => 18,'name' => 'Creamy Two-Mushroom Risotto',
             'short_description' => 'Without fail, the best Risotto we have ever created',
             'long_description' => 'This decadent mushroom risotto is fool-proof. The trick is to cook the mushrooms in a hot pan first, then bake them in the oven so that their flavour intensifies. Tearing the mushrooms rather than slicing them not only saves time but gives a lovely, rustic aesthetic, so theres not mushroom for error!',
@@ -399,8 +398,8 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Creamy Two-Mushroom Risotto')->value('id'), 'step_number' => 7, 'description' => 'Once cooked, remove the risotto from the heat and stir in the grated cheese, clotted cream and half of the mushrooms (keep the other half for garnish). Tip: add a little more boiled water if your risotto is too clumpy - a risotto should have an almost porridge-like consistency. Season with pepper.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Creamy Two-Mushroom Risotto')->value('id'), 'step_number' => 8, 'description' => 'Serve the risotto in bowls and top with the remaining mushrooms, a sprinkle of the remaining chives and a good grind of pepper. Enjoy!', 'image_url' => ''));
 
-        
-        
+
+
         // Chops With Minted Peas and Wedges
         \App\Recipe::create(array('id' => 19, 'name' => 'Chops With Minted Peas and Wedges',
              'short_description' => 'Quick and easy lamb with wedges and peas',
@@ -418,7 +417,6 @@ class RecipesTableSeeder extends Seeder
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'garlic')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '2', 'description' => 'minced'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'lamb chops')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '600', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'peas')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '400', 'description' => ''));
-        \App\NutritionalInfoPanel::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'gram_total_fat' => '26.5', 'gram_saturated_fat' => '6.7', 'gram_total_carbohydrates' => '25.7', 'gram_sugars' => '5.6', 'gram_fiber' => '', 'mg_sodium' => '185', 'gram_protein' => '80.2', 'calories' => '683'));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'step_number' => 1, 'description' => 'Preheat oven to 180C. Meanwhile prick potatoes all over with a fork and place in microwave on high for 4-5 minutes or until they are soft on the outside but firm in the middle. When cool enough to handle, cut into wedges.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'step_number' => 2, 'description' => 'Place the wedges on a baking tray, drizzle with half the oil and season with salt and pepper. Toss to coat evenly and bake for 15-20 minutes or until crispy.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Chops With Minted Peas and Wedges')->value('id'), 'step_number' => 3, 'description' => 'While the potatoes are cooking, bring a saucepan of salted water to boil. Next strip the mint leaves from the stalks and roughly chop, grate or crush the garlic, finely grate lemon zest and juice the flesh.', 'image_url' => ''));
@@ -445,7 +443,6 @@ class RecipesTableSeeder extends Seeder
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'parmesan cheese')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '100', 'description' => 'grated'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'black pepper')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '1', 'description' => 'to taste'));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'baby spinach')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '150', 'description' => ''));
-        \App\NutritionalInfoPanel::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'gram_total_fat' => '39', 'gram_saturated_fat' => '15.7', 'gram_total_carbohydrates' => '39.3', 'gram_sugars' => '11.5', 'gram_fiber' => '', 'mg_sodium' => '954', 'gram_protein' => '85.2', 'calories' => '872'));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'step_number' => 1, 'description' => 'Three quarter fill a saucepan with water and bring to a boil on high heat. Add fettuccine and a pinch of salt and cook for 10 minutes or until al dente.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'step_number' => 2, 'description' => 'Meanwhile, thinly slice the onion, slice the mushrooms and finely grate the garlic.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pork and Mushroom Alfredo')->value('id'), 'step_number' => 3, 'description' => 'Place a large frypan on high heat. Add oil and pork and cook for 2 minutes or until golden brown. Transfer pork to a plate.', 'image_url' => ''));
@@ -479,7 +476,6 @@ class RecipesTableSeeder extends Seeder
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'garlic powder')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '1', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'salt')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '1', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'chili flakes')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '0.5', 'description' => ''));
-        \App\NutritionalInfoPanel::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'gram_total_fat' => '29.4', 'gram_saturated_fat' => '4.6', 'gram_total_carbohydrates' => '47.1', 'gram_sugars' => '11.2', 'gram_fiber' => '', 'mg_sodium' => '107', 'gram_protein' => '44.8', 'calories' => '650'));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'step_number' => 1, 'description' => 'Combine couscous, cranberries, and a pinch of salt in a heatproof bowl and then cover with boiling water to approximately a centimetre above the level of the couscous. Cover with a plate and set aside.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'step_number' => 2, 'description' => 'Meanwhile, halve the tomatoes, chop the walnuts and parsley, shred the mint, finely grate the lemon zest and juice the lemon.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Montreal Steak with Walnut & Cranberry Couscous')->value('id'), 'step_number' => 3, 'description' => 'Combine pepper, salt, mustard, dill, coriander, garlic powder and chilli flakes to form the Montreal spice mix. Season the steaks with approximately 3 teaspoons of spice mix or to taste, coat all sides.', 'image_url' => ''));
@@ -510,7 +506,6 @@ class RecipesTableSeeder extends Seeder
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'smoked paprika')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '1', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'corn tortillas')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '8', 'description' => ''));
         \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'mozzarella')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '90', 'description' => ''));
-        \App\NutritionalInfoPanel::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'gram_total_fat' => '37.7', 'gram_saturated_fat' => '10.7', 'gram_total_carbohydrates' => '20.8', 'gram_sugars' => '13', 'gram_fiber' => '', 'mg_sodium' => '398', 'gram_protein' => '50.3', 'calories' => '645'));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'step_number' => 1, 'description' => 'Preheat the oven to 180C.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'step_number' => 2, 'description' => 'Thinly slice onion, cabbage, radish, spring onion and chilli, halve the tomatoes, finely chop the coriander, grate the lemon zest and juice the lemon.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'step_number' => 3, 'description' => 'Place a large frypan on medium heat and add some oil, Add onion to pan and cook for 2 minutes or until softened. Add chilli and diced salmon and cook for 2 minutes, turning to sear all sides. Stir in tomatoes, oregano, and paprika. Season well with salt and pepper, then transfer to a plate.', 'image_url' => ''));
@@ -518,27 +513,76 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'step_number' => 5, 'description' => 'While the tortillas bake combine cabbage, radish, spring onion, coriander, lemon zest, lemon juice and remaining oil in a mixing bowl, toss then season with salt and pepper.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Salmon and Mozzarella Taco')->value('id'), 'step_number' => 6, 'description' => 'Serve tacos with salad.', 'image_url' => ''));
 
-        Recipe::create(array('id' => 23,'name' => 'German Onion Tart',
+
+        // Kung Pao Chicken
+        \App\Recipe::create(array('id' => 23, 'name' => 'Honey Walnut Shrimp',
+            'short_description' => 'Healthy homemade Chinese chicken in savory and spicy Kung Pao sauce',
+            'long_description' => 'Kung Pao Chicken recipe is easy, authentic and delicious. The Kung Pao sauce is a bit spicy so feel free to cut down the quantity of dried chilies in the recipe. The secret ingredient of Kung Pao chicken is the Chinese vinegar in the sauce. You may use rice vinegar, red wine vinegar or apple cider vinegar for equally delicious result.',
+            'serving_size' => '2',
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Chinese%')->value('id'),
+            'image_url' => 'honeywalnutshrimpwalnutprawns.jpg',
+            'recipe_source' => 'RasaMalaysia    '));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'prawn')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'lb')->value('id'), 'quantity' => '1', 'description' => 'peeled and deveined'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'walnut')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1/2', 'description' => 'halves'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'mayonnaise')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '3', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'honey')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '1/2', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'condensed milk')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '1/2', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'lemon juice')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '1', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'egg')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '1', 'description' => 'white'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'corn starch')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1/2', 'description' => 'for coating the shrimp'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'for deep frying'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'sugar')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1/2', 'description' => 'for Caramel Glaze'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'water')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1/2', 'description' => 'for Caramel Glaze'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'step_number' => 1, 'description' => 'Add the egg white to the shrimp, stir to combine well. Rinse the walnut halves with water, drain and set aside.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'step_number' => 2, 'description' => 'In a bowl, stir together the mayonnaise, honey, condensed milk and lemon juice. Mix well and set aside.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'step_number' => 3, 'description' => 'Prepare the Caramel Glaze by heating up 1/2 cup of water until it boils. Add in the sugar and keep stirring until it turns golden color. Add the walnut halves into the caramel. Lower the heat for another 1-2 minutes, then remove the walnuts and place them on a piece of parchment paper to dry. Make sure the walnuts are not sticking together. (DO NOT use regular paper towels as the walnut halves will stick to the paper.)', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Honey Walnut Shrimp')->value('id'), 'step_number' => 4, 'description' => 'Heat up the oil in a pan or wok. Once the oil is heated, coat the shrimp with the corn starch generously. Shake off the excess corn starch before frying the shrimp. When the shrimp is cooked, remove them from the oil and drain on paper towels. Add the shrimp and toss well with the mayonnaise sauce. Transfer the honey walnut shrimp to a serving platter and top the shrimp with the candied walnuts and serve immediately.', 'image_url' => ''));
+
+        // Fried Rice
+        \App\Recipe::create(array('id' => 24, 'name' => 'Fried Rice',
+            'short_description' => 'Healthy homemade Chinese chicken in savory and spicy Kung Pao sauce',
+            'long_description' => 'Kung Pao Chicken recipe is easy, authentic and delicious. The Kung Pao sauce is a bit spicy so feel free to cut down the quantity of dried chilies in the recipe. The secret ingredient of Kung Pao chicken is the Chinese vinegar in the sauce. You may use rice vinegar, red wine vinegar or apple cider vinegar for equally delicious result.',
+            'serving_size' => '2',
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Chinese%')->value('id'),
+            'image_url' => 'friedrice2-1.jpg',
+            'recipe_source' => 'RasaMalaysia'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'garlic')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '2', 'description' => 'cloves minced'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'chicken breast')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '120', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'prawn')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '120', 'description' => 'peeled, shelled and deveined'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'mixed vegetables')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '1', 'description' => 'frozen thawed'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'rice')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '340', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'fish sauce')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '1', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'egg')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '2', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'soy sauce')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '2', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '2', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oyster sauce')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'teaspoon')->value('id'), 'quantity' => '1/4', 'description' => 'for Caramel Glaze'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'white pepper')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'cup')->value('id'), 'quantity' => '3', 'description' => 'dashes'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'salt')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'to taste'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'step_number' => 1, 'description' => 'Heat up a wok or pan with two tablespoons of oil. Add the garlic and stir fry until aromatic, follow by chicken, shrimp, and mixed vegetables. Stir fry until the chicken and shrimp are half cooked. Add in the rice and stir well with the ingredients. Add the fish sauce, soy sauce, oyster sauce, white pepper and continue to stir the fried rice for a couple of minutes.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Fried Rice')->value('id'), 'step_number' => 2, 'description' => 'Using the spatula, push the rice to the side of the wok and make a “well” in the middle of the fried rice. Pour the beaten eggs in the “well.” Wait for 30 seconds and then cover the eggs with the fried rice. Leave it for 30 seconds to 1 minute and continue to stir-fry so the eggs form into small pieces and mix well with the fried rice. Add in salt to taste and do some quick stirs, dish out and serve hot.', 'image_url' => ''));
+
+
+        Recipe::create(array('id' => 25,'name' => 'German Onion Tart',
             'short_description' => 'Onion tart is served in the southern part of Germany at wine festivals.',
             'long_description' => 'Onion tart (zwiebelkuchen) is served in the southern part of Germany at wine festivals. To achieve the perfect flavour use smoked speck, rather than bacon.',
             'serving_size' => 4,
             'cuisine_type_id' => CuisineType::where('name', 'like', '%German%')->value('id'),
             'image_url' => 'german_onion_tart.jpg',
             'recipe_source' => 'http://www.sbs.com.au/food/recipes/german-onion-tart-zwiebelkuchen'));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'butter')->value('id'),'quantity' => '80','description' => 'cold, diced','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'plain flour')->value('id'),'quantity' => '175','description' => '','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'water')->value('id'),'quantity' => '40','description' => 'iced','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),'quantity' => '1','description' => 'half tsp for pastry, half tsp for filling','measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'onion')->value('id'),'quantity' => '350','description' => 'or 2 medium onions','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'speck')->value('id'),'quantity' => '70','description' => 'smoked, rind removed, cut into 5mm dice','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'cheese')->value('id'),'quantity' => '40','description' => 'such as Gruyere, grated','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'milk')->value('id'),'quantity' => '100','description' => '','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'cream')->value('id'),'quantity' => '100','description' => '','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'flour')->value('id'),'quantity' => '1.5','description' => '','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'white pepper')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'nutmeg')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
-        IngredientRecipeMapping::create(array('recipe_id' => 23,'ingredient_id' => Ingredient::where('name', 'paprika')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'butter')->value('id'),'quantity' => '80','description' => 'cold diced','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'plain flour')->value('id'),'quantity' => '175','description' => '','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'water')->value('id'),'quantity' => '40','description' => 'iced','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),'quantity' => '1','description' => 'half tsp for pastry, half tsp for filling','measurement_type_id' => MeasurementType::where('name', 'teaspoon')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'onion')->value('id'),'quantity' => '350','description' => 'or 2 medium onions','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'speck')->value('id'),'quantity' => '70','description' => 'smoked, rind removed, cut into 5mm dice','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'cheese')->value('id'),'quantity' => '40','description' => 'such as Gruyere, grated','measurement_type_id' => MeasurementType::where('name', 'gram')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'milk')->value('id'),'quantity' => '100','description' => '','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'cream')->value('id'),'quantity' => '100','description' => '','measurement_type_id' => MeasurementType::where('name', 'ml')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'egg')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'flour')->value('id'),'quantity' => '1.5','description' => '','measurement_type_id' => MeasurementType::where('name', 'tablespoon')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'white pepper')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'nutmeg')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => 25,'ingredient_id' => Ingredient::where('name', 'paprika')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', 'pinch')->value('id')));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 1, 'description' => 'To make the dough, combine butter and flour in a bowl. Use your hands to rub in the butter and lard into the flour until it resembles fine breadcrumbs.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 2, 'description' => 'Add water and salt, quickly knead until smooth.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 3, 'description' => 'Roll out dough on a lightly floured bench.', 'image_url' => ''));
@@ -551,5 +595,122 @@ class RecipesTableSeeder extends Seeder
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 10, 'description' => 'Pour the onion and speck mixture onto the pastry.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 11, 'description' => 'Combine milk, cream, egg and flour in a bowl. Stir with a whisk to combine, then add salt, white pepper, nutmeg and paprika.', 'image_url' => ''));
         \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'German Onion Tart')->value('id'), 'step_number' => 12, 'description' => 'Pour milk mixture over the onions and speck and bake for 40 minutes, or until cooked through.', 'image_url' => ''));
+
+        // Crab Rangoon
+        \App\Recipe::create(array('id' => 26, 'name' => 'Crab Rangoon',
+            'short_description' => 'crab rangoon recipe with cream cheese and wonton wrapper',
+            'long_description' => 'Crab Rangoon is an appetizer found in many Chinese restaurants in the United States. A classic American creation, crab rangoon is basically cream cheese wontons with tiny bits of crab meat, deep-fried to golden perfection.',
+            'serving_size' => '20',
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Chinese%')->value('id'),
+            'image_url' => 'crab_rangoon1.jpg',
+            'recipe_source' => 'RasaMalaysia'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'cream cheese')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '230', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'crab')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'gram')->value('id'), 'quantity' => '60', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'sugar')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', 'tablespoon')->value('id'), 'quantity' => '1', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'wonton wrappers')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '20', 'description' => ''));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'oil')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'for deep frying'));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'ingredient_id' => Ingredient::where('name', '=', 'salt')->value('id'), 'measurement_type_id' => MeasurementType::where('name', '=', '')->value('id'), 'quantity' => '', 'description' => 'pinch'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'step_number' => 1, 'description' => 'Mix all the cream cheese, crab meat, sugar, and salt in a bowl. Stir to blend well. Place about 1 tablespoon of the cream cheese filling in the middle of a wonton wrapper. Dab some water on the outer edges of the wonton wrapper and fold the two ends of the wrapper together. Fold the other two ends to make a tiny parcel pictured below.  Pinch to seal tight and make sure that there is no leakage.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Crab Rangoon')->value('id'), 'step_number' => 2, 'description' => 'Heat up a pot of oil for deep-frying and fry the crab rangoon until golden brown. Dish out with a strainer or slotted spoon, draining the excess oil by laying the crab rangoon on a dish lined with paper towels. Let the crab rangoon cools down a bit before serving them with sweet and sour sauce.', 'image_url' => ''));
+
+        //Pulled Chicken Teriyaki Donburi Bowl
+        /*Recipe::create(array('id' => 27,'name' => 'Pulled Chicken Teriyaki Donburi Bowl',
+           'short_description' => 'Tasty Japanese Rich Bowl',
+            'long_description' => 'Donburi is a Japanese rice bowl dish, where rice is topped with a variety of meats, fish and vegetables. We have kept it classic and topped ours with delicious pulled Chicken Teriyaki. You will pickle the ginger and radishes, to cut through the sweet and intense flavour of the teriyaki, which creates a perfectly balanced bowl. Chopsticks at the ready!',
+            'serving_size' => 2,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Japanese%')->value('id'),
+           'image_url' => '',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/chicken-recipes/pulled-chicken-teriyaki-donburi-bowl’));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'chicken thigh fillets')->value('id'),'quantity' => '4','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'basmati rice')->value('id'),'quantity' => '150','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'carrot')->value('id'),'quantity' => '100','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'garlic')->value('id'),'quantity' => '1','description' => 'clove','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'mirin rice wine')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', ‘tbsp’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'soy sauce')->value('id'),'quantity' => '24','description' => '','measurement_type_id' => MeasurementType::where('name', ‘ml’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'spring onion')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'ginger')->value('id'),'quantity' => '15','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'radish')->value('id'),'quantity' => '150','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'sesame seeds')->value('id'),'quantity' => '10','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'honey')->value('id'),'quantity' => '28','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'red wine vinegar')->value('id'),'quantity' => '2','description' => '','measurement_type_id' => MeasurementType::where('name', ‘tbsp’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'mange tout')->value('id'),'quantity' => '80','description' => '','measurement_type_id' => MeasurementType::where('name', ‘gram’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'salt')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'sugar')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\IngredientRecipeMapping::create(array('recipe_id' => 27,'ingredient_id' => Ingredient::where('name', 'vegetable oil')->value('id'),'quantity' => '','description' => '','measurement_type_id' => MeasurementType::where('name', ‘’)->value(‘id’)));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 1, 'description' => 'Boil a kettle; Add the basmati rice, 350ml [700ml] cold water and a generous pinch of salt to a pot with a lid and bring to the boil over a high heat; Once boiling, reduce the heat to very low and cook, covered, for 10-15 min or until all the water has absorbed and the rice is cooked; Once cooked, remove from the heat and keep covered until serving;', 'image_url' => ‘'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 2, 'description' => 'Meanwhile, peel the ginger (scrape the skin off with a teaspoon) and chop into thin matchsticks; Slice the radishes as finely as you can!;
+        ', 'image_url' => ‘'));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 3, 'description' => 'Combine 1 tbsp [2 tbsp] sugar with 100ml [200ml] boiled water in a heatproof bowl and stir until the sugar has dissolved; Add the red wine vinegar, ginger matchsticks and sliced radishes and set aside until serving - these are your pickled vegetables;
+        ', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 4, 'description' => 'Meanwhile, heat a large, wide-based pan (preferably non-stick) with a matching lid, with a drizzle of vegetable oil over a medium-high heat; Once hot, add the chicken thigh fillets and season them with a pinch of salt; Cook for 3-4 min or until lightly browned on both sides; Meanwhile, peel and finely chop (or grate) the garlic;
+        ', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 5, 'description' => 'Once the chicken has browned, reduce the heat to medium and add the chopped garlic, soy sauce, mirin, honey and 2 tbsp [4 tbsp] boiled water; Cook, covered, for 8-10 min or until the chicken is cooked through and the sauce is thick and sticky;
+        ', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 6, 'description' => 'Meanwhile, top, tail, peel and grate the carrot[s]; Trim, then slice the spring onion[s] finely; Slice the mange tout in half lengthways; Add the sliced mange tout to a large bowl, cover with boiled water and set aside to cook;
+        ', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Pulled Chicken Teriyaki Donburi Bowl')->value('id'), 'step_number' => 7, 'description' => 'Once done, shred the chicken apart in the pan, using two forks - this technique is known as ‘pulling’; Once pulled, mix the chicken into the pan juices - this is your chicken teriyaki; Drain the pickled vegetables through a sieve; Drain the mange tout; Serve the chicken teriyaki over the cooked rice, with the grated carrot, pickled vegetables and mange tout to the side; Sprinkle the toasted sesame seeds over the chicken teriyaki and garnish with the chopped spring onion; Enjoy!;
+        ', 'image_url' => ''));
+        */
+
+
+        // Three Vegetable Miso & Sesame Ramen ----> Beware smart quotes when adding
+        /*
+          Recipe::create(array('id' => 28,'name' => 'Three Vegetable Miso & Sesame Ramen',
+            'short_description' => 'INSERT',
+            'long_description' => 'INSERT',
+            'serving_size' => XX,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Japanese%')->value('id'),
+            'image_url' => 'INSERT',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/vegetarian-recipes/three-vegetable-miso-sesame-ramen'));
+
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+         */
+
+
+        // Miso-Glazed Aubergine With Noodles ----> Beware smart quotes when adding
+        /*
+          Recipe::create(array('id' => 29,'name' => 'Miso-Glazed Aubergine With Noodles',
+            'short_description' => 'Yummy Japanese Noodles',
+            'long_description' => 'Japanese flavours are often deep, salty, sweet and hot but always balanced. This dish elevates aubergine to the next level. Once scored, its spongy surface absorbs the miso marinade and turns it into a glaze when baked.',
+            'serving_size' => XX,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Japanese%')->value('id'),
+            'image_url' => 'INSERT',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/vegetarian-recipes/miso-glazed-aubergine-with-noodles'));
+
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+         */
+
+        // Nutty Peanut & Vegetable Noodles ----> Beware smart quotes when adding
+        /*
+          Recipe::create(array('id' => 30,'name' => 'Nutty Peanut & Vegetable Noodles',
+            'short_description' => 'Tasty noodles',
+            'long_description' => 'A healthy yet tasty dish with colourful vegetables and silky noodles: crunchy, nutty and a little bit spicy – a simple, satisfying number for your weekday noodle fix.',
+            'serving_size' => XX,
+            'cuisine_type_id' => CuisineType::where('name', 'like', '%Japanese%')->value('id'),
+            'image_url' => 'INSERT',
+            'recipe_source' => 'https://www.gousto.co.uk/cookbook/vegetarian-recipes/nutty-peanut-vegetable-noodles'));
+
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+        IngredientRecipeMapping::create(array('recipe_id' => XX,'ingredient_id' => Ingredient::where('name', 'INSERT')->value('id'),'quantity' => 'INSERT','description' => 'INSERT','measurement_type_id' => MeasurementType::where('name', ‘INSERT’)->value('id')));
+
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'TITLE')->value('id'), 'step_number' => XX, 'description' => 'INSERT', 'image_url' => ''));
+         */
+
+
     }
 }

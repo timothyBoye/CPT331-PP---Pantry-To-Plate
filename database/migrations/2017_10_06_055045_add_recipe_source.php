@@ -26,7 +26,7 @@ class AddRecipeSource extends Migration
     public function down()
     {
         Schema::table('recipes', function($table) {
-            $table->dropColumn('recipe-source');
+            $table->dropColumn('recipe_source');
         });
     }
 }
