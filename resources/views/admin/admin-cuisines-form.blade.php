@@ -18,13 +18,15 @@
                 rules: {
                     name: {
                         required: true,
-                        minlength: 3
+                        minlength: 3,
+                        alpha_international: true
                     }
                 },
                 messages: {
                     name: {
                         required: "Please enter a name for the cuisine",
-                        minlength: "A cuisine name must be at least 3 characters"
+                        minlength: "A cuisine name must be at least 3 characters",
+                        alpha_international: "A cuisine name can contain a-z and accented characters only"
                     }
                 }
             });

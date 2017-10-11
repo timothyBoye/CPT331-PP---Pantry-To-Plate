@@ -26,7 +26,7 @@ class AdminMeasurementsController extends Controller
     public function measurements(Request $request)
     {
         $title = "Measurements";
-        $measurements = MeasurementType::paginate(10);
+        $measurements = MeasurementType::all();
         if (session('measurement')) {
             $measurement = session('measurement');
             return view('admin.admin-measurements', compact('title', 'measurements', 'measurement'));

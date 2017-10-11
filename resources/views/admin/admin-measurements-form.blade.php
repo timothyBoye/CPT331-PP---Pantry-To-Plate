@@ -18,7 +18,8 @@
             rules: {
                 name: {
                     required: true,
-                    minlength: 3
+                    minlength: 3,
+                    alpha_international: true
                 },
                 comparable_size: {
                     required: true,
@@ -28,7 +29,8 @@
             messages: {
                 name: {
                     required: "Please enter a name for the measurement",
-                    minlength: "A measurement name must be at least 3 characters"
+                    minlength: "A measurement name must be at least 3 characters",
+                    alpha_international: "A measurement name can contain a-z and accented characters only"
                 },
                 comparable_size: {
                     required: "Please enter an approximation of what 1 of this measure would be in millilitres"
@@ -69,11 +71,11 @@
                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                         </div>
-                        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('comparable_size') ? 'has-error' : '' }}">
                                 <label for="comparable_size">Comparable Size</label>
                                 <input type="text" class="form-control" id="comparable_size" name="comparable_size" placeholder="Enter comparable size" value="{{ isset($measurement) ? $measurement->comparable_size : old('comparable_size')  }}">
-                                @if ($errors->has('comparableSize'))
-                                    <span class="help-block"><strong>{{ $errors->first('comparableSize') }}</strong></span>
+                                @if ($errors->has('comparable_size'))
+                                    <span class="help-block"><strong>{{ $errors->first('comparable_size') }}</strong></span>
                                 @endif
                         </div>
                         <div id="seed_file_string">

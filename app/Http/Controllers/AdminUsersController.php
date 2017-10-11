@@ -26,7 +26,7 @@ class AdminUsersController extends Controller
     public function users(Request $request)
     {
         $title = "Users";
-        $users = User::paginate(10);
+        $users = User::all();
         if (session('user')) {
             $user = session('user');
             return view('admin.admin-users', compact('title', 'users', 'user'));

@@ -27,16 +27,29 @@
                     <a href="{{ route('admin.recipe.new') }}" class="btn btn-success">New</a>
                 </div>
                 <div class="box-body">
-                    <table class="table">
+                    <table id="datatable" class="table table-bordered table-striped table-hover">
+                        <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Cuisine</th>
                             <th>Description</th>
+                            <th>Ingredients</th>
+                            <th>Steps</th>
+                            <th>Average Rating</th>
+                            <th>No. of Ratings</th>
                             <th></th>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach ($recipes as $recipe)
                             <tr>
                                 <td>{{ $recipe->name}}</td>
                                 <td>{{ $recipe->short_description }}</td>
+                                <td>{{ $recipe->cuisine_type->name }}</td>
+                                <td>{{ count($recipe->ingredients) }}</td>
+                                <td>{{ count($recipe->method_steps) }}</td>
+                                <td>{{ $recipe->average_rating }}</td>
+                                <td>{{ $recipe->number_of_ratings }}</td>
                                 <td>
                                     <form class="admin-table-buttons" action="{{ route('admin.recipe.get', ['id' => $recipe->id]) }}" method="GET">
                                         {{ csrf_field() }}
@@ -50,12 +63,27 @@
                                 </td>
                             </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <div class="box-footer">
-                    {!! $recipes->appends(Input::except('page'))->render() !!}
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('foot')
+    <script>
+        $(function () {
+            $('#datatable').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true
+            })
+        })
+    </script>
 @endsection

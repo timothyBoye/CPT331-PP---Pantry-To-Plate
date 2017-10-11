@@ -30,7 +30,7 @@ class AdminRecipesController extends Controller
     public function recipes(Request $request)
     {
         $title = "Recipes";
-        $recipes = Recipe::paginate(10);
+        $recipes = Recipe::all();
         if (session('recipe')) {
             $recipe = session('recipe');
             return view('admin.admin-recipes', compact('title', 'recipes', 'recipe'));

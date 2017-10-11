@@ -30,8 +30,10 @@ class AdminCuisinesFormRequest extends FormRequest
             'name' => [
                 'required',
                 'max:255',
+                'alpha_international',
                 Rule::unique('cuisine_types')->ignore($this->id)
             ],
         ];
     }
+
 }

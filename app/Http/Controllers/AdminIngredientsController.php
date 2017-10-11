@@ -9,6 +9,7 @@ use App\MeasurementType;
 use App\Recipe;
 use App\User;
 use App\UserRole;
+use App\Utilities;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
@@ -26,7 +27,7 @@ class AdminIngredientsController extends Controller
     public function ingredients(Request $request)
     {
         $title = "Ingredients";
-        $ingredients = Ingredient::paginate(10);
+        $ingredients = Ingredient::all();
         if (session('ingredient')) {
             $ingredient = session('ingredient');
             return view('admin.admin-ingredients', compact('title', 'ingredients', 'ingredient'));
@@ -59,6 +60,17 @@ class AdminIngredientsController extends Controller
     {
         $ingredient = Ingredient::create($request->all());
         $ingredient->save();
+
+        if( $request->hasFile('ingredient_image')) {
+            $imageName = Utilities::stripBadFileCharacters($ingredient->name) . '.' .
+                $request->file('ingredient_image')->getClientOriginalExtension();
+            $file = $request->file('ingredient_image');
+            $file->move(base_path() . '/public/img/ingredients/', $imageName);
+
+            $ingredient->update(array('ingredient_image_url'=>$imageName));
+            $ingredient->save();
+        }
+
         return redirect()->route('admin.ingredients')->with(['ingredient' => $ingredient]);
     }
 
@@ -67,6 +79,16 @@ class AdminIngredientsController extends Controller
         $ingredient = Ingredient::find($id);
         $ingredient->update($request->all());
         $ingredient->save();
+
+        if( $request->hasFile('ingredient_image')) {
+            $imageName = Utilities::stripBadFileCharacters($ingredient->name) . '.' .
+                $request->file('ingredient_image')->getClientOriginalExtension();
+            $file = $request->file('ingredient_image');
+            $file->move(base_path() . '/public/img/ingredients/', $imageName);
+
+            $ingredient->update(array('ingredient_image_url'=>$imageName));
+            $ingredient->save();
+        }
         return redirect()->route('admin.ingredients')->with(['ingredient' => $ingredient]);
     }
 
@@ -84,9 +106,14 @@ class AdminIngredientsController extends Controller
 
     public function seedString(Request $request)
     {
+        $imageName = $request["name"] . '.' .
+            $request->file('ingredient_image')->getClientOriginalExtension();
+        $file = $request->file('ingredient_image');
+        $file->move(base_path() . '/public/img/ingredients/', $imageName);
+
         $response = "\App\Ingredient::create(array(";
         $response = $response."'name' => '".$request["name"]."', ";
-        $category = IngredientCategory::where('id', '=', $request["ingredient_category_id"])->value('name');
+        $category = IngredientCategory::where('id', '=', $imageName)->value('name');
         $response = $response."'ingredient_category_id' => IngredientCategory::where('name', '=', '".$category."')->value('id'), ";
         $response = $response."'ingredient_image_url' => '".$request["ingredient_image_url"]."'";
         $response = $response."));";

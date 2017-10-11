@@ -28,6 +28,7 @@ class AdminMeasurementFormRequest extends FormRequest
             'name' => [
                 'required',
                 'max:255',
+                'alpha_international',
                 Rule::unique('measurement_types')->ignore($this->id)
             ],
             'comparable_size' => 'required|integer',

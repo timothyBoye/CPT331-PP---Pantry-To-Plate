@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
 
 class AdminUserFormRequest extends FormRequest
@@ -24,15 +26,21 @@ class AdminUserFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:255',
+        $rules = [
+            'name' => 'required|max:255|alpha_international',
             'email' => [
                 'required',
                 'email',
                 Rule::unique('users')->ignore($this->id)
             ],
-            'password' => 'max:255|confirmed',
             'user_role_id' => 'required|exists:user_roles,id|integer',
         ];
+        if (!(isset($this->id)) || Input::get('password') != '')
+        {
+            $rules['password'] = 'required|confirmed|max:255|min:8';
+            $rules['password_confirmation'] = 'required';
+        }
+
+        return $rules;
     }
 }

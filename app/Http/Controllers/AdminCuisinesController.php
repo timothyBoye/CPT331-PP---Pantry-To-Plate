@@ -24,7 +24,7 @@ class AdminCuisinesController extends Controller
     public function cuisines(Request $request)
     {
         $title = "Cuisines";
-        $cuisines = CuisineType::paginate(10);
+        $cuisines = CuisineType::all();
         if (session('cuisine')) {
             $cuisine = session('cuisine');
             return view('admin.admin-cuisines', compact('title', 'cuisines', 'cuisine'));

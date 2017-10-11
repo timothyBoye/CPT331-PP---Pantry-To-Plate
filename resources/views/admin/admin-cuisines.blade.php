@@ -27,14 +27,19 @@
                     <a href="{{ route('admin.cuisine.new') }}" class="btn btn-success">New</a>
                 </div>
                 <div class="box-body">
-                    <table class="table">
+                    <table id="datatable" class="table table-bordered table-striped table-hover">
+                        <thead>
                         <tr>
                             <th>Name</th>
+                            <th>No. of Recipes</th>
                             <th></th>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach ($cuisines as $cuisine)
                             <tr>
                                 <td>{{ $cuisine->name}}</td>
+                                <td>{{ count($cuisine->recipes) }}</td>
                                 <td>
                                     <form class="admin-table-buttons" action="{{ route('admin.cuisine.get', ['id' => $cuisine->id]) }}" method="GET">
                                         {{ csrf_field() }}
@@ -48,12 +53,27 @@
                                 </td>
                             </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <div class="box-footer">
-                    {!! $cuisines->appends(Input::except('page'))->render() !!}
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('foot')
+    <script>
+        $(function () {
+            $('#datatable').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true
+            })
+        })
+    </script>
 @endsection

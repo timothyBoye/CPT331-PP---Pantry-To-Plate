@@ -27,12 +27,15 @@
                     <a href="{{ route('admin.measurement.new') }}" class="btn btn-success">New</a>
                 </div>
                 <div class="box-body">
-                    <table class="table">
+                    <table id="datatable" class="table table-bordered table-striped table-hover">
+                        <thead>
                         <tr>
                             <th>Name</th>
                             <th>Comparable Size</th>
                             <th></th>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach ($measurements as $measurement)
                             <tr>
                                 <td>{{ $measurement->name}}</td>
@@ -50,12 +53,27 @@
                                 </td>
                             </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <div class="box-footer">
-                    {!! $measurements->appends(Input::except('page'))->render() !!}
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('foot')
+    <script>
+        $(function () {
+            $('#datatable').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true
+            })
+        })
+    </script>
 @endsection

@@ -18,7 +18,7 @@
                 rules: {
                     name: {
                         required: true,
-                        minlength: 3
+                        alpha_international: true
                     },
                     email: {
                         required: true,
@@ -26,11 +26,9 @@
                         email: true
                     },
                     password: {
-                        required: true,
                         minlength: 8
                     },
                     password_confirmation: {
-                        required: true,
                         minlength: 8,
                         equalTo: "#password"
                     },
@@ -42,7 +40,7 @@
                 messages: {
                     name: {
                         required: "Please enter the user's name",
-                        minlength: "A name name must be at least 3 characters"
+                        alpha_international: "Please use only a-z and accented characters"
                     },
                     email: {
                         required: "Please enter user's email address",
@@ -50,11 +48,9 @@
                         email: "Please enter a valid email address i.e. hello@example.org"
                     },
                     password: {
-                        required: "Please enter the user's password",
                         minlength: "A password must be at least 8 characters long"
                     },
                     password_confirmation: {
-                        required: "Please enter the user's password a second time",
                         minlength: "A password must be at least 8 characters long",
                         equalTo: "The passwords must match"
                     },
@@ -107,14 +103,14 @@
                         </div>
                         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                             <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" name="password" placeholder="Enter password" >
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" >
                             @if ($errors->has('password'))
                                 <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
                             <label for="password_confirmation">Confirm Password</label>
-                            <input type="text" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" >
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" >
                             @if ($errors->has('password_confirmation'))
                                 <span class="help-block"><strong>{{ $errors->first('password_confirmation') }}</strong></span>
                             @endif

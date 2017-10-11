@@ -27,16 +27,21 @@
                     <a href="{{ route('admin.ingredient.new') }}" class="btn btn-success">New</a>
                 </div>
                 <div class="box-body">
-                    <table class="table">
+                    <table id="datatable" class="table table-bordered table-striped table-hover">
+                        <thead>
                         <tr>
                             <th>Name</th>
                             <th>Category</th>
+                            <th>In No. of Recipes</th>
                             <th></th>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach ($ingredients as $ingredient)
                             <tr>
                                 <td>{{ $ingredient->name}}</td>
                                 <td>{{ $ingredient->category->name}}</td>
+                                <td>{{ count($ingredient->recipes) }}</td>
                                 <td>
                                     <form class="admin-table-buttons" action="{{ route('admin.ingredient.get', ['id' => $ingredient->id]) }}" method="GET">
                                         {{ csrf_field() }}
@@ -50,12 +55,27 @@
                                 </td>
                             </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <div class="box-footer">
-                    {!! $ingredients->appends(Input::except('page'))->render() !!}
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('foot')
+    <script>
+        $(function () {
+            $('#datatable').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true
+            })
+        })
+    </script>
 @endsection

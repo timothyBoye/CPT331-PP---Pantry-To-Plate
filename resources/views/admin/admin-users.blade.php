@@ -26,13 +26,17 @@
                 <div class="box-header with-border">
                     <a href="{{ route('admin.user.new') }}" class="btn btn-success">New</a>
                 </div>
-                <div class="box-body"><table class="table">
+                <div class="box-body">
+                    <table id="datatable" class="table table-bordered table-striped table-hover">
+                        <thead>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
                             <th>User Role</th>
                             <th></th>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->name}}</td>
@@ -51,12 +55,27 @@
                                 </td>
                             </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <div class="box-footer">
-                    {!! $users->appends(Input::except('page'))->render() !!}
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('foot')
+    <script>
+        $(function () {
+            $('#datatable').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true
+            })
+        })
+    </script>
 @endsection
