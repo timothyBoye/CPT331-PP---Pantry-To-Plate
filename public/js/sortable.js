@@ -13,8 +13,12 @@
             });
 
             $('.update-cuisine-mappings-btn').click(function(){
-                $('.success-message').addClass('invisible');
+                $('.success-box').addClass('invisible');
                 makeCall(w.sortableController.mappingResults);
+            });
+
+            $('.close').click(function(){
+                $('.success-box').addClass('invisible');
             });
 
         }
@@ -48,8 +52,21 @@
             }
         }).done(function(response){
             var displayResponseDiv = $('.success-message');
-            $(displayResponseDiv).removeClass('invisible').removeClass('alert').removeClass('alert-danger').removeClass('alert-success');
-            $(displayResponseDiv).addClass('alert alert-' + response.class);
+            var displayResponseDivBox = $('.success-box');
+            var displayResponseDivImgCross = $('.success-danger-img .cross-img');
+            var displayResponseDivImgTick = $('.success-danger-img .tick');
+            $(displayResponseDiv).removeClass('alert').removeClass('alert-danger').removeClass('alert-success');
+            $(displayResponseDivBox).removeClass('invisible').removeClass('color-red');
+
+            $(displayResponseDiv).addClass('alert alert-' + response.class); // success or danger
+            if(response.class === 'danger') {
+                $(displayResponseDivBox).addClass('color-red');
+                $(displayResponseDivImgTick).addClass('invisible');
+                $(displayResponseDivImgCross).removeClass('invisible');
+            } else {
+                $(displayResponseDivImgTick).removeClass('invisible');
+                $(displayResponseDivImgCross).addClass('invisible');
+            }
             $(displayResponseDiv).html(response.message);
         });
 

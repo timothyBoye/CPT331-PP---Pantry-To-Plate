@@ -5,7 +5,17 @@
 
     <div class="container-fluid cuisine-mappings-bg">
         <div class="row">
-            <div class="alert invisible success-message"></div>
+            <div class = "success-box invisible">
+                <button type="button" class="close close-message-box" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class = "success-danger-img">
+                    <img class = "tick" src='{{ asset('/img/tick.png') }}'/>
+                    <img class = "cross-img" src='{{ asset('/img/x-mark-xxl.png') }}'/>
+                </div>
+                <div class="alert success-message"></div>
+            </div>
+
             {{--col-md-6--}}
         </div>
 
@@ -21,13 +31,16 @@
                             @endforeach
                          </ul>
                     </div>
+                </div>
             </div>
-         </div>
-        <div class="container-button">
-            <button class="update-cuisine-mappings-btn btn cuisine-button">Update Preferences <span class="glyphicon glyphicon-check"></span></button>
+
+
+            <div class="container-button">
+                <button class="update-cuisine-mappings-btn btn cuisine-button">Update Preferences <span class="glyphicon glyphicon-check"></span></button>
+            </div>
         </div>
 
-        </div>
+
     </div>
 
 @endsection
