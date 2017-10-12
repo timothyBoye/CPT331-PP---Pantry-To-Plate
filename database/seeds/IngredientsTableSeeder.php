@@ -208,7 +208,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'habanero', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'paprika', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'cayenne-pepper-x200.jpg'),
             array('name' => 'tabasco pepper', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
-            array('name' => 'cayenne pepper', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'cayenne-pepper-x200.jpg'),
+            array('name' => 'cayenne pepper', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'cayenne-pepper-x200.jpg'),
             array('name' => 'radicchio', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'rhubarb', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'root vegetables', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
@@ -318,13 +318,13 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'nutmeg', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'nutmeg.jpg'),
             array('name' => 'garam masala', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'garam_masala.jpeg'),
             array('name' => 'cardamom pods', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'cardamom_pods.jpeg'),
-
+            array('name' => 'turmeric', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'turmeric.jpg'),
             //sweeteners
             array('name' => 'sugar', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
             array('name' => 'maple syrup', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'fish-sauce-x200.jpg'),
             array('name' => 'erythritol', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
             array('name' => 'honey', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'honey-pot-x200.jpg'),
-
+            array('name' => 'brown sugar', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'brown-sugar.jpg'),
             //liquids
             array('name' => 'water', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'rice-vinegar-x200.jpg'),
             array('name' => 'lime juice', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'lime-juice.jpg'),
@@ -438,14 +438,7 @@ class IngredientsTableSeeder extends Seeder
                 'ingredient_image_url' => $ingredient['ingredient_image_url'])
             );
 
-            // DB::table('industries')->insert($industry);
         }
 
-
-//        for($i = 0; $i < count($ingredients); $i++){
-//            Ingredient::create(array(
-//               'name' => $ingredients[$i]
-//            ));
-//        }
     }
 }
