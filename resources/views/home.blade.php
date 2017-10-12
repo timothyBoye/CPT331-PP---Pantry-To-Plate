@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid content">
     <div class="row">
         <div  class="col-md-3 " >
             {{--<button class="btn btn-primary btn-mini bootstro-next-btn">Next »</button>--}}
@@ -47,7 +47,7 @@
                 <div id="ingredient-search-group" class="input-group">
                     <input type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
                     <span class="input-group-btn">
-                     <button class="btn btn-info btn-flat search-button" id="ingredient-search-button">
+                     <button class="btn btn-success btn-flat search-button" id="ingredient-search-button">
                         Go
                     </button>
                 </span>

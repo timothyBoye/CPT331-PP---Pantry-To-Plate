@@ -30,12 +30,12 @@
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Register</a>
             @else
-                <a href="#"> Hi {{ Auth::user()->name }}</a>
+                {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
                 <a href="{{ route('profile.cuisines')}}">Manage Cuisine Preferences</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     {{ csrf_field() }}
                 </form>
-                <a href="#">Recipes</a>
+                <a href="#">Saved Recipes</a>
             @endif
             <a href="{{ route('about') }}">About</a>
             <a href="#">Contact</a>
@@ -48,8 +48,8 @@
                 @endif
             @endif
         </div>
-        <div class = "nav-long" >
-            <span class = "burger" onclick="toggleNav()">&#9776;</span>
+        <div class="burger" onclick="toggleNav()">&#9776;</div>
+        <div class="nav-long" >
             <span id="nav-logo-link">
                 <a  href="{{ route('home') }}"><img src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo" id="logo-image"></a>
             </span>
