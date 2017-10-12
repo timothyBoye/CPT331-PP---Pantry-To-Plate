@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid content">
     <div class="row">
         <section class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-3">
             <h1>About Pantry to Plate</h1>

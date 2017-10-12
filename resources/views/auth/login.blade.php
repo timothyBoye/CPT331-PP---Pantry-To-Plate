@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container content">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -42,9 +42,8 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
+                                    <input type="checkbox" id="remember" class="icheck-field" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label for="remember">Remember Me</label>
                                 </div>
                             </div>
                         </div>

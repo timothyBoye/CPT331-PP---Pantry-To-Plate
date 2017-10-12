@@ -24,7 +24,7 @@ class UserRecipeRatingSeeder extends Seeder
                 DB::table('user_recipe_ratings')->insert([
                     'user_id' => $user->id,
                     'recipe_id' => $recipe->id,
-                    'rating' => $faker->numberBetween(3,5)
+                    'rating' => $faker->numberBetween(0,5)
                 ]);
             }
         }

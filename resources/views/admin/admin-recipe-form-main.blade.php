@@ -32,6 +32,13 @@
                             <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                         @endif
                     </div>
+                    <div class="form-group {{ $errors->has('recipe_source') ? 'has-error' : '' }}">
+                        <label for="recipe_source">Recipe Sourced From</label>
+                        <input type="text" class="form-control" id="recipe_source" name="recipe_source" placeholder="Enter recipe source" value="{{ isset($recipe) ? $recipe->recipe_source : old('recipe_source')  }}">
+                        @if ($errors->has('recipe_source'))
+                            <span class="help-block"><strong>{{ $errors->first('recipe_source') }}</strong></span>
+                        @endif
+                    </div>
                     <div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
                         <label for="image">Image File</label>
                         <input type="file" class="form-control" id="image" name="image">
@@ -163,6 +170,10 @@
         $("#form").validate({
             rules: {
                 name: {
+                    required: true,
+                    minlength: 3
+                },
+                recipe_source: {
                     required: true,
                     minlength: 3
                 },
