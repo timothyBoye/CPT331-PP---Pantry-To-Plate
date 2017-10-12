@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminRecipeFormRequest;
+use App\Http\Requests\RecipeMethodsFormRequest;
+use App\Http\Requests\RecipeIngredientsFormRequest;
 
 class AdminRecipesController extends Controller
 {
@@ -66,6 +68,7 @@ class AdminRecipesController extends Controller
         $recipe = Recipe::find($id);
         $recipe->update(array(
             'name' => $request['name'],
+            'recipe_source' => $request['recipe_source'],
             'short_description' => $request['short_description'],
             'long_description' => $request['long_description'],
             'serving_size' => $request['serving_size'],
@@ -86,6 +89,12 @@ class AdminRecipesController extends Controller
         ));
         $nutrition->save();
 
+        return redirect()->route('admin.recipe.ingredients.get', ['id' => $recipe->id]);
+    }
+
+    public function getIngredients($id, Request $request)
+    {
+        $recipe = Recipe::find($id);
         $measurement_types = MeasurementType::orderBy('name', 'asc')->get();
         $ingredients = Ingredient::orderBy('name', 'asc')->get();
         $title = 'Add Ingredients to '.$recipe->name;
@@ -130,7 +139,7 @@ class AdminRecipesController extends Controller
     }
 
 
-    public function postRecipeIngredients($id, Request $request)
+    public function postRecipeIngredients($id, RecipeIngredientsFormRequest $request)
     {
         $recipe = Recipe::find($id);
 
@@ -153,26 +162,33 @@ class AdminRecipesController extends Controller
             $ingredient->save();
         }
 
+        return redirect()->route('admin.recipe.methods.get', ['id' => $recipe->id]);
+    }
+
+    public function getMethods($id, Request $request)
+    {
+        $recipe = Recipe::find($id);
+
         $title = 'Add Method Steps to '.$recipe->name;
         return view('admin.admin-recipe-form-methods', compact('recipe', 'title'));
     }
 
 
-    public function postRecipeMethods($id, Request $request)
+    public function postRecipeMethods($id, RecipeMethodsFormRequest $request)
     {
         $recipe = Recipe::find($id);
 
         RecipeMethod::where('recipe_id', '=', $id)->delete();
 
         $method_descriptions = $request['method_descriptions'];
-        $method_images = $request['method_images'];
+        //$method_images = $request['method_images'];
         $count = count($method_descriptions);
         for ($i = 0; $i < $count; $i++) {
             $method = RecipeMethod::create(array(
                 'recipe_id' => $recipe->id,
                 'step_number' => $i+1,
                 'description' => $method_descriptions[$i],
-                'image_url' => $method_images[$i],
+                //'image_url' => $method_images[$i],
             ));
             $method->save();
         }
@@ -200,7 +216,7 @@ class AdminRecipesController extends Controller
     {
         // Recipe
         $recipe = Recipe::find($id);
-        $response = $this->recipeSeedString($recipe->id, $recipe->name, $recipe->short_description,
+        $response = $this->recipeSeedString($recipe->id, $recipe->name, $recipe->recipe_source, $recipe->short_description,
             $recipe->long_description, $recipe->serving_size, $recipe->cuisine_type_id, $recipe->image_url);
 
         // Ingredients
@@ -212,8 +228,7 @@ class AdminRecipesController extends Controller
         // Method
         $count = 1;
         foreach ($recipe->method_steps as $step) {
-            $response = $response.$this->methodStepSeedString($recipe->name, $count,
-                    $step->description, $step->image_url);
+            $response = $response.$this->methodStepSeedString($recipe->name, $count, $step->description);//, $step->image_url);
             $count++;
         }
 
@@ -227,24 +242,25 @@ class AdminRecipesController extends Controller
         return response()->json($response, 200);
     }
 
-    private function methodStepSeedString($recipe_name, $step_number, $description, $image_url)
+    private function methodStepSeedString($recipe_name, $step_number, $description)//, $image_url)
     {
         $response = "\App\RecipeMethod::create(array(";
         $response = $response."'recipe_id' => Recipe::where('name', '=', '$recipe_name')->value('id'), ";
         $response = $response."'step_number' => $step_number, ";
-        $response = $response."'description' => '$description', ";
-        $response = $response."'image_url' => '$image_url'";
+        $response = $response."'description' => '$description'";
+        //$response = $response."'image_url' => '$image_url'";
         $response = $response."));\n";
 
         return $response;
     }
 
-    private function recipeSeedString($id, $name, $short_description, $long_description,
+    private function recipeSeedString($id, $name, $recipe_source, $short_description, $long_description,
                                       $serving_size, $cuisine_type_id, $image)
     {
         $response = "\App\Recipe::create(array(";
         $response = $response."'id' => $id, ";
         $response = $response."'name' => '$name', ";
+        $response = $response."'recipe_source' => '$recipe_source', ";
         $response = $response."'short_description' => '$short_description', ";
         $response = $response."'long_description' => '$long_description', ";
         $response = $response."'serving_size' => '$serving_size', ";

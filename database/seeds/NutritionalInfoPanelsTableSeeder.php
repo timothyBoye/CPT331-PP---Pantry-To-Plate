@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\NutritionalInfoPanel;
+use App\Recipe;
 
 class NutritionalInfoPanelsTableSeeder extends Seeder
 {

@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Mobile Web App option: For installing to the home screen https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+    <meta name=”apple-mobile-web-app-capable” content=”yes”>
+    <!--End Mobile Web App option-->
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -14,7 +17,26 @@
     <link href="{{ asset('css/bootstro.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="{{ asset('css/icheck-line/green.css') }}" rel="stylesheet">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
+    <!--Favicon-->
+    <link rel="icon" href="favicon.ico"/>
+    <!--Generated from here: https://www.favicon-generator.org   -->
+    <!--Need to check if background will be white or black with transparent png-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/public/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/public/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/public/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/public/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/public/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/public/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/public/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/public/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/public/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/public/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/img/favicon/favicon-16x16.png">
+    <!--TBC: https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html-->
 </head>
 <body>
     <div id="app">
@@ -27,12 +49,12 @@
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Register</a>
             @else
-                <a href="#"> Hi {{ Auth::user()->name }}</a>
+                {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
                 <a href="{{ route('profile.cuisines')}}">Manage Cuisine Preferences</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     {{ csrf_field() }}
                 </form>
-                <a href="#">Recipes</a>
+                <a href="#">Saved Recipes</a>
             @endif
             <a href="{{ route('about') }}">About</a>
             <a href="#">Contact</a>
@@ -45,8 +67,8 @@
                 @endif
             @endif
         </div>
-        <div class = "nav-long" >
-            <span class = "burger" onclick="toggleNav()">&#9776;</span>
+        <div class="burger" onclick="toggleNav()">&#9776;</div>
+        <div class="nav-long" >
             <span id="nav-logo-link">
                 <a  href="{{ route('home') }}"><img src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo" id="logo-image"></a>
             </span>
@@ -64,6 +86,23 @@
     <script src="{{ asset('js/storageService.js') }}"></script>
     <script src="{{ asset('js/bootstro.js') }}"></script>
     <script src="{{ asset('js/nav.js') }}"></script>
+    <script src="{{ asset('js/icheck.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.icheck-field').each(function(){
+                var self = $(this),
+                    label = self.next(),
+                    label_text = label.text();
+
+                label.remove();
+                self.iCheck({
+                    checkboxClass: 'icheckbox_line-green',
+                    radioClass: 'iradio_line-green',
+                    insert: '<div class="icheck_line-icon"></div>' + label_text
+                });
+            });
+        });
+    </script>
 
     @yield('footer')
 </body>

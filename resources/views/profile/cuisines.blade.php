@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="container-fluid cuisine-mappings-bg">
+    <div class="container-fluid cuisine-mappings-bg content">
         <div class="row">
             <div class = "success-box invisible">
                 <button type="button" class="close close-message-box" aria-label="Close">

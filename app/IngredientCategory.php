@@ -12,7 +12,7 @@ class IngredientCategory extends Model
 
     public function ingredients()
     {
-        return $this->hasMany('App\Ingredient');
+        return $this->hasMany('App\Ingredient')->orderBy('name');
     }
 
     public function recipeIngredients()
