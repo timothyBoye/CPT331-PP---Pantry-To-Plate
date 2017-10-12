@@ -5688,8 +5688,11 @@ tbody.collapse.in {
 }
 
 .navbar-default {
-  background-color: #fff;
-  border-color: #d3e0e9;
+  /*background-color: #fff;*/
+  /*border-color: #d3e0e9;*/
+  background-color: #545255 !important;
+  color: #ffffff;
+
 }
 
 .navbar-default .navbar-brand {
@@ -5746,6 +5749,9 @@ tbody.collapse.in {
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
   border-color: #d3e0e9;
+  background-color: #545255 !important;
+
+
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -5806,12 +5812,16 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 
 .navbar-inverse {
-  background-color: #222;
+  /*background-color: #222;*/
   border-color: #090909;
+  background-color: #545255 !important;
+
 }
 
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;
+  background-color: #545255 !important;
+
 }
 
 .navbar-inverse .navbar-brand:hover,
