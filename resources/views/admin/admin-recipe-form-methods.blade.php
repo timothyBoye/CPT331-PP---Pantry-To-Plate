@@ -14,7 +14,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <form role="form" action="{{ route('admin.recipe.methods.post', ['id' => $recipe->id]) }}" method="POST" id="form" novalidate>
+            <form role="form" action="{{ route('admin.recipe.methods.post', ['id' => $recipe->id]) }}" method="POST" id="method-form" name="method-form" novalidate>
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">Recipe Method</h3>
@@ -34,10 +34,16 @@
 
                 <div class="box box-solid">
                     <div class="box-body">
-                        <div id="seed_file_string">
-
-                        </div>
-                        <button type="submit" class="btn btn-primary">Finish</button>
+                        <p id="errors" class="{{ count($errors) > 0 ? 'has-error' : '' }}">
+                            <b>
+                            @if (count($errors) > 0)
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                            @endif
+                            </b>
+                        </p>
+                        <button type="button" id="submit-btn" class="btn btn-primary">Finish</button>
                         <input class="btn btn-default" type="reset">
                     </div>
                 </div>
@@ -63,23 +69,21 @@
         var method_steps_count = 0;
         $(function() {
             // Recipe method steps functions
-            @if(isset($recipe))
-            @foreach($recipe->method_steps as $step)
-            $('#method_container').append(addStep('{{$step->description}}'));//, '{{--$step->image_url--}}'));
-            @endforeach
-            @elseif(old('method_descriptions'))
-            @for($i = 0; $i < count(old('method_descriptions')); $i++)
-            {{--@php(//$image = old('method_images.'.$i))--}}
-            @php($description = old('method_descriptions.'.$i))
-            $('#method_container').append(addStep('{{$description}}'));//, '{{--$image--}}'));
-            @endfor
+            @if(old('method_descriptions'))
+                @for($i = 0; $i < count(old('method_descriptions')); $i++)
+                {{--@php(//$image = old('method_images.'.$i))--}}
+                @php($description = old('method_descriptions.'.$i))
+                $('#method_container').append(addStep('{{$description}}'));//, '{{--$image--}}'));
+                @endfor
+            @elseif(isset($recipe))
+                @foreach($recipe->method_steps as $step)
+                $('#method_container').append(addStep('{{$step->description}}'));//, '{{--$step->image_url--}}'));
+                @endforeach
             @endif
+
 
             $('#add_method_step').click(function() {
                 $('#method_container').append(addStep('', ''));
-                $('.method_descriptions').each(function(key, element) {
-                    $(element).append("hello");
-                });
             });
 
             $('#remove_method_step').click(function(){
@@ -100,23 +104,25 @@
                     '</div>';
             }
 
-//            $("input[id*='method_desciption']").each(function() {
-//                $(this).validate();
-//                $(this).rules('add', {
-//                    required: true,
-//                    messages: {
-//                        required: "Please enter an ingredient"
-//                    }
-//                });
-//            });
-//            $("input[id*='method_image']").each(function() {
-//                $(this).validate();
-//                $(this).rules('add', {
-//                    required: false,
-//                    messages: {
-//                    }
-//                });
-//            });
+            $('#submit-btn').click( function()
+            {
+                if (validMethods() == 0) {
+                    $('form#method-form').submit();
+                } else {
+                    $('#errors').html('<b>All method steps must contain simple text, if you have too many fields clicking \"Remove Step\" will remove the last step.</b>');
+                }
+            });
+
+            function validMethods()
+            {
+                var errors = 0;
+                $("[id^='method_description']").each(function() {
+                    if($(this).val().length == 0) {
+                        errors++;
+                    }
+                });
+                return errors;
+            }
         });
     </script>
 @endsection

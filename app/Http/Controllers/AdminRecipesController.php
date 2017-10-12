@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminRecipeFormRequest;
+use App\Http\Requests\RecipeMethodsFormRequest;
+use App\Http\Requests\RecipeIngredientsFormRequest;
 
 class AdminRecipesController extends Controller
 {
@@ -87,6 +89,12 @@ class AdminRecipesController extends Controller
         ));
         $nutrition->save();
 
+        return redirect()->route('admin.recipe.ingredients.get', ['id' => $recipe->id]);
+    }
+
+    public function getIngredients($id, Request $request)
+    {
+        $recipe = Recipe::find($id);
         $measurement_types = MeasurementType::orderBy('name', 'asc')->get();
         $ingredients = Ingredient::orderBy('name', 'asc')->get();
         $title = 'Add Ingredients to '.$recipe->name;
@@ -131,7 +139,7 @@ class AdminRecipesController extends Controller
     }
 
 
-    public function postRecipeIngredients($id, Request $request)
+    public function postRecipeIngredients($id, RecipeIngredientsFormRequest $request)
     {
         $recipe = Recipe::find($id);
 
@@ -154,12 +162,19 @@ class AdminRecipesController extends Controller
             $ingredient->save();
         }
 
+        return redirect()->route('admin.recipe.methods.get', ['id' => $recipe->id]);
+    }
+
+    public function getMethods($id, Request $request)
+    {
+        $recipe = Recipe::find($id);
+
         $title = 'Add Method Steps to '.$recipe->name;
         return view('admin.admin-recipe-form-methods', compact('recipe', 'title'));
     }
 
 
-    public function postRecipeMethods($id, Request $request)
+    public function postRecipeMethods($id, RecipeMethodsFormRequest $request)
     {
         $recipe = Recipe::find($id);
 
