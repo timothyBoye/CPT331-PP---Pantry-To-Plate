@@ -19,9 +19,6 @@
                     {{ csrf_field() }}
                     <div class="box-header with-border">
                         <h3 class="box-title">Recipe Ingredients</h3>
-                        <div class="box-tools pull-right">
-                            <span><i class="fa fa-minus"></i></span>
-                        </div>
                     </div>
                     <div class="box-body">
                         <div id="ingredients_container">
@@ -89,14 +86,18 @@
 
             function addIngredient(description, measure, quantity, ingredient_id) {
                 ingredients_count += 1;
-                var ingredient_box = '<div class="form-group">' +
+                var ingredient_box = '<div class="">' +
                     '<h5>Ingredient ' + ingredients_count + ': </h5>' +
+                    '<div ="row">'+
 
                     // quantity
+                    '<div class="form-group col-md-3">'+
                     '<label for="ingredient_quantity_' + ingredients_count + '">Quantity</label>' +
                     '<input id="ingredient_quantity_' + ingredients_count + '" class="form-control" name="ingredient_quantities[]' + '" type="text" placeholder="Enter ingredient quantity" value="'+ quantity +'" />' +
+                    '</div>'+
 
                     // measurement type
+                    '<div class="form-group col-md-3">'+
                     '<label for="ingredient_measure_' + ingredients_count + '">Measurement Type</label>' +
                     '<select id="ingredient_measure_' + ingredients_count + '" name="ingredient_measures[]' + ingredients_count + '" class="form-control">' +
                         @foreach ($measurement_types as $measurement_type)
@@ -109,8 +110,10 @@
                 ingredient_box +='>{{$measurement_type->name}}</option>' +
                         @endforeach
                             '</select>' +
+                    '</div>'+
 
                     // Ingredient
+                    '<div class="form-group col-md-3">'+
                     '<label for="ingredient_name_' + ingredients_count + '">Ingredient Name</label>' +
                     '<select id="ingredient_name_' + ingredients_count + '" name="ingredient_names[]' + ingredients_count + '" class="form-control">' +
                         @foreach ($ingredients as $ingredient)
@@ -123,10 +126,14 @@
                 ingredient_box +='>{{$ingredient->name}}</option>' +
                         @endforeach
                             '</select>' +
+                    '</div>'+
 
                     // Description
+                    '<div class="form-group col-md-3">'+
                     '<label for="ingredient_description_' + ingredients_count + '">Description</label>\n' +
                     '<input id="ingredient_description_' + ingredients_count + '" class="form-control" name="ingredient_descriptions[]' + '" type="text" placeholder="Enter ingredient description" value="'+ description +'" />' +
+                    '</div>'+
+                    '</div>'+
                     '</div>';
 
                 return ingredient_box;

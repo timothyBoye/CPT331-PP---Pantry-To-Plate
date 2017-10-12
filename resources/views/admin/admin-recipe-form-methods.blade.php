@@ -65,13 +65,13 @@
             // Recipe method steps functions
             @if(isset($recipe))
             @foreach($recipe->method_steps as $step)
-            $('#method_container').append(addStep('{{$step->description}}', '{{$step->image_url}}'));
+            $('#method_container').append(addStep('{{$step->description}}'));//, '{{--$step->image_url--}}'));
             @endforeach
             @elseif(old('method_descriptions'))
             @for($i = 0; $i < count(old('method_descriptions')); $i++)
-            @php($image = old('method_images.'.$i))
+            {{--@php(//$image = old('method_images.'.$i))--}}
             @php($description = old('method_descriptions.'.$i))
-            $('#method_container').append(addStep('{{$description}}', '{{$image}}'));
+            $('#method_container').append(addStep('{{$description}}'));//, '{{--$image--}}'));
             @endfor
             @endif
 
@@ -89,14 +89,14 @@
                 }
             });
 
-            function addStep(description, image_name) {
+            function addStep(description) { //}, image_name) {
                 method_steps_count += 1;
                 return '<div class="form-group">' +
                     '<h5>Step ' + method_steps_count + ': </h5>' +
                     '<label for="method_description_' + method_steps_count + '">Description</label>\n' +
-                    '<input id="method_description_' + method_steps_count + '" class="form-control method_descriptions" name="method_descriptions[]' + '" type="text" placeholder="Enter step description" value="'+ description +'" />' +
-                    '<label for="method_image_' + method_steps_count + '">Image name</label>\n' +
-                    '<input id="method_image_' + method_steps_count + '" class="form-control" name="method_images[]' + '" type="text" placeholder="Enter step image name" value="'+ image_name +'" />' +
+                    '<textarea id="method_description_' + method_steps_count + '" class="form-control method_descriptions" name="method_descriptions[]' + '" placeholder="Enter step description">'+ description +'</textarea>' +
+                    //'<label for="method_image_' + method_steps_count + '">Image name</label>\n' +
+                    //'<input id="method_image_' + method_steps_count + '" class="form-control" name="method_images[]' + '" type="text" placeholder="Enter step image name" value="'+ image_name +'" />' +
                     '</div>';
             }
 
