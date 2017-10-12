@@ -66,6 +66,7 @@ class AdminRecipesController extends Controller
         $recipe = Recipe::find($id);
         $recipe->update(array(
             'name' => $request['name'],
+            'recipe_source' => $request['recipe_source'],
             'short_description' => $request['short_description'],
             'long_description' => $request['long_description'],
             'serving_size' => $request['serving_size'],
@@ -200,7 +201,7 @@ class AdminRecipesController extends Controller
     {
         // Recipe
         $recipe = Recipe::find($id);
-        $response = $this->recipeSeedString($recipe->id, $recipe->name, $recipe->short_description,
+        $response = $this->recipeSeedString($recipe->id, $recipe->name, $recipe->recipe_source, $recipe->short_description,
             $recipe->long_description, $recipe->serving_size, $recipe->cuisine_type_id, $recipe->image_url);
 
         // Ingredients
@@ -239,12 +240,13 @@ class AdminRecipesController extends Controller
         return $response;
     }
 
-    private function recipeSeedString($id, $name, $short_description, $long_description,
+    private function recipeSeedString($id, $name, $recipe_source, $short_description, $long_description,
                                       $serving_size, $cuisine_type_id, $image)
     {
         $response = "\App\Recipe::create(array(";
         $response = $response."'id' => $id, ";
         $response = $response."'name' => '$name', ";
+        $response = $response."'recipe_source' => '$recipe_source', ";
         $response = $response."'short_description' => '$short_description', ";
         $response = $response."'long_description' => '$long_description', ";
         $response = $response."'serving_size' => '$serving_size', ";

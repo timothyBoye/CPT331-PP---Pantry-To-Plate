@@ -171,7 +171,6 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'brussels sprouts', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'cabbage', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'calabrese', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
-            array('name' => 'carrots', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'cauliflower', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'cauliflower.jpeg'),
             array('name' => 'celery', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'celery-stick-x200.jpg'),
             array('name' => 'chard', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
@@ -237,7 +236,6 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'butternut squash', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'banana squash\'', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'courgette', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'courgette-x200.jpg'),
-            array('name' => 'cucumber', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'delicata', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'marrow', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
             array('name' => 'hubbard squash', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
@@ -427,6 +425,9 @@ class IngredientsTableSeeder extends Seeder
         \App\Ingredient::create(array('name' => 'caper buds', 'ingredient_image_url' => 'caper-buds.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Spice')->value('id')));
         \App\Ingredient::create(array('name' => 'chorizo', 'ingredient_image_url' => 'chorizo.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
         \App\Ingredient::create(array('name' => 'apple cider vinegar', 'ingredient_image_url' => 'apple-cider-vinegar.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Liquid')->value('id')));
+        \App\Ingredient::create(array('name' => 'beef mince', 'ingredient_image_url' => 'beef-mince.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
+        \App\Ingredient::create(array('name' => 'tandoori paste', 'ingredient_image_url' => 'tandoori-paste.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Condiment')->value('id')));
+        \App\Ingredient::create(array('name' => 'white fish', 'ingredient_image_url' => 'white-fish.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
 
 
         foreach ($ingredients as $ingredient) {
