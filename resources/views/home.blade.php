@@ -50,8 +50,11 @@
                      <button class="btn btn-success btn-flat search-button" id="ingredient-search-button">
                         Go
                     </button>
-                </span>
+                    </span>
                 </div>
+                <p id="search-validation">
+                </p>
+
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
                     <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>

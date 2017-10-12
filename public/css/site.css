@@ -306,6 +306,13 @@ ul  {
     transition: all 1s ease;
 }
 
+#search-validation {
+    padding-left:10px;
+    margin-top:-20px;
+    margin-bottom:0;
+    min-height:22px;
+}
+
 .sidenav {
     height: 100%;
     width: 0;
