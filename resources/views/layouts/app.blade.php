@@ -14,6 +14,7 @@
     <link href="{{ asset('css/bootstro.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="{{ asset('css/icheck-line/green.css') }}" rel="stylesheet">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
     <!--Favicon-->
     <link rel="icon" href="favicon.ico"/>
@@ -66,6 +67,23 @@
     <script src="{{ asset('js/storageService.js') }}"></script>
     <script src="{{ asset('js/bootstro.js') }}"></script>
     <script src="{{ asset('js/nav.js') }}"></script>
+    <script src="{{ asset('js/icheck.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('input').each(function(){
+                var self = $(this),
+                    label = self.next(),
+                    label_text = label.text();
+
+                label.remove();
+                self.iCheck({
+                    checkboxClass: 'icheckbox_line-green',
+                    radioClass: 'iradio_line-green',
+                    insert: '<div class="icheck_line-icon"></div>' + label_text
+                });
+            });
+        });
+    </script>
 
     @yield('footer')
 </body>

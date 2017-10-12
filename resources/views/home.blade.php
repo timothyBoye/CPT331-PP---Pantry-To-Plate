@@ -7,9 +7,10 @@
             {{--<button class="btn btn-primary btn-mini bootstro-next-btn">Next »</button>--}}
             <div class="filter-container">
                 @if (Auth::user())
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="cuisine-preference-checkbox">Cuisine
-                    </label>
+                    <div class="checkbox-block-div">
+                        <input type="checkbox" id="cuisine-preference-checkbox" name="cuisine-preference-checkbox">
+                        <label for="cuisine-preference-checkbox">CUISINE PREFERENCES</label>
+                    </div>
                 @endif
                 <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
                     {{--<label class="checkbox-inline">--}}

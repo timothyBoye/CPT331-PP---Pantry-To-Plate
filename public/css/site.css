@@ -529,9 +529,18 @@ ul  {
     margin-top:20px;
 }
 
-.checkbox-inline {
-    padding-top:10px;
-    padding-bottom: 10px;
+.checkbox-block-div {
+    margin-top:20px;
+}
+
+.checkbox-block-div label {
+    width: 100%;
+}
+
+.icheckbox_line-green {
+    padding-top: 10px;
+    height: 37px;
+    font-size: 14px;
 }
 
 .all-dropdowns {
