@@ -8,7 +8,7 @@
             <div class="filter-container">
                 @if (Auth::user())
                     <div class="checkbox-block-div">
-                        <input type="checkbox" id="cuisine-preference-checkbox" name="cuisine-preference-checkbox">
+                        <input type="checkbox" id="cuisine-preference-checkbox" class="icheck-field" name="cuisine-preference-checkbox">
                         <label for="cuisine-preference-checkbox">CUISINE PREFERENCES</label>
                     </div>
                 @endif

@@ -70,7 +70,7 @@
     <script src="{{ asset('js/icheck.min.js') }}"></script>
     <script>
         $(document).ready(function(){
-            $('input').each(function(){
+            $('.icheck-field').each(function(){
                 var self = $(this),
                     label = self.next(),
                     label_text = label.text();
