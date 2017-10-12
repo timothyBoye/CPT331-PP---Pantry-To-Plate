@@ -1,98 +1,103 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
-
-            </div>
-
-            <div class="col-md-9">
-                <!--Begin Attempt at a back button to go home-->
-                <a href="{{ route('home') }}">Go Back</a> <!--Working but needs better styling-->
-                <!--End Attempt-->
-                <div class="row">
-                    <h1>{{ $recipe->name }}</h1>
-                    <q>{{ $recipe->long_description }}</q>
-                    <div id="recipe-info">
-                        <ul>
-                            <li><strong>Serves:</strong> {{ $recipe->serving_size }}</li>
-                            @if($recipe->cuisine_type)
-                                <li><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</li>
+            <div class="col-md-6 each-img-container">
+                <div class="each-recipe-result-img" style="background-image: url({{ URL::asset('img/recipes/'.($recipe->image_url == '' ? 'default.jpg' : $recipe->image_url)) }});"></div>
+                    <div class = "recipe-onfo-each">
+                        <h1>{{ $recipe->name }}</h1>
+                        <strong>Rated:</strong>
+                        <fieldset class="inline-block rating {{Auth::check() ? 'rating-editable' : ''}} {{ $userRating ? 'rated' : '' }}"  id="rating-{{$recipe->id}}" >
+                            @php ($rating = $userRating ? $userRating->rating : round($recipe->average_rating))
+                            <input type="radio" id="star5-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="5" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 5 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star5-{{$recipe->id}}" title="Rocks!">5 stars</label>
+                            <input type="radio" id="star4-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="4" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 4 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star4-{{$recipe->id}}" title="Pretty good">4 stars</label>
+                            <input type="radio" id="star3-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="3" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 3 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star3-{{$recipe->id}}" title="Meh">3 stars</label>
+                            <input type="radio" id="star2-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="2" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 2 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star2-{{$recipe->id}}" title="Kinda bad">2 stars</label>
+                            <input type="radio" id="star1-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="1" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 1 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star1-{{$recipe->id}}" title="Sucks big time">1 star</label>
+                        </fieldset>
+                        <span id="rated-by-who">
+                            @if ($userRating)
+                                your rating
+                            @else
+                                by {{ $recipe->number_of_ratings }} users <br>
                             @endif
-                            {{--<li>--}}
-                                {{--<strong>Rated:</strong>--}}
-                                {{--<fieldset class="inline-block rating {{Auth::check() ? 'rating-editable' : ''}} {{ $userRating ? 'rated' : '' }}"  id="rating-{{$recipe->id}}" >--}}
-                                    {{--@php ($rating = $userRating ? $userRating->rating : round($recipe->average_rating))--}}
-                                    {{--<input type="radio" id="star5-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="5" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 5 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star5-{{$recipe->id}}" title="Rocks!">5 stars</label>--}}
-                                    {{--<input type="radio" id="star4-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="4" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 4 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star4-{{$recipe->id}}" title="Pretty good">4 stars</label>--}}
-                                    {{--<input type="radio" id="star3-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="3" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 3 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star3-{{$recipe->id}}" title="Meh">3 stars</label>--}}
-                                    {{--<input type="radio" id="star2-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="2" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 2 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star2-{{$recipe->id}}" title="Kinda bad">2 stars</label>--}}
-                                    {{--<input type="radio" id="star1-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="1" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 1 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label for="star1-{{$recipe->id}}" title="Sucks big time">1 star</label>--}}
-                                {{--</fieldset>--}}
-                                {{--<span id="rated-by-who">--}}
-                                {{--@if ($userRating)--}}
-                                    {{--your rating--}}
-                                {{--@else--}}
-                                    {{--by {{ $recipe->number_of_ratings }} users--}}
-                                {{--@endif--}}
-                                {{--</span>--}}
-                            {{--</li>--}}
-                            <li><strong>Source:</strong>
-                                @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
-                                    <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
-                                @else
-                                    {{$recipe->recipe_source}}
-                                @endif
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <h2>Ingredients</h2>
-                    <div id="recipe-ingredients">
-                        <ul>
-                            @foreach($recipe->ingredients as $ingredient)
-                            <li>
-                                {{-- Display ingredient quantity --}}
-                                {!! \App\Utilities::approximatedFractionString($ingredient->quantity) !!}
 
-                                {{-- Display measurement name
-                                     Check if quantity is a multiple and if so add an s to the measure --}}
-                                @if(($ingredient->quantity > 1) && ($ingredient->measure->name != ''))
-                                    {{ $ingredient->measure->name }}s
-                                @else
-                                    {{ $ingredient->measure->name }}
-                                @endif
-                                {{-- Display ingredient name
-                                     if there is a description also show that with a comma seperator
-                                     NOTE: This line is messy for a reason, having it setup nice on
-                                     new lines was adding a space before the comma, if you clean this
-                                     ensure you don't reintroduce that bug --}}
-                                {{ $ingredient->ingredient->name }}@if($ingredient->description), {{ $ingredient->description }}@endif
-                            </li>
-                            @endforeach
-                        </ul>
+                        <q>{{ $recipe->long_description }}</q>
+
+                            <div class = "recipe-info-opacity"></div>
+                         </span>
                     </div>
                 </div>
-                <div class="row">
-                    <h2>Method</h2>
-                    <div id="recipe-method">
-                        <ol>
-                            @foreach($recipe->method_steps as $step)
+
+            <div class="col-md-2">
+                Serves: {{ $recipe->serving_size }}
+            </div>
+            <div class="col-md-2">
+                @if($recipe->cuisine_type)
+                    Cuisine: {{ $recipe->cuisine_type->name }}
+                @endif
+            </div>
+            <div class="col-md-2">Time</div>
+
+            <h2>Method</h2>
+                <div id="recipe-method">
+                    <ol>
+                        @foreach($recipe->method_steps as $step)
                             <li>{{$step->description}}</li>
-                            @endforeach
-                        </ol>
-                    </div>
+                        @endforeach
+                    </ol>
                 </div>
-                <div class="row">
-                    @if($recipe->nutritional_info_panel)
-                        @include('partials.nutritionalInfoPanel', ['nutritional_info_panel' => $recipe->nutritional_info_panel])
-                    @endif
+
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Ingredients</h2>
+                <div id="recipe-ingredients">
+                    <ul>
+                        @foreach($recipe->ingredients as $ingredient)
+                        <li>
+                            {!! \App\Utilities::approximatedFractionString($ingredient->quantity) !!}
+
+                            @if(($ingredient->quantity > 1) && ($ingredient->measure->name != ''))
+                                {{ $ingredient->measure->name }}s
+                            @else
+                                {{ $ingredient->measure->name }}
+                            @endif
+                                {{ $ingredient->ingredient->name }}@if($ingredient->description), {{ $ingredient->description }}@endif
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
+            </div>
+            <div class="col-md-6">
+
             </div>
         </div>
     </div>
+
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                @if($recipe->nutritional_info_panel)
+                    @include('partials.nutritionalInfoPanel', ['nutritional_info_panel' => $recipe->nutritional_info_panel])
+                @endif
+            </div>
+            <div class="col-md-6">
+                @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
+                    <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
+                @else
+                    {{$recipe->recipe_source}}
+                @endif
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('footer')

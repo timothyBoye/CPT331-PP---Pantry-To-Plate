@@ -715,3 +715,36 @@ ul  {
     opacity: 1;
 }
 
+.each-recipe-result-img {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+.recipe-info-opacity {
+    width: 100%;
+    height: 200px;
+    background-color: #0a0a0a;
+    position: absolute;
+    bottom: 0;
+    z-index:-100;
+    opacity: 0.5;
+}
+
+.recipe-onfo-each {
+    position: absolute;
+    height:200px;
+    color: #ffffff;
+    z-index: 1;
+    bottom:0;
+    margin-right: 15px;
+}
+
+.each-img-container {
+    /*padding:0 !important;*/
+    /*margin-top: 20px;*/
+    /*margin-left: 20px;*/
+
+}
