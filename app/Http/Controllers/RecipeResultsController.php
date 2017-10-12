@@ -7,6 +7,7 @@ use App\UserRecipeRating;
 use Illuminate\Http\Request;
 use App\Ingredient;
 use App\Recipe;
+use Validator;
 
 use Illuminate\Support\Facades\DB;
 
@@ -16,6 +17,15 @@ class RecipeResultsController extends Controller
 {
     public function getResults(Request $request)
     {
+        $this->validate(request(), [
+            'ingredients.*.id' => 'required|numeric',
+            'ingredients.*.name' => 'required|regex:/^[A-z\-\s]+$/',
+            'ingredients.*.ingredient_image_url' => 'mimes:jpg,jpeg,bmp,png',
+            'cuisineType' => 'numeric',
+            'ratingFilterValue' => 'numeric',
+            'cuisinePreference' => 'alpha'
+        ]);
+
         $ingredients = $request['ingredients'];
         $cuisine_type_filter = $request['cuisineType'];
         $rating_filter_value = $request['ratingFilterValue'];
