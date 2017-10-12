@@ -9,7 +9,7 @@
                 @if (Auth::user())
                     <div class="checkbox-block-div">
                         <input type="checkbox" id="cuisine-preference-checkbox" class="icheck-field" name="cuisine-preference-checkbox">
-                        <label for="cuisine-preference-checkbox">CUISINE PREFERENCES</label>
+                        <label for="cuisine-preference-checkbox">ORDER BY CUISINE PREFERENCES</label>
                     </div>
                 @endif
                 <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
