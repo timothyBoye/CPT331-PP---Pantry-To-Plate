@@ -26,6 +26,7 @@ class AdminRecipeFormRequest extends FormRequest
 
         $rules = [
             'name' => 'required|max:255',
+            'recipe_source' => 'required|max:255',
             'short_description' => 'required|max:255',
             'long_description' => 'required',
             'serving_size' => 'required|integer',

@@ -51,6 +51,8 @@ class Utilities
     public static function stripBadFileCharacters($string)
     {
         $replacements = array(
+            '\'' => '',
+            '&' => '',
             ' ' => '-',
             'á' => 'a',
             'ã' => 'a',

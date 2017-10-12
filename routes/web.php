@@ -61,6 +61,8 @@ Route::post('/dashboard/measurements/seeder/{id}', 'AdminMeasurementsController@
 // Recipes
 Route::get('/dashboard/recipes', 'AdminRecipesController@recipes')->name('admin.recipes');
 Route::get('/dashboard/recipes/{id}', 'AdminRecipesController@getRecipe')->name('admin.recipe.get');
+Route::get('/dashboard/recipes/ingredients/{id}', 'AdminRecipesController@getIngredients')->name('admin.recipe.ingredients.get');
+Route::get('/dashboard/recipes/methods/{id}', 'AdminRecipesController@getMethods')->name('admin.recipe.methods.get');
 Route::get('/dashboard/newRecipe', 'AdminRecipesController@addRecipe')->name('admin.recipe.new');
 Route::delete('/dashboard/recipes/{id}', 'AdminRecipesController@deleteRecipe')->name('admin.recipe.delete');
 Route::post('/dashboard/recipes/', 'AdminRecipesController@postRecipe')->name('admin.recipe.post');

@@ -42,7 +42,7 @@
                 makeCall();
             });
 
-            $('#cuisine-preference-checkbox').change(function(){
+            $('#cuisine-preference-checkbox').on('ifChanged', function(){
                 storageObject.setCuisinePreferenceCheckStatus($('#cuisine-preference-checkbox').is(':checked'));
                 makeCall();
             });
