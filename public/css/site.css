@@ -300,19 +300,6 @@ ul  {
         /*margin-right:15px;*/
     /*}*/
 /*}*/
-.blurredElement {
-    /* Any browser which supports CSS3 */
-    filter: blur(3px);
-    /* Firefox version 34 and earlier */
-    filter: url("blur.svg#gaussian_blur");
-    /* Webkit in Chrome 52, Safari 9, Opera 39, and earlier */
-    -webkit-filter: blur(3px);
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-}
-
 #search-validation {
     padding-left:10px;
     margin-top:-20px;

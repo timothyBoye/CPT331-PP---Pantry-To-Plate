@@ -1,13 +1,9 @@
 function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
-    $('.content').addClass('blurredElement');
-    $('.nav-long').addClass('blurredElement');
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    $('.content').removeClass('blurredElement');
-    $('.nav-long').removeClass('blurredElement');
 }
 
 function toggleNav() {
