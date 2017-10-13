@@ -280,6 +280,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'vegetable oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'veg-oil.jpg'),
             array('name' => 'oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'veg-oil.jpg'),
             array('name' => 'peanut oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'veg-oil.jpg'),
+            array('name' => 'sunflower oil', 'ingredient_category_id'=> Config::get($oil), 'ingredient_image_url' => 'veg-oil.jpg'),
 
             //condiments
             array('name' => 'sriracha sauce', 'ingredient_category_id'=> Config::get($condiment), 'ingredient_image_url' => 'spice-sauce-brown-bowl-isolated-white-background-closeup-72906255.jpg'),
@@ -319,6 +320,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'garam masala', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'garam_masala.jpeg'),
             array('name' => 'cardamom pods', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'cardamom_pods.jpeg'),
             array('name' => 'turmeric', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'turmeric.jpg'),
+            array('name' => 'red curry paste', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'red-curry-paste.jpg'),
             //sweeteners
             array('name' => 'sugar', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'bowl-of-sugar.jpg'),
             array('name' => 'maple syrup', 'ingredient_category_id'=> Config::get($sweetener), 'ingredient_image_url' => 'fish-sauce-x200.jpg'),
@@ -330,7 +332,8 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'lime juice', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'lime-juice.jpg'),
             array('name' => 'lemon juice', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'benefits-of-lemon1.jpg'),
             array('name' => 'coconut milk', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'coconut-milk.jpeg'),
-            array('name' => 'shaoxing wine', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => ''),
+            array('name' => 'shaoxing wine', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'fish-sauce-x200.jpg'),
+            array('name' => 'vegetable stock', 'ingredient_category_id'=> Config::get($liquid), 'ingredient_image_url' => 'veg-stock.jpg'),
 
             //meats
             array('name' => 'lamb chops', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'lamb-chop.jpg'),

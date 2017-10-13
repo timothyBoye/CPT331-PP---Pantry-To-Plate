@@ -19,6 +19,7 @@ class MeasurementTypeSeeder extends Seeder
             array('name' => 'tablespoon', 'comparable_size' => 15),
             array('name' => 'teaspoon', 'comparable_size' => 5),
             array('name' => 'ml', 'comparable_size' => 1),
+            array('name' => 'kilogram', 'comparable_size' => 2.2), // 2.2lb
             array('name' => 'gram', 'comparable_size' => 1), // subjective: this only works for water, probably fine
             array('name' => 'ounce', 'comparable_size' => 30), // Ounce/grams conversion issue
             array('name' => 'dash', 'comparable_size' => 1), // Dash == 1/8 tsp
