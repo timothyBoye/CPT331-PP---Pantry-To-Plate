@@ -5,6 +5,11 @@
             <div class="item{{ $rkey == 0 ? ' active' : '' }}">
                 <div class="col-lg-4 col-md-6 col-sm-12 recipes-matched-search">
                     <div class="recipe-container">
+                        @if($recipe->cuisine_type)
+                            <div class="cuisine-ribbon-container">
+                                <div class="cuisine-ribbon {{ $recipe->cuisine_type->name }}">{{ $recipe->cuisine_type->name }}</div>
+                            </div>
+                        @endif
                         <div class="ingredient-match" >
                             @foreach($occurrences as $key => $val)
                                 @if($key == $recipe->id)
@@ -25,14 +30,6 @@
                             @endforeach
                         </a>
                         <div class="recipe-text">
-
-                            <!--Begin cuisine-->
-                            <div style="clear:both;">
-                                @if($recipe->cuisine_type)
-                                    <p><strong>Cuisine:</strong> {{ $recipe->cuisine_type->name }}</p>
-                                @endif
-                            </div>
-                            <!--End Cuisine-->
 
                             <div style="margin:auto auto">
                                 @php($rating = false)

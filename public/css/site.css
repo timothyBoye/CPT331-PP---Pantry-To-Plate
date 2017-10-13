@@ -199,6 +199,13 @@ ul  {
 
 }
 
+@media (max-width:767px) {
+    .cuisine-ribbon-container {
+        top:0 !important;
+    }
+}
+
+
 .recipe-text {
     margin-bottom:50px;
     padding-left:20px;
@@ -805,4 +812,73 @@ ul  {
 
 .uppercase {
     text-transform: uppercase;
+}
+
+.cuisine-ribbon-container {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    z-index:1;
+}
+
+.cuisine-ribbon {
+    font: bold 13px Sans-Serif;
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-transform: rotate(45deg);
+    -moz-transform:    rotate(45deg);
+    -ms-transform:     rotate(45deg);
+    -o-transform:      rotate(45deg);
+    position: relative;
+    margin-top: 50px;
+    padding: 7px 0;
+    left: -6px;
+    top: -14px;
+    width: 175px;
+    color: #FFF;
+    opacity:1.0;
+}
+
+.cuisine-ribbon:before {
+    left: 0;
+}
+.cuisine-ribbon:after {
+    right: 0;
+}
+
+.German {
+    background-color: #000;
+}
+.French {
+    background-color: #0055A4;
+}
+.Italian {
+    background-color: #CE2B37;
+}
+.Spanish {
+    background-color: #0039F0;
+}
+.Mexican {
+    background-color: #006847;
+}
+.Indian {
+    background-color: #ff8000;
+}
+.Thai {
+    background-color: #241D4F;
+}
+.Japanese {
+    background-color: #E1AAC8;
+}
+.Chinese {
+    background-color: #fdcf10;
+}
+.Mediterranean {
+    background-color: #893DA2;
+}
+.Western {
+    background-color: #5c9ccc;
 }
