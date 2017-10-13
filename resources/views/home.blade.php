@@ -45,7 +45,14 @@
 
             <div class="bootstro all-dropdowns" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
                 <div id="ingredient-search-group" class="input-group">
-                    <input type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
+                    <input list="ingredients-list" type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
+                    <datalist id="ingredients-list">
+                        @foreach($categories as $category)
+                            @foreach($category->recipeIngredients as $ingredient)
+                                <option value="{{$ingredient->name}}">
+                            @endforeach
+                        @endforeach
+                    </datalist>
                     <span class="input-group-btn">
                      <button class="btn btn-success btn-flat search-button" id="ingredient-search-button">
                         Go

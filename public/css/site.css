@@ -869,3 +869,7 @@ ul  {
 .Western {
     background-color: #5c9ccc;
 }
+
+input::-webkit-calendar-picker-indicator {
+    display: none;
+}
