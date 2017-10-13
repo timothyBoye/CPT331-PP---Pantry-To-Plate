@@ -50,6 +50,7 @@
             $('#ingredient-search-button').on('click', handleSearchInput);
 
             $('#ingredient-input').keypress(function(e){
+                $('#search-validation').empty();
                 if(e.which === 13){
                     $('#ingredient-search-button').click();
                 }
@@ -62,8 +63,13 @@
     };
 
     function handleSearchInput(){
-        var typedIngredientName = $('#ingredient-input').val();
-        $(".li-ingredient").find("a[data-name='"+ typedIngredientName +"']").click();
+        var typedIngredientName = $('#ingredient-input').val().trim();
+        var reg = /^[A-z\-\s]+$/;
+        if(reg.test(typedIngredientName)) {
+            $(".li-ingredient").find("a[data-name='" + typedIngredientName + "']").click();
+        } else {
+            $('#search-validation').text("Invalid characters in search term");
+        }
     }
 
     function initCuisinePreferenceCheckbox(){
