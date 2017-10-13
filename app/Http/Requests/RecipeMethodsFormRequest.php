@@ -24,7 +24,7 @@ class RecipeMethodsFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'method_descriptions.*' => 'required|alpha_international'
+            'method_descriptions.*' => 'required'
         ];
     }
 }

@@ -19,7 +19,6 @@ var storageObject = (function(w){
 
     me.removeIngredient = function(ingredientID){
         var index = me.find(selectedIngredients, ingredientID, 'id');
-        console.log('index: '+index);
         if(index >= 0){
             selectedIngredients.splice(index, 1);
         }

@@ -108,7 +108,7 @@
         var ingredientsList = w.ingredientsController.selectedIngredients;
         for(var i = 0; i < ingredientsList.length; i++) {
             displayIngredientsUl.show();
-            var listItem = '<li class="li-ingredient-added"><div class="ingredient-img" style="background-image:url(img/ingredients/'+ingredientsList[i].image_url+')"><button type="button" class="close cross-button" aria-label="Close"><span aria-hidden="true" data-name="' + ingredientsList[i].name + '" data-id="' + ingredientsList[i].id + '" data-image="' + ingredientsList[i].image_url + '">&times;</span></button></div></div>' + ingredientsList[i].name + '</li>';
+            var listItem = '<li class="li-ingredient-added"><div class="ingredient-img" style="background-image:url(img/ingredients/'+ingredientsList[i].image_url+')"><button type="button" class="close cross-button" aria-label="Close" data-name="' + ingredientsList[i].name + '" data-id="' + ingredientsList[i].id + '" data-image="' + ingredientsList[i].image_url + '"><span aria-hidden="true" data-name="' + ingredientsList[i].name + '" data-id="' + ingredientsList[i].id + '" data-image="' + ingredientsList[i].image_url + '">&times;</span></button></div></div>' + ingredientsList[i].name + '</li>';
             $(displayIngredientsUl).append(listItem);
         }
 
