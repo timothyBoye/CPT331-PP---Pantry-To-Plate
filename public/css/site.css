@@ -751,7 +751,7 @@ ul  {
 
 .each-recipe-result-img {
     width: 100%;
-    height: 400px;
+    height: 486px;
     background-size: cover;
     overflow: hidden;
     position: relative;
@@ -918,4 +918,44 @@ input::-webkit-calendar-picker-indicator {
 .somedivs {
     margin-bottom:20px;
     height:40px;
+}
+
+.first-row {
+    margin-left:15px !important;
+}
+
+.star-desc-name {
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:10px;
+}
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.6;
+    vertical-align: top;
+    border-top: none;
+}
+
+.nutritional-table-heading {
+    border-bottom: 2px solid #676668;
+}
+
+.recipe-steps-description {
+    padding:0;
+}
+
+.world {
+    width:40px;
+    height:40px;
+}
+
+.serves {
+    height:50px;
+    width:50px;
+}
+
+.recipe-icon {
+    width:50px;
+    height:auto;
 }
