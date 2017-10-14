@@ -755,6 +755,7 @@ ul  {
     background-size: cover;
     overflow: hidden;
     position: relative;
+
 }
 
 .recipe-info-opacity {
@@ -773,6 +774,7 @@ ul  {
     color: #ffffff;
     z-index: 1;
     bottom:0;
+    width: 100%;
     /*margin-right: 15px;*/
 }
 
@@ -873,12 +875,14 @@ ul  {
 
 .step-img {
     width: 100%;
-    height:auto;
+    height:200px;
+    object-fit: cover;
+
 }
 
 .steps-list {
     width: 100%;
-    height:200px;
+    height:auto;
     background-color: #ffffff;
     margin-bottom:50px;
     padding:20px;
@@ -904,8 +908,8 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .ingredient-recipe-page-img {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-size: cover;
 }
@@ -916,7 +920,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .somedivs {
-    margin-bottom:20px;
+    margin-bottom:12px;
     height:40px;
 }
 
@@ -938,7 +942,9 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .nutritional-table-heading {
-    border-bottom: 2px solid #676668;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 10px;
 }
 
 .recipe-steps-description {
@@ -958,4 +964,25 @@ input::-webkit-calendar-picker-indicator {
 .recipe-icon {
     width:50px;
     height:auto;
+}
+
+.step-number {
+    width: 35px;
+    height: 35px;
+    background-color: #2ab27b;
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    left: 46%;
+    font-size: 19px;
+}
+
+.step-node {
+    width: 48%;
+    min-width: 300px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-right:10px;
 }

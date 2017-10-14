@@ -2,9 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-        {{--=======--}}
-        {{--<div class="container content">--}}
-        {{-->>>>>>> 153e3c615c2597500d52bc32eefdd43d0c80d596--}}
         <div class="row">
             <div class="col-md-6 each-img-container margin-top">
                 <div class="row first-row">
@@ -62,7 +59,7 @@
                                         @if($ingredient->description), {{ $ingredient->description }}@endif
                                             </div>
 
-                                            <img class="ingredient-recipe-page-img" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->ingredient_image_url) }}">
+                                            <img class="ingredient-recipe-page-img" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->image_name()) }}">
                                         </li>
                                     </div>
                                 @endforeach
@@ -87,23 +84,26 @@
 
             <div class="col-md-6 margin-top">
                 <div class = "row text-center">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <img class ='serves' src='{{ asset('/img/serve.png') }}'/>
                         {{ $recipe->serving_size }} servings
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <img class ='world' src='{{ asset('/img/world.png') }}'/>
                     @if($recipe->cuisine_type)
                             {{ $recipe->cuisine_type->name }}
                         @endif
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <img class ='recipe-icon' src='{{ asset('/img/recipe.png') }}'/>
                         @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
                             <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
                         @else
                             {{$recipe->recipe_source}}
                         @endif
+                    </div>
+                    <div class="col-md-3">
+                        {{--SAVE RECIPE BUTTON--}}
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -112,7 +112,8 @@
                         <div id="recipe-method">
                             <ul class = "recipe-steps-description">
                                 @foreach($recipe->method_steps as $step)
-                                    <div class = "col-sm-6">
+                                    <div class = "step-node">
+                                        <div class = "step-number">{{$step->step_number}}</div>
                                         <img class ="step-img" src ="{{ URL::asset('img/'.($step->image_url)) }}">
                                         <div class = "steps-list">
                                             <li class = "horizontal">{{$step->description}}</li>
@@ -126,74 +127,6 @@
             </div>
         </div>
     </div>
-
-
-    <div class="container-fluid">
-        <div class="row">
-            {{--<div class="col-md-6">--}}
-                {{--<h2>Ingredients</h2>--}}
-                {{--<div id="recipe-ingredients">--}}
-                    {{--<ul>--}}
-                        {{--@foreach($recipe->ingredients as $ingredient)--}}
-                            {{--<li>--}}
-                                {{--{!! \App\Utilities::approximatedFractionString($ingredient->quantity) !!}--}}
-
-                                {{--@if(($ingredient->quantity > 1) && ($ingredient->measure->name != ''))--}}
-                                    {{--{{ $ingredient->measure->name }}s--}}
-                                {{--@else--}}
-                                    {{--{{ $ingredient->measure->name }}--}}
-                                {{--@endif--}}
-                                {{--{{ $ingredient->ingredient->name }}@if($ingredient->description), {{ $ingredient->description }}@endif--}}
-                            {{--</li>--}}
-                        {{--@endforeach--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-6">--}}
-            {{--<h2>Method</h2>--}}
-            {{--<div id="recipe-method">--}}
-            {{--<ul>--}}
-            {{--@foreach($recipe->method_steps as $step)--}}
-            {{--<div class = "col-sm-6">--}}
-            {{--<img class ="step-img" src ="{{ URL::asset('img/'.($step->image_url)) }}">--}}
-            {{--<div class = "steps-list">--}}
-            {{--<li class = "horizontal">{{$step->description}}</li>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--@endforeach--}}
-            {{--</ul>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-        </div>
-    </div>
-
-
-    <div class="container-fluid">
-        {{--<div class="row">--}}
-            {{--<div class="col-md-6">--}}
-                {{--<div class = "nutritional-box">--}}
-                    {{--@if($recipe->nutritional_info_panel)--}}
-                        {{--@include('partials.nutritionalInfoPanel', ['nutritional_info_panel' => $recipe->nutritional_info_panel])--}}
-                    {{--@endif--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-6">--}}
-                {{--@if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))--}}
-                    {{--<a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>--}}
-                {{--@else--}}
-                    {{--{{$recipe->recipe_source}}--}}
-                {{--@endif--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        <div class="col-md-6">
-            @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
-                <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
-            @else
-                {{$recipe->recipe_source}}
-            @endif
-        </div>
-    </div>
-
 @endsection
 
 @section('footer')

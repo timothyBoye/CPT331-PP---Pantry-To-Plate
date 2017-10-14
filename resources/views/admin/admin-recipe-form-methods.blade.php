@@ -56,16 +56,6 @@
 
 @section('head')
     <script>
-
-        // Validation
-        $("#form").validate({
-            rules: {
-            },
-            messages: {
-            }
-        });
-
-
         var method_steps_count = 0;
         $(function() {
             // Recipe method steps functions
