@@ -62,7 +62,7 @@
                                         @if($ingredient->description), {{ $ingredient->description }}@endif
                                             </div>
 
-                                            <img class="ingredient-recipe-page-img" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->ingredient_image_url) }}">
+                                            <img class="ingredient-recipe-page-img" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->image_name()) }}">
                                         </li>
                                     </div>
                                 @endforeach
