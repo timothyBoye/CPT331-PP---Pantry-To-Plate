@@ -431,6 +431,10 @@ class IngredientsTableSeeder extends Seeder
         \App\Ingredient::create(array('name' => 'beef mince', 'ingredient_image_url' => 'beef-mince.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
         \App\Ingredient::create(array('name' => 'tandoori paste', 'ingredient_image_url' => 'tandoori-paste.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Condiment')->value('id')));
         \App\Ingredient::create(array('name' => 'white fish', 'ingredient_image_url' => 'white-fish.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
+        \App\Ingredient::create(array('name' => 'self raising flour', 'ingredient_image_url' => 'self-raising-flour.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Baking')->value('id')));
+        \App\Ingredient::create(array('name' => 'panko breadcrumbs', 'ingredient_image_url' => 'panko-breadcrumbs.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
+        \App\Ingredient::create(array('name' => 'french dijon mustard', 'ingredient_image_url' => 'french-dijon-mustard.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Condiment')->value('id')));
+        \App\Ingredient::create(array('name' => 'white wine vinegar', 'ingredient_image_url' => 'white-wine-vinegar.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Liquid')->value('id')));
 
 
         foreach ($ingredients as $ingredient) {

@@ -56,16 +56,6 @@
 
 @section('head')
     <script>
-
-        // Validation
-        $("#form").validate({
-            rules: {
-            },
-            messages: {
-            }
-        });
-
-
         var ingredients_count = 0;
         $(function() {
             // Recipe ingredients functions
@@ -78,7 +68,6 @@
             $('#ingredients_container').append(addIngredient('{{$ingredient->description}}', '{{$ingredient->measure->id}}', '{{$ingredient->quantity}}', {{$ingredient->ingredient_id}}));
             @endforeach
             @endif
-
 
             $('#add_ingredient').click(function(){
                 $('#ingredients_container').append(addIngredient('', '', '', ''));
