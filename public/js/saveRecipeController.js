@@ -20,7 +20,6 @@
             }
         }).done(function(response) {
             var row = $(evt.target).closest('tr');
-            console.log(response);
             row.remove();
         });
     }

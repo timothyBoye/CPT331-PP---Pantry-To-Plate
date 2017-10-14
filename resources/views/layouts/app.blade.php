@@ -61,27 +61,27 @@
             <!--Nav items on the left hand side-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('about') }}">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ route('home') }}" class="glyphicon glyphicon-home" aria-hidden="true"> Home</a></li>
+                    <li><a href="{{ route('about') }}" class="glyphicon glyphicon-book" aria-hidden="true"> About</a></li>
+                    <li><a href="#" class="glyphicon glyphicon-envelope" aria-hidden="true"> Contact</a></li>
                 </ul>
 
                 <!--Nav items on the right hand side-->
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li> <a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}" class="glyphicon glyphicon-log-in" aria-hidden="true"> Login</a></li>
+                        <li> <a href="{{ route('register') }}" class="glyphicon glyphicon-user" aria-hidden="true"> Register</a></li>
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
-                        <li><a href="{{ route('profile.cuisines')}}">Manage Cuisine Preferences</a></li>
+                        <li><a href="{{ route('profile.cuisines')}}" class="glyphicon glyphicon-cog" aria-hidden="true"> Manage Cuisine Preferences</a></li>
                         <li><form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
                             </form></li>
-                        <li><a href="{{Route('profile.saved_recipes')}}">Saved Recipes</a></li>
+                        <li><a href="{{Route('profile.saved_recipes')}}" class="glyphicon glyphicon-bookmark" aria-hidden="true"> Saved Recipes</a></li>
                     @endif
 
                     @if (Auth::user())
-                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="glyphicon glyphicon-log-out" aria-hidden="true"> Logout</a></li>
                         @if (Auth::user()->role->user_role_name == "Admin")
                             <li><a href="{{ route('admin') }}">Admin Dashboard</a></li>
                         @endif

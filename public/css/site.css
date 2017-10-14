@@ -755,6 +755,7 @@ ul  {
     background-size: cover;
     overflow: hidden;
     position: relative;
+
 }
 
 .recipe-info-opacity {
@@ -773,6 +774,7 @@ ul  {
     color: #ffffff;
     z-index: 1;
     bottom:0;
+    width: 100%;
     /*margin-right: 15px;*/
 }
 
@@ -873,7 +875,9 @@ ul  {
 
 .step-img {
     width: 100%;
-    height:auto;
+    height:200px;
+    object-fit: cover;
+
 }
 
 .steps-list {
@@ -916,7 +920,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .somedivs {
-    margin-bottom:20px;
+    margin-bottom:12px;
     height:40px;
 }
 
@@ -970,4 +974,13 @@ input::-webkit-calendar-picker-indicator {
     top: -15px;
     left: 46%;
     font-size: 19px;
+}
+
+.step-node {
+    width: 48%;
+    min-width: 300px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-right:10px;
 }

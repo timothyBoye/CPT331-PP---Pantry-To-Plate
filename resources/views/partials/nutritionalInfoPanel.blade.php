@@ -2,7 +2,7 @@
     <table class="table table-responsive borderless">
         <caption class = "nutritional-table-heading">Nutritional Information</caption>
 
-        <thead>
+        <thead class="visible-lg-3">
             <tr class = "green-text">
                 <th>{{$nutritional_info_panel->calories}}</th>
                 <th>{{$nutritional_info_panel->gram_protein == null ? 'unknown' : $nutritional_info_panel->gram_protein}}g</th>
