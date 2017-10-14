@@ -959,3 +959,15 @@ input::-webkit-calendar-picker-indicator {
     width:50px;
     height:auto;
 }
+
+.step-number {
+    width: 35px;
+    height: 35px;
+    background-color: #2ab27b;
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    left: 46%;
+    font-size: 19px;
+}
