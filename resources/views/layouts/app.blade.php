@@ -39,9 +39,9 @@
     <!--TBC: https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html-->
 </head>
 
+<body>
 <header>
     <!--Begin Horizontal Nav: https://getbootstrap.com/docs/3.3/components/#navbar-->
-    <!-- navbar-inverse if want black back-->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,13 +52,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
                 <!--Left hand logo area-->
-                {{--<a class="navbar-brand" href="{{ route('home') }}">Pantry to Plate (Logo)</a>--}}
-                <!--Inserting image works but needs to be style better. It's overflowing-->
+            {{--<a class="navbar-brand" href="{{ route('home') }}">Pantry to Plate (Logo)</a>--}}
+            <!--Need to resize the image so that it is responsive and or update the logo-->
                 <a class="navbar-brand" href="{{ route('home') }}"><img style="	width: 120px;" src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo"></a>
-
-
             </div>
 
             <!--Nav items on the left hand side-->
@@ -69,81 +66,33 @@
                     <li><a href="#">Contact</a></li>
                 </ul>
 
-
-
                 <!--Nav items on the right hand side-->
                 <ul class="nav navbar-nav navbar-right">
-                    <!--Default bootsrap items-->
-                    {{--<li><a href="#">Register</a></li>--}}
-                    {{--<li><a href="#">Login</a></li>--}}
-
-                    <!--Imported from old navbar-->
                     @if (Auth::guest())
-                       <li><a href="{{ route('login') }}">Login</a></li>
-                       <li> <a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li> <a href="{{ route('register') }}">Register</a></li>
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
                         <li><a href="{{ route('profile.cuisines')}}">Manage Cuisine Preferences</a></li>
                         <li><form id="logout-form" action="{{ route('logout') }}" method="POST">
-                            {{ csrf_field() }}
-                        </form></li>
-                        <li><a href="#">Saved Recipes</a></li>
+                                {{ csrf_field() }}
+                            </form></li>
+                        <li><a href="{{Route('profile.saved_recipes')}}">Saved Recipes</a></li>
                     @endif
 
                     @if (Auth::user())
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                         @if (Auth::user()->role->user_role_name == "Admin")
                             <li><a href="{{ route('admin') }}">Admin Dashboard</a></li>
+                        @endif
                     @endif
-                @endif
-                    <!--End of import of old nav bar-->
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
     <!--End Horizontal Nav-->
 </header>
-
-
-
-<body>
     <div id="app">
-        {{--<div id="mySidenav" class="sidenav">--}}
-            {{--<!-- Sidenav now uses burger to toggle between open/closed--}}
-            {{--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->--}}
-            {{--<a href="{{ route('home') }}">Home</a>--}}
-            {{--<!-- Authentication Links -->--}}
-            {{--@if (Auth::guest())--}}
-                {{--<a href="{{ route('login') }}">Login</a>--}}
-                {{--<a href="{{ route('register') }}">Register</a>--}}
-            {{--@else--}}
-                {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
-                {{--<a href="{{ route('profile.cuisines')}}">Manage Cuisine Preferences</a>--}}
-                {{--<form id="logout-form" action="{{ route('logout') }}" method="POST">--}}
-                    {{--{{ csrf_field() }}--}}
-                {{--</form>--}}
-                {{--<a href="#">Saved Recipes</a>--}}
-            {{--@endif--}}
-            {{--<a href="{{ route('about') }}">About</a>--}}
-            {{--<a href="#">Contact</a>--}}
-            {{--@if (Auth::user())--}}
-                {{--<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">--}}
-                    {{--Logout--}}
-                {{--</a>--}}
-                {{--@if (Auth::user()->role->user_role_name == "Admin")--}}
-                    {{--<a href="{{ route('admin') }}">Admin Dashboard</a>--}}
-                {{--@endif--}}
-            {{--@endif--}}
-        {{--</div>--}}
-
-        {{--<!--Creates the nav bar and hamburger-->--}}
-        {{--<div class="burger" onclick="toggleNav()">&#9776;</div>--}}
-        {{--<div class="nav-long" >--}}
-            {{--<span id="nav-logo-link">--}}
-                {{--<a  href="{{ route('home') }}"><img src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo" id="logo-image"></a>--}}
-            {{--</span>--}}
-        {{--</div>--}}
-
         @yield('content')
     </div>
 
@@ -157,6 +106,9 @@
     <script src="{{ asset('js/bootstro.js') }}"></script>
     <script src="{{ asset('js/nav.js') }}"></script>
     <script src="{{ asset('js/icheck.min.js') }}"></script>
+    <script src="{{ asset('js/saveRecipeController.js') }}"></script>
+
+<!--Checkbox for Cuisine Preference?-->
     <script>
         $(document).ready(function(){
             $('.icheck-field').each(function(){

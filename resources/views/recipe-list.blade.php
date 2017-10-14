@@ -52,6 +52,19 @@
                             <div style="clear:both;">
                                 <q>{{ $recipe->short_description }}</q>
                             </div>
+                            <div id="save-recipe-div" data-save-recipe-url="{{Route('profile.save_recipe')}}">
+                                @if(Auth::User())
+                                    @if(!\App\RecipeUserMapping::has_saved_recipe($recipe->id))
+                                        <button id="saved-btn-{{$recipe->id}}" class="save-recipe-btn btn btn-success" data-id="{{$recipe->id}}">Save Recipe</button>
+                                    @else
+                                        <label>Saved</label>
+                                    @endif
+                                    <!-- Style coloured label-->
+                                    <label id="saved-label-{{$recipe->id}}" class="invisible">Saved</label>
+
+
+                                    @endif
+                            </divid>
                         </div>
                     </div>
                     <div class="slider-recipe-count">
@@ -68,3 +81,4 @@
 <script src="{{ asset('js/slider.js') }}"></script>
 <!--Hammer library used to implement swipe functionality on touch screens -->
 <script src="{{ asset('js/hammer.min.js') }}"></script>
+<script src="{{ asset('js/saveRecipeController.js') }}"></script>
