@@ -878,7 +878,7 @@ ul  {
 
 .steps-list {
     width: 100%;
-    height:200px;
+    height:auto;
     background-color: #ffffff;
     margin-bottom:50px;
     padding:20px;
@@ -904,8 +904,8 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .ingredient-recipe-page-img {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-size: cover;
 }
