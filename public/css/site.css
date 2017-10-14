@@ -942,7 +942,9 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .nutritional-table-heading {
-    border-bottom: 2px solid #676668;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 10px;
 }
 
 .recipe-steps-description {

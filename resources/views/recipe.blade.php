@@ -84,23 +84,26 @@
 
             <div class="col-md-6 margin-top">
                 <div class = "row text-center">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <img class ='serves' src='{{ asset('/img/serve.png') }}'/>
                         {{ $recipe->serving_size }} servings
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <img class ='world' src='{{ asset('/img/world.png') }}'/>
                     @if($recipe->cuisine_type)
                             {{ $recipe->cuisine_type->name }}
                         @endif
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <img class ='recipe-icon' src='{{ asset('/img/recipe.png') }}'/>
                         @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
                             <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
                         @else
                             {{$recipe->recipe_source}}
                         @endif
+                    </div>
+                    <div class="col-md-3">
+                        {{--SAVE RECIPE BUTTON--}}
                     </div>
                 </div>
                 <div class="col-md-12">
