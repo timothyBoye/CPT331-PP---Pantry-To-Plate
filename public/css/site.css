@@ -785,19 +785,8 @@ ul  {
 
 }
 
-.nutritional-box {
-    background-color: white;
-    width:100%;
-    padding-bottom: 20px;
-    margin-top: 30px;
-}
-
 .margin-top {
    margin-top:100px !important;
-}
-
-.green-text {
-    color: #2ab27b ;
 }
 
 .uppercase {
@@ -888,21 +877,6 @@ ul  {
     padding:20px;
 }
 
-/*#recipe-method {*/
-    /*width:50%;*/
-    /*margin-bottom: 50px;*/
-/*}*/
-
-/*ol.horizontal{*/
-    /*list-style-type: decimal;*/
-    /*width: 600px;*/
-/*}*/
-
-/*ol.horizontal li{*/
-    /*float: left;*/
-    /*width: 200px;*/
-    /*padding: 2px 0px;*/
-/*}*/
 input::-webkit-calendar-picker-indicator {
     display: none;
 }
@@ -944,7 +918,9 @@ input::-webkit-calendar-picker-indicator {
 .nutritional-table-heading {
     font-weight: bold;
     font-size: 18px;
-    margin-left: 10px;
+    margin-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .recipe-steps-description {
@@ -970,12 +946,12 @@ input::-webkit-calendar-picker-indicator {
     width: 35px;
     height: 35px;
     background-color: #2ab27b;
-    color: #ffffff;
     border-radius: 50%;
     position: absolute;
     top: -15px;
     left: 46%;
     font-size: 19px;
+    color: #ffffff;
 }
 
 .step-node {
@@ -985,4 +961,105 @@ input::-webkit-calendar-picker-indicator {
     position: relative;
     vertical-align: top;
     margin-right:10px;
+}
+
+.table-row-left {
+    float: left;
+    display: block;
+    width: 100px;
+    height: 40px;
+    margin-left:10px;
+}
+.table-row {
+    float: left;
+    display: block;
+    width: 100px;
+    height: 40px;
+}
+
+.table-row-height {
+    float: left;
+    display: block;
+    width: 100px;
+    height: 20px;
+}
+
+.nut-names {
+    width: 100%;
+    height: 30px;
+    margin-top:63px;
+    text-transform: uppercase;
+}
+
+.nut-numbers {
+    width: 100%;
+    height: 5px;
+    margin-top: 22px;
+    color: #2ab27b;
+    font-weight: bold;
+}
+
+.line {
+    border-top: 1px solid black;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.show-mobile {
+    visibility: hidden;
+}
+
+@media (max-width:1200px) and (min-width: 992px) {
+    .show-mobile {
+    visibility: hidden;
+
+    }
+}
+
+/*@media (max-width:991px)*/
+/*{*/
+    /*.show-desktop {*/
+    /*visibility: hidden;*/
+
+    /*}*/
+/*}*/
+
+.nutritional-box {
+    background-color: white;
+    width: 86%;
+    margin: 0 auto;
+}
+
+@media (max-width:991px)
+{
+    .show-desktop {
+        visibility: hidden;
+
+    }
+
+    .nutritional-box {
+        width:100% !important;
+        height: 433px;
+
+    }
+
+    .show-mobile {
+        visibility: visible;
+        margin-bottom: 14px;
+    }
+
+    .table-row {
+        float: left;
+        display: block;
+        width: 100px;
+        height: 10px;
+    }
+
+    .table-row-height {
+        float: left;
+        display: block;
+        width: 100px;
+        height: 10px;
+    }
 }
