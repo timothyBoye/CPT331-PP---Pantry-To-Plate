@@ -118,7 +118,7 @@ class RecipesTableSeeder extends Seeder
         IngredientRecipeMapping::create(array('recipe_id' => 6,'ingredient_id' => Ingredient::where('name', 'scallion')->value('id'),'quantity' => '2','description' => 'small, finely chopped','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 6,'ingredient_id' => Ingredient::where('name', 'sea salt')->value('id'),'quantity' => '1','description' => '','measurement_type_id' => MeasurementType::where('name', 'dash')->value('id')));
         IngredientRecipeMapping::create(array('recipe_id' => 6,'ingredient_id' => Ingredient::where('name', 'tomato')->value('id'),'quantity' => '2','description' => 'finely chopped','measurement_type_id' => MeasurementType::where('name', '')->value('id')));
-        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Avocado Cucumber Salsa')->value('id'), 'step_number' => 1, 'description' => 'Add all the ingredients to a medium size bowl and mix it with a fork.', 'image_url' => ''));
+        \App\RecipeMethod::create(array('recipe_id' => Recipe::where('name', '=', 'Avocado Cucumber Salsa')->value('id'), 'step_number' => 1, 'description' => 'Add all the ingredients to a medium size bowl and mix it with a fork.', 'image_url' => 'greens.jpg'));
 
 
         Recipe::create(array('id' => 7,'name' => 'Sourdough Bread with Avocado Spread',

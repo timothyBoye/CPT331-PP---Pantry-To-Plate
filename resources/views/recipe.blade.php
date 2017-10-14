@@ -109,7 +109,7 @@
                         <div id="recipe-method">
                             <ul class = "recipe-steps-description">
                                 @foreach($recipe->method_steps as $step)
-                                    <div class = "col-sm-6">
+                                    <div class = "step-node">
                                         <div class = "step-number">{{$step->step_number}}</div>
                                         <img class ="step-img" src ="{{ URL::asset('img/'.($step->image_url)) }}">
                                         <div class = "steps-list">
