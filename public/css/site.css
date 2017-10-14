@@ -1063,3 +1063,9 @@ input::-webkit-calendar-picker-indicator {
         height: 10px;
     }
 }
+
+img[src*="default-step"] {
+    max-height:20px;
+}
+
+
