@@ -181,14 +181,14 @@ class AdminRecipesController extends Controller
         RecipeMethod::where('recipe_id', '=', $id)->delete();
 
         $method_descriptions = $request['method_descriptions'];
-        //$method_images = $request['method_images'];
+        $method_images = $request['method_images'];
         $count = count($method_descriptions);
         for ($i = 0; $i < $count; $i++) {
             $method = RecipeMethod::create(array(
                 'recipe_id' => $recipe->id,
                 'step_number' => $i+1,
                 'description' => $method_descriptions[$i],
-                //'image_url' => $method_images[$i],
+                'image_url' => $method_images[$i],
             ));
             $method->save();
         }
@@ -228,7 +228,7 @@ class AdminRecipesController extends Controller
         // Method
         $count = 1;
         foreach ($recipe->method_steps as $step) {
-            $response = $response.$this->methodStepSeedString($recipe->name, $count, $step->description);//, $step->image_url);
+            $response = $response.$this->methodStepSeedString($recipe->name, $count, $step->description, $step->image_url);
             $count++;
         }
 
