@@ -42,7 +42,7 @@ class IngredientRecipeMapping extends Model
                 }
 
                 if($rating_filter_value >= 0){
-                    if($ingredient_recipe_mapping->recipe->average_rating < $rating_filter_value){
+                    if(round($ingredient_recipe_mapping->recipe->average_rating) < $rating_filter_value){
                         $include = false;
                     }
                 }
