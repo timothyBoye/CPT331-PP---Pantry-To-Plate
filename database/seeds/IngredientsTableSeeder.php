@@ -196,7 +196,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'shallot', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'shallot-x200.jpg'),
             array('name' => 'spring onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'spring-onion-x200.jpg'),
             array('name' => 'green onion', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
-            array('name' => 'parsley', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => ''),
+            array('name' => 'parsley', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'parsley.png'),
             array('name' => 'peppers', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'BellPeppers.jpg'),
             array('name' => 'green pepper', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'green-pepper-x200.jpg'),
             array('name' => 'red pepper', 'ingredient_category_id'=> Config::get($veg), 'ingredient_image_url' => 'red-pepper-x200.jpg'),
