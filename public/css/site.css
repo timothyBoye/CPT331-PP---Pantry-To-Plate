@@ -787,6 +787,7 @@ ul  {
     background-color: white;
     width:100%;
     padding-bottom: 20px;
+    margin-top: 30px;
 }
 
 .margin-top {
@@ -900,4 +901,21 @@ ul  {
 /*}*/
 input::-webkit-calendar-picker-indicator {
     display: none;
+}
+
+.ingredient-recipe-page-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+.separate-ingredients {
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.somedivs {
+    margin-bottom:20px;
+    height:40px;
 }

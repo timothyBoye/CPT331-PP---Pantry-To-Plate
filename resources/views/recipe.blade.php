@@ -36,23 +36,32 @@
 
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <h2>Ingredients</h2>
                         <div id="recipe-ingredients">
                             <ul>
                                 @foreach($recipe->ingredients as $ingredient)
-                                    <li>
-                                        {!! \App\Utilities::approximatedFractionString($ingredient->quantity) !!}
+                                    <div class="col-md-3 separate-ingredients">
 
-                                        @if(($ingredient->quantity > 1) && ($ingredient->measure->name != ''))
-                                            {{ $ingredient->measure->name }}s
-                                        @else
-                                            {{ $ingredient->measure->name }}
-                                        @endif
-                                        {{ $ingredient->ingredient->name }}
-                                        <img class="poop" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->ingredient_image_url) }}">
-                                    @if($ingredient->description), {{ $ingredient->description }}@endif
-                                    </li>
+                                        <li>
+                                            <div class = "somedivs">
+
+                                            {!! \App\Utilities::approximatedFractionString($ingredient->quantity) !!}
+
+                                            @if(($ingredient->quantity > 1) && ($ingredient->measure->name != ''))
+                                                {{ $ingredient->measure->name }}s
+                                            @else
+                                                {{ $ingredient->measure->name }}
+                                            @endif
+                                            {{ $ingredient->ingredient->name }}
+
+
+                                        @if($ingredient->description), {{ $ingredient->description }}@endif
+                                            </div>
+
+                                            <img class="ingredient-recipe-page-img" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->ingredient_image_url) }}">
+                                        </li>
+                                    </div>
                                 @endforeach
                             </ul>
                         </div>
