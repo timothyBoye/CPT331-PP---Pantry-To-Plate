@@ -64,7 +64,7 @@
 
 
                                     @endif
-                            </divid>
+                            </div>
                         </div>
                     </div>
                     <div class="slider-recipe-count">
