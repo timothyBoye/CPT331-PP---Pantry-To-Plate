@@ -48,14 +48,10 @@
                                             {{ $ingredient->measure->name }}s
                                         @else
                                             {{ $ingredient->measure->name }}
-
                                         @endif
                                         {{ $ingredient->ingredient->name }}
-                                        <img class = "poop" src ="{{ URL::asset('img/ingredients'.($recipe->ingredient_image_url)) }}">
-
-
+                                        <img class="poop" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->ingredient_image_url) }}">
                                     @if($ingredient->description), {{ $ingredient->description }}@endif
-
                                     </li>
                                 @endforeach
                             </ul>
