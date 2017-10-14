@@ -222,7 +222,7 @@ class AdminRecipesController extends Controller
         // Ingredients
         foreach ($recipe->ingredients as $ingredient) {
             $response = $response.$this->ingredientSeedString($recipe->name, $ingredient->quantity,
-                    $ingredient->ingredient_id, $ingredient->measurement_type_id, $ingredient->description);
+                    $ingredient->ingredient_id, $ingredient->measurement_type_id, $ingredient->description, $recipe->ingredient_image_url);
         }
 
         // Method
