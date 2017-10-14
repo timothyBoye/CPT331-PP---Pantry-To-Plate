@@ -898,3 +898,6 @@ ul  {
     /*width: 200px;*/
     /*padding: 2px 0px;*/
 /*}*/
+input::-webkit-calendar-picker-indicator {
+    display: none;
+}
