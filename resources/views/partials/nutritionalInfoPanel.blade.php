@@ -1,5 +1,5 @@
 <div>
-    <table class="table borderless  ">
+    <table class="table table-responsive borderless">
         <caption class = "nutritional-table-heading">Nutritional Information</caption>
 
         <thead>
