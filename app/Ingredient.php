@@ -20,5 +20,10 @@ class Ingredient extends Model
         return $this->hasMany('App\IngredientRecipeMapping');
     }
 
+    public function image_name()
+    {
+        return $this->ingredient_image_url == '' ? 'default.jpg' : $this->ingredient_image_url;
+    }
+
 
 }

@@ -313,7 +313,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'cinnamon', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'cinnamon.jpeg'),
             array('name' => 'ground cinnamon', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'ras-el-hanout-x200.jpg'),
             array('name' => 'vegetable stock cube', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
-            array('name' => 'mustard seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
+            array('name' => 'mustard seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'mustard.png'),
             array('name' => 'dill seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => ''),
             array('name' => 'coriander seed', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'coriander_seeds.jpeg'),
             array('name' => 'nutmeg', 'ingredient_category_id'=> Config::get($spice), 'ingredient_image_url' => 'nutmeg.jpg'),
@@ -396,7 +396,7 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'mozzarella', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'mozzarella-ball-x200.jpg'),
             array('name' => 'parmigiano cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'rennet-free-parmesan-x200.jpg'),
             array('name' => 'pecorino cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
-            array('name' => 'clotted cream', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => ''),
+            array('name' => 'clotted cream', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'clotted-cream-2-x200.jpg'),
             array('name' => 'mature cheddar cheese', 'ingredient_category_id' => Config::get($dairy), 'ingredient_image_url' => 'cheddar-cheese-x200.jpg'),
 
             //nuts
