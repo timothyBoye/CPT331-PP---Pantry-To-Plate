@@ -435,6 +435,15 @@ class IngredientsTableSeeder extends Seeder
         \App\Ingredient::create(array('name' => 'panko breadcrumbs', 'ingredient_image_url' => 'panko-breadcrumbs.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
         \App\Ingredient::create(array('name' => 'french dijon mustard', 'ingredient_image_url' => 'french-dijon-mustard.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Condiment')->value('id')));
         \App\Ingredient::create(array('name' => 'white wine vinegar', 'ingredient_image_url' => 'white-wine-vinegar.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Liquid')->value('id')));
+        \App\Ingredient::create(array('name' => 'trout', 'ingredient_image_url' => 'trout.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
+        \App\Ingredient::create(array('name' => 'almonds', 'ingredient_image_url' => 'almonds.jpeg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Nuts')->value('id')));
+        \App\Ingredient::create(array('name' => 'brisket', 'ingredient_image_url' => 'brisket.jpeg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
+        \App\Ingredient::create(array('name' => 'clove', 'ingredient_image_url' => 'clove.jpeg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Spice')->value('id')));
+        \App\Ingredient::create(array('name' => 'lemongrass stalk', 'ingredient_image_url' => 'lemon-grass.jpeg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Herb')->value('id')));
+        \App\Ingredient::create(array('name' => 'palm sugar', 'ingredient_image_url' => 'palm-sugar.jpeg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Sweetener')->value('id')));
+        \App\Ingredient::create(array('name' => 'pork mince', 'ingredient_image_url' => 'pork-mince.jpeg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Meat')->value('id')));
+        \App\Ingredient::create(array('name' => 'chili powder', 'ingredient_image_url' => 'chili-powder.jpg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Spice')->value('id')));
+        \App\Ingredient::create(array('name' => 'jasmine rice', 'ingredient_image_url' => 'jasmine-rice.jpeg', 'ingredient_category_id' => IngredientCategory::where('name', '=', 'Grain')->value('id')));
 
 
         foreach ($ingredients as $ingredient) {
