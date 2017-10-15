@@ -7,12 +7,12 @@
                 <div class="row first-row">
                     <div class="each-recipe-result-img" style="background-image: url({{ URL::asset('img/recipes/'.$recipe->image_name()) }});">
 
-                        <div id="save-recipe-div" class = "button-for-saving" data-save-recipe-url="{{Route('profile.save_recipe')}}">
+                        <div class="save-recipe-div" class = "button-for-saving" data-delete-recipe-url="{{ Route('profile.delete_recipe') }}" data-save-recipe-url="{{Route('profile.save_recipe')}}">
                             @if(Auth::User())
                                 @if(!\App\RecipeUserMapping::has_saved_recipe($recipe->id))
-                                    <button id="saved-btn-{{$recipe->id}}" class="save-recipe-btn btn btn-success" data-id="{{$recipe->id}}">Save Recipe</button>
+                                    <button id="saved-btn-{{$recipe->id}}" class="save-recipe-btn btn btn-success" data-recipe-id="{{$recipe->id}}" data-id="{{$recipe->id}}">Save</button>
                                 @else
-                                    <label>Saved</label>
+                                    <button id="saved-btn-{{$recipe->id}}" class="save-recipe-btn btn btn-success disabled" data-recipe-id="{{$recipe->id}}" data-id="{{$recipe->id}}">Saved</button>
                                 @endif
                             <!-- Style coloured label-->
                                 <label id="saved-label-{{$recipe->id}}" class="invisible">Saved</label>
