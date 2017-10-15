@@ -1062,6 +1062,39 @@ input::-webkit-calendar-picker-indicator {
         width: 100px;
         height: 10px;
     }
+
+    .first-row {
+        margin-left: -8px !important;
+        margin-right: -8px !important;
+    }
+
+    .recipe-onfo-each {
+        height: 312px;
+    }
+
+    .recipe-info-opacity {
+        height: 300px;
+    }
+
+    .margin-top {
+        margin-top: 60px !important;
+    }
+
+    .ingredient-recipe-page-img {
+        visibility: hidden;
+        height:0px;
+    }
+
+    .separate-ingredients {
+         margin-top: 0px;
+         margin-bottom: 0px;
+         height: 20px;
+        text-align: left;
+    }
+
+    .step-node {
+        min-width: 369px;
+    }
 }
 
 img[src*="default-step"] {
