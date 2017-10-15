@@ -110,9 +110,12 @@
                     <div class="row text-center">
                         <h2>Method</h2>
                         <div id="recipe-method">
-                            <ul class = "recipe-steps-description">
-                                @foreach($recipe->method_steps as $step)
-                                    <div class = "step-node">
+                          <ul class = "recipe-steps-description">
+                              <div class="slider-outer step-slider-outer">
+                                  <img src="{{ URL::asset('img/left-chevron-gr.png') }}" class="prev prev-step" alt="Previous">
+                                  <div class="slider-inner step-slider-inner">
+                                @foreach($recipe->method_steps as $key=>$step)
+                                    <div class = "step-node item{{ $key == 0 ? ' active' : '' }}">
                                         <div class = "step-number">{{$step->step_number}}</div>
                                         <img class ="step-img" src ="{{ URL::asset('img/'.($step->image_url)) }}">
                                         <div class = "steps-list">
@@ -120,6 +123,9 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                    </div>
+                                <img src="{{ URL::asset('img/right-chevron-gr.png') }}" class="next next-step" alt="Next">
+                            </div>
                             </ul>
                         </div>
                     </div>
@@ -131,4 +137,7 @@
 
 @section('footer')
     <script src="{{ asset('js/ratings.js') }}"></script>
+    <script src="{{ asset('js/slider.js') }}"></script>
+    <!--Hammer library used to implement swipe functionality on touch screens -->
+    <script src="{{ asset('js/hammer.min.js') }}"></script>
 @endsection
