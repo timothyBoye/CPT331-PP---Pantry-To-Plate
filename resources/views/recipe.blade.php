@@ -21,7 +21,7 @@
                         <div class = "recipe-onfo-each">
                             <div class="star-desc-name">
                             <h2>{{ $recipe->name }}</h2>
-                            <strong>Rated:</strong>
+                            {{--<strong>RATED:</strong>--}}
                             <fieldset class="inline-block rating {{Auth::check() ? 'rating-editable' : ''}} {{ $userRating ? 'rated' : '' }}"  id="rating-{{$recipe->id}}" >
                                 @php ($rating = $userRating ? $userRating->rating : round($recipe->average_rating))
                                 <input type="radio" id="star5-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="5" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 5 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label style="font-size: 200%;" for="star5-{{$recipe->id}}" title="Rocks!"></label>
@@ -30,14 +30,14 @@
                                 <input type="radio" id="star2-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="2" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 2 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label style="font-size: 200%;" for="star2-{{$recipe->id}}" title="Kinda bad"></label>
                                 <input type="radio" id="star1-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="1" {{Auth::check() ? 'onclick=makeRatingCall('.$recipe->id.',"'.URL::route('setRating').'");' : ''}} {{ $rating == 1 ? 'checked' : '' }} {{Auth::check() ? '' : 'disabled'}}/><label style="font-size: 200%;" for="star1-{{$recipe->id}}" title="Sucks big time"></label>
                             </fieldset>
-                            <span id="rated-by-who">
-                                @if ($userRating)
-                                    your rating
-                                @else
-                                    by {{ $recipe->number_of_ratings }} users <br>
-                                @endif
-                                <q>{{ $recipe->long_description }}</q>
-                                </span>
+                            {{--<span id="rated-by-who">--}}
+                                {{--@if ($userRating)--}}
+                                    {{--your rating--}}
+                                {{--@else--}}
+                                    {{--by {{ $recipe->number_of_ratings }} users <br>--}}
+                                {{--@endif--}}
+                                {{--</span>--}}
+                                <br><q>{{ $recipe->long_description }}</q>
                                 </div>
                                 <div class = "recipe-info-opacity"></div>
 
@@ -93,20 +93,20 @@
 
 
 
-            <div class="col-md-6 margin-top">
+            <div class="col-md-6 margin-top-icons">
                 <div class = "row text-center four-icons-mob">
-                    <div class="col-md-4">
+                    <div class="col-md-4 move-over">
                         <img class ='serves' src='{{ asset('/img/serve.png') }}'/><br>
                         {{ $recipe->serving_size }} servings
                     </div>
                     <div class="col-md-4">
-                        <img class ='world' src='{{ asset('/img/world.png') }}'/>
+                        <img class ='world' src='{{ asset('/img/world.png') }}'/><br>
                     @if($recipe->cuisine_type)
                             {{ $recipe->cuisine_type->name }}
                         @endif
                     </div>
                     <div class="col-md-4">
-                        <img class ='recipe-icon' src='{{ asset('/img/recipe.png') }}'/>
+                        <img class ='recipe-icon' src='{{ asset('/img/recipe.png') }}'/> <br>
                         @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
                             <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
                         @else

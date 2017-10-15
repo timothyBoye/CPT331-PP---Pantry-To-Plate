@@ -1050,6 +1050,10 @@ input::-webkit-calendar-picker-indicator {
     height: 200px;
 }
 
+.margin-top-icons {
+    margin-top: 60px !important;
+}
+
 @media (max-width:991px)
 
 {
@@ -1084,8 +1088,8 @@ input::-webkit-calendar-picker-indicator {
         height: 300px;
     }
 
-    .margin-top {
-        margin-top: 60px !important;
+    .margin-top-icons {
+        margin-top: 0px !important;
     }
 
     .ingredient-recipe-page-img {
@@ -1146,7 +1150,18 @@ input::-webkit-calendar-picker-indicator {
     .four-icons-mob {
         padding-top: 0;
         display: inline-flex;
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
 
+    .step-number {
+        top: 2px;
+    }
+
+    .move-over {
+        margin-left: 30px;
     }
     .serves {
         height: 30px;
