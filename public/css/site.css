@@ -918,7 +918,7 @@ input::-webkit-calendar-picker-indicator {
 .nutritional-table-heading {
     font-weight: bold;
     font-size: 18px;
-    margin-left: 35px;
+    margin-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -963,42 +963,6 @@ input::-webkit-calendar-picker-indicator {
     margin-right:10px;
 }
 
-.table-row-left {
-    float: left;
-    display: block;
-    width: 100px;
-    height: 40px;
-    margin-left:10px;
-}
-.table-row {
-    float: left;
-    display: block;
-    width: 100px;
-    height: 40px;
-}
-
-.table-row-height {
-    float: left;
-    display: block;
-    width: 100px;
-    height: 20px;
-}
-
-.nut-names {
-    width: 100%;
-    height: 30px;
-    margin-top:63px;
-    text-transform: uppercase;
-}
-
-.nut-numbers {
-    width: 100%;
-    height: 5px;
-    margin-top: 22px;
-    color: #2ab27b;
-    font-weight: bold;
-}
-
 .line {
     border-top: 1px solid black;
     width: 90%;
@@ -1017,26 +981,21 @@ input::-webkit-calendar-picker-indicator {
     }
 }
 
-/*@media (max-width:991px)*/
-/*{*/
-    /*.show-desktop {*/
-    /*visibility: hidden;*/
-
-    /*}*/
-/*}*/
-
 .nutritional-box {
     background-color: white;
-    width: 86%;
+    width: 100%;
     margin: 0 auto;
 }
 
 @media (max-width:991px)
+
 {
     .show-desktop {
         visibility: hidden;
+        /*height:0px;*/
 
     }
+
 
     .nutritional-box {
         width:100% !important;
@@ -1046,27 +1005,8 @@ input::-webkit-calendar-picker-indicator {
 
     .show-mobile {
         visibility: visible;
-        margin-bottom: 14px;
     }
 
-    .table-row {
-        float: left;
-        display: block;
-        width: 100px;
-        height: 10px;
-    }
-
-    .table-row-height {
-        float: left;
-        display: block;
-        width: 100px;
-        height: 10px;
-    }
-
-    .first-row {
-        margin-left: -8px !important;
-        margin-right: -8px !important;
-    }
 
     .recipe-onfo-each {
         height: 312px;
@@ -1086,15 +1026,59 @@ input::-webkit-calendar-picker-indicator {
     }
 
     .separate-ingredients {
-         margin-top: 0px;
          margin-bottom: 0px;
-         height: 20px;
-        text-align: left;
+         height: auto !important;
+         text-align: left;
     }
 
     .step-node {
         min-width: 369px;
     }
+    .somedivs {
+        height:0;
+        margin-bottom: 0px;
+    }
+
+    .unordered-list {
+        margin-top: 0;
+        margin-bottom: 11px;
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+
+    .list-item {
+        padding-bottom: 5px;
+        margin-bottom:5px;
+        margin-top:5px;
+    }
+
+    .text-center {
+        background-color: #ffffff;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .text-center-method {
+        background-color: #ffffff;
+        margin-left: 0px;
+        margin-right: 0px;
+        text-align: center;
+    }
+
+    .swipe-container-mob {
+         padding-left: 2px !important;
+         padding-right: 2px !important;
+    }
+
+    .method-description-text-box {
+        padding-left: 15px !important;
+        padding-right: 40px !important;
+    }
+}
+
+.green-text {
+    color: #2ab27b;
+    font-weight: bold;
 }
 
 img[src*="default-step"] {

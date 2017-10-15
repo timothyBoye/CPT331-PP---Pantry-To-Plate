@@ -39,11 +39,11 @@
                     <div class="col-md-12 text-center">
                         <h2>Ingredients</h2>
                         <div id="recipe-ingredients">
-                            <ul>
+                            <ul class="unordered-list">
                                 @foreach($recipe->ingredients as $ingredient)
                                     <div class="col-md-3 separate-ingredients">
 
-                                        <li>
+                                        <li class = "list-item">
                                             <div class = "somedivs">
 
                                             {!! \App\Utilities::approximatedFractionString($ingredient->quantity) !!}
@@ -106,8 +106,8 @@
                         {{--SAVE RECIPE BUTTON--}}
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="row text-center">
+                <div class="col-md-12 swipe-container-mob">
+                    <div class="row text-center-method">
                         <h2>Method</h2>
                         <div id="recipe-method">
                           <ul class = "recipe-steps-description">
@@ -119,7 +119,7 @@
                                         <div class = "step-number">{{$step->step_number}}</div>
                                         <img class ="step-img" src ="{{ URL::asset('img/'.($step->image_url)) }}">
                                         <div class = "steps-list">
-                                            <li class = "horizontal">{{$step->description}}</li>
+                                            <li class = "horizontal method-description-text-box">{{$step->description}}</li>
                                         </div>
                                     </div>
                                 @endforeach
