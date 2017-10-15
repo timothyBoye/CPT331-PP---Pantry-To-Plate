@@ -75,4 +75,9 @@ class Recipe extends Model
         return $this->hasMany('App\RecipeMethod', 'recipe_id', 'id')->orderBy('step_number');
     }
 
+
+    public function image_name()
+    {
+        return $this->image_url == '' ? 'default.jpg' : $this->image_url;
+    }
 }

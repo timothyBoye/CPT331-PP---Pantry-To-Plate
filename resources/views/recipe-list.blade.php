@@ -29,7 +29,7 @@
                             @endforeach
                         </div>
                         <a href="{{ route('recipe', $recipe->id) }}" class="recipe-link">
-                            <div class="recipe-image" style="background-image: url({{ URL::asset('img/recipes/'.($recipe->image_url == '' ? 'default.jpg' : $recipe->image_url)) }});">
+                            <div class="recipe-image" style="background-image: url({{ URL::asset('img/recipes/'.$recipe->image_name()) }});">
                             </div>
 
                             <h4 class="recipe-name">{{ $recipe->name }}</h4>

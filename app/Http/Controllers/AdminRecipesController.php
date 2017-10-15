@@ -242,13 +242,13 @@ class AdminRecipesController extends Controller
         return response()->json($response, 200);
     }
 
-    private function methodStepSeedString($recipe_name, $step_number, $description)//, $image_url)
+    private function methodStepSeedString($recipe_name, $step_number, $description, $image_url)
     {
         $response = "\App\RecipeMethod::create(array(";
         $response = $response."'recipe_id' => Recipe::where('name', '=', '$recipe_name')->value('id'), ";
         $response = $response."'step_number' => $step_number, ";
         $response = $response."'description' => '$description'";
-        //$response = $response."'image_url' => '$image_url'";
+        $response = $response."'image_url' => '$image_url'";
         $response = $response."));\n";
 
         return $response;

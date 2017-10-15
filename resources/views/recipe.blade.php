@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6 each-img-container margin-top">
                 <div class="row first-row">
-                    <div class="each-recipe-result-img" style="background-image: url({{ URL::asset('img/recipes/'.($recipe->image_url == '' ? 'default.jpg' : $recipe->image_url)) }});">
+                    <div class="each-recipe-result-img" style="background-image: url({{ URL::asset('img/recipes/'.$recipe->image_name()) }});">
 
                         <div id="save-recipe-div" class = "button-for-saving" data-save-recipe-url="{{Route('profile.save_recipe')}}">
                             @if(Auth::User())
