@@ -20,7 +20,7 @@
     <link href="{{ asset('css/icheck-line/green.css') }}" rel="stylesheet">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
     <!--Favicon-->
-    <link rel="icon" href="favicon.ico"/>
+    <link rel="icon" href="{{ asset('favicon.ico') }}"/>
     <!--Generated from here: https://www.favicon-generator.org   -->
     <!--Need to check if background will be white or black with transparent png-->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/favicon/apple-icon-57x57.png') }}">
