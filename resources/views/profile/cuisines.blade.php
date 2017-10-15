@@ -11,7 +11,7 @@
                 </button>
                 <div class = "success-danger-img">
                     <img class = "tick" src='{{ asset('/img/tick.png') }}'/>
-                    <img class = "cross-img" src='{{ asset('/img/x-mark-xxl.png') }}'/>
+                    <img class = "cross-img" src='{{ asset('/img/600px-Exclamation_mark_white_icon.svg.png') }}'/>
                 </div>
                 <div class="alert success-message"></div>
             </div>
