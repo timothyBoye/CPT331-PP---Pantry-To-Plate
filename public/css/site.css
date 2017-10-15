@@ -1096,3 +1096,9 @@ input::-webkit-calendar-picker-indicator {
         min-width: 369px;
     }
 }
+
+img[src*="default-step"] {
+    max-height:20px;
+}
+
+
