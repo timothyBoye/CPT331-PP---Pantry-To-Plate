@@ -135,9 +135,76 @@ ul  {
     content: '';
     position: absolute;
     bottom: 0; left: 0;
-    border-left: 300px solid white;
-    border-top: 80px solid transparent;
     width: 0;
+}
+
+@media (max-width:3500px) and (min-width: 2001px) {
+    .recipe-image:before {
+        border-left: 800px solid white;
+        border-top: 80px solid transparent;
+    }
+}
+
+@media (max-width:2000px) and (min-width: 1201px) {
+    .recipe-image:before {
+        border-left: 500px solid white;
+        border-top: 80px solid transparent;
+    }
+}
+
+@media (max-width:1200px) and (min-width: 992px)
+{
+    .recipe-image:before {
+        border-left: 500px solid white;
+        border-top: 80px solid transparent;
+    }
+}
+
+@media (max-width:991px) {
+    .recipe-image:before {
+        border-left: 1000px solid white;
+        border-top: 80px solid transparent;
+    }
+}
+
+@supports
+(-webkit-clip-path: polygon(0 0, 0 175px, 100% 250px, 100% 0)) or
+(-moz-clip-path: polygon(0 0, 0 175px, 100% 250px, 100% 0)) or
+(clip-path: polygon(0 0, 0 175px, 100% 250px, 100% 0)) {
+
+    .recipe-image:before {
+        border-left: 0!important;
+        border-top: 0!important;
+    }
+
+    .recipe-image {
+        -webkit-clip-path: polygon(0 0, 0 175px, 100% 250px, 100% 0);
+        -moz-clip-path: polygon(0 0, 0 175px, 100% 250px, 100% 0);
+        clip-path: polygon(0 0, 0 175px, 100% 250px, 100% 0);
+    }
+
+}
+
+.save-recipe-div {
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    margin:10px;
+    z-index: 10;
+}
+
+@media (max-width:767px) {
+    .save-recipe-div {
+        top:0 !important;
+    }
+}
+
+.save-recipe-btn {
+    cursor: default!important;
+}
+
+.saved-label {
+    color: #20895e;
 }
 
 .ingredients-match-number {
@@ -168,21 +235,8 @@ ul  {
     padding-right: 5px !important;
 }
 
-@media (max-width:1200px) and (min-width: 992px)
-{
-    .recipe-image:before {
-        border-left: 500px solid white;
-        border-top: 80px solid transparent;
-    }
-}
-
 @media (max-width:991px)
 {
-    .recipe-image:before {
-        border-left: 1000px solid white;
-        border-top: 80px solid transparent;
-    }
-
     /* positions ingredients list underneath recipes below this width */
     .home-recipe-container {
         display: flex;

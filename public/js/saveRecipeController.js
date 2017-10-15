@@ -2,7 +2,7 @@
 
     w.saveRecipeController = {
         watch: function() {
-            $('.save-recipe-btn').on('click', handleSaveButtonClick)
+            $('.save-recipe-btn').on('click', handleSaveButtonClick);
 
             $('.delete-saved-recipe-btn').on('click', handleDeleteRecipeButtonClick);
         }
@@ -27,22 +27,36 @@
 
     function handleSaveButtonClick(evt){
         var recipeId = $(evt.target).attr('data-id');
-        var url = $('#save-recipe-div').attr('data-save-recipe-url');
 
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: {
+        // Remove save or
+        if ($('#saved-btn-' + recipeId).html() == 'Saved') {
+            var url = $('.save-recipe-div').attr('data-delete-recipe-url');
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
                     recipeId: recipeId
-
-            }
-
-        }).done(function(response){
-                console.log(response);
-                $('#saved-btn-'+response.saved_recipe_id).hide();
-                $('#saved-label-'+response.saved_recipe_id).removeClass('invisible');
+                }
+            }).done(function(response) {
+                $('#saved-btn-' + recipeId).removeClass('disabled');
+                $('#saved-btn-' + recipeId).html('Save');
             });
+        // Add saved recipe
+        } else {
+            var url = $('.save-recipe-div').attr('data-save-recipe-url');
 
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    recipeId: recipeId
+                }
+            }).done(function (response) {
+                $('#saved-btn-' + response.saved_recipe_id).addClass('disabled');
+                $('#saved-btn-' + response.saved_recipe_id).html('Saved');
+            });
+        }
     }
 
     w.saveRecipeController.watch();
