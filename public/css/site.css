@@ -786,7 +786,7 @@ ul  {
 }
 
 .margin-top {
-   margin-top:100px !important;
+   margin-top:60px !important;
 }
 
 .uppercase {
@@ -886,6 +886,7 @@ input::-webkit-calendar-picker-indicator {
     height: 80px;
     border-radius: 50%;
     background-size: cover;
+    margin-bottom: 20px;
 }
 
 .separate-ingredients {
@@ -899,7 +900,8 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .first-row {
-    margin-left:15px !important;
+    margin-left:0px !important;
+    margin-right: 0px !important;
 }
 
 .star-desc-name {
@@ -930,6 +932,7 @@ input::-webkit-calendar-picker-indicator {
 .world {
     width:40px;
     height:40px;
+    margin-top: 8px;
 }
 
 .serves {
@@ -940,6 +943,11 @@ input::-webkit-calendar-picker-indicator {
 .recipe-icon {
     width:50px;
     height:auto;
+    margin-top: 4px;
+}
+
+.last-in-row {
+    margin-top: 13px !important;
 }
 
 .step-number {
@@ -976,7 +984,7 @@ input::-webkit-calendar-picker-indicator {
 
 @media (max-width:1200px) and (min-width: 992px) {
     .show-mobile {
-    visibility: hidden;
+        display:none;
 
     }
 }
@@ -985,13 +993,14 @@ input::-webkit-calendar-picker-indicator {
     background-color: white;
     width: 100%;
     margin: 0 auto;
+    height: 200px;
 }
 
 @media (max-width:991px)
 
 {
     .show-desktop {
-        visibility: hidden;
+        display:none;
         /*height:0px;*/
 
     }
@@ -999,12 +1008,17 @@ input::-webkit-calendar-picker-indicator {
 
     .nutritional-box {
         width:100% !important;
-        height: 433px;
+        height:277px;
 
     }
 
     .show-mobile {
         visibility: visible;
+    }
+
+    #recipe-ingredients {
+        padding-bottom: 20px;
+        margin-bottom: 10px;
     }
 
 
@@ -1074,6 +1088,25 @@ input::-webkit-calendar-picker-indicator {
         padding-left: 15px !important;
         padding-right: 40px !important;
     }
+
+    .four-icons-mob {
+        padding-top: 0;
+        display: inline-flex;
+
+    }
+    .serves {
+        height: 30px;
+        width: 30px;
+        margin-top:5px;
+    }
+    .world {
+        height: 30px;
+        width: 30px;
+    }
+    .recipe-icon {
+        height: 30px;
+        width: auto;
+    }
 }
 
 .green-text {
@@ -1081,8 +1114,15 @@ input::-webkit-calendar-picker-indicator {
     font-weight: bold;
 }
 
+.button-for-saving {
+    position: absolute !important;
+    top:20px !important;
+    right: 0 !important;
+}
+
 img[src*="default-step"] {
     max-height:20px;
 }
+
 
 

@@ -7,6 +7,17 @@
                 <div class="row first-row">
                     <div class="each-recipe-result-img" style="background-image: url({{ URL::asset('img/recipes/'.($recipe->image_url == '' ? 'default.jpg' : $recipe->image_url)) }});">
 
+                        <div id="save-recipe-div" class = "button-for-saving" data-save-recipe-url="{{Route('profile.save_recipe')}}">
+                            @if(Auth::User())
+                                @if(!\App\RecipeUserMapping::has_saved_recipe($recipe->id))
+                                    <button id="saved-btn-{{$recipe->id}}" class="save-recipe-btn btn btn-success" data-id="{{$recipe->id}}">Save Recipe</button>
+                                @else
+                                    <label>Saved</label>
+                                @endif
+                            <!-- Style coloured label-->
+                                <label id="saved-label-{{$recipe->id}}" class="invisible">Saved</label>
+                            @endif
+                        </div>
                         <div class = "recipe-onfo-each">
                             <div class="star-desc-name">
                             <h2>{{ $recipe->name }}</h2>
@@ -44,7 +55,9 @@
                                     <div class="col-md-3 separate-ingredients">
 
                                         <li class = "list-item">
-                                            <div class = "somedivs">
+                                            <img class="ingredient-recipe-page-img" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->image_name()) }}">
+
+                                            <div class = "somedivs right">
 
                                             {!! \App\Utilities::approximatedFractionString($ingredient->quantity) !!}
 
@@ -58,8 +71,6 @@
 
                                         @if($ingredient->description), {{ $ingredient->description }}@endif
                                             </div>
-
-                                            <img class="ingredient-recipe-page-img" src="{{ URL::asset('img/ingredients/'.$ingredient->ingredient->image_name()) }}">
                                         </li>
                                     </div>
                                 @endforeach
@@ -83,18 +94,18 @@
 
 
             <div class="col-md-6 margin-top">
-                <div class = "row text-center">
-                    <div class="col-md-3">
-                        <img class ='serves' src='{{ asset('/img/serve.png') }}'/>
+                <div class = "row text-center four-icons-mob">
+                    <div class="col-md-4">
+                        <img class ='serves' src='{{ asset('/img/serve.png') }}'/><br>
                         {{ $recipe->serving_size }} servings
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <img class ='world' src='{{ asset('/img/world.png') }}'/>
                     @if($recipe->cuisine_type)
                             {{ $recipe->cuisine_type->name }}
                         @endif
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <img class ='recipe-icon' src='{{ asset('/img/recipe.png') }}'/>
                         @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
                             <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
@@ -102,12 +113,9 @@
                             {{$recipe->recipe_source}}
                         @endif
                     </div>
-                    <div class="col-md-3">
-                        {{--SAVE RECIPE BUTTON--}}
-                    </div>
                 </div>
                 <div class="col-md-12 swipe-container-mob">
-                    <div class="row text-center-method">
+                    <div class="row text-center-method text-center">
                         <h2>Method</h2>
                         <div id="recipe-method">
                           <ul class = "recipe-steps-description">
