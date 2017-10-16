@@ -28,7 +28,7 @@
                 </div>
                     <div id="seed_string"></div>
                     <div class="box-body">
-                    <table id="datatable" class="table table-bordered table-striped table-hover">
+                    <table id="ingredients-datatable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -41,47 +41,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($ingredients as $ingredient)
-                            <tr>
-                                <td>{{ $ingredient->id }}</td>
-                                <td>{{ $ingredient->name}}</td>
-                                <td>{{ $ingredient->category->name}}</td>
-                                <td>{{ count($ingredient->recipes) }}</td>
-                                <td>
-                                    <form class="admin-table-buttons" action="{{ route('admin.ingredient.get', ['id' => $ingredient->id]) }}" method="GET">
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-info btn-sm" type="submit">Edit</button>
-                                    </form>
-                                </td>
-                                <th>
-                                    <form id="seed_form_{{$ingredient->id}}" class="admin-table-buttons" action="" method="POST">
-                                        {{ csrf_field() }}
-                                        <button id="seed_button_{{$ingredient->id}}" data-api-controller-url="{{route('admin.ingredient.seeder', ['id' => $ingredient->id])}}" class="btn btn-default btn-sm" type="button">Seed String</button>
-                                        <script>
-                                            $('#seed_button_{{$ingredient->id}}').click(function(){
-                                                console.log('click');
-                                                $.ajax({
-                                                    url: $('#seed_button_{{$ingredient->id}}').attr('data-api-controller-url'),
-                                                    type: 'POST',
-                                                    data: $('#seed_form_{{$ingredient->id}}').serialize()
-                                                }).done(function(response){
-                                                    $('#seed_string').html('<pre>'+response+'</pre>');
-                                                }).fail(function(response){
-                                                    $('#seed_string').html(response.responseText);
-                                                });
-                                            });
-                                        </script>
-                                    </form>
-                                </th>
-                                <td>
-                                    <form class="admin-table-buttons" action="{{ route('admin.ingredient.delete', ['id' => $ingredient->id]) }}" method="POST">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -93,5 +52,34 @@
 @endsection
 
 @section('foot')
-
+    <script>
+        $(document).ready(function () {
+            $('#ingredients-datatable').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true,
+                'stateSave'   : true,
+                "processing"  : true,
+                "serverSide"  : true,
+                "ajax":{
+                    "url"     : "{{ route('admin.ingredients.post') }}",
+                    "dataType": "json",
+                    "type"    : "POST",
+                    "data"    :{ _token: "{{csrf_token()}}"}
+                },
+                "columns": [
+                    { "data"  : "id" },
+                    { "data"  : "name" },
+                    { "data"  : "category" },
+                    { "data"  : "in_recipes" },
+                    { "data"  : "edit" },
+                    { "data"  : "seed" },
+                    { "data"  : "delete" }
+                ]
+            });
+        });
+    </script>
 @endsection

@@ -692,6 +692,10 @@ ul  {
     color: gold;
 }
 
+.recipe-page-rating:not(:checked) > label {
+    font-size: 200%;
+}
+
 .alert-message {
 
 }

@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminRecipeFormRequest;
 use App\Http\Requests\RecipeMethodsFormRequest;
 use App\Http\Requests\RecipeIngredientsFormRequest;
+use Symfony\Component\Finder\Tests\Iterator\ExcludeDirectoryFilterIteratorTest;
 
 class AdminRecipesController extends Controller
 {
@@ -32,14 +33,141 @@ class AdminRecipesController extends Controller
 
     public function recipes(Request $request)
     {
+
         $title = "Recipes";
-        $recipes = Recipe::all();
         if (session('recipe')) {
             $recipe = session('recipe');
-            return view('admin.admin-recipes', compact('title', 'recipes', 'recipe'));
+            return view('admin.admin-recipes', compact('title', 'recipe'));
         } else {
-            return view('admin.admin-recipes', compact('title', 'recipes'));
+            return view('admin.admin-recipes', compact('title'));
         }
+    }
+
+    public function recipesPost(Request $request)
+    {
+        $columns = array(
+            0 => 'id',
+            1 => 'name',
+            2 => 'cuisine_type_name',
+            3 => 'short_description',
+            4 => 'ingredient_count',
+            5 => 'steps_count',
+            6 => 'average_rating',
+            7 => 'number_of_ratings'
+        );
+
+        $totalData = Recipe::count();
+        $totalFiltered = $totalData;
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+
+        if(empty($request->input('search.value'))) {
+            $recipes = Recipe::offset($start)
+                ->leftJoin('cuisine_types', 'cuisine_types.id', '=', 'cuisine_type_id')
+                ->leftJoin('ingredient_recipe_mappings', 'ingredient_recipe_mappings.recipe_id', '=', 'recipes.id')
+                ->leftJoin('recipe_methods', 'recipe_methods.recipe_id', '=', 'recipes.id')
+                ->select('recipes.id as id', 'recipes.name as name', 'recipes.short_description as short_description',
+                    'recipes.average_rating as average_rating', 'recipes.number_of_ratings as number_of_ratings',
+                    'cuisine_types.name as cuisine_type_name', DB::raw('COUNT(DISTINCT(ingredient_recipe_mappings.ingredient_id)) as ingredient_count, COUNT(DISTINCT(recipe_methods.id)) as steps_count'))
+                ->limit($limit)
+                ->groupBy('recipes.name')
+                ->orderBy($order,$dir)
+                ->get();
+        }
+        else {
+            $search = $request->input('search.value');
+
+            $recipes =  Recipe::offset($start)
+                ->leftJoin('cuisine_types', 'cuisine_types.id', '=', 'cuisine_type_id')
+                ->leftJoin('ingredient_recipe_mappings', 'ingredient_recipe_mappings.recipe_id', '=', 'recipes.id')
+                ->leftJoin('recipe_methods', 'recipe_methods.recipe_id', '=', 'recipes.id')
+                ->select('recipes.id as id', 'recipes.name as name', 'recipes.short_description as short_description',
+                    'recipes.average_rating as average_rating', 'recipes.number_of_ratings as number_of_ratings',
+                    'cuisine_types.name as cuisine_type_name', DB::raw('COUNT(DISTINCT(ingredient_recipe_mappings.ingredient_id)) as ingredient_count, COUNT(DISTINCT(recipe_methods.id)) as steps_count'))
+                ->groupBy('recipes.name')
+                ->limit($limit)
+                ->where('recipes.id','LIKE',"%{$search}%")
+                ->orWhere('recipes.name', 'LIKE',"%{$search}%")
+                ->orWhere('recipes.short_description', 'LIKE',"%{$search}%")
+                ->orWhere('cuisine_types.name', 'LIKE',"%{$search}%")
+                ->orderBy($order,$dir)
+                ->get();
+
+            $totalFiltered = count($recipes);
+        }
+
+        $data = array();
+        if(!empty($recipes))
+        {
+            foreach ($recipes as $recipe)
+            {
+                $csrf_field = csrf_field();
+
+                $nestedData['id'] = $recipe->id;
+                $nestedData['name'] = $recipe->name;
+                $nestedData['cuisine_type_name'] = $recipe->cuisine_type_name;
+                $nestedData['short_description'] = $recipe->short_description;
+                $nestedData['ingredient_count'] = $recipe->ingredient_count;
+                $nestedData['steps_count'] = $recipe->steps_count;
+                $nestedData['average_rating'] = $recipe->average_rating;
+                $nestedData['number_of_ratings'] = $recipe->number_of_ratings;
+                // edit button
+                $edit = route('admin.recipe.get', ['id' => $recipe->id]);
+                $nestedData['edit'] = <<<EDIT
+                    <form class="admin-table-buttons" action="{$edit}" method="GET">
+                        {$csrf_field}
+                        <button class="btn btn-info btn-sm" type="submit">Edit</button>
+                    </form>
+EDIT;
+
+                // seed button
+                $seed = route('admin.recipe.seeder', ['id' => $recipe->id]);
+                $nestedData['seed'] = <<<SEED
+                    <form id="seed_form_{$recipe->id}" class="admin-table-buttons" action="" method="POST">
+                        {$csrf_field}
+                        <button id="seed_button_{$recipe->id}" data-api-controller-url="{$seed}" class="btn btn-default btn-sm" type="button">Seed String</button>
+                        <script>
+                            $('#seed_button_{$recipe->id}').click(function(){
+                                console.log('click');
+                                $.ajax({
+                                    url: $('#seed_button_{$recipe->id}').attr('data-api-controller-url'),
+                                    type: 'POST',
+                                    data: $('#seed_form_{$recipe->id}').serialize()
+                                }).done(function(response){
+                                    $('#seed_string').html('<pre>'+response+'</pre>');
+                                }).fail(function(response){
+                                    $('#seed_string').html(response.responseText);
+                                });
+                            });
+                        </script>
+                    </form>
+SEED;
+
+                // delete button
+                $delete = route('admin.recipe.delete', ['id' => $recipe->id]);
+                $delete_filed = method_field('DELETE');
+                $nestedData['delete'] = <<<DELETE
+                    <form class="admin-table-buttons" action="{$delete}" method="POST">
+                        {$delete_filed}
+                        {$csrf_field}
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+DELETE;
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),
+            "recordsTotal"    => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data"            => $data
+        );
+
+        echo json_encode($json_data);
     }
 
     public function getRecipe($id, Request $request)

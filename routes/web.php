@@ -35,6 +35,7 @@ Route::get('search','SearchResultsController@getSearchResults')->name('search');
 Route::get('/dashboard', 'AdminController@index')->name('admin');
 // Cuisines
 Route::get('/dashboard/cuisines', 'AdminCuisinesController@cuisines')->name('admin.cuisines');
+Route::post('/dashboard/cuisinesPost', 'AdminCuisinesController@cuisinesPost')->name('admin.cuisines.post');
 Route::delete('/dashboard/cuisines/{id}', 'AdminCuisinesController@deleteCuisine')->name('admin.cuisine.delete');
 Route::get('/dashboard/newCuisine', 'AdminCuisinesController@addCuisine')->name('admin.cuisine.new');
 Route::get('/dashboard/cuisines/{id}', 'AdminCuisinesController@getCuisine')->name('admin.cuisine.get');
@@ -44,6 +45,7 @@ Route::post('/dashboard/cuisines/seeder/{id}', 'AdminCuisinesController@seedStri
 
 // Ingredients
 Route::get('/dashboard/ingredients', 'AdminIngredientsController@ingredients')->name('admin.ingredients');
+Route::post('/dashboard/ingredientsPost', 'AdminIngredientsController@ingredientsPost')->name('admin.ingredients.post');
 Route::delete('/dashboard/ingredients/{id}', 'AdminIngredientsController@deleteIngredient')->name('admin.ingredient.delete');
 Route::get('/dashboard/newIngredient', 'AdminIngredientsController@addIngredient')->name('admin.ingredient.new');
 Route::get('/dashboard/ingredients/{id}', 'AdminIngredientsController@getIngredient')->name('admin.ingredient.get');
@@ -53,6 +55,7 @@ Route::post('/dashboard/ingredients/seeder/{id}', 'AdminIngredientsController@se
 
 // Measurements
 Route::get('/dashboard/measurements', 'AdminMeasurementsController@measurements')->name('admin.measurements');
+Route::post('/dashboard/measurementsPost', 'AdminMeasurementsController@measurementsPost')->name('admin.measurements.post');
 Route::delete('/dashboard/measurements/{id}', 'AdminMeasurementsController@deleteMeasurement')->name('admin.measurement.delete');
 Route::get('/dashboard/newMeasurement', 'AdminMeasurementsController@addMeasurement')->name('admin.measurement.new');
 Route::get('/dashboard/measurements/{id}', 'AdminMeasurementsController@getMeasurement')->name('admin.measurement.get');
@@ -62,6 +65,7 @@ Route::post('/dashboard/measurements/seeder/{id}', 'AdminMeasurementsController@
 
 // Recipes
 Route::get('/dashboard/recipes', 'AdminRecipesController@recipes')->name('admin.recipes');
+Route::post('/dashboard/recipesPost', 'AdminRecipesController@recipesPost')->name('admin.recipes.post');
 Route::get('/dashboard/recipes/{id}', 'AdminRecipesController@getRecipe')->name('admin.recipe.get');
 Route::get('/dashboard/recipes/ingredients/{id}', 'AdminRecipesController@getIngredients')->name('admin.recipe.ingredients.get');
 Route::get('/dashboard/recipes/methods/{id}', 'AdminRecipesController@getMethods')->name('admin.recipe.methods.get');
@@ -75,6 +79,7 @@ Route::post('/dashboard/recipes/seeder/{id}', 'AdminRecipesController@seedString
 
 // Users
 Route::get('/dashboard/users', 'AdminUsersController@users')->name('admin.users');
+Route::post('/dashboard/usersPost', 'AdminUsersController@usersPost')->name('admin.users.post');
 Route::delete('/dashboard/users/{id}', 'AdminUsersController@deleteUser')->name('admin.user.delete');
 Route::get('/dashboard/newUser', 'AdminUsersController@addUser')->name('admin.user.new');
 Route::get('/dashboard/users/{id}', 'AdminUsersController@getUser')->name('admin.user.get');
