@@ -26,6 +26,11 @@ var storageObject = (function(w){
         return selectedIngredients;
     };
 
+    me.removeAllIngredients = function(){
+        selectedIngredients = [];
+        updateIngredients();
+    }
+
     me.getSelectedIngredients = function(){
         return selectedIngredients;
     };

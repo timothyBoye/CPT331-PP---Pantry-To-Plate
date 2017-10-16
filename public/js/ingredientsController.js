@@ -56,11 +56,20 @@
                 }
             });
 
+            $('.clear-all-ingredients-btn').on('click', clearAllIngredients);
+
             initCuisinePreferenceCheckbox();
 
         }
 
     };
+
+    function clearAllIngredients(){
+        storageObject.removeAllIngredients();
+        w.ingredientsController.selectedIngredients = storageObject.getSelectedIngredients();
+        makeCall();
+        updateDisplay(storageObject.getSelectedIngredients());
+    }
 
     function handleSearchInput(){
         var typedIngredientName = $('#ingredient-input').val().trim();
@@ -88,14 +97,10 @@
         else {
             w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
         }
+
         makeCall();
         updateDisplay(storageObject.getRecipes());
 
-        if(w.ingredientsController.selectedIngredients.length === 0) {
-            $('.intro-message').show();
-        } else {
-            $('.intro-message').hide();
-        }
     }
 
     function updateDisplay(recipes){
@@ -112,6 +117,13 @@
             $(displayIngredientsUl).append(listItem);
         }
 
+        if(w.ingredientsController.selectedIngredients.length === 0) {
+            $('.intro-message').show();
+            $('.clear-all-ingredients-btn').hide();
+        } else {
+            $('.intro-message').hide();
+            $('.clear-all-ingredients-btn').show();
+        }
 
     }
 
