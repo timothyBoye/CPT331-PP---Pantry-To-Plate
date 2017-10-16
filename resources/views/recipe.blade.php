@@ -66,10 +66,7 @@
                                             @else
                                                 {{ $ingredient->measure->name }}
                                             @endif
-                                            {{ $ingredient->ingredient->name }}
-
-
-                                        @if($ingredient->description), {{ $ingredient->description }}@endif
+                                            {{ $ingredient->ingredient_name() }}@if($ingredient->description), {{ $ingredient->description }}@endif
                                             </div>
                                         </li>
                                     </div>
