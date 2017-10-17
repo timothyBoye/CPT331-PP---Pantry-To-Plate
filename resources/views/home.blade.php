@@ -39,6 +39,16 @@
                             @endfor
                         </select>
                     </div>
+                    <div class="li-category dropdown">
+                        <select id='select-ingredient_filter_value' class = "cuisine-dropdown">
+                            <option class = "cuisine-title-value" value="0" selected>Filter by Total Ingredients</option>
+                            @for($i = 1; $i < 10; $i++)
+                                <option class="cuisine-title-value" value="{{$i}}">{{$i}}
+                                    Ingredients
+                                </option>
+                            @endfor
+                        </select>
+                    </div>
                 </div>
             </div>
 

@@ -42,10 +42,16 @@
                 makeCall();
             });
 
+            $(document).on('change', '#select-ingredient_filter_value', function(){
+                storageObject.setIngredientsFilter(($('#select-ingredient_filter_value').find('option:selected').val()));
+                makeCall();
+            });
+
             $('#cuisine-preference-checkbox').on('ifChanged', function(){
                 storageObject.setCuisinePreferenceCheckStatus($('#cuisine-preference-checkbox').is(':checked'));
                 makeCall();
             });
+
 
             $('#ingredient-search-button').on('click', handleSearchInput);
 
@@ -134,6 +140,7 @@
             var cuisineType = storageObject.getCuisineType();
             var cuisinePreference = storageObject.getCuisinePreferenceCheckStatus();
             var ratingFilterValue = storageObject.getRatingFilterValue();
+            var ingredientFilterValue = storageObject.getIngredientsFilterValue();
             $.ajax({
                 url: $('.selected-ingredients-anchor').attr('data-api-controller-url'),
                 type: 'POST',
@@ -141,7 +148,8 @@
                     ingredients: w.ingredientsController.selectedIngredients,
                     cuisineType: cuisineType,
                     cuisinePreference: cuisinePreference,
-                    ratingFilterValue: ratingFilterValue
+                    ratingFilterValue: ratingFilterValue,
+                    ingredientFilterValue: ingredientFilterValue,
                 }
             }).done(function(response){
                 $('#recipes').html(response.html);

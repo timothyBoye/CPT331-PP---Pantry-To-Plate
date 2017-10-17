@@ -7,7 +7,8 @@ var storageObject = (function(w){
     var me = {
         cuisineType: -1,
         cookieExpiry: 0.5,
-        ratingFilterValue: -1
+        ratingFilterValue: -1,
+        ingredientsFilterValue: -1
     };
 
     me.addIngredient = function(ingredientID, ingredientName, ingredientImageURL){
@@ -79,6 +80,18 @@ var storageObject = (function(w){
     me.setRatingFilter = function(id){
         me.ratingFilterValue = id;
         Cookies.set('ratingFilterValue', me.ratingFilterValue, {
+            expires: me.cookieExpiry
+        })
+    }
+
+    // ingredients filer
+    me.getIngredientsFilterValue = function(){
+        return Cookies.get('ingredientsFilterValue');
+    }
+
+    me.setIngredientsFilter = function(id) {
+        me.ingredientsFilterValue = id;
+        Cookies.set('ingredientsFilterValue', me.ingredientsFilterValue, {
             expires: me.cookieExpiry
         })
     }
