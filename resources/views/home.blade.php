@@ -71,6 +71,7 @@
                             <li class="li-ingredient" role="presentation"><a href="#" data-image="{{ $ingredient->image_name() }}" data-id="{{$ingredient->id}}" data-name="{{$ingredient->name}}">{{ucfirst($ingredient->name)}}</a></li>
                         @endforeach
                     </ul>
+
                 </div>
             @endforeach
             </div>
@@ -79,6 +80,7 @@
             <div class="selected-ingredients-anchor bootstro" data-api-controller-url="{{URL::route('result')}}" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="Your selected ingredients <img class ='bootstro-ingredient-img' src='{{ asset('/img/tomato.png') }}'/> will appear here, you can remove them by clicking on the  <b class = red>X</b>" data-bootstro-step="1" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next">
                 <ul class="clearable"></ul>
             </div>
+            <div><button class="btn btn-alert clear-all-ingredients-btn">Clear All Selected Ingredients <span class="glyphicon glyphicon-erase"></span></button></div>
             <div class="clearable" id="recipes"></div>
             <div class="bootstro overlay" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="All of your matched recipes will appear here. <img class ='bootstro-recipe-img' src='{{ asset('/img/result-recipe.png') }}'/><img class = 'match-show-count' src='{{ asset('/img/match-show-count.png') }}'/> Indicates how many of your selected ingredients match the total ingredients needed for the recipe" data-bootstro-step="2" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next"></div>
 

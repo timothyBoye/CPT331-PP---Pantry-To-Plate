@@ -67,7 +67,7 @@ class IngredientRecipeMapping extends Model
         return $recipe_ids;
 
     }
-
+    
     public static function get_matching_recipe_names($ingredient_names){
         $ingredient_ids = [];
 
