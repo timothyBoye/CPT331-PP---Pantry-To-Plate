@@ -54,7 +54,7 @@
         @endif
 
         <div class="col-12 col-md-6">
-            <form class="form-horizontal" method="POST" action="/sites/cpt331_PoC/public/contact">
+            <form class="form-horizontal" method="POST" action="{{ route('contact') }}">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="Name">Name: </label>
