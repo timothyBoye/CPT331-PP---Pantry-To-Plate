@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
         DB::table('user_roles')->delete();
         DB::table('users')->delete();
 
-        // $this->call(UsersTableSeeder::class);
         $this->call(UserRolesTableSeeder::class);
         $this->call(MeasurementTypeSeeder::class);
         $this->call(IngredientCategory::class);
@@ -35,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RecipesTableSeeder::class);
         $this->call(NutritionalInfoPanelsTableSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(DummyDataSeeder::class);
     }
 }

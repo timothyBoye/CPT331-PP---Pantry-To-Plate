@@ -5,6 +5,15 @@
             <div class="item{{ $rkey == 0 ? ' active' : '' }}">
                 <div class="col-lg-4 col-md-6 col-sm-12 recipes-matched-search">
                     <div class="recipe-container">
+                        <div class="save-recipe-div" data-recipe-id="{{$recipe->id}}" data-delete-recipe-url="{{ Route('profile.delete_recipe') }}" data-save-recipe-url="{{Route('profile.save_recipe')}}">
+                            @if(Auth::User())
+                                @if(!\App\RecipeUserMapping::has_saved_recipe($recipe->id))
+                                    <button id="saved-btn-{{$recipe->id}}" class="save-recipe-btn btn btn-success" data-recipe-id="{{$recipe->id}}" data-id="{{$recipe->id}}">Save</button>
+                                @else
+                                    <button id="saved-btn-{{$recipe->id}}" class="save-recipe-btn btn btn-success disabled" data-recipe-id="{{$recipe->id}}" data-id="{{$recipe->id}}">Saved</button>
+                                @endif
+                            @endif
+                        </div>
                         @if($recipe->cuisine_type)
                             <div class="cuisine-ribbon-container">
                                 <div class="cuisine-ribbon {{ $recipe->cuisine_type->name }}">{{ $recipe->cuisine_type->name }}</div>
@@ -20,8 +29,9 @@
                             @endforeach
                         </div>
                         <a href="{{ route('recipe', $recipe->id) }}" class="recipe-link">
-                            <div class="recipe-image" style="background-image: url({{ URL::asset('img/recipes/'.($recipe->image_url == '' ? 'default.jpg' : $recipe->image_url)) }});">
+                            <div class="recipe-image" style="background-image: url({{ URL::asset('img/recipes/'.$recipe->image_name()) }});">
                             </div>
+
                             <h4 class="recipe-name">{{ $recipe->name }}</h4>
                             @foreach($occurrences as $key => $val)
                                 @if($key == $recipe->id)
@@ -51,19 +61,6 @@
                             </div>
                             <div style="clear:both;">
                                 <q>{{ $recipe->short_description }}</q>
-                            </div>
-                            <div id="save-recipe-div" data-save-recipe-url="{{Route('profile.save_recipe')}}">
-                                @if(Auth::User())
-                                    @if(!\App\RecipeUserMapping::has_saved_recipe($recipe->id))
-                                        <button id="saved-btn-{{$recipe->id}}" class="save-recipe-btn btn btn-success" data-id="{{$recipe->id}}">Save Recipe</button>
-                                    @else
-                                        <label>Saved</label>
-                                    @endif
-                                    <!-- Style coloured label-->
-                                    <label id="saved-label-{{$recipe->id}}" class="invisible">Saved</label>
-
-
-                                    @endif
                             </div>
                         </div>
                     </div>

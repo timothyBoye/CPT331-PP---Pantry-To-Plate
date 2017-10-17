@@ -11,6 +11,15 @@ class IngredientRecipeMapping extends Model
         'recipe_id', 'ingredient_id', 'measurement_type_id', 'quantity', 'description'
     ];
 
+    public function ingredient_name()
+    {
+        if ($this->ingredient->plural != '' && $this->quantity > 1) {
+            return $this->ingredient->plural;
+        } else {
+            return $this->ingredient->name;
+        }
+    }
+
     public function recipe()
     {
         return $this->belongsTo('App\Recipe');
@@ -58,7 +67,7 @@ class IngredientRecipeMapping extends Model
         return $recipe_ids;
 
     }
-
+    
     public static function get_matching_recipe_names($ingredient_names){
         $ingredient_ids = [];
 

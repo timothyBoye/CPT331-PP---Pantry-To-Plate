@@ -28,7 +28,7 @@
                     <a href="{{ route('admin.recipe.new') }}" class="btn btn-success">New</a>
                 </div>
                 <div class="box-body">
-                    <table id="datatable" class="table table-bordered table-striped table-hover">
+                    <table id="recipes-datatable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -45,51 +45,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($recipes as $recipe)
-                            <tr>
-                                <td>{{ $recipe->id }}</td>
-                                <td>{{ $recipe->name}}</td>
-                                <td>{{ $recipe->short_description }}</td>
-                                <td>{{ $recipe->cuisine_type->name }}</td>
-                                <td>{{ count($recipe->ingredients) }}</td>
-                                <td>{{ count($recipe->method_steps) }}</td>
-                                <td>{{ $recipe->average_rating }}</td>
-                                <td>{{ $recipe->number_of_ratings }}</td>
-                                <td>
-                                    <form class="admin-table-buttons" action="{{ route('admin.recipe.get', ['id' => $recipe->id]) }}" method="GET">
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-info btn-sm" type="submit">Edit</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form id="seed_form_{{$recipe->id}}" class="admin-table-buttons" action="" method="POST">
-                                        {{ csrf_field() }}
-                                        <button id="seed_button_{{$recipe->id}}" data-api-controller-url="{{route('admin.recipe.seeder', ['id' => $recipe->id])}}" class="btn btn-default btn-sm" type="button">Seed String</button>
-                                        <script>
-                                            $('#seed_button_{{$recipe->id}}').click(function(){
-                                                console.log('click');
-                                                $.ajax({
-                                                    url: $('#seed_button_{{$recipe->id}}').attr('data-api-controller-url'),
-                                                    type: 'POST',
-                                                    data: $('#seed_form_{{$recipe->id}}').serialize()
-                                                }).done(function(response){
-                                                    $('#seed_string').html('<pre>'+response+'</pre>');
-                                                }).fail(function(response){
-                                                    $('#seed_string').html(response.responseText);
-                                                });
-                                            });
-                                        </script>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form class="admin-table-buttons" action="{{ route('admin.recipe.delete', ['id' => $recipe->id]) }}" method="POST">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -101,5 +57,38 @@
 @endsection
 
 @section('foot')
-
+    <script>
+        $(document).ready(function () {
+            $('#recipes-datatable').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true,
+                'stateSave'   : true,
+                "processing"  : true,
+                "serverSide"  : true,
+                "ajax":{
+                    "url"     : "{{ route('admin.recipes.post') }}",
+                    "dataType": "json",
+                    "type"    : "POST",
+                    "data"    :{ _token: "{{csrf_token()}}"}
+                },
+                "columns": [
+                    { "data"  : "id" },
+                    { "data"  : "name" },
+                    { "data"  : "cuisine_type_name" },
+                    { "data"  : "short_description" },
+                    { "data"  : "ingredient_count" },
+                    { "data"  : "steps_count" },
+                    { "data"  : "average_rating" },
+                    { "data"  : "number_of_ratings" },
+                    { "data"  : "edit" },
+                    { "data"  : "seed" },
+                    { "data"  : "delete" }
+                ]
+            });
+        });
+    </script>
 @endsection
