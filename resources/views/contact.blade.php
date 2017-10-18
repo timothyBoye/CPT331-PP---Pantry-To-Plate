@@ -44,38 +44,40 @@
     {{--</div>--}}
 
 
-    <div class="container">
-        <h1 class="mb-2 text-center">Contact Us</h1>
-
+    <div class="container-fluid content">
         @if(session('message'))
             <div class='alert alert-success'>
                 {{ session('message') }}
             </div>
         @endif
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                <h1 class="mb-2">Contact Us</h1>
+                <form class="form-horizontal" method="POST" action="{{ route('contact') }}">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="Name">Name: </label>
+                        <input type="text" class="form-control" id="name" placeholder="Your name" name="name" required>
+                    </div>
 
-        <div class="col-12 col-md-6">
-            <form class="form-horizontal" method="POST" action="{{ route('contact') }}">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="Name">Name: </label>
-                    <input type="text" class="form-control" id="name" placeholder="Your name" name="name" required>
-                </div>
+                    <div class="form-group">
+                        <label for="email">Email: </label>
+                        <input type="email" class="form-control" id="email" placeholder="john@example.com" name="email" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="text" class="form-control" id="email" placeholder="john@example.com" name="email" required>
-                </div>
+                    <div class="form-group">
+                        <label for="message">Message: </label>
+                        <textarea type="text" class="form-control luna-message" id="message" placeholder="Type your compliments here" name="message" required rows="15"></textarea>
+                    </div>
 
-                <div class="form-group">
-                    <label for="message">message: </label>
-                    <textarea type="text" class="form-control luna-message" id="message" placeholder="Type your messages here" name="message" required></textarea>
-                </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" value="Send">Send <span class="glyphicon glyphicon-envelope"></span></button>
+                    </div>
+                </form>
+            </div>
+        </div> <!-- /container -->
+    </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" value="Send">Send</button>
-                </div>
-            </form>
-        </div>
-    </div> <!-- /container -->
+
 
 @endsection
