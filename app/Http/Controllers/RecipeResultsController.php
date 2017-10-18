@@ -23,16 +23,18 @@ class RecipeResultsController extends Controller
             'ingredients.*.ingredient_image_url' => 'mimes:jpg,jpeg,bmp,png',
             'cuisineType' => 'numeric',
             'ratingFilterValue' => 'numeric',
-            'cuisinePreference' => 'alpha'
+            'cuisinePreference' => 'alpha',
+            'ingredientFilterValue' => 'numeric'
         ]);
 
         $ingredients = $request['ingredients'];
         $cuisine_type_filter = $request['cuisineType'];
         $rating_filter_value = $request['ratingFilterValue'];
         $cuisine_preference_checked = $request['cuisinePreference'];
+        $ingredient_filter_value =$request['ingredientFilterValue'];
 
         $returnHTML = null;
-        $occurrences = $this->get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter, $rating_filter_value);
+        $occurrences = $this->get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value);
         $sorted_recipe_ids = [];
 
         // Strangely, the value coming from the checkbox is a string, not bool
@@ -60,7 +62,7 @@ class RecipeResultsController extends Controller
         return view('recipe-list', compact('recipes', 'userRatings', 'occurrences'))->render();
     }
 
-    private function get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter, $rating_filter_value){
+    private function get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value){
         $ingredient_names = [];
 
         foreach ($ingredients as $ingredient) {
@@ -68,7 +70,7 @@ class RecipeResultsController extends Controller
         }
 
         $ingredient_ids = IngredientRecipeMapping::get_matching_recipe_names($ingredient_names);
-        $recipe_ids = IngredientRecipeMapping::get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value);
+        $recipe_ids = IngredientRecipeMapping::get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value);
 
         $occurrences = array_count_values($recipe_ids);
         arsort($occurrences);

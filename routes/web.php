@@ -13,9 +13,13 @@
 
 Auth::routes();
 
+Route::get('/contact',['as' => 'contact', 'uses' => 'ContactController@show']);
+Route::post('/contact',  ['as' => 'contact', 'uses' => 'ContactController@mailToAdmin']);
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 Route::get('/about', ['as' => 'about', 'uses' => 'AboutController@index']);
+
 Route::post('/result', 'RecipeResultsController@getResults')->name('result');
 Route::get('/recipe/{id}', 'RecipeResultsController@show')->name('recipe');
 Route::post('/recipe/setRating', 'RecipeResultsController@setRating')->name('setRating');

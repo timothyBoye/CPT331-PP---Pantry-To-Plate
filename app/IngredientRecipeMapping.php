@@ -35,7 +35,7 @@ class IngredientRecipeMapping extends Model
         return $this->belongsTo('App\MeasurementType', 'measurement_type_id', 'id');
     }
 
-    public static function get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value){
+    public static function get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value){
         $recipe_ids = [];
 
         foreach ($ingredient_ids as $id) {
@@ -52,6 +52,11 @@ class IngredientRecipeMapping extends Model
 
                 if($rating_filter_value >= 0){
                     if(round($ingredient_recipe_mapping->recipe->average_rating) < $rating_filter_value){
+                        $include = false;
+                    }
+                }
+                if($ingredient_filter_value >= 1){
+                    if(count($ingredient_recipe_mapping->recipe->ingredients) != $ingredient_filter_value){
                         $include = false;
                     }
                 }

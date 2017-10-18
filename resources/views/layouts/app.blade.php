@@ -63,7 +63,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ route('home') }}" class="glyphicon glyphicon-home" aria-hidden="true"> Home</a></li>
                     <li><a href="{{ route('about') }}" class="glyphicon glyphicon-book" aria-hidden="true"> About</a></li>
-                    {{--<li><a href="#" class="glyphicon glyphicon-envelope" aria-hidden="true"> Contact</a></li>--}}
+                    <li><a href="{{ route('contact') }}" class="glyphicon glyphicon-envelope" aria-hidden="true"> Contact</a></li>
                 </ul>
 
                 <!--Nav items on the right hand side-->
@@ -108,6 +108,8 @@
     <script src="{{ asset('js/icheck.min.js') }}"></script>
     <script src="{{ asset('js/saveRecipeController.js') }}"></script>
     <script src="{{ asset('js/icheck-settings.js') }}"></script>
+    <script src="{{ asset('js/contactForm.js') }}"></script>
+
 
     @yield('footer')
 </body>
