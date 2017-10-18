@@ -55,9 +55,15 @@ class IngredientRecipeMapping extends Model
                         $include = false;
                     }
                 }
+
                 if($ingredient_filter_value >= 1){
-                    if(count($ingredient_recipe_mapping->recipe->ingredients) != $ingredient_filter_value){
+                    $ingCount = count($ingredient_recipe_mapping->recipe->ingredients);
+
+                    if($ingCount != $ingredient_filter_value){
                         $include = false;
+                        if($ingCount >= 10 and $ingredient_filter_value == 10) {
+                            $include = true;
+                        }
                     }
                 }
 
