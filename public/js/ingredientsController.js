@@ -26,6 +26,10 @@
                 $('#select-rating-type-filter').val(storageObject.getRatingFilterValue());
             }
 
+            if(storageObject.getIngredientsFilterValue()) {
+                $('#select-ingredient_filter_value').val(storageObject.getIngredientsFilterValue());
+            }
+
             if(w.ingredientsController.selectedIngredients.length > 0){
                 makeCall();
             } else {
