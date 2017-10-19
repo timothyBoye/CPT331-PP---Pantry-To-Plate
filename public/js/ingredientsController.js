@@ -30,6 +30,10 @@
                 $('#select-ingredient_filter_value').val(storageObject.getIngredientsFilterValue());
             }
 
+            if(storageObject.getIngredientsNeededFilterValue()) {
+                $('#select-ingredients_needed_filter_value').val(storageObject.getIngredientsNeededFilterValue());
+            }
+
             if(w.ingredientsController.selectedIngredients.length > 0){
                 makeCall();
             } else {
@@ -48,6 +52,11 @@
 
             $(document).on('change', '#select-ingredient_filter_value', function(){
                 storageObject.setIngredientsFilter(($('#select-ingredient_filter_value').find('option:selected').val()));
+                makeCall();
+            });
+
+            $(document).on('change', '#select-ingredients_needed_filter_value', function(){
+                storageObject.setIngredientsNeededFilter(($('#select-ingredients_needed_filter_value').find('option:selected').val()));
                 makeCall();
             });
 
@@ -145,6 +154,7 @@
             var cuisinePreference = storageObject.getCuisinePreferenceCheckStatus();
             var ratingFilterValue = storageObject.getRatingFilterValue();
             var ingredientFilterValue = storageObject.getIngredientsFilterValue();
+            var ingredientsNeededFilterValue = storageObject.getIngredientsNeededFilterValue();
             $.ajax({
                 url: $('.selected-ingredients-anchor').attr('data-api-controller-url'),
                 type: 'POST',
@@ -154,6 +164,7 @@
                     cuisinePreference: cuisinePreference,
                     ratingFilterValue: ratingFilterValue,
                     ingredientFilterValue: ingredientFilterValue,
+                    ingredientsNeededFilterValue: ingredientsNeededFilterValue
                 }
             }).done(function(response){
                 $('#recipes').html(response.html);

@@ -84,7 +84,7 @@ var storageObject = (function(w){
         })
     }
 
-    // ingredients filer
+    // ingredients filter
     me.getIngredientsFilterValue = function(){
         return Cookies.get('ingredientsFilterValue');
     }
@@ -92,6 +92,18 @@ var storageObject = (function(w){
     me.setIngredientsFilter = function(id) {
         me.ingredientsFilterValue = id;
         Cookies.set('ingredientsFilterValue', me.ingredientsFilterValue, {
+            expires: me.cookieExpiry
+        })
+    }
+
+    // Ingredients needed filter
+    me.getIngredientsNeededFilterValue = function(){
+        return Cookies.get('ingredientsNeededFilterValue');
+    }
+
+    me.setIngredientsNeededFilter = function(id) {
+        me.ingredientsNeededFilterValue = id;
+        Cookies.set('ingredientsNeededFilterValue', me.ingredientsNeededFilterValue, {
             expires: me.cookieExpiry
         })
     }
