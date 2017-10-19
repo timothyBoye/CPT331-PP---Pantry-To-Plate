@@ -32,6 +32,8 @@
                                 <option class="cuisine-title-value" value="{{$i}}">{{$i}}
                                     @if($i == 5)
                                         Stars Only
+                                    @elseif($i == 1)
+                                        Star Or Better
                                     @else
                                         Stars Or Better
                                     @endif
@@ -44,12 +46,22 @@
                             <option class = "cuisine-title-value" value="0" selected>Filter by Total Ingredients</option>
                             @for($i = 1; $i < 11; $i++)
                                 <option class="cuisine-title-value" value="{{$i}}">{{$i}}
-                                    @if($i < 10)
+                                    @if($i == 1)
+                                        Ingredient only
+                                    @elseif($i < 10)
                                         Ingredients only
                                     @else
                                         Ingredients Or More
                                     @endif
                                 </option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="li-category dropdown">
+                        <select id='select-ingredients_needed_filter_value' class = "cuisine-dropdown">
+                            <option class = "cuisine-title-value" value="0" selected>Filter by Ingredients Needed</option>
+                            @for($i = 2; $i < 11; $i+=2)
+                                <option class="cuisine-title-value" value="{{$i}}">Less Than {{$i}} Ingredients Needed</option>
                             @endfor
                         </select>
                     </div>

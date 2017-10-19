@@ -24,7 +24,8 @@ class RecipeResultsController extends Controller
             'cuisineType' => 'numeric',
             'ratingFilterValue' => 'numeric',
             'cuisinePreference' => 'alpha',
-            'ingredientFilterValue' => 'numeric'
+            'ingredientFilterValue' => 'numeric',
+            'ingredientsNeededFilterValue' => 'numeric'
         ]);
 
         $ingredients = $request['ingredients'];
@@ -32,9 +33,10 @@ class RecipeResultsController extends Controller
         $rating_filter_value = $request['ratingFilterValue'];
         $cuisine_preference_checked = $request['cuisinePreference'];
         $ingredient_filter_value =$request['ingredientFilterValue'];
+        $ingredients_needed_filter_value =$request['ingredientsNeededFilterValue'];
 
         $returnHTML = null;
-        $occurrences = $this->get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value);
+        $occurrences = $this->get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value, $ingredients_needed_filter_value);
         $sorted_recipe_ids = [];
 
         // Strangely, the value coming from the checkbox is a string, not bool
@@ -62,7 +64,7 @@ class RecipeResultsController extends Controller
         return view('recipe-list', compact('recipes', 'userRatings', 'occurrences'))->render();
     }
 
-    private function get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value){
+    private function get_recipe_id_and_ingredient_frequency($ingredients, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value, $ingredients_needed_filter_value){
         $ingredient_names = [];
 
         foreach ($ingredients as $ingredient) {
@@ -74,6 +76,16 @@ class RecipeResultsController extends Controller
 
         $occurrences = array_count_values($recipe_ids);
         arsort($occurrences);
+
+        if($ingredients_needed_filter_value >= 1 ) {
+            foreach ($occurrences as $key => $matchedIngredients) {
+                $totalIngredients = count(Recipe::find($key)->ingredients);
+                $ingredientsNeeded = $totalIngredients - $matchedIngredients;
+                if ($ingredientsNeeded > $ingredients_needed_filter_value) {
+                    unset($occurrences[$key]);
+                }
+            }
+        }
 
         return $occurrences;
 
