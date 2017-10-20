@@ -46,10 +46,10 @@
                             <option class = "cuisine-title-value" value="0" selected>Filter by Total Ingredients</option>
                             @for($i = 1; $i < 11; $i++)
                                 <option class="cuisine-title-value" value="{{$i}}">{{$i}}
-                                    @if($i == 1)
+                                    @if($i < 10)
                                         Ingredient only
-                                    @elseif($i < 10)
-                                        Ingredients only
+                                    {{--@elseif($i < 10)--}}
+                                        {{--Ingredients only--}}
                                     @else
                                         Ingredients Or More
                                     @endif

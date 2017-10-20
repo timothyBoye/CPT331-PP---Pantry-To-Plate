@@ -58,13 +58,16 @@ class IngredientRecipeMapping extends Model
 
                 if($ingredient_filter_value >= 1){
                     $ingCount = count($ingredient_recipe_mapping->recipe->ingredients);
-
-                    if($ingCount != $ingredient_filter_value){
-                        $include = false;
-                        if($ingCount >= 10 and $ingredient_filter_value == 10) {
-                            $include = true;
-                        }
+                    $include_on_filter = true;
+                    if($ingCount != $ingredient_filter_value) {
+                        $include_on_filter = false;
                     }
+                    if($ingCount > 9 and $ingredient_filter_value == 10) {
+                        $include_on_filter = true;
+
+                    }
+                    $include = $include && $include_on_filter;
+
                 }
 
                 if($include){
