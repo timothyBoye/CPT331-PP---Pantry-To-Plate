@@ -1197,5 +1197,28 @@ img[src*="default-step"] {
     max-height:20px;
 }
 
+/* Styles to improve layout of selected ingredients on recipe.blade
+   for various screen widths */
+@media(min-width:992px){
+    .separate-ingredients {
+        width:50%;
+    }
+    .nutritional-box {
+        font-size: 0.9em;
+    }
+}
+@media(min-width:1180px){
+    .separate-ingredients {
+        width:30%;
+    }
+    .nutritional-box {
+        font-size: 1em;
+    }
+}
+@media(min-width:1380px){
+    .separate-ingredients {
+        width:25%;
+    }
+}
 
 
