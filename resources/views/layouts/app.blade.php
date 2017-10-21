@@ -69,7 +69,7 @@
                 <!--Nav items on the right hand side-->
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}" class="glyphicon glyphicon-log-in" aria-hidden="true"> Login</a></li>
+                        <li><a href="{{ route('login') }}" class="glyphicon glyphicon-log-in" aria-hidden="false"> Login</a></li>
                         <li> <a href="{{ route('register') }}" class="glyphicon glyphicon-user" aria-hidden="true"> Register</a></li>
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
