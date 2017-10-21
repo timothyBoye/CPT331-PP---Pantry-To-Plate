@@ -1,10 +1,12 @@
 <div class="slider-outer">
     <img src="{{ URL::asset('img/left-chevron-gr.png') }}" class="prev" alt="Previous">
     <div class="slider-inner">
+        <!-- Display recipe cards for matched recipes-->
         @foreach($recipes as $rkey => $recipe)
             <div class="item{{ $rkey == 0 ? ' active' : '' }}">
                 <div class="col-lg-4 col-md-6 col-sm-12 recipes-matched-search">
                     <div class="recipe-container">
+                        <!-- Save recipe option -->
                         <div class="save-recipe-div" data-recipe-id="{{$recipe->id}}" data-delete-recipe-url="{{ Route('profile.delete_recipe') }}" data-save-recipe-url="{{Route('profile.save_recipe')}}">
                             @if(Auth::User())
                                 @if(!\App\RecipeUserMapping::has_saved_recipe($recipe->id))
@@ -14,11 +16,13 @@
                                 @endif
                             @endif
                         </div>
+                        <!-- Display cuisine type ribbon on recipe card -->
                         @if($recipe->cuisine_type)
                             <div class="cuisine-ribbon-container">
                                 <div class="cuisine-ribbon {{ $recipe->cuisine_type->name }}">{{ $recipe->cuisine_type->name }}</div>
                             </div>
                         @endif
+                        <!-- Display number of matched ingredients -->
                         <div class="ingredient-match" >
                             @foreach($occurrences as $key => $val)
                                 @if($key == $recipe->id)
@@ -28,6 +32,7 @@
                                 @endif
                             @endforeach
                         </div>
+                        <!-- Make recipe card a link -->
                         <a href="{{ route('recipe', $recipe->id) }}" class="recipe-link">
                             <div class="recipe-image" style="background-image: url({{ URL::asset('img/recipes/'.$recipe->image_name()) }});">
                             </div>
@@ -40,7 +45,7 @@
                             @endforeach
                         </a>
                         <div class="recipe-text">
-
+                            <!-- Display recipe rating on card -->
                             <div style="margin:auto auto">
                                 @php($rating = false)
 
@@ -59,6 +64,7 @@
                                     <input type="radio" id="star1-{{$recipe->id}}" name="rating-{{$recipe->id}}" value="1" {{ $ratingValue == 1 ? 'checked' : '' }} disabled/><label for="star1-{{$recipe->id}}" title="Sucks big time">1 star</label>
                                 </fieldset>
                             </div>
+                            <!-- Display recipe description on card -->
                             <div style="clear:both;">
                                 <q>{{ $recipe->short_description }}</q>
                             </div>

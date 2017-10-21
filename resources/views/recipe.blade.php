@@ -4,9 +4,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 each-img-container margin-top">
+                <!-- Recipe photo and description panel -->
                 <div class="row first-row">
                     <div class="each-recipe-result-img" style="background-image: url({{ URL::asset('img/recipes/'.$recipe->image_name()) }});">
-
+                        <!-- Save recipe option -->
                         <div class="save-recipe-div" class = "button-for-saving" data-delete-recipe-url="{{ Route('profile.delete_recipe') }}" data-save-recipe-url="{{Route('profile.save_recipe')}}">
                             @if(Auth::User())
                                 @if(!\App\RecipeUserMapping::has_saved_recipe($recipe->id))
@@ -18,6 +19,7 @@
                                 <label id="saved-label-{{$recipe->id}}" class="invisible">Saved</label>
                             @endif
                         </div>
+                        <!-- Display recipe rating -->
                         <div class = "recipe-onfo-each">
                             <div class="star-desc-name">
                             <h2>{{ $recipe->name }}</h2>
@@ -40,12 +42,10 @@
                                 <br><q>{{ $recipe->long_description }}</q>
                                 </div>
                                 <div class = "recipe-info-opacity"></div>
-
                         </div>
                     </div>
                 </div>
-
-
+                <!-- Display ingredients in recipe -->
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h2>Ingredients</h2>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Nutritional info panel -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class = "nutritional-box">
@@ -86,10 +86,7 @@
                     </div>
                 </div>
             </div>
-
-
-
-
+            <!-- Display recipe servings/cuisine/source -->
             <div class="col-md-6 margin-top-icons">
                 <div class = "row text-center four-icons-mob">
                     <div class="col-md-4 move-over">
@@ -111,6 +108,7 @@
                         @endif
                     </div>
                 </div>
+                <!-- Method section -->
                 <div class="col-md-12 swipe-container-mob">
                     <div class="row text-center-method text-center">
                         <h2>Method</h2>
