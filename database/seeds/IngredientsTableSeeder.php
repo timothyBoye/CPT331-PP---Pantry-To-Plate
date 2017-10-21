@@ -192,6 +192,8 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'mirin rice wine',  'plural' => '', 'ingredient_image_url' => 'red-wine-vinegar.jpg', 'ingredient_category_id' => Config::get($liquid)),
             array('name' => 'red wine vinegar', 'plural' => '', 'ingredient_image_url' => 'red-wine-vinegar.jpg', 'ingredient_category_id' => Config::get($liquid)),
             array('name' => 'apple cider vinegar','plural' => '', 'ingredient_image_url' => 'apple-cider-vinegar.jpg', 'ingredient_category_id' => Config::get($liquid)),
+            array('name' => 'red wine', 'plural' => '', 'ingredient_image_url' => 'red-wine.jpg', 'ingredient_category_id' => Config::get($liquid)),
+            array('name' => 'tomato puree', 'plural' => '', 'ingredient_image_url' => 'tomato-puree.jpeg', 'ingredient_category_id' => Config::get($liquid)),
 
             //meats
             array('name' => 'lamb chop',        'plural' => 'lamb chops', 'ingredient_category_id'=> Config::get($meat), 'ingredient_image_url' => 'lamb-chop.jpg'),
@@ -217,12 +219,14 @@ class IngredientsTableSeeder extends Seeder
 
             //grains
             array('name' => 'sourdough bread',  'plural' => '', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'sourdough.jpg'),
+            array('name' => 'bread',  'plural' => '', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'bread.jpeg'),
             array('name' => 'corn tortilla',    'plural' => 'corn tortillas', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'Taco_CrispyCornTortilla.jpg'),
             array('name' => 'farfalle pasta',   'plural' => '', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'farfalle-pasta.jpeg'),
             array('name' => 'arborio rice',     'plural' => '', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'arborio-rice-x200.jpg'),
             array('name' => 'fettuccine',       'plural' => '', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'fettuccine.jpg'),
             array('name' => 'couscous',         'plural' => '', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'couscous.jpg'),
             array('name' => 'rice',             'plural' => '', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'arborio-rice-x200.jpg'),
+            array('name' => 'spaghetti',         'plural' => '', 'ingredient_category_id'=> Config::get($grain), 'ingredient_image_url' => 'spaghetti.jpeg'),
 
             //baking
             array('name' => 'whole wheat flour','plural' => '', 'ingredient_category_id'=> Config::get($baking), 'ingredient_image_url' => 'whole_wheat_flour.jpeg'),
@@ -279,7 +283,8 @@ class IngredientsTableSeeder extends Seeder
             array('name' => 'wonton wrapper',   'plural' => 'wonton wrappers', 'ingredient_category_id' => Config::get($misc), 'ingredient_image_url' => 'wontonwrappers.jpg'),
             array('name' => 'white miso paste', 'plural' => '', 'ingredient_image_url' => 'white-miso-paste.jpg', 'ingredient_category_id' => Config::get($misc)),
             array('name' => 'chicken stock cube','plural' => 'chicken stock cube', 'ingredient_image_url' => 'chicken-stock-cube.jpg', 'ingredient_category_id' => Config::get($misc)),
-            array('name' => 'vegetable stock cube','plural' => 'chicken stock cube', 'ingredient_image_url' => 'chicken-stock-cube.jpg', 'ingredient_category_id' => Config::get($misc)),
+            array('name' => 'vegetable stock cube','plural' => 'vegetable stock cube', 'ingredient_image_url' => 'chicken-stock-cube.jpg', 'ingredient_category_id' => Config::get($misc)),
+            array('name' => 'beef stock cube','plural' => 'beef stock cube', 'ingredient_image_url' => 'chicken-stock-cube.jpg', 'ingredient_category_id' => Config::get($misc)),
             array('name' => 'jasmine rice',     'plural' => '', 'ingredient_image_url' => 'jasmine-rice.jpeg', 'ingredient_category_id' => Config::get($grain)),
             array('name' => 'basmati rice',     'plural' => '', 'ingredient_image_url' => 'basmati-rice.jpg', 'ingredient_category_id' => Config::get($grain)),
             array('name' => 'rice noodles',     'plural' => '', 'ingredient_image_url' => 'rice-noodles.jpg', 'ingredient_category_id' => Config::get($grain)),
