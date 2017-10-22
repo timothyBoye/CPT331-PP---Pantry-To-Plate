@@ -5,7 +5,9 @@
     <div class="row">
         <div  class="col-md-3 " >
             {{--<button class="btn btn-primary btn-mini bootstro-next-btn">Next »</button>--}}
+            <!-- Filter section -->
             <div class="filter-container">
+                <!-- Display cuisine preferences option for registered users -->
                 @if (Auth::user())
                     <div class="checkbox-block-div">
                         <input type="checkbox" id="cuisine-preference-checkbox" class="icheck-field" name="cuisine-preference-checkbox">
@@ -16,6 +18,7 @@
                     {{--<label class="checkbox-inline">--}}
                          {{--<input type="checkbox">STAR RATING--}}
                     {{--</label>--}}
+                    <!-- Cuisine type filter -->
                     <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
                         <select id='select-cuisine-type-filter' class = "cuisine-dropdown">
@@ -25,6 +28,7 @@
                         @endforeach
                         </select>
                     </div>
+                    <!-- Star rating filter -->
                     <div class="li-category dropdown">
                         <select id='select-rating-type-filter' class = "cuisine-dropdown">
                             <option class = "cuisine-title-value" value="0" selected>Filter by Recipe Rating</option>
@@ -41,6 +45,7 @@
                             @endfor
                         </select>
                     </div>
+                    <!-- Total ingredients in recipe filter -->
                     <div class="li-category dropdown">
                         <select id='select-ingredient_filter_value' class = "cuisine-dropdown">
                             <option class = "cuisine-title-value" value="0" selected>Filter by Total Ingredients</option>
@@ -57,6 +62,7 @@
                             @endfor
                         </select>
                     </div>
+                    <!-- Number of ingredients to buy filter -->
                     <div class="li-category dropdown">
                         <select id='select-ingredients_needed_filter_value' class = "cuisine-dropdown">
                             <option class = "cuisine-title-value" value="0" selected>Filter by Ingredients Needed</option>
@@ -67,9 +73,9 @@
                     </div>
                 </div>
             </div>
-
-
+            <!-- Ingredients selection section -->
             <div class="bootstro all-dropdowns" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
+                <!-- Search box -->
                 <div id="ingredient-search-group" class="input-group">
                     <input list="ingredients-list" type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
                     <datalist id="ingredients-list">
@@ -87,7 +93,7 @@
                 </div>
                 <p id="search-validation">
                 </p>
-
+            <!-- Ingredient category dropdowns -->
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
                     <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
@@ -102,6 +108,7 @@
             @endforeach
             </div>
         </div>
+        <!-- Selected ingredients panel -->
         <div class="col-md-9 home-recipe-container">
             <div class="selected-ingredients-anchor bootstro" data-api-controller-url="{{URL::route('result')}}" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="Your selected ingredients <img class ='bootstro-ingredient-img' src='{{ asset('/img/tomato.png') }}'/> will appear here, you can remove them by clicking on the  <b class = red>X</b>" data-bootstro-step="1" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next">
                 <ul class="clearable"></ul>
@@ -109,7 +116,7 @@
             <div><button class="btn btn-alert clear-all-ingredients-btn">Clear All Selected Ingredients <span class="glyphicon glyphicon-erase"></span></button></div>
             <div class="clearable" id="recipes"></div>
             <div class="bootstro overlay" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="All of your matched recipes will appear here. <img class ='bootstro-recipe-img' src='{{ asset('/img/result-recipe.png') }}'/><img class = 'match-show-count' src='{{ asset('/img/match-show-count.png') }}'/> Indicates how many of your selected ingredients match the total ingredients needed for the recipe" data-bootstro-step="2" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next"></div>
-
+            <!-- Get started instructions -->
             <div class ="intro-message">
                 <div class="intro-header"><h4 class="intro-heading">Get Started</h4></div>
                 <div class ="into-text"> Start by selecting an ingredient from the drop down category menu.</div>

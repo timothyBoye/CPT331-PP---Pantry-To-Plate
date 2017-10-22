@@ -73,8 +73,13 @@
                 <!--Nav items on the right hand side-->
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
+<<<<<<< HEAD
                         <li><span><a href="{{ route('login') }}" class="glyphicon glyphicon-log-in" aria-hidden="true"> Login</a></span></li>
                         <li><span><a href="{{ route('register') }}" class="glyphicon glyphicon-user" aria-hidden="true"> Register</a></span></li>
+=======
+                        <li><a href="{{ route('login') }}" class="glyphicon glyphicon-log-in" aria-hidden="false"> Login</a></li>
+                        <li> <a href="{{ route('register') }}" class="glyphicon glyphicon-user" aria-hidden="true"> Register</a></li>
+>>>>>>> 762294c879f7c5dd8f6a759a593157d7a1d6ac1e
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
                         <li><span><a href="{{ route('profile.cuisines')}}" class="glyphicon glyphicon-cog" aria-hidden="true"> Manage Cuisine Preferences</a></span></li>

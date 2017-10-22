@@ -34,12 +34,14 @@
                 $('#select-ingredients_needed_filter_value').val(storageObject.getIngredientsNeededFilterValue());
             }
 
+            // displays recipes for any ingredients in local storage when page loads
             if(w.ingredientsController.selectedIngredients.length > 0){
                 makeCall();
             } else {
                 $('.intro-message').show();
             }
 
+            // update filter values and call function to send values to controller
             $(document).on('change', '#select-cuisine-type-filter', function(){
                 storageObject.setCuisineType($('#select-cuisine-type-filter').find('option:selected').val());
                 makeCall();
@@ -65,11 +67,12 @@
                 makeCall();
             });
 
-
             $('#ingredient-search-button').on('click', handleSearchInput);
 
             $('#ingredient-input').keypress(function(e){
+                // clears search box validation feedback when new term is entered
                 $('#search-validation').empty();
+                // enables search to run on 'Enter'
                 if(e.which === 13){
                     $('#ingredient-search-button').click();
                 }
@@ -91,6 +94,7 @@
     }
 
     function handleSearchInput(){
+        // trims and validates search input
         var typedIngredientName = $('#ingredient-input').val().trim();
         var reg = /^[A-z\-\s]+$/;
         if(reg.test(typedIngredientName)) {
@@ -105,6 +109,7 @@
         $('#cuisine-preference-checkbox').prop('checked', checked);
     }
 
+    // toggles ingredient display when an ingredient is searched or selected from dropdown menu
     function handleIngredientClick(e){
         var ingredientName = $(e.target).attr('data-name');
         var ingredientID = $(e.target).attr('data-id');
@@ -129,6 +134,7 @@
         // clear html containers
         $('.clearable').empty();
 
+        // display ingredient images in selected ingredients panel
         var ingredientsList = w.ingredientsController.selectedIngredients;
         for(var i = 0; i < ingredientsList.length; i++) {
             displayIngredientsUl.show();
@@ -137,6 +143,7 @@
             $(displayIngredientsUl).append(listItem);
         }
 
+        // toggle introduction message and clear ingredients button based on whether any ingredients have been selected
         if(w.ingredientsController.selectedIngredients.length === 0) {
             $('.intro-message').show();
             $('.clear-all-ingredients-btn').hide();

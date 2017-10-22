@@ -17,6 +17,7 @@ class RecipeResultsController extends Controller
 {
     public function getResults(Request $request)
     {
+        // validate input
         $this->validate(request(), [
             'ingredients.*.id' => 'required|numeric',
             'ingredients.*.name' => 'required|regex:/^[A-z\-\s]+$/',
@@ -72,11 +73,14 @@ class RecipeResultsController extends Controller
         }
 
         $ingredient_ids = IngredientRecipeMapping::get_matching_recipe_names($ingredient_names);
+        // retrieve recipes that use the selected ingredients and meet the specified filter values
         $recipe_ids = IngredientRecipeMapping::get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value);
 
+        // counts number of matched ingredients for each recipe and sorts them in descending order by that count value
         $occurrences = array_count_values($recipe_ids);
         arsort($occurrences);
 
+        // removes any recipes that do not meet specified ingredients needed filter value
         if($ingredients_needed_filter_value >= 1 ) {
             foreach ($occurrences as $key => $matchedIngredients) {
                 $totalIngredients = count(Recipe::find($key)->ingredients);
