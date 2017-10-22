@@ -65,34 +65,29 @@
             <!--Nav items on the left hand side-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><span><a href="{{ route('home') }}" class="glyphicon glyphicon-home" aria-hidden="true"> Home</a></span></li>
-                    <li><span><a href="{{ route('about') }}" class="glyphicon glyphicon-book" aria-hidden="true"> About</a></span></li>
-                    <li><span><a href="{{ route('contact') }}" class="glyphicon glyphicon-envelope" aria-hidden="true"> Contact</a></span></li>
+                    <li><a href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li><a href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
+                    <li><a href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
                 </ul>
 
                 <!--Nav items on the right hand side-->
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-<<<<<<< HEAD
-                        <li><span><a href="{{ route('login') }}" class="glyphicon glyphicon-log-in" aria-hidden="true"> Login</a></span></li>
-                        <li><span><a href="{{ route('register') }}" class="glyphicon glyphicon-user" aria-hidden="true"> Register</a></span></li>
-=======
-                        <li><a href="{{ route('login') }}" class="glyphicon glyphicon-log-in" aria-hidden="false"> Login</a></li>
-                        <li> <a href="{{ route('register') }}" class="glyphicon glyphicon-user" aria-hidden="true"> Register</a></li>
->>>>>>> 762294c879f7c5dd8f6a759a593157d7a1d6ac1e
+                        <li><a href="{{ route('login') }}" ><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
+                        <li><a href="{{ route('register') }}" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
-                        <li><span><a href="{{ route('profile.cuisines')}}" class="glyphicon glyphicon-cog" aria-hidden="true"> Manage Cuisine Preferences</a></span></li>
+                        <li><a href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
                         <li><span><form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
                             </form></span></li>
-                        <li><span><a href="{{Route('profile.saved_recipes')}}" class="glyphicon glyphicon-bookmark" aria-hidden="true"> Saved Recipes</a></span></li>
+                        <li><a href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
                     @endif
 
                     @if (Auth::user())
-                        <li><span><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="glyphicon glyphicon-log-out" aria-hidden="true"> Logout</a></span></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
                         @if (Auth::user()->role->user_role_name == "Admin")
-                            <li><span><a href="{{ route('admin') }}">Admin Dashboard</a></span></li>
+                            <li><a href="{{ route('admin') }}"><span></span> Admin Dashboard</a></li>
                         @endif
                     @endif
                 </ul>
