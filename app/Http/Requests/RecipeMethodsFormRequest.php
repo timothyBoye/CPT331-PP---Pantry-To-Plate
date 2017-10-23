@@ -4,6 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class RecipeMethodsFormRequest
+ *
+ * Request object for validating returned recipe methods forms from the admin website
+ *
+ * @package App\Http\Requests
+ */
 class RecipeMethodsFormRequest extends FormRequest
 {
     /**

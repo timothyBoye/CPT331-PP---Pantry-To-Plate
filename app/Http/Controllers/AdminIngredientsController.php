@@ -16,15 +16,35 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminIngredientFormRequest;
 
+/**
+ * Class AdminIngredientsController
+ *
+ * Provides both view display and CRUD functionality for ingredients
+ *
+ * @package App\Http\Controllers
+ */
 class AdminIngredientsController extends Controller
 {
+    /**
+     * AdminIngredientsController constructor.
+     * This method ensures the user is both logged in AND an admin user otherwise the auth middleware will redirect them away
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
     }
 
 
-
+    /**
+     * This function displays the ingredients table view for the admin dashboard which is a table of all ingredients in the DB with
+     * add/edit/delete buttons.
+     *
+     * Note: this function does not pass ingredients data to the view instead this is handled by a separate AJAX post method to allow
+     * for pagination, searching and sorting.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function ingredients(Request $request)
     {
         $title = "Ingredients";
@@ -37,8 +57,14 @@ class AdminIngredientsController extends Controller
 
     }
 
+    /**
+     * This function handles post requests from the ingredients table view to populate and sort the table.
+     *
+     * @param Request $request
+     */
     public function ingredientsPost(Request $request)
     {
+        // Sortable columns
         $columns = array(
             0 => 'id',
             1 => 'name',
@@ -46,14 +72,17 @@ class AdminIngredientsController extends Controller
             3 => 'in_recipes'
         );
 
+        // Get how many items there are in the collection to return to the client for displaying
         $totalData = Ingredient::count();
         $totalFiltered = $totalData;
 
+        // Table parameters for filtering and sorting received from the client request
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
 
+        // retrieve all data if no search terms were provided
         if(empty($request->input('search.value'))) {
             $ingredients = Ingredient::offset($start)
                 ->leftJoin('ingredient_recipe_mappings', 'ingredient_recipe_mappings.ingredient_id', '=', 'ingredients.id')
@@ -65,6 +94,7 @@ class AdminIngredientsController extends Controller
                 ->orderBy($order,$dir)
                 ->get();
         }
+        // otherwise filter the collection based on the search terms
         else {
             $search = $request->input('search.value');
 
@@ -83,6 +113,7 @@ class AdminIngredientsController extends Controller
             $totalFiltered = count($ingredients);
         }
 
+        // if results were found above to display, render the row for the table for each result.
         $data = array();
         if(!empty($ingredients))
         {
@@ -102,7 +133,6 @@ class AdminIngredientsController extends Controller
                         <button class="btn btn-info btn-sm" type="submit">Edit</button>
                     </form>
 EDIT;
-
                 // seed button
                 $seed = route('admin.ingredient.seeder', ['id' => $ingredient->id]);
                 $nestedData['seed'] = <<<SEED
@@ -125,7 +155,6 @@ EDIT;
                         </script>
                     </form>
 SEED;
-
                 // delete button
                 $delete = route('admin.ingredient.delete', ['id' => $ingredient->id]);
                 $delete_filed = method_field('DELETE');
@@ -147,9 +176,18 @@ DELETE;
             "data"            => $data
         );
 
+        // Return the data to the view to be displayed in the table
         echo json_encode($json_data);
     }
 
+    /**
+     * This function accepts an id value and displays the matching ingredient in the ingredient form for both
+     * viewing and editing.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function getIngredient($id, Request $request)
     {
         $ingredient = Ingredient::find($id);
@@ -162,6 +200,12 @@ DELETE;
         }
     }
 
+    /**
+     * This function provides a blank ingredient form for entering a new ingredient.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function addIngredient(Request $request)
     {
         $title = 'Add Ingredient';
@@ -169,6 +213,16 @@ DELETE;
         return view('admin.admin-ingredients-form', compact('title', 'categories'));
     }
 
+    /**
+     * When a new ingredient is posted by the client this function saves that ingredient to the database and redirects
+     * the client back to the ingredients table with a success message.
+     *
+     * Note: as we are using a custom request object AdminIngredientFormRequest we can assume here the ingredient is valid
+     * as the request object has already validated it.
+     *
+     * @param AdminIngredientFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postIngredient(AdminIngredientFormRequest $request)
     {
         $ingredient = Ingredient::create($request->all());
@@ -187,6 +241,17 @@ DELETE;
         return redirect()->route('admin.ingredients')->with(['ingredient' => $ingredient]);
     }
 
+    /**
+     * When the client returns updated values for a Ingredient via a put call this method updates the database and
+     * returns the user to the Ingredients table with a success message.
+     *
+     * Note: as we are using a custom request object AdminIngredientFormRequest we can assume here the Ingredient is valid
+     * as the request object has already validated it.
+     *
+     * @param $id
+     * @param AdminIngredientFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function putIngredient($id, AdminIngredientFormRequest $request)
     {
         $ingredient = Ingredient::find($id);
@@ -205,6 +270,14 @@ DELETE;
         return redirect()->route('admin.ingredients')->with(['ingredient' => $ingredient]);
     }
 
+    /**
+     * When a delete request is received from the client this message looks for the id in the database, deletes the row
+     * and then returns the user to the ingredients table view.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteIngredient($id, Request $request)
     {
         $ingredient = Ingredient::find($id);
@@ -216,7 +289,14 @@ DELETE;
         }
     }
 
-
+    /**
+     * This method is used by the development team to convert a database entry into a string that can be pasted into the seed
+     * database files such that when php artisan db:seed is called this new entry is seeded to the database and not lost.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function seedString($id, Request $request)
     {
         $ingredient = Ingredient::find($id);

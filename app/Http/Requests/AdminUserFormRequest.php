@@ -7,6 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
 
+/**
+ * Class AdminUserFormRequest
+ *
+ * Request object for validating returned user forms from the admin website
+ *
+ * @package App\Http\Requests
+ */
 class AdminUserFormRequest extends FormRequest
 {
     /**
