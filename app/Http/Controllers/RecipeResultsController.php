@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\IngredientRecipeMapping;
 use App\UserRecipeRating;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Ingredient;
 use App\Recipe;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Input;
 use Validator;
 
 use Illuminate\Support\Facades\DB;
@@ -54,12 +58,25 @@ class RecipeResultsController extends Controller
 
         }
 
-        $recipes = Recipe::whereIn('id', $sorted_recipe_ids)->paginate(10);
+        $recipes = Recipe::whereIn('id', $sorted_recipe_ids)->get()->sortBy(function($model) use ($sorted_recipe_ids){
+            return array_search($model->getKey(), $sorted_recipe_ids);
+        });
+
+        $recipes = $this->paginate($recipes, $perPage = 10, $page = Input::get('page', 1));
+
         $userRatings = UserRecipeRating::get_ratings_for_user($recipes);
         $returnHTML = $this->build_html($recipes, $userRatings, $occurrences);
 
         return response()->json(array('success' => true, 'html'=>$returnHTML), 200);
     }
+
+    public function paginate($items, $perPage = 15, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+
 
     private function build_html($recipes, $userRatings, $occurrences){
         return view('recipe-list', compact('recipes', 'userRatings', 'occurrences'))->render();
