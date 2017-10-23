@@ -67,7 +67,7 @@
                         <select id='select-ingredients_needed_filter_value' class = "cuisine-dropdown">
                             <option class = "cuisine-title-value" value="0" selected>Filter by Ingredients Needed</option>
                             @for($i = 2; $i < 11; $i+=2)
-                                <option class="cuisine-title-value" value="{{$i}}">Less Than {{$i}} Ingredients Needed</option>
+                                <option class="cuisine-title-value" value="{{$i}}">{{$i}} Ingredients Or Less Needed</option>
                             @endfor
                         </select>
                     </div>
