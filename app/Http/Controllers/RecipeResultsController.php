@@ -54,7 +54,7 @@ class RecipeResultsController extends Controller
 
         }
 
-        $recipes = Recipe::get_recipes_from_ids($sorted_recipe_ids);
+        $recipes = Recipe::whereIn('id', $sorted_recipe_ids)->paginate(10);
         $userRatings = UserRecipeRating::get_ratings_for_user($recipes);
         $returnHTML = $this->build_html($recipes, $userRatings, $occurrences);
 

@@ -1,13 +1,14 @@
 /**
  * Created by Brendan on 9/09/2017.
  */
-(function($, w){
+var pageNumber = 1;
+var finished = false;
 
+(function($, w){
     w.ingredientsController = {
         selectedIngredients: storageObject.getSelectedIngredients(),
 
         watch: function() {
-
 
             // on dropdown click update display + get json
             $('.li-ingredient').on('click', handleIngredientClick);
@@ -36,6 +37,8 @@
 
             // displays recipes for any ingredients in local storage when page loads
             if(w.ingredientsController.selectedIngredients.length > 0){
+                $('#recipes').empty();
+                resetPageCount();
                 makeCall();
             } else {
                 $('.intro-message').show();
@@ -44,26 +47,36 @@
             // update filter values and call function to send values to controller
             $(document).on('change', '#select-cuisine-type-filter', function(){
                 storageObject.setCuisineType($('#select-cuisine-type-filter').find('option:selected').val());
+                $('#recipes').empty();
+                resetPageCount();
                 makeCall();
             });
 
             $(document).on('change', '#select-rating-type-filter', function(){
                 storageObject.setRatingFilter($('#select-rating-type-filter').find('option:selected').val());
+                $('#recipes').empty();
+                resetPageCount();
                 makeCall();
             });
 
             $(document).on('change', '#select-ingredient_filter_value', function(){
                 storageObject.setIngredientsFilter(($('#select-ingredient_filter_value').find('option:selected').val()));
+                $('#recipes').empty();
+                resetPageCount();
                 makeCall();
             });
 
             $(document).on('change', '#select-ingredients_needed_filter_value', function(){
                 storageObject.setIngredientsNeededFilter(($('#select-ingredients_needed_filter_value').find('option:selected').val()));
+                $('#recipes').empty();
+                resetPageCount();
                 makeCall();
             });
 
             $('#cuisine-preference-checkbox').on('ifChanged', function(){
                 storageObject.setCuisinePreferenceCheckStatus($('#cuisine-preference-checkbox').is(':checked'));
+                $('#recipes').empty();
+                resetPageCount();
                 makeCall();
             });
 
@@ -82,13 +95,48 @@
 
             initCuisinePreferenceCheckbox();
 
-        }
+            document.addEventListener('scroll',CheckIfScrollBottom);
 
+        }
     };
+
+    var CheckIfScrollBottom = debouncer(function() {
+        if(getScrollXY()[1] + window.innerHeight >= getDocHeight() - 100 && pageNumber > 1 && !finished) {
+            makeCall();
+        }
+    },500);
+
+    function debouncer(a, b, c) {
+        var d;
+        return function () {
+            var e = this, f = arguments, g = function () {
+                d = null, c || a.apply(e, f)
+            }, h = c && !d;
+            clearTimeout(d), d = setTimeout(g, b), h && a.apply(e, f)
+        }
+    }
+
+    function getScrollXY() {
+        var a = 0, b = 0;
+        return "number" == typeof window.pageYOffset ? (b = window.pageYOffset, a = window.pageXOffset) : document.body && (document.body.scrollLeft || document.body.scrollTop) ? (b = document.body.scrollTop, a = document.body.scrollLeft) : document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop) && (b = document.documentElement.scrollTop, a = document.documentElement.scrollLeft), [a, b]
+    }
+
+    function getDocHeight() {
+        var a = document;
+        return Math.max(a.body.scrollHeight, a.documentElement.scrollHeight, a.body.offsetHeight, a.documentElement.offsetHeight, a.body.clientHeight, a.documentElement.clientHeight)
+    }
+
+    function resetPageCount() {
+        pageNumber = 1;
+        finished = false;
+    }
+
 
     function clearAllIngredients(){
         storageObject.removeAllIngredients();
         w.ingredientsController.selectedIngredients = storageObject.getSelectedIngredients();
+        $('#recipes').empty();
+        resetPageCount();
         makeCall();
         updateDisplay(storageObject.getSelectedIngredients());
     }
@@ -121,7 +169,8 @@
         else {
             w.ingredientsController.selectedIngredients = storageObject.removeIngredient(ingredientID);
         }
-
+        $('#recipes').empty();
+        resetPageCount();
         makeCall();
         updateDisplay(storageObject.getRecipes());
 
@@ -163,7 +212,7 @@
             var ingredientFilterValue = storageObject.getIngredientsFilterValue();
             var ingredientsNeededFilterValue = storageObject.getIngredientsNeededFilterValue();
             $.ajax({
-                url: $('.selected-ingredients-anchor').attr('data-api-controller-url'),
+                url: $('.selected-ingredients-anchor').attr('data-api-controller-url') + '?page=' + pageNumber,
                 type: 'POST',
                 data: {
                     ingredients: w.ingredientsController.selectedIngredients,
@@ -174,11 +223,15 @@
                     ingredientsNeededFilterValue: ingredientsNeededFilterValue
                 }
             }).done(function(response){
-                $('#recipes').html(response.html);
-
+                if (response.html == '') {
+                    finished = true;
+                    $('#recipes').append('<div class="col-sm-12" id="finished">- No more results -</div>');
+                } else {
+                    $('#recipes').append(response.html);
+                    pageNumber +=1;
+                }
             }).fail(function(response){
                 $('#recipes').html(response.responseText);
-
             });
         }
         else{
