@@ -14,15 +14,35 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminMeasurementFormRequest;
 
+/**
+ * Class AdminMeasurementsController
+ *
+ * Provides both view display and CRUD functionality for measurement types
+ *
+ * @package App\Http\Controllers
+ */
 class AdminMeasurementsController extends Controller
 {
+    /**
+     * AdminMeasurementsController constructor.
+     * This method ensures the user is both logged in AND an admin user otherwise the auth middleware will redirect them away
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
     }
 
 
-
+    /**
+     * This function displays the measurements table view for the admin dashboard which is a table of all ingredients in the DB with
+     * add/edit/delete buttons.
+     *
+     * Note: this function does not pass measurements data to the view instead this is handled by a separate AJAX post method to allow
+     * for pagination, searching and sorting.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function measurements(Request $request)
     {
         $title = "Measurements";
@@ -34,29 +54,38 @@ class AdminMeasurementsController extends Controller
         }
     }
 
-
+    /**
+     * This function handles post requests from the measurements table view to populate and sort the table.
+     *
+     * @param Request $request
+     */
     public function measurementsPost(Request $request)
     {
+        // Sortable columns
         $columns = array(
             0 => 'id',
             1 => 'name',
             2 => 'comparable_size',
         );
 
+        // Get how many items there are in the collection to return to the client for displaying
         $totalData = MeasurementType::count();
         $totalFiltered = $totalData;
 
+        // Table parameters for filtering and sorting received from the client request
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
 
+        // retrieve all data if no search terms were provided
         if(empty($request->input('search.value'))) {
             $measures = MeasurementType::offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
         }
+        // otherwise filter the collection based on the search terms
         else {
             $search = $request->input('search.value');
 
@@ -71,6 +100,7 @@ class AdminMeasurementsController extends Controller
             $totalFiltered = count($measures);
         }
 
+        // if results were found above to display, render the row for the table for each result.
         $data = array();
         if(!empty($measures))
         {
@@ -89,7 +119,6 @@ class AdminMeasurementsController extends Controller
                         <button class="btn btn-info btn-sm" type="submit">Edit</button>
                     </form>
 EDIT;
-
                 // seed button
                 $seed = route('admin.measurement.seeder', ['id' => $measure->id]);
                 $nestedData['seed'] = <<<SEED
@@ -112,7 +141,6 @@ EDIT;
                         </script>
                     </form>
 SEED;
-
                 // delete button
                 $delete = route('admin.measurement.delete', ['id' => $measure->id]);
                 $delete_filed = method_field('DELETE');
@@ -134,9 +162,18 @@ DELETE;
             "data"            => $data
         );
 
+        // Return the data to the view to be displayed in the table
         echo json_encode($json_data);
     }
 
+    /**
+     * This function accepts an id value and displays the matching measurement in the measurement form for both
+     * viewing and editing.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function getMeasurement($id, Request $request)
     {
         $measurement = MeasurementType::find($id);
@@ -148,12 +185,28 @@ DELETE;
         }
     }
 
+    /**
+     * This function provides a blank measurement form for entering a new measurement.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function addMeasurement(Request $request)
     {
         $title = 'Add Measurement';
         return view('admin.admin-measurements-form', compact('title'));
     }
 
+    /**
+     * When a new measurement is posted by the client this function saves that measurement to the database and redirects
+     * the client back to the measurement table with a success message.
+     *
+     * Note: as we are using a custom request object AdminMeasurementFormRequest we can assume here the measurement is valid
+     * as the request object has already validated it.
+     *
+     * @param AdminMeasurementFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postMeasurement(AdminMeasurementFormRequest $request)
     {
         $measurement = MeasurementType::create($request->all());
@@ -162,6 +215,17 @@ DELETE;
         return redirect()->route('admin.measurements')->with(['measurement' => $measurement]);
     }
 
+    /**
+     * When the client returns updated values for a Measurement type via a put call this method updates the database and
+     * returns the user to the Measurement types table with a success message.
+     *
+     * Note: as we are using a custom request object AdminMeasurementFormRequest we can assume here the Measurement type is valid
+     * as the request object has already validated it.
+     *
+     * @param $id
+     * @param AdminMeasurementFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function putMeasurement($id, AdminMeasurementFormRequest $request)
     {
         $measurement = MeasurementType::find($id);
@@ -171,6 +235,14 @@ DELETE;
         return redirect()->route('admin.measurements')->with(['measurement' => $measurement]);
     }
 
+    /**
+     * When a delete request is received from the client this message looks for the id in the database, deletes the row
+     * and then returns the user to the measurement types table view.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteMeasurement($id, Request $request)
     {
         $measurement = MeasurementType::find($id);
@@ -182,7 +254,14 @@ DELETE;
         }
     }
 
-
+    /**
+     * This method is used by the development team to convert a database entry into a string that can be pasted into the seed
+     * database files such that when php artisan db:seed is called this new entry is seeded to the database and not lost.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function seedString($id, Request $request)
     {
         $measure = MeasurementType::find($id);
