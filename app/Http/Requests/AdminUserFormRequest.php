@@ -44,7 +44,7 @@ class AdminUserFormRequest extends FormRequest
         ];
         if (!(isset($this->id)) || Input::get('password') != '')
         {
-            $rules['password'] = 'required|confirmed|max:255|min:8';
+            $rules['password'] = 'required|confirmed|max:255|min:8|regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]+).*$/';
             $rules['password_confirmation'] = 'required';
         }
 

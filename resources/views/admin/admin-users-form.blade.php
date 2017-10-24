@@ -3,6 +3,12 @@
 @section('head')
     <script>
         $().ready(function() {
+
+            // custom validation method for password requirements
+            $.validator.addMethod("regex", function(value, element) {
+                return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]+).*$/.test(value);
+            }, "Your password must include at least: one lowercase letter, one uppercase letter, one number and one special character (!@#$%^&*).");
+
             $("#form").validate({
                 rules: {
                     name: {
@@ -15,10 +21,12 @@
                         email: true
                     },
                     password: {
-                        minlength: 8
+                        minlength: 8,
+                        regex: "required regex"
                     },
                     password_confirmation: {
                         minlength: 8,
+                        regex: "required regex",
                         equalTo: "#password"
                     },
                     user_role_id: {
