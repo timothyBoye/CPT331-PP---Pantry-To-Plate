@@ -1221,4 +1221,16 @@ img[src*="default-step"] {
     }
 }
 
+.saved-recipe-table-heading {
+    background-color: #ffffff;
+}
+
+#saved_recipes_table {
+    margin-top:50px;
+}
+
+/*.delete-saved-recipe-btn {*/
+    /*background-color: #2ab27b;*/
+/*}*/
+
 
