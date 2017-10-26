@@ -23,14 +23,34 @@ use App\Http\Requests\RecipeMethodsFormRequest;
 use App\Http\Requests\RecipeIngredientsFormRequest;
 use Symfony\Component\Finder\Tests\Iterator\ExcludeDirectoryFilterIteratorTest;
 
+/**
+ * Class AdminRecipesController
+ *
+ * Provides both view display and CRUD functionality for recipes
+ *
+ * @package App\Http\Controllers
+ */
 class AdminRecipesController extends Controller
 {
+    /**
+     * AdminRecipesController constructor.
+     * This method ensures the user is both logged in AND an admin user otherwise the auth middleware will redirect them away
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
     }
 
-
+    /**
+     * This function displays the recipes table view for the admin dashboard which is a table of all ingredients in the DB with
+     * add/edit/delete buttons.
+     *
+     * Note: this function does not pass recipes data to the view instead this is handled by a separate AJAX post method to allow
+     * for pagination, searching and sorting.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function recipes(Request $request)
     {
 
@@ -43,8 +63,14 @@ class AdminRecipesController extends Controller
         }
     }
 
+    /**
+     * This function handles post requests from the recipes table view to populate and sort the table.
+     *
+     * @param Request $request
+     */
     public function recipesPost(Request $request)
     {
+        // Sortable columns
         $columns = array(
             0 => 'id',
             1 => 'name',
@@ -56,14 +82,17 @@ class AdminRecipesController extends Controller
             7 => 'number_of_ratings'
         );
 
+        // Get how many items there are in the collection to return to the client for displaying
         $totalData = Recipe::count();
         $totalFiltered = $totalData;
 
+        // Table parameters for filtering and sorting received from the client request
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
 
+        // retrieve all data if no search terms were provided
         if(empty($request->input('search.value'))) {
             $recipes = Recipe::offset($start)
                 ->leftJoin('cuisine_types', 'cuisine_types.id', '=', 'cuisine_type_id')
@@ -77,6 +106,7 @@ class AdminRecipesController extends Controller
                 ->orderBy($order,$dir)
                 ->get();
         }
+        // otherwise filter the collection based on the search terms
         else {
             $search = $request->input('search.value');
 
@@ -99,6 +129,7 @@ class AdminRecipesController extends Controller
             $totalFiltered = count($recipes);
         }
 
+        // if results were found above to display, render the row for the table for each result.
         $data = array();
         if(!empty($recipes))
         {
@@ -167,9 +198,18 @@ DELETE;
             "data"            => $data
         );
 
+        // Return the data to the view to be displayed in the table
         echo json_encode($json_data);
     }
 
+    /**
+     * This function accepts an id value and displays the matching recipe in the recipe form for both
+     * viewing and editing.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function getRecipe($id, Request $request)
     {
         $recipe = Recipe::find($id);
@@ -183,6 +223,12 @@ DELETE;
         }
     }
 
+    /**
+     * This function provides a blank recipe form for entering a new recipe.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function addRecipe(Request $request)
     {
         $title = 'Add Recipe';
@@ -190,47 +236,16 @@ DELETE;
         return view('admin.admin-recipe-form-main', compact('title', 'cuisine_types'));
     }
 
-
-    public function putRecipe($id, AdminRecipeFormRequest $request)
-    {
-        $recipe = Recipe::find($id);
-        $recipe->update(array(
-            'name' => $request['name'],
-            'recipe_source' => $request['recipe_source'],
-            'short_description' => $request['short_description'],
-            'long_description' => $request['long_description'],
-            'serving_size' => $request['serving_size'],
-            'cuisine_type_id' => $request['cuisine_type_id'],
-        ));
-        $recipe->save();
-
-        $nutrition = NutritionalInfoPanel::firstOrNew(['recipe_id' => $id]);
-        $nutrition->update(array(
-            'gram_total_fat'=>$request['gram_total_fat'],
-            'gram_saturated_fat'=>$request['gram_saturated_fat'],
-            'gram_total_carbohydrates'=>$request['gram_total_carbohydrates'],
-            'gram_sugars'=>$request['gram_sugars'],
-            'gram_fiber'=>$request['gram_fiber'],
-            'mg_sodium'=>$request['mg_sodium'],
-            'gram_protein'=>$request['gram_protein'],
-            'calories' => $request['calories']
-        ));
-        $nutrition->save();
-
-        return redirect()->route('admin.recipe.ingredients.get', ['id' => $recipe->id]);
-    }
-
-    public function getIngredients($id, Request $request)
-    {
-        $recipe = Recipe::find($id);
-        $measurement_types = MeasurementType::orderBy('name', 'asc')->get();
-        $ingredients = Ingredient::orderBy('name', 'asc')->get();
-        $title = 'Add Ingredients to '.$recipe->name;
-
-        return view('admin.admin-recipe-form-ingredients', compact('recipe', 'measurement_types', 'ingredients', 'title'));
-    }
-
-
+    /**
+     * When a new recipe is posted by the client this function saves that recipe to the database and redirects
+     * the client to the ingredient mappings form.
+     *
+     * Note: as we are using a custom request object AdminRecipeFormRequest we can assume here the recipe is valid
+     * as the request object has already validated it.
+     *
+     * @param AdminRecipeFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postRecipe(AdminRecipeFormRequest $request)
     {
         $recipe = Recipe::create($request->all());
@@ -267,6 +282,97 @@ DELETE;
     }
 
 
+    /**
+     * When the client returns updated values for a Recipe via a put call this method updates the database and
+     * returns the user to the Recipes table with a success message.
+     *
+     * Note: as we are using a custom request object AdminRecipeFormRequest we can assume here the Recipe is valid
+     * as the request object has already validated it.
+     *
+     * @param $id
+     * @param AdminRecipeFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function putRecipe($id, AdminRecipeFormRequest $request)
+    {
+        $recipe = Recipe::find($id);
+        $recipe->update(array(
+            'name' => $request['name'],
+            'recipe_source' => $request['recipe_source'],
+            'short_description' => $request['short_description'],
+            'long_description' => $request['long_description'],
+            'serving_size' => $request['serving_size'],
+            'cuisine_type_id' => $request['cuisine_type_id'],
+        ));
+        $recipe->save();
+
+        $nutrition = NutritionalInfoPanel::firstOrNew(['recipe_id' => $id]);
+        $nutrition->update(array(
+            'gram_total_fat'=>$request['gram_total_fat'],
+            'gram_saturated_fat'=>$request['gram_saturated_fat'],
+            'gram_total_carbohydrates'=>$request['gram_total_carbohydrates'],
+            'gram_sugars'=>$request['gram_sugars'],
+            'gram_fiber'=>$request['gram_fiber'],
+            'mg_sodium'=>$request['mg_sodium'],
+            'gram_protein'=>$request['gram_protein'],
+            'calories' => $request['calories']
+        ));
+        $nutrition->save();
+
+        return redirect()->route('admin.recipe.ingredients.get', ['id' => $recipe->id]);
+    }
+
+    /**
+     * When a delete request is received from the client this message looks for the id in the database, deletes the row
+     * and then returns the user to the recipes table view.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deleteRecipe($id, Request $request)
+    {
+        $recipe = Recipe::find($id);
+        if ($recipe) {
+            RecipeMethod::where('recipe_id', '=', $id)->delete();
+            IngredientRecipeMapping::where('recipe_id', '=', $id)->delete();
+            NutritionalInfoPanel::where('recipe_id', '=', $id)->delete();
+            $recipe->delete();
+            return redirect()->route('admin.recipes');
+        } else {
+            return redirect()->route('admin.recipes');
+        }
+    }
+
+    /**
+     * This function accepts an id value and displays the matching ingredients for the given recipe in the recipe
+     * ingredients form for both viewing and editing.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getIngredients($id, Request $request)
+    {
+        $recipe = Recipe::find($id);
+        $measurement_types = MeasurementType::orderBy('name', 'asc')->get();
+        $ingredients = Ingredient::orderBy('name', 'asc')->get();
+        $title = 'Add Ingredients to '.$recipe->name;
+
+        return view('admin.admin-recipe-form-ingredients', compact('recipe', 'measurement_types', 'ingredients', 'title'));
+    }
+
+    /**
+     * When a recipe ingredients form is posted by the client this function deletes any previous ingredients and saves
+     * the posted ingreident mappings to the database then forwards the user to the methods form
+     *
+     * Note: as we are using a custom request object RecipeIngredientsFormRequest we can assume here the mappings are valid
+     * as the request object has already validated it.
+     *
+     * @param $id
+     * @param RecipeIngredientsFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postRecipeIngredients($id, RecipeIngredientsFormRequest $request)
     {
         $recipe = Recipe::find($id);
@@ -293,6 +399,14 @@ DELETE;
         return redirect()->route('admin.recipe.methods.get', ['id' => $recipe->id]);
     }
 
+    /**
+     * This function accepts an id value and displays the matching method steps for the given recipe in the recipe
+     * method steps form for both viewing and editing.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getMethods($id, Request $request)
     {
         $recipe = Recipe::find($id);
@@ -301,7 +415,17 @@ DELETE;
         return view('admin.admin-recipe-form-methods', compact('recipe', 'title'));
     }
 
-
+    /**
+     * When a recipe method steps form is posted by the client this function deletes any previous steps and saves
+     * the posted steps to the database then forwards the user to recipes table with a success message.
+     *
+     * Note: as we are using a custom request object RecipeMethodsFormRequest we can assume here the steps are valid
+     * as the request object has already validated it.
+     *
+     * @param $id
+     * @param RecipeMethodsFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postRecipeMethods($id, RecipeMethodsFormRequest $request)
     {
         $recipe = Recipe::find($id);
@@ -324,22 +448,14 @@ DELETE;
         return redirect()->route('admin.recipes')->with(['recipe' => $recipe]);
     }
 
-
-    public function deleteRecipe($id, Request $request)
-    {
-        $recipe = Recipe::find($id);
-        if ($recipe) {
-            RecipeMethod::where('recipe_id', '=', $id)->delete();
-            IngredientRecipeMapping::where('recipe_id', '=', $id)->delete();
-            NutritionalInfoPanel::where('recipe_id', '=', $id)->delete();
-            $recipe->delete();
-            return redirect()->route('admin.recipes');
-        } else {
-            return redirect()->route('admin.recipes');
-        }
-    }
-
-
+    /**
+     * This method is used by the development team to convert a database entry into a string that can be pasted into the seed
+     * database files such that when php artisan db:seed is called this new entry is seeded to the database and not lost.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function seedString($id, Request $request)
     {
         // Recipe
@@ -370,6 +486,15 @@ DELETE;
         return response()->json($response, 200);
     }
 
+    /**
+     * Helper method for seedString() that outputs a string for a RecipeMethod object
+     *
+     * @param $recipe_name
+     * @param $step_number
+     * @param $description
+     * @param $image_url
+     * @return string
+     */
     private function methodStepSeedString($recipe_name, $step_number, $description, $image_url)
     {
         $response = "\App\RecipeMethod::create(array(";
@@ -382,6 +507,18 @@ DELETE;
         return $response;
     }
 
+    /**
+     * Helper method for seedString() that outputs a string for a Recipe object
+     * @param $id
+     * @param $name
+     * @param $recipe_source
+     * @param $short_description
+     * @param $long_description
+     * @param $serving_size
+     * @param $cuisine_type_id
+     * @param $image
+     * @return string
+     */
     private function recipeSeedString($id, $name, $recipe_source, $short_description, $long_description,
                                       $serving_size, $cuisine_type_id, $image)
     {
@@ -400,6 +537,19 @@ DELETE;
         return $response;
     }
 
+    /**
+     * Helper method for seedString() that outputs a NutritionalInfoPanel object
+     * @param $recipe_name
+     * @param $gram_total_fat
+     * @param $gram_saturated_fat
+     * @param $gram_total_carbohydrates
+     * @param $gram_sugars
+     * @param $gram_fiber
+     * @param $mg_sodium
+     * @param $gram_protein
+     * @param $calories
+     * @return string
+     */
     private function nutritionSeedString($recipe_name, $gram_total_fat, $gram_saturated_fat, $gram_total_carbohydrates,
                                          $gram_sugars, $gram_fiber, $mg_sodium, $gram_protein, $calories)
     {
@@ -418,6 +568,15 @@ DELETE;
         return $response;
     }
 
+    /**
+     * Helper method for seedString() that outputs a string for an IngredientRecipeMapping object
+     * @param $recipe_name
+     * @param $ingredient_quantity
+     * @param $ingredient_id
+     * @param $ingredient_measure
+     * @param $ingredient_description
+     * @return string
+     */
     private function ingredientSeedString($recipe_name, $ingredient_quantity, $ingredient_id, $ingredient_measure, $ingredient_description)
     {
         $response = "\App\IngredientRecipeMapping::create(array(";

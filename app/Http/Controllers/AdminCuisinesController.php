@@ -15,13 +15,34 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminCuisinesFormRequest;
 
+/**
+ * Class AdminCuisinesController
+ *
+ * Provides both view display and CRUD functionality for cuisine types
+ *
+ * @package App\Http\Controllers
+ */
 class AdminCuisinesController extends Controller
 {
+    /**
+     * AdminCuisinesController constructor.
+     * This function ensures the user is both logged in AND an admin user otherwise the auth middleware will redirect them away
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
     }
 
+    /**
+     * This function displays the cuisines table view for the admin dashboard which is a table of all cuisines in the DB with
+     * add/edit/delete buttons.
+     *
+     * Note: this function does not pass cuisine data to the view instead this is handled by a seperate AJAX post method to allow
+     * for pagination, searching and sorting.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function cuisines(Request $request)
     {
         $title = "Cuisines";
@@ -33,22 +54,31 @@ class AdminCuisinesController extends Controller
         }
     }
 
+    /**
+     * This function handles post requests from the cuisines table view to populate and sort the table.
+     *
+     * @param Request $request
+     */
     public function cuisinesPost(Request $request)
     {
+        // Sortable columns
         $columns = array(
             0 => 'id',
             1 => 'name',
             2 => 'number_of_recipes',
         );
 
+        // Get how many items there are in the collection to return to the client for displaying
         $totalData = CuisineType::count();
         $totalFiltered = $totalData;
 
+        // Table parameters for filtering and sorting received from the client request
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
 
+        // retrieve all data if no search terms were provided
         if(empty($request->input('search.value'))) {
             $cuisines = CuisineType::offset($start)
                 ->leftJoin('recipes', 'recipes.cuisine_type_id', '=', 'cuisine_types.id')
@@ -58,7 +88,10 @@ class AdminCuisinesController extends Controller
                 ->groupBy('cuisine_types.name')
                 ->orderBy($order,$dir)
                 ->get();
-        } else {
+
+        }
+        // otherwise filter the collection based on the search terms
+        else {
             $search = $request->input('search.value');
 
             $cuisines = CuisineType::offset($start)
@@ -75,6 +108,7 @@ class AdminCuisinesController extends Controller
             $totalFiltered = count($cuisines);
         }
 
+        // if results were found above to display, render the row for the table for each result.
         $data = array();
         if(!empty($cuisines))
         {
@@ -93,7 +127,6 @@ class AdminCuisinesController extends Controller
                         <button class="btn btn-info btn-sm" type="submit">Edit</button>
                     </form>
 EDIT;
-
                 // seed button
                 $seed = route('admin.cuisine.seeder', ['id' => $cuisine->id]);
                 $nestedData['seed'] = <<<SEED
@@ -116,7 +149,6 @@ EDIT;
                         </script>
                     </form>
 SEED;
-
                 // delete button
                 $delete = route('admin.cuisine.delete', ['id' => $cuisine->id]);
                 $delete_filed = method_field('DELETE');
@@ -138,10 +170,19 @@ DELETE;
             "data"            => $data
         );
 
+        // Return the data to the view to be displayed in the table
         echo json_encode($json_data);
 
     }
 
+    /**
+     * This function accepts an id value and displays the matching cuisine type in the cuisine type form for both
+     * viewing and editing.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function getCuisine($id, Request $request)
     {
         $cuisine = CuisineType::find($id);
@@ -153,12 +194,28 @@ DELETE;
         }
     }
 
+    /**
+     * This function provides a blank cuisine type for for entering a new cuisine type.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function addCuisine(Request $request)
     {
         $title = 'Add Cuisine';
         return view('admin.admin-cuisines-form', compact('title'));
     }
 
+    /**
+     * When a new cuisine type is posted by the client this function saves that cuisine type to the database and redirects
+     * the client back to the cuisine table with a success message.
+     *
+     * Note: as we are using a custom request object AdminCuisinesFormRequest we can assume here the cuisine type is valid
+     * as the request object has already validated it.
+     *
+     * @param AdminCuisinesFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postCuisine(AdminCuisinesFormRequest $request)
     {
         $cuisine = CuisineType::create($request->all());
@@ -166,6 +223,17 @@ DELETE;
         return redirect()->route('admin.cuisines')->with(['cuisine' => $cuisine]);
     }
 
+    /**
+     * When the client returns updated values for a cuisine type via a put call this method updates the database and
+     * returns the user to the cuisine types table with a success message.
+     *
+     * Note: as we are using a custom request object AdminCuisinesFormRequest we can assume here the cuisine type is valid
+     * as the request object has already validated it.
+     *
+     * @param $id
+     * @param AdminCuisinesFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function putCuisine($id, AdminCuisinesFormRequest $request)
     {
         $cuisine = CuisineType::find($id);
@@ -175,6 +243,14 @@ DELETE;
         return redirect()->route('admin.cuisines')->with(['cuisine' => $cuisine]);
     }
 
+    /**
+     * When a delete request is received from the client this message looks for the id in the database, deletes the row
+     * and then returns the user to the cuisine types table view.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteCuisine($id, Request $request)
     {
         $cuisine = CuisineType::find($id);
@@ -186,7 +262,14 @@ DELETE;
         }
     }
 
-
+    /**
+     * This method is used by the development team to convert a database entry into a string that can be pasted into the seed
+     * database files such that when php artisan db:seed is called this new entry is seeded to the database and not lost.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function seedString($id, Request $request)
     {
         $cuisine = CuisineType::find($id);

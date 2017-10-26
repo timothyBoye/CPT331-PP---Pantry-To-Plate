@@ -14,14 +14,34 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminUserFormRequest;
 
+/**
+ * Class AdminUsersController
+ *
+ * Provides both view display and CRUD functionality for users
+ *
+ * @package App\Http\Controllers
+ */
 class AdminUsersController extends Controller
 {
+    /**
+     * AdminUsersController constructor.
+     * This function ensures the user is both logged in AND an admin user otherwise the auth middleware will redirect them away
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
     }
 
-
+    /**
+     * This function displays the users table view for the admin dashboard which is a table of all ingredients in the DB with
+     * add/edit/delete buttons.
+     *
+     * Note: this function does not pass users data to the view instead this is handled by a separate AJAX post method to allow
+     * for pagination, searching and sorting.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function users(Request $request)
     {
         $title = "Users";
@@ -33,9 +53,14 @@ class AdminUsersController extends Controller
         }
     }
 
-
+    /**
+     * This function handles post requests from the users table view to populate and sort the table.
+     *
+     * @param Request $request
+     */
     public function usersPost(Request $request)
     {
+        // Sortable columns
         $columns = array(
             0 => 'id',
             1 => 'name',
@@ -43,14 +68,17 @@ class AdminUsersController extends Controller
             3 => 'user_role'
         );
 
+        // Get how many items there are in the collection to return to the client for displaying
         $totalData = User::count();
         $totalFiltered = $totalData;
 
+        // Table parameters for filtering and sorting received from the client request
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
 
+        // retrieve all data if no search terms were provided
         if(empty($request->input('search.value'))) {
             $users = User::offset($start)
                 ->leftJoin('user_roles', 'user_roles.id', '=', 'users.user_role_id')
@@ -59,6 +87,7 @@ class AdminUsersController extends Controller
                 ->orderBy($order,$dir)
                 ->get();
         }
+        // otherwise filter the collection based on the search terms
         else {
             $search = $request->input('search.value');
 
@@ -75,6 +104,7 @@ class AdminUsersController extends Controller
             $totalFiltered = count($users);
         }
 
+        // if results were found above to display, render the row for the table for each result.
         $data = array();
         if(!empty($users))
         {
@@ -139,10 +169,18 @@ DELETE;
             "data"            => $data
         );
 
+        // Return the data to the view to be displayed in the table
         echo json_encode($json_data);
     }
 
-
+    /**
+     * This function accepts an id value and displays the matching user in the user form for both
+     * viewing and editing.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function getUser($id, Request $request)
     {
         $user = User::find($id);
@@ -155,6 +193,12 @@ DELETE;
         }
     }
 
+    /**
+     * This function provides a blank user form for entering a new user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function addUser(Request $request)
     {
         $title = 'Add User';
@@ -162,6 +206,16 @@ DELETE;
         return view('admin.admin-users-form', compact('title', 'userRoles'));
     }
 
+    /**
+     * When a new user is posted by the client this function saves that user to the database and redirects
+     * the client back to the users table with a success message.
+     *
+     * Note: as we are using a custom request object AdminUserFormRequest we can assume here the user is valid
+     * as the request object has already validated it.
+     *
+     * @param AdminUserFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postUser(AdminUserFormRequest $request)
     {
         $request['password'] = Hash::make($request['password']);
@@ -170,6 +224,17 @@ DELETE;
         return redirect()->route('admin.users')->with(['user' => $user]);
     }
 
+    /**
+     * When the client returns updated values for a User via a put call this method updates the database and
+     * returns the user to the Users table with a success message.
+     *
+     * Note: as we are using a custom request object AdminUserFormRequest we can assume here the User is valid
+     * as the request object has already validated it.
+     *
+     * @param $id
+     * @param AdminUserFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function putUser($id, AdminUserFormRequest $request)
     {
         $user = User::find($id);
@@ -186,6 +251,14 @@ DELETE;
         return redirect()->route('admin.users')->with(['user' => $user]);
     }
 
+    /**
+     * When a delete request is received from the client this message looks for the id in the database, deletes the row
+     * and then returns the user to the users table view.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteUser($id, Request $request)
     {
         $user = User::find($id);
@@ -197,6 +270,14 @@ DELETE;
         }
     }
 
+    /**
+     * This method is used by the development team to convert a database entry into a string that can be pasted into the seed
+     * database files such that when php artisan db:seed is called this new entry is seeded to the database and not lost.
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function seedString($id, Request $request)
     {
         $user = User::find($id);

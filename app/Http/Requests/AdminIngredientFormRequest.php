@@ -5,6 +5,13 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/**
+ * Class AdminIngredientFormRequest
+ *
+ * Request object for validating returned ingredient forms from the admin website
+ *
+ * @package App\Http\Requests
+ */
 class AdminIngredientFormRequest extends FormRequest
 {
     /**

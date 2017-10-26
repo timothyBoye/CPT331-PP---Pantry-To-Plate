@@ -6,6 +6,12 @@ ul  {
     list-style-type: none;
 }
 
+#finished {
+    font-size: large;
+    font-style: italic;
+    padding:20px;
+}
+
 .cuisine-mappings-anchor {
     list-style-type: none;
     -webkit-padding-start: 0px;
@@ -235,23 +241,23 @@ ul  {
     padding-right: 5px !important;
 }
 
-@media (max-width:991px)
-{
-    /* positions ingredients list underneath recipes below this width */
-    .home-recipe-container {
-        display: flex;
-        flex-flow: column;
-    }
+/*@media (max-width:991px)*/
+/*{*/
+    /*!* positions ingredients list underneath recipes below this width *!*/
+    /*.home-recipe-container {*/
+        /*display: flex;*/
+        /*flex-flow: column;*/
+    /*}*/
 
-    .selected-ingredients-anchor {
-        order: 2;
-    }
+    /*.selected-ingredients-anchor {*/
+        /*order: 2;*/
+    /*}*/
 
-    .recipe-container {
-        order: 1;
-    }
+    /*.recipe-container {*/
+        /*order: 1;*/
+    /*}*/
 
-}
+/*}*/
 
 @media (max-width:767px) {
     .cuisine-ribbon-container {

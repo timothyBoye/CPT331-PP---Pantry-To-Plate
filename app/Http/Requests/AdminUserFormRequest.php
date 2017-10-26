@@ -7,6 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
 
+/**
+ * Class AdminUserFormRequest
+ *
+ * Request object for validating returned user forms from the admin website
+ *
+ * @package App\Http\Requests
+ */
 class AdminUserFormRequest extends FormRequest
 {
     /**
@@ -37,7 +44,7 @@ class AdminUserFormRequest extends FormRequest
         ];
         if (!(isset($this->id)) || Input::get('password') != '')
         {
-            $rules['password'] = 'required|confirmed|max:255|min:8';
+            $rules['password'] = 'required|confirmed|max:255|min:8|regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]+).*$/';
             $rules['password_confirmation'] = 'required';
         }
 

@@ -21,7 +21,7 @@
                     <!-- Cuisine type filter -->
                     <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
-                        <select id='select-cuisine-type-filter' class = "cuisine-dropdown">
+                        <select id='select-cuisine-type-filter' class = "cuisine-dropdown" name="select-cuisine-type-filter">
                             <option class = "cuisine-title-value" value="0" selected>Filter by Cuisine Type</option>
                         @foreach($cuisine as $cuisineType)
                             <option value="{{$cuisineType->id}}">{{$cuisineType->name}}</option>
@@ -67,7 +67,7 @@
                         <select id='select-ingredients_needed_filter_value' class = "cuisine-dropdown">
                             <option class = "cuisine-title-value" value="0" selected>Filter by Ingredients Needed</option>
                             @for($i = 2; $i < 11; $i+=2)
-                                <option class="cuisine-title-value" value="{{$i}}">Less Than {{$i}} Ingredients Needed</option>
+                                <option class="cuisine-title-value" value="{{$i}}">{{$i}} Ingredients Or Less Needed</option>
                             @endfor
                         </select>
                     </div>
@@ -96,7 +96,7 @@
             <!-- Ingredient category dropdowns -->
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
-                    <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
+                    <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown" dusk="ingredient-category-{{$category->name}}">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
                     <ul class="dropdown-menu drop-down-full-width">
                         @foreach($category->recipeIngredients as $ingredient)
                             {{--<h1>"keh:" {{$ingredient->ingredient_image_url}}</h1>--}}
@@ -114,7 +114,15 @@
                 <ul class="clearable"></ul>
             </div>
             <div><button class="btn btn-alert clear-all-ingredients-btn">Clear All Selected Ingredients <span class="glyphicon glyphicon-erase"></span></button></div>
-            <div class="clearable" id="recipes"></div>
+            <div class="">
+{{--                <img src="{{ URL::asset('img/left-chevron-gr.png') }}" class="prev" alt="Previous">--}}
+                <div class="">
+                    <!-- Display recipe cards for matched recipes-->
+                    <div class="clearable" id="recipes">
+                    </div>
+                </div>
+{{--                <img src="{{ URL::asset('img/right-chevron-gr.png') }}" class="next" alt="Next">--}}
+            </div>
             <div class="bootstro overlay" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="All of your matched recipes will appear here. <img class ='bootstro-recipe-img' src='{{ asset('/img/result-recipe.png') }}'/><img class = 'match-show-count' src='{{ asset('/img/match-show-count.png') }}'/> Indicates how many of your selected ingredients match the total ingredients needed for the recipe" data-bootstro-step="2" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next"></div>
             <!-- Get started instructions -->
             <div class ="intro-message">

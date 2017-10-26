@@ -5,6 +5,13 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/**
+ * Class AdminMeasurementFormRequest
+ *
+ * Request object for validating returned measurement type forms from the admin website
+ *
+ * @package App\Http\Requests
+ */
 class AdminMeasurementFormRequest extends FormRequest
 {
     /**
