@@ -5,14 +5,15 @@
     <div class="row">
         <section class="col-lg-8 col-md-offset-2">
             <div class="about-content">
-                <h1>About Pantry to Plate</h1>
+                <div class="center-about-logo">
+                    <img class="about-logo-img" src="{{ URL::asset('img/p2p-alpha-background-1.png') }}">
+                </div>
                 <div class="about-green-section">
                     <h2><strong class="about-headings">Why</strong> are we here?</h2>
                     <p class="about-text"> Our aim here at Pantry to Plate is simple: eliminate food wastage and save you some money. We do this by
                         helping you use those pesky ingredients that are near their best-by date by matching them with delicious
                         recipes. If you have used an ingredient that would otherwise have been thrown away, we have done our job.
                     </p>
-                    {{--<img class="ingredient-recipe-page-img" src="{{ URL::asset('img/') }}">--}}
                 </div>
                 <div class="about-green-section">
                     <h2><strong class="about-headings">Why</strong> are you here?</h2>

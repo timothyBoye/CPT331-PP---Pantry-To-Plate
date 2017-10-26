@@ -1243,6 +1243,16 @@ img[src*="default-step"] {
 
 }
 
+.about-logo-img {
+    width:40%;
+    height:auto;
+}
+
+.center-about-logo {
+    text-align: center;
+    margin: 0 auto;
+}
+
 .about-text {
    font-size: 17px;
 }
