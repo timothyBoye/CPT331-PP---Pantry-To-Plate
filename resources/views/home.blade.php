@@ -21,7 +21,7 @@
                     <!-- Cuisine type filter -->
                     <div class="li-category dropdown">
                     <!--<button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">CUISINE TYPE<span class="caret caret-right"></span></button>-->
-                        <select id='select-cuisine-type-filter' class = "cuisine-dropdown">
+                        <select id='select-cuisine-type-filter' class = "cuisine-dropdown" name="select-cuisine-type-filter">
                             <option class = "cuisine-title-value" value="0" selected>Filter by Cuisine Type</option>
                         @foreach($cuisine as $cuisineType)
                             <option value="{{$cuisineType->id}}">{{$cuisineType->name}}</option>
@@ -96,7 +96,7 @@
             <!-- Ingredient category dropdowns -->
             @foreach($categories as $category)
                 <div class="li-category dropdown" data-id="{{$category->id}}">
-                    <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
+                    <button class="btn btn-default dropdown-toggle dropdown-buttons" type="button" data-toggle="dropdown" dusk="ingredient-category-{{$category->name}}">{{$category->name}}&nbsp;&nbsp;<span class="caret caret-right"></span></button>
                     <ul class="dropdown-menu drop-down-full-width">
                         @foreach($category->recipeIngredients as $ingredient)
                             {{--<h1>"keh:" {{$ingredient->ingredient_image_url}}</h1>--}}
