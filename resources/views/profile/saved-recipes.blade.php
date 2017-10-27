@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<!-- Displays a table of the user's saved recipes -->
  <div class="container-fluid content">
     <table id="saved_recipes_table" class="table table-bordered" data-delete-recipe-url="{{ Route('profile.delete_recipe') }}">
         <thead>
@@ -11,6 +11,7 @@
                 <th></th>
             </tr>
         </thead>
+        <!-- Displays recipe name, link and description -->
         <tbody>
             @foreach($mappings as $mapping)
                 <tr>

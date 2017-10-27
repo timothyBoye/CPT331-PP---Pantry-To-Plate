@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<!-- User login page -->
 @section('content')
 <div class="container content">
     <div class="row">
@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
-
+                        <!-- E-mail input and validation -->
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -24,7 +24,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <!-- Password input and validation -->
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
@@ -38,7 +38,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <!-- Checkbox and login button-->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
