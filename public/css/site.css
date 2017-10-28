@@ -12,16 +12,19 @@ ul  {
     padding:20px;
 }
 
+.nav-logo {
+    width: 180px !important;
+}
+
 .cuisine-mappings-anchor {
     list-style-type: none;
     -webkit-padding-start: 0px;
 }
 
 .cuisine-mappings-bg {
-    background-image: url("../img/pexels-photo-349610 (1).jpeg");
-    background-size: cover;
+    /*background-image: url("../img/pexels-photo-349610 (1).jpeg");*/
+    /*background-size: cover;*/
     height:800px;
-
 }
 
 .drag-drop-box {
@@ -391,6 +394,11 @@ ul  {
     display: block;
     transition: 0.3s;
     white-space: nowrap;
+}
+
+.navbar-brand {
+    padding: 4px 12px !important;
+    height: 0px !important;
 }
 
 .sidenav a:hover {
