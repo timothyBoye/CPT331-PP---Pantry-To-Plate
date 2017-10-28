@@ -7,7 +7,6 @@
     <!--Mobile Web App option: For installing to the home screen https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
     <meta name=”apple-mobile-web-app-capable” content=”yes”>
     <!--End Mobile Web App option-->
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -19,6 +18,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/icheck-line/green.css') }}" rel="stylesheet">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
+    {{--Fonts--}}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200|Roboto:300" rel="stylesheet">
     <!--Favicon-->
     <link rel="icon" href="{{ asset('favicon.ico') }}"/>
     <!--Generated from here: https://www.favicon-generator.org   -->
@@ -37,6 +38,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/favicon/favicon-96x96.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon/favicon-16x16.png') }}">
     <!--TBC: https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html-->
+
 </head>
 
 <body>
@@ -99,6 +101,7 @@
     <div id="app">
         @yield('content')
     </div>
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

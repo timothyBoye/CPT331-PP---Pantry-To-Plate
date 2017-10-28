@@ -1223,10 +1223,17 @@ img[src*="default-step"] {
 .saved-recipe-table-heading {
     background-color: #2ab27b;
     color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 #saved_recipes_table {
-    margin-top:50px;
+    margin-top:40px;
+}
+
+.saved-recipes-table-rows {
+    background-color: #ffffff;
 }
 
 .about-content {
@@ -1253,6 +1260,8 @@ img[src*="default-step"] {
 
 .about-text {
    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+
 }
 .about-green-section {
     padding-top: 20px;

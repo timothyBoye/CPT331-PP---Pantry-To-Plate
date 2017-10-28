@@ -15,13 +15,13 @@
         <!-- Displays recipe name, link and description -->
         <tbody>
             @foreach($mappings as $mapping)
-                <tr>
+                <tr class = "saved-recipes-table-rows">
                     <td>
                         <a href="{{ route('recipe', $mapping->recipe->id) }}">{{$mapping->recipe->name}}</a>
                     </td>
                     <td>{{$mapping->recipe->short_description}}</td>
-                    <td>
-                            <button class="delete-saved-recipe-btn btn btn-success" data-recipe-id="{{$mapping->recipe->id}}"><span class="glyphicon glyphicon-remove"></span>Delete</button>
+                    <td class="text-center">
+                        <button class="delete-saved-recipe-btn btn btn-success" data-recipe-id="{{$mapping->recipe->id}}"><span class="glyphicon glyphicon-remove"></span>Delete</button>
                     </td>
                 </tr>
             @endforeach
