@@ -43,6 +43,7 @@
 
 <body>
 <header>
+
     <!--Begin Horizontal Nav: https://getbootstrap.com/docs/3.3/components/#navbar-->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
@@ -61,15 +62,13 @@
             </div>
 
 
-            <span>
-
 
             <!--Nav items on the left hand side-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-                    <li><a href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
-                    <li><a href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
+                    <li><a id= "nav-home" href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li><a id= "nav-about" href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
+                    <li><a id= "nav-contact" href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
                 </ul>
 
                 <!--Nav items on the right hand side-->
@@ -79,11 +78,11 @@
                         <li><a href="{{ route('register') }}" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
-                        <li><a href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
+                        <li><a id= "nav-cuisines" href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
                         <li><span><form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
                             </form></span></li>
-                        <li><a href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
+                        <li><a id= "nav-saved-recipe" href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
                     @endif
 
                     @if (Auth::user())
@@ -97,6 +96,7 @@
         </div><!-- /.container-fluid -->
     </nav>
     <!--End Horizontal Nav-->
+
 </header>
     <div id="app">
         @yield('content')
