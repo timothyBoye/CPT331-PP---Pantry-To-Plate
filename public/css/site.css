@@ -66,6 +66,9 @@ ul  {
     display: inline-block;
     padding: 5px;
     margin: 5px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .circle {
@@ -406,29 +409,9 @@ ul  {
     color: #4ed08d !important;
 }
 
-.navbar-inverse .navbar-nav > li > a:active {
-    color: #4ed08d !important;
-}
-
 .nav-active {
     color: #4ed08d !important;
 }
-
-
-
-/*.navbar-default .navbar-nav > li > a {*/
-    /*color: #ffffff !important;*/
-    /*font-size: 16px;*/
-
-/*}*/
-
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    color: #4ed08d !important;
-}
-
-/*.navbar-default .navbar-nav > li > a:hover {*/
-    /*color: #4ed08d !important;*/
-/*}*/
 
 
 .navbar-brand {
@@ -1001,6 +984,8 @@ input::-webkit-calendar-picker-indicator {
 .somedivs {
     margin-bottom:12px;
     height:40px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .first-row {
