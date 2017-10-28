@@ -74,3 +74,4 @@
         </div>
     </div>
 @endforeach
+<script src="{{ asset('js/saveRecipeController.js') }}"></script>
