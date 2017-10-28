@@ -6,7 +6,7 @@
         <section class="col-lg-8 col-md-offset-2">
             <div class="about-content">
                 <div class="center-about-logo">
-                    <img class="about-logo-img" src="{{ URL::asset('img/p2p-alpha-background-1.png') }}">
+                    <img class="about-logo-img" src="{{ URL::asset('img/logo-p2p.png') }}">
                 </div>
                 <div class="about-green-section">
                     <h2><strong class="about-headings">Why</strong> are we here?</h2>
