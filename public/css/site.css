@@ -1221,7 +1221,8 @@ img[src*="default-step"] {
 }
 
 .saved-recipe-table-heading {
-    background-color: #ffffff;
+    background-color: #2ab27b;
+    color: #ffffff;
 }
 
 #saved_recipes_table {
