@@ -1,8 +1,7 @@
-
 @extends('layouts.app')
-
+<!-- Page for registered user to order cuisine preferences -->
 @section('content')
-
+    <!-- Message that displays on successful update to cuisine preferences -->
     <div class="container-fluid cuisine-mappings-bg content">
         <div class="row">
             <div class = "success-box invisible">
@@ -18,7 +17,7 @@
 
             {{--col-md-6--}}
         </div>
-
+        <!-- Displays list of cuisine types in draggable boxes and updates preferences on submit -->
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-6 drag-drop-box">

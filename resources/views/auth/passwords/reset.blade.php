@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<!-- Password reset page -->
 @section('content')
 <div class="container">
     <div class="row">
@@ -12,7 +12,7 @@
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">
-
+                        <!-- Email input and validation -->
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -26,7 +26,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <!-- Password input and validation -->
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
