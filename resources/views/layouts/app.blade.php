@@ -7,7 +7,6 @@
     <!--Mobile Web App option: For installing to the home screen https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
     <meta name=”apple-mobile-web-app-capable” content=”yes”>
     <!--End Mobile Web App option-->
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -19,6 +18,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/icheck-line/green.css') }}" rel="stylesheet">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
+    {{--Fonts--}}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200|Roboto:300" rel="stylesheet">
     <!--Favicon-->
     <link rel="icon" href="{{ asset('favicon.ico') }}"/>
     <!--Generated from here: https://www.favicon-generator.org   -->
@@ -37,10 +38,12 @@
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/favicon/favicon-96x96.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon/favicon-16x16.png') }}">
     <!--TBC: https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html-->
+
 </head>
 
 <body>
 <header>
+
     <!--Begin Horizontal Nav: https://getbootstrap.com/docs/3.3/components/#navbar-->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
@@ -55,19 +58,17 @@
                 <!--Left hand logo area-->
             {{--<a class="navbar-brand" href="{{ route('home') }}">Pantry to Plate (Logo)</a>--}}
             <!--Need to resize the image so that it is responsive and or update the logo-->
-                <a class="navbar-brand" href="{{ route('home') }}"><img style="	width: 120px;" src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo"></a>
+                <a class="navbar-brand" href="{{ route('home') }}"><img class = "nav-logo" style="	width: 120px;" src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo"></a>
             </div>
 
-
-            <span>
 
 
             <!--Nav items on the left hand side-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-                    <li><a href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
-                    <li><a href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
+                    <li><a id= "nav-home" href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li><a id= "nav-about" href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
+                    <li><a id= "nav-contact" href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
                 </ul>
 
                 <!--Nav items on the right hand side-->
@@ -77,11 +78,11 @@
                         <li><a href="{{ route('register') }}" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
-                        <li><a href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
+                        <li><a id= "nav-cuisines" href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
                         <li><span><form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
                             </form></span></li>
-                        <li><a href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
+                        <li><a id= "nav-saved-recipe" href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
                     @endif
 
                     @if (Auth::user())
@@ -95,10 +96,12 @@
         </div><!-- /.container-fluid -->
     </nav>
     <!--End Horizontal Nav-->
+
 </header>
     <div id="app">
         @yield('content')
     </div>
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

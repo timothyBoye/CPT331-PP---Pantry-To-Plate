@@ -12,16 +12,19 @@ ul  {
     padding:20px;
 }
 
+.nav-logo {
+    width: 180px !important;
+}
+
 .cuisine-mappings-anchor {
     list-style-type: none;
     -webkit-padding-start: 0px;
 }
 
 .cuisine-mappings-bg {
-    background-image: url("../img/pexels-photo-349610 (1).jpeg");
-    background-size: cover;
+    /*background-image: url("../img/pexels-photo-349610 (1).jpeg");*/
+    /*background-size: cover;*/
     height:800px;
-
 }
 
 .drag-drop-box {
@@ -63,6 +66,9 @@ ul  {
     display: inline-block;
     padding: 5px;
     margin: 5px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .circle {
@@ -393,6 +399,27 @@ ul  {
     white-space: nowrap;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #4ed08d !important;
+}
+
+.nav-active {
+    color: #4ed08d !important;
+}
+
+
+.navbar-brand {
+    padding: 4px 12px !important;
+    height: 0px !important;
+}
+
+
 .sidenav a:hover {
     color: #f1f1f1;
 }
@@ -536,6 +563,9 @@ ul  {
 @media screen and (max-width: 480px) {
     .intro-message {
         width: 90%;
+    }
+    .about-logo-img {
+        width: 100% !important;
     }
 }
 
@@ -954,6 +984,8 @@ input::-webkit-calendar-picker-indicator {
 .somedivs {
     margin-bottom:12px;
     height:40px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .first-row {
@@ -1221,11 +1253,19 @@ img[src*="default-step"] {
 }
 
 .saved-recipe-table-heading {
-    background-color: #ffffff;
+    background-color: #2ab27b;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 #saved_recipes_table {
-    margin-top:50px;
+    margin-top:40px;
+}
+
+.saved-recipes-table-rows {
+    background-color: #ffffff;
 }
 
 .about-content {
@@ -1252,6 +1292,8 @@ img[src*="default-step"] {
 
 .about-text {
    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+
 }
 .about-green-section {
     padding-top: 20px;

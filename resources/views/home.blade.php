@@ -74,7 +74,7 @@
                 </div>
             </div>
             <!-- Ingredients selection section -->
-            <div class="bootstro all-dropdowns" data-bootstro-title="Ingredient Selector" data-bootstro-content="Select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
+            <div class="bootstro all-dropdowns" data-bootstro-title="Ingredient Selector" data-bootstro-content="Search or select your ingredients from the dropdown categories" data-bootstro-step="0" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
                 <!-- Search box -->
                 <div id="ingredient-search-group" class="input-group">
                     <input list="ingredients-list" type="text" class="form-control" name="ingredient-input" id="ingredient-input" placeholder="Search by ingredient name...">
