@@ -10,6 +10,26 @@ use Tests\BaseTestCase;
 
 class RecipeUserMappingModelTest extends BaseTestCase
 {
+    /**
+     * Test recipe user mapping to user relationship
+     */
+    public function testUserRelationship()
+    {
+        $lettuceAbigail = RecipeUserMapping::where(['recipe_id' => 1, 'user_id' => 1])->first();
+        $this->assertTrue($lettuceAbigail->user->name == 'Abigail');
+    }
+
+
+    /**
+     * Test recipe user mapping to recipe relationship
+     */
+    public function testRecipeRelationship()
+    {
+        $pizzaJohn = RecipeUserMapping::where(['recipe_id' => 2, 'user_id' => 2])->first();
+        $this->assertTrue($pizzaJohn->recipe->name == 'Easy Pizza Sauce');
+    }
+
+
     public function setUp()
     {
         parent::setUp();
@@ -19,7 +39,6 @@ class RecipeUserMappingModelTest extends BaseTestCase
                 'name' => 'Lettuce Salad',
                 'short_description' => 'A salad with three ingredients. A good number for testing...',
                 'long_description' => 'This brilliant salad is actually quite average.',
-                'method' => 'Roughly chop lettuce;Slice onion;Dice cheese',
                 'serving_size' => 2,
             )
         );
@@ -29,7 +48,6 @@ class RecipeUserMappingModelTest extends BaseTestCase
                 'name' => 'Easy Pizza Sauce',
                 'short_description' => 'Quick and easy pizza sauce.',
                 'long_description' => 'This easy pizza sauce recipe gets cooked right on your stove top, and takes about 10 minutes from start to finish. You’ll love how delicious this is. MUCH better than anything you’ll find in a can.',
-                'method' => 'Heat the olive oil over medium heat, and saute the garlic for 2 minutes.;Add the rest of the ingredients, stir, and simmer for 10-15 minutes.',
                 'serving_size' => 4,
             )
         );
@@ -88,16 +106,5 @@ class RecipeUserMappingModelTest extends BaseTestCase
         parent::tearDown();
     }
 
-    public function testUserRelationship()
-    {
-        $lettuceAbigail = RecipeUserMapping::where(['recipe_id' => 1, 'user_id' => 1])->first();
-        $this->assertTrue($lettuceAbigail->user->name == 'Abigail');
-    }
-
-    public function testRecipeRelationship()
-    {
-        $pizzaJohn = RecipeUserMapping::where(['recipe_id' => 2, 'user_id' => 2])->first();
-        $this->assertTrue($pizzaJohn->recipe->name == 'Easy Pizza Sauce');
-    }
 
 }

@@ -21,8 +21,9 @@ class RecipeUserMapping extends Model
         return $this->belongsTo('App\Recipe', 'recipe_id', 'id');
     }
 
-    public static function has_saved_recipe($recipe_id){
+    public static function has_saved_recipe($recipe_id)
+    {
         $user_id = Auth::User() ->id;
-        return RecipeUserMapping::where(['recipe_id' => $recipe_id, 'user_id' => $user_id]) ->exists();
+        return RecipeUserMapping::where(['recipe_id' => $recipe_id, 'user_id' => $user_id])->exists();
     }
 }

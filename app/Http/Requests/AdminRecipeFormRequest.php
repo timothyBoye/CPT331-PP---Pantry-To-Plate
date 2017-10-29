@@ -30,7 +30,6 @@ class AdminRecipeFormRequest extends FormRequest
      */
     public function rules()
     {
-
         $rules = [
             'name' => 'required|max:255',
             'recipe_source' => 'required|max:255',

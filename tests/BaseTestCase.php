@@ -15,7 +15,7 @@ class BaseTestCase extends TestCase
 
     public function tearDown()
     {
-        Artisan::call('migrate:rollback', ['--database' => 'sqlite_testing']);
+        Artisan::call('migrate:reset', ['--database' => 'sqlite_testing']);
         parent::tearDown();
     }
 }

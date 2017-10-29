@@ -32,11 +32,6 @@ class User extends Authenticatable
         return $this->hasMany('App\RecipeUserMapping');
     }
 
-    public function matchedSavedRecipes($selectedIngredients)
-    {
-        //TODO
-    }
-
     public function role()
     {
         return $this->belongsTo('App\UserRole', 'user_role_id', 'id');

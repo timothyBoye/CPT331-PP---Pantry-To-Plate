@@ -8,6 +8,9 @@ use App\Utilities;
 class UtilitiesTest extends BaseTestCase
 {
 
+    /**
+     * Tests the float to string function outputs the correct strings representations.
+     */
     public function testApproximatedFractionString()
     {
         // not a number
@@ -51,4 +54,15 @@ class UtilitiesTest extends BaseTestCase
         $this->assertTrue(Utilities::approximatedFractionString(3.666) == '3 <sup>2</sup>&frasl;<sub>3</sub>');
         $this->assertTrue(Utilities::approximatedFractionString(1.875) == '1 <sup>7</sup>&frasl;<sub>8</sub>');
     }
+
+    /**
+     * Tests the strip characters function is correctly outputting strings that will be usable as file names with no issues
+     */
+    public function testStripBadFileCharacters()
+    {
+        $this->assertEquals("hello-world.jpg", Utilities::stripBadFileCharacters("hello-world.jpg"));
+        $this->assertEquals("hello-world.jpg", Utilities::stripBadFileCharacters("hèłłœ wörłd&'.jpg"));
+        $this->assertEquals("-aaaaaaaa-eeeeeee-iiiiii-oooooooo-uuuuu-ccc-nn-y-sss-l-zzz", Utilities::stripBadFileCharacters("&'-æáãâäàåā éêëèēėę íîïìīį óõôöòœøō úûüùū çćč ñń ÿ ßśš ł žźż"));
+    }
+
 }
