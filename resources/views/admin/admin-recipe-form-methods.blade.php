@@ -1,5 +1,6 @@
 @extends('layouts.adminlayout')
-
+<!-- Admin form to add recipe steps to database -->
+<!-- Breadcrumb trail -->
 @section('content-header')
     <h1>
         {{$title}}
@@ -10,7 +11,7 @@
         <li><i class="fa fa-sticky-note-o"></i> {{$title}}</li>
     </ol>
 @endsection
-
+<!-- Step, image and description input, added to database if unique and valid -->
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -23,6 +24,7 @@
                     <div class="box-body" style="">
                         <div id="method_container">
                         </div>
+                        <!-- Add/remove step buttons -->
                         <div id="method_buttons">
                             <p>
                                 <a id="add_method_step" class="btn btn-primary btn-sm" href="#method_container"><span>(+) Add Step</span></a>
@@ -31,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Validation message display -->
                 <div class="box box-solid">
                     <div class="box-body">
                         <p id="errors" class="{{ count($errors) > 0 ? 'has-error' : '' }}">
@@ -53,7 +55,7 @@
 @endsection
 
 
-
+<!-- Input handling and validation methods -->
 @section('head')
     <script>
         var method_steps_count = 0;
@@ -93,7 +95,7 @@
                     //'<input id="method_image_' + method_steps_count + '" class="form-control" name="method_images[]' + '" type="text" placeholder="Enter step image name" value="'+ image_name +'" />' +
                     '</div>';
             }
-
+            // Validation
             $('#submit-btn').click( function()
             {
                 if (validMethods() == 0) {

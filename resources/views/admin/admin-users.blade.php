@@ -1,5 +1,5 @@
 @extends('layouts.adminlayout')
-
+<!-- Admin page for management of user data  -->
 @section('content-header')
     <h1>
         {{$title}}
@@ -11,7 +11,7 @@
     </ol>
 @endsection
 
-
+<!-- Table to view user data and edit/delete users -->
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -51,7 +51,7 @@
         </div>
     </div>
 @endsection
-
+<!-- Pagination -->
 @section('foot')
     <script>
         $(document).ready(function () {

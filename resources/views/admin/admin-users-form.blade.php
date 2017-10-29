@@ -1,5 +1,5 @@
 @extends('layouts.adminlayout')
-
+<!-- Admin form to add users to database -->
 @section('head')
     <script>
         $().ready(function() {
@@ -8,7 +8,7 @@
             $.validator.addMethod("regex", function(value, element) {
                 return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]+).*$/.test(value);
             }, "Your password must include at least: one lowercase letter, one uppercase letter, one number and one special character (!@#$%^&*).");
-
+            // standard form validation requirements and messages
             $("#form").validate({
                 rules: {
                     name: {
@@ -60,7 +60,7 @@
         });
     </script>
 @endsection
-
+<!-- Breadcrumb trail -->
 @section('content-header')
     <h1>
         {{$title}}
@@ -72,7 +72,7 @@
     </ol>
 @endsection
 
-
+<!-- Input fields and validation for new user details, added to database if unique and valid -->
 @section('content')
     <div class="row">
         <div class="col-md-12">
