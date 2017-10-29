@@ -223,7 +223,7 @@ var finished = false;
                     ingredientsNeededFilterValue: ingredientsNeededFilterValue
                 }
             }).done(function(response){
-                if (response.html == '<script src="http://localhost/js/saveRecipeController.js"></script>') {
+                if (response.html == '<script src="/js/saveRecipeController.js"></script>') {
                     finished = true;
                     $('#recipes').append('<div class="col-sm-12" id="finished">- No more results -</div>');
                 } else {
