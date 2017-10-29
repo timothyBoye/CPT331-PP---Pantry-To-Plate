@@ -1,5 +1,6 @@
 @extends('layouts.adminlayout')
-
+<!-- Admin form to add a new ingredient to database -->
+<!-- Validation -->
 @section('head')
     <script>
         $().ready(function() {
@@ -29,7 +30,7 @@
         });
     </script>
 @endsection
-
+<!-- Breadcrumb trail -->
 @section('content-header')
     <h1>
         {{$title}}
@@ -41,7 +42,7 @@
     </ol>
 @endsection
 
-
+<!-- Input field for new ingredient, image and category, added to database if unique and valid -->
 @section('content')
     <div class="row">
         <div class="col-md-12">

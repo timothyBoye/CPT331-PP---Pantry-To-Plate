@@ -1,5 +1,6 @@
 @extends('layouts.adminlayout')
-
+<!-- Admin form to add a new recipe to database -->
+<!-- Breadcrumb trail -->
 @section('content-header')
     <h1>
         {{$title}}
@@ -10,7 +11,7 @@
         <li><i class="fa fa-sticky-note-o"></i> {{$title}}</li>
     </ol>
 @endsection
-
+<!-- Input fields for recipe details, added to database if unique and valid -->
 @section('content')
     <form role="form" action="{{ isset($recipe) ? route('admin.recipe.put', ['id' => $recipe->id]) : route('admin.recipe.post') }}" method="POST" id="form" enctype="multipart/form-data" novalidate>
         <div class="row">
@@ -81,6 +82,7 @@
                 </div>
             </div>
             </div>
+            <!-- Input fields for recipe nutritional data -->
             <div class="col-md-6">
             <div class="box box-default">
                 <div class="box-header with-border">

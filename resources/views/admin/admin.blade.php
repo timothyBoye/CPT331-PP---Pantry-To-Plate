@@ -1,5 +1,5 @@
 @extends('layouts.adminlayout')
-
+<!-- Admin landing page -->
 @section('content-header')
 <h1>
     {{$title}}
@@ -10,7 +10,7 @@
 </ol>
 @endsection
 
-
+<!-- Boxes showing counts for site categories (ingredients, recipes, etc.) -->
 @section('content')
 <!-- Small boxes (Stat box) -->
 <div class="row">

@@ -1,5 +1,5 @@
 @extends('layouts.adminlayout')
-
+<!-- Admin page for management of cuisine data  -->
 @section('content-header')
 <h1>
     {{$title}}
@@ -11,7 +11,7 @@
 </ol>
 @endsection
 
-
+<!-- Table to view cuisine data and edit/delete cuisine types -->
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -50,7 +50,7 @@
         </div>
     </div>
 @endsection
-
+<!-- Pagination -->
 @section('foot')
     <script>
         $(document).ready(function () {

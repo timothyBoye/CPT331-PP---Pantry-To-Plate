@@ -1,16 +1,17 @@
 @extends('layouts.adminlayout')
-
+<!-- Admin form to add ingredients for a recipe to database -->
 @section('content-header')
     <h1>
         {{$title}}
     </h1>
+    <!-- Breadcrumb trail -->
     <ol class="breadcrumb">
         <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li><a href="{{ route('admin.recipes') }}"><i class="ion ion-ios-list"></i> Recipes</a></li>
         <li><i class="fa fa-sticky-note-o"></i> {{$title}}</li>
     </ol>
 @endsection
-
+<!-- Ingredient and image input, added to database if unique and valid -->
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -23,6 +24,7 @@
                     <div class="box-body">
                         <div id="ingredients_container">
                         </div>
+                        <!-- Add/remove ingredients buttons -->
                         <div id="ingredients_buttons">
                             <p>
                                 <a id="add_ingredient" class="btn btn-primary btn-sm" href="#ingredients_container"><span>(+) Add Ingredient</span></a>
@@ -32,6 +34,7 @@
                     </div>
                 </div>
 
+                <!-- Validation message display -->
                 <div class="box box-solid">
                     <div class="box-body">
                         <p id="errors" class="{{ count($errors) > 0 ? 'has-error' : '' }}">
@@ -53,7 +56,7 @@
 @endsection
 
 
-
+<!-- Input validation and handling -->
 @section('head')
     <script>
         var ingredients_count = 0;
@@ -134,7 +137,7 @@
 
                 return ingredient_box;
             }
-
+            // Validation
             $('#submit-btn').click( function() {
                 if (validateIngredients() == 0) {
                     $('form#ingredients-form').submit();
