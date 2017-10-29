@@ -35,7 +35,8 @@ class IngredientRecipeMapping extends Model
         return $this->belongsTo('App\MeasurementType', 'measurement_type_id', 'id');
     }
 
-    public static function get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value){
+    public static function get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value)
+    {
         $recipe_ids = [];
 
         foreach ($ingredient_ids as $id) {

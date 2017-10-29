@@ -32,7 +32,20 @@ class Recipe extends Model
         return $this->hasOne('App\NutritionalInfoPanel');
     }
 
-    public static function get_recipes_from_ids($recipe_ids){
+    public function method_steps()
+    {
+        return $this->hasMany('App\RecipeMethod', 'recipe_id', 'id')->orderBy('step_number');
+    }
+
+    public function image_name()
+    {
+        return $this->image_url == '' ? 'default.jpg' : $this->image_url;
+    }
+
+
+    // PHPStorm can't find where this method is used is this orphaned?
+    public static function get_recipes_from_ids($recipe_ids)
+    {
         $recipes = [];
         foreach($recipe_ids as $recipe_id) {
             $recipe = Recipe::find($recipe_id);
@@ -43,7 +56,8 @@ class Recipe extends Model
 
     // Should return a bunch of recipe ids which have been sorted based on the points system
     // used by the algorithm, so it's compatible with the current view
-    public static function sort_recipe_ids_by_cuisine_algorithm($occurrences){
+    public static function sort_recipe_ids_by_cuisine_algorithm($occurrences)
+    {
         if(!Auth::check()){
             return $occurrences;
         }
@@ -67,17 +81,5 @@ class Recipe extends Model
 
         }
         return $results;
-
-    }
-
-    public function method_steps()
-    {
-        return $this->hasMany('App\RecipeMethod', 'recipe_id', 'id')->orderBy('step_number');
-    }
-
-
-    public function image_name()
-    {
-        return $this->image_url == '' ? 'default.jpg' : $this->image_url;
     }
 }

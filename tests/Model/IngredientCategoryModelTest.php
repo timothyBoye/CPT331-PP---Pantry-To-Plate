@@ -11,6 +11,37 @@ use Tests\BaseTestCase;
 
 class IngredientCategoryModelTest extends BaseTestCase
 {
+
+    /**
+     * Test the category to all ingredients relationship
+     */
+    public function testIngredientsRelationship()
+    {
+        $fruit = IngredientCategory::where('name', '=', 'Fruit')->first();
+        $vegetable = IngredientCategory::where('name', '=', 'Vegetable')->first();
+        $dairy = IngredientCategory::where('name', '=', 'Dairy')->first();
+
+        $this->assertTrue($fruit->ingredients->count() == 3);
+        $this->assertTrue($vegetable->ingredients->count() == 5);
+        $this->assertTrue($dairy->ingredients->count() == 0);
+    }
+
+
+    /**
+     * Test the category to recipe ingredients relationship
+     */
+    public function testRecipeIngredientsRelationship()
+    {
+        $fruit = IngredientCategory::where('name', '=', 'Fruit')->first();
+        $vegetable = IngredientCategory::where('name', '=', 'Vegetable')->first();
+        $dairy = IngredientCategory::where('name', '=', 'Dairy')->first();
+
+        $this->assertTrue($fruit->recipeIngredients->count() == 2);
+        $this->assertTrue($vegetable->recipeIngredients->count() == 1);
+        $this->assertTrue($dairy->recipeIngredients->count() == 0);
+    }
+
+
     public function setUp()
     {
         parent::setUp();
@@ -34,7 +65,6 @@ class IngredientCategoryModelTest extends BaseTestCase
                 'name' => 'Lettuce Salad',
                 'short_description' => 'A salad with three ingredients. A good number for testing...',
                 'long_description' => 'This brilliant salad is actually quite average.',
-                'method' => 'Roughly chop lettuce;Slice onion;Dice cheese',
                 'serving_size' => 2,
             )
         );
@@ -70,27 +100,5 @@ class IngredientCategoryModelTest extends BaseTestCase
     public function tearDown()
     {
         parent::tearDown();
-    }
-
-    public function testIngredientsRelationship()
-    {
-        $fruit = IngredientCategory::where('name', '=', 'Fruit')->first();
-        $vegetable = IngredientCategory::where('name', '=', 'Vegetable')->first();
-        $dairy = IngredientCategory::where('name', '=', 'Dairy')->first();
-
-        $this->assertTrue($fruit->ingredients->count() == 3);
-        $this->assertTrue($vegetable->ingredients->count() == 5);
-        $this->assertTrue($dairy->ingredients->count() == 0);
-    }
-
-    public function testRecipeIngredientsRelationship()
-    {
-        $fruit = IngredientCategory::where('name', '=', 'Fruit')->first();
-        $vegetable = IngredientCategory::where('name', '=', 'Vegetable')->first();
-        $dairy = IngredientCategory::where('name', '=', 'Dairy')->first();
-
-        $this->assertTrue($fruit->recipeIngredients->count() == 2);
-        $this->assertTrue($vegetable->recipeIngredients->count() == 1);
-        $this->assertTrue($dairy->recipeIngredients->count() == 0);
     }
 }

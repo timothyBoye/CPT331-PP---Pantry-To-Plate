@@ -3,16 +3,28 @@
 namespace Tests\Unit;
 
 use App\Ingredient;
-use App\IngredientCategory;
 use App\MeasurementType;
 use App\Recipe;
 use Illuminate\Support\Facades\DB;
 use Tests\BaseTestCase;
 
-class IngredientModelTest extends BaseTestCase
+class MeasurementTypesModelTest extends BaseTestCase
 {
+    /**
+     * Test the measurement type to ingredient mappings relationship
+     */
+    public function testIngredientsRelationship()
+    {
+        $cup = MeasurementType::where('name', '=', 'cup')->first();
+        $this->assertTrue($cup->ingredients->count() == 2);
+        $this->assertTrue($cup->ingredients[0]->description == 'roughly chopped');
+    }
+
+
     public function setUp()
     {
+        parent::setUp();
+
         parent::setUp();
         DB::table('ingredient_categories')->insert([
             ['name' => 'Fruit'], //1
@@ -34,7 +46,14 @@ class IngredientModelTest extends BaseTestCase
                 'name' => 'Lettuce Salad',
                 'short_description' => 'A salad with three ingredients. A good number for testing...',
                 'long_description' => 'This brilliant salad is actually quite average.',
-                'method' => 'Roughly chop lettuce;Slice onion;Dice cheese',
+                'serving_size' => 2,
+            )
+        );
+        Recipe::create(
+            array(
+                'name' => 'Another recipe',
+                'short_description' => 'A salad with three ingredients. A good number for testing...',
+                'long_description' => 'This brilliant salad is actually quite average.',
                 'serving_size' => 2,
             )
         );
@@ -50,6 +69,11 @@ class IngredientModelTest extends BaseTestCase
         }
         DB::table('ingredient_recipe_mappings')->insert([
             ['recipe_id' => 1,
+                'ingredient_id' => Ingredient::where('name', '=', 'romaine lettuce')->value('id'),
+                'quantity' => 1,
+                'description' => 'roughly chopped',
+                'measurement_type_id' => MeasurementType::where('name', '')->value('id')],
+            ['recipe_id' => 2,
                 'ingredient_id' => Ingredient::where('name', '=', 'romaine lettuce')->value('id'),
                 'quantity' => 1,
                 'description' => 'roughly chopped',
@@ -72,21 +96,4 @@ class IngredientModelTest extends BaseTestCase
         parent::tearDown();
     }
 
-    public function testRecipesRelationship()
-    {
-        $lettuce = Ingredient::where('name', '=', 'romaine lettuce')->first();
-        $beans = Ingredient::where('name', '=', 'beans')->first();
-
-        $this->assertTrue($lettuce->recipes->count() == 1);
-        $this->assertTrue($beans->recipes->count() == 0);
-    }
-
-    public function testCategoriesRelationship()
-    {
-        $lettuce = Ingredient::where('name', '=', 'romaine lettuce')->first();
-        $beans = Ingredient::where('name', '=', 'beans')->first();
-
-        $this->assertTrue($lettuce->category->name == 'Vegetable');
-        $this->assertTrue($beans->category->name == 'Vegetable');
-    }
 }

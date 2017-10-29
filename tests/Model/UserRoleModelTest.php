@@ -8,6 +8,17 @@ use App\User;
 
 class UserRoleModelTest extends BaseTestCase
 {
+    /**
+     * Test user role to users relationship
+     */
+    public function testUsersRelationship()
+    {
+        $userRole = UserRole::find(1);
+        $this->assertTrue($userRole->users->count() == 2);
+        $userRole = UserRole::find(2);
+        $this->assertTrue($userRole->users->count() == 1);
+    }
+
 
     public function setUp()
     {
@@ -53,23 +64,4 @@ class UserRoleModelTest extends BaseTestCase
         parent::tearDown();
     }
 
-    public function testUserInsertion()
-    {
-        $this->assertDatabaseHas('user_roles', [
-            'id' => 1,
-            'user_role_name' => 'Generic'
-        ]);
-        $this->assertDatabaseHas('user_roles', [
-            'id' => 2,
-            'user_role_name' => 'Admin'
-        ]);
-    }
-
-    public function testUsersRelationship()
-    {
-        $userRole = UserRole::find(1);
-        $this->assertTrue($userRole->users->count() == 2);
-        $userRole = UserRole::find(2);
-        $this->assertTrue($userRole->users->count() == 1);
-    }
 }

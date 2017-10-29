@@ -21,7 +21,8 @@ class UserRecipeRating extends Model
         return $this->belongsTo('App\Recipe', 'recipe_id', 'id');
     }
 
-    public static function get_ratings_for_user($recipes){
+    public static function get_ratings_for_user($recipes)
+    {
         $userRatings = [];
         foreach($recipes as $recipe) {
             if (Auth::check()) {

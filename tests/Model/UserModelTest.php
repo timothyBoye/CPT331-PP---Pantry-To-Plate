@@ -1,19 +1,49 @@
 <?php
 
 namespace Tests\Unit;
-
+// http://blog.mauriziobonani.com/laravel-sql-memory-database-for-unit-tests/
 use App\Recipe;
-use App\User;
-use App\UserRecipeRating;
 use App\UserRole;
 use Illuminate\Support\Facades\DB;
 use Tests\BaseTestCase;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\User;
 
-class UserRecipeRatingModelTest extends BaseTestCase
+class UserModelTest extends BaseTestCase
 {
+    /**
+     * test user to user role relationship
+     */
+    public function testUserRoleRelationship()
+    {
+        $user = User::find(1);
+        $this->assertTrue($user->role->user_role_name == 'Generic');
+        $user = User::find(2);
+        $this->assertTrue($user->role->user_role_name == 'Admin');
+    }
+
+
+    /**
+     * test user to saved recipes relationship
+     */
+    public function testUsersSavedRecipes()
+    {
+        $user = User::find(1);
+        $this->assertTrue($user->savedRecipes->count() == 2);
+    }
+
+
+    /**
+     * test user to user ratings relationship
+     */
+    public function testRatingsRelationship()
+    {
+        $abigail = User::find(1);
+        $john = User::find(2);
+        $this->assertTrue($abigail->ratings->count() == 2);
+        $this->assertTrue($abigail->ratings[0]->rating == 5);
+        $this->assertTrue($john->ratings->count() == 1);
+    }
+
     public function setUp()
     {
         parent::setUp();
@@ -49,7 +79,6 @@ class UserRecipeRatingModelTest extends BaseTestCase
                 'name' => 'Lettuce Salad',
                 'short_description' => 'A salad with three ingredients. A good number for testing...',
                 'long_description' => 'This brilliant salad is actually quite average.',
-                'method' => 'Roughly chop lettuce;Slice onion;Dice cheese',
                 'serving_size' => 2,
             )
         );
@@ -59,7 +88,6 @@ class UserRecipeRatingModelTest extends BaseTestCase
                 'name' => 'Easy Pizza Sauce',
                 'short_description' => 'Quick and easy pizza sauce.',
                 'long_description' => 'This easy pizza sauce recipe gets cooked right on your stove top, and takes about 10 minutes from start to finish. You’ll love how delicious this is. MUCH better than anything you’ll find in a can.',
-                'method' => 'Heat the olive oil over medium heat, and saute the garlic for 2 minutes.;Add the rest of the ingredients, stir, and simmer for 10-15 minutes.',
                 'serving_size' => 4,
             )
         );
@@ -69,7 +97,6 @@ class UserRecipeRatingModelTest extends BaseTestCase
                 'name' => 'Spaghetti Bolognese',
                 'short_description' => 'Bolognese, like mama used to make!',
                 'long_description' => 'Our best-ever spaghetti Bolognese is super easy and a true classic. An Italian pasta favourite with a meaty, chilli sauce, this ultimate recipe comes courtesy of BBC Good Food user, Andrew Balmer.',
-                'method' => 'Put a large saucepan on a medium heat and add 1 tbsp olive oil. Add the bacon and fry for 10 mins until golden and crisp.;Reduce the heat and add the onion, carrot, celery, garlic and rosemary, then fry for 10 mins. Stir the veg often until it softens.;Increase the heat to medium-high, add the mince and cook stirring for 3-4 mins until the meat is browned all over.;Add the tinned tomatoes, chopped basil, oregano, bay leaves, tomato purée, stock cube, chilli, wine and cherry tomatoes. Stir with a wooden spoon, breaking up the plum tomatoes.;Bring to the boil, reduce to a gentle simmer and cover with a lid. Cook for 1 hr 15 mins stirring occasionally, until you have a rich, thick sauce. Add the Parmesan, check the seasoning and stir.;When the Bolognese is nearly finished cook the spaghetti following pack instructions. Drain the spaghetti and stir into the Bolognese sauce. Serve with grated Parmesan, the extra basil leaves and crusty bread.',
                 'serving_size' => 6,
             )
         );
@@ -78,6 +105,11 @@ class UserRecipeRatingModelTest extends BaseTestCase
             ['recipe_id' => 2, 'user_id' => 1, 'rating' => 3 ],
             ['recipe_id' => 1, 'user_id' => 2, 'rating' => 3 ],
         ]);
+        DB::table('recipe_user_mappings')->insert([
+            ['recipe_id' => 1, 'user_id' => 1],
+            ['recipe_id' => 2, 'user_id' => 1],
+            ['recipe_id' => 2, 'user_id' => 2],
+        ]);
     }
 
     public function tearDown()
@@ -85,17 +117,4 @@ class UserRecipeRatingModelTest extends BaseTestCase
         parent::tearDown();
     }
 
-    public function testUserRelationship()
-    {
-        $rating = UserRecipeRating::find(1);
-        $this->assertTrue($rating->user->name == 'Abigail');
-        $this->assertTrue($rating->rating == 5);
-    }
-
-    public function testRecipeRelationship()
-    {
-        $rating = UserRecipeRating::find(1);
-        $this->assertTrue($rating->recipe->name == 'Lettuce Salad');
-        $this->assertTrue($rating->rating == 5);
-    }
 }
