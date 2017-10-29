@@ -14,24 +14,25 @@
                         @endif
                     @endif
                 </div>
-                <!-- Display cuisine type ribbon on recipe card -->
-                @if($recipe->cuisine_type)
-                    <div class="cuisine-ribbon-container">
-                        <div class="cuisine-ribbon {{ $recipe->cuisine_type->name }}">{{ $recipe->cuisine_type->name }}</div>
-                    </div>
-                @endif
-                <!-- Display number of matched ingredients -->
-                <div class="ingredient-match" >
-                    @foreach($occurrences as $key => $val)
-                        @if($key == $recipe->id)
-                            <h5 class="ingredients-match-number">{{$val}}</h5>
-                            <p class="ingredients-match-word">INGREDIENT</p>
-                            <p class="ingredients-match-word">MATCH</p>
-                        @endif
-                    @endforeach
-                </div>
+
                 <!-- Make recipe card a link -->
                 <a href="{{ route('recipe', $recipe->id) }}" class="recipe-link">
+                    <!-- Display cuisine type ribbon on recipe card -->
+                    @if($recipe->cuisine_type)
+                        <div class="cuisine-ribbon-container">
+                            <div class="cuisine-ribbon {{ $recipe->cuisine_type->name }}">{{ $recipe->cuisine_type->name }}</div>
+                        </div>
+                    @endif
+                    <!-- Display number of matched ingredients -->
+                    <div class="ingredient-match" >
+                        @foreach($occurrences as $key => $val)
+                            @if($key == $recipe->id)
+                                <h5 class="ingredients-match-number">{{$val}}</h5>
+                                <p class="ingredients-match-word">INGREDIENT</p>
+                                <p class="ingredients-match-word">MATCH</p>
+                            @endif
+                        @endforeach
+                    </div>
                     <div class="recipe-image" style="background-image: url({{ URL::asset('img/recipes/'.$recipe->image_name()) }});">
                     </div>
 
