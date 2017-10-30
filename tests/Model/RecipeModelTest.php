@@ -7,7 +7,9 @@ use App\Ingredient;
 use App\IngredientCategory;
 use App\IngredientRecipeMapping;
 use App\MeasurementType;
+use App\NutritionalInfoPanel;
 use App\Recipe;
+use App\RecipeMethod;
 use App\User;
 use App\UserRole;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +17,83 @@ use Tests\BaseTestCase;
 
 class RecipeModelTest extends BaseTestCase
 {
+    /**
+     * test recipe to ingredient relationship
+     */
+    public function testIngredientsRelationship()
+    {
+        $lettuceSalad = Recipe::find(1);
+        $this->assertTrue($lettuceSalad->ingredients->count() == 3);
+        $this->assertTrue($lettuceSalad->ingredients[0]->description == 'roughly chopped');
+    }
+
+
+    /**
+     * test recipe to cuisine type relationship
+     */
+    public function testCuisineTypeRelationship()
+    {
+        $lettuceSalad = Recipe::find(1);
+        $this->assertTrue($lettuceSalad->cuisine_type->name == 'Mediterranean');
+    }
+
+
+    /**
+     * test recipe to ratings relationship
+     */
+    public function testRatingsRelationship()
+    {
+        $lettuceSalad = Recipe::find(1);
+        $pizza = Recipe::find(2);
+        $spag = Recipe::find(3);
+
+        $this->assertTrue($lettuceSalad->ratings->count() == 2);
+        $this->assertTrue($pizza->ratings->count() == 2);
+        $this->assertTrue($spag->ratings->count() == 0);
+        $this->assertTrue($pizza->ratings[1]->rating == 3);
+    }
+
+
+    /**
+     * test recipe to nutrition panel relationship
+     */
+    public function testNutritionRelationship()
+    {
+        $lettuceSalad = Recipe::find(1);
+        $pizza = Recipe::find(2);
+
+        $this->assertTrue($lettuceSalad->nutritional_info_panel->gram_total_fat == 25);
+        $this->assertFalse(isset($pizza->nutritional_info_panel));
+    }
+
+
+    /**
+     * test recipe to methods relationship
+     */
+    public function testMethodsRelationship()
+    {
+        $lettuceSalad = Recipe::find(1);
+        $pizza = Recipe::find(2);
+
+        $this->assertTrue($lettuceSalad->method_steps->count() == 2);
+        $this->assertTrue($pizza->method_steps->count() == 0);
+    }
+
+
+    /**
+     * Test the image name function returns the correct names
+     */
+    public function testImageNames()
+    {
+        $lettuceSalad = Recipe::find(1);
+        $pizza = Recipe::find(2);
+        $spag = Recipe::find(3);
+
+        $this->assertTrue($lettuceSalad->image_name() == 'Salad.jpg');
+        $this->assertTrue($pizza->image_name() == 'pizza.jpg');
+        $this->assertTrue($spag->image_name() == 'default.jpg');
+    }
+
     public function setUp()
     {
         parent::setUp();
@@ -75,20 +154,27 @@ class RecipeModelTest extends BaseTestCase
                 'name' => 'Lettuce Salad',
                 'short_description' => 'A salad with three ingredients. A good number for testing...',
                 'long_description' => 'This brilliant salad is actually quite average.',
-                'method' => 'Roughly chop lettuce;Slice onion;Dice cheese',
                 'serving_size' => 2,
-                'cuisine_type_id' => CuisineType::where('name', 'like', '%Mediterranean%')->value('id')
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Mediterranean%')->value('id'),
+                'image_url' => 'Salad.jpg'
             )
         );
+        NutritionalInfoPanel::create(array('recipe_id'=>1,'gram_total_fat'=>25,'gram_saturated_fat'=>10,
+            'gram_total_carbohydrates'=>58,'gram_sugars'=>12,'gram_fiber'=>6,'mg_sodium'=>1600,
+            'gram_protein'=>35,'calories' => 624));
+        RecipeMethod::create(array('recipe_id' => 1, 'step_number' => 1,
+            'description' => 'Roughly chop lettuce and halve tomatoes.', 'image_url' => 'spinach.jpg'));
+        RecipeMethod::create(array('recipe_id' => 1, 'step_number' => 2,
+            'description' => 'Place lettuce and tomato into a bowl then crumble over the feta and serve.', 'image_url' => 'greek-salad.jpg'));
         Recipe::create(
             array(
                 'id' => 2,
                 'name' => 'Easy Pizza Sauce',
                 'short_description' => 'Quick and easy pizza sauce.',
                 'long_description' => 'This easy pizza sauce recipe gets cooked right on your stove top, and takes about 10 minutes from start to finish. You’ll love how delicious this is. MUCH better than anything you’ll find in a can.',
-                'method' => 'Heat the olive oil over medium heat, and saute the garlic for 2 minutes.;Add the rest of the ingredients, stir, and simmer for 10-15 minutes.',
                 'serving_size' => 4,
-                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id')
+                'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id'),
+                'image_url' => 'pizza.jpg'
             )
         );
         Recipe::create(
@@ -97,7 +183,6 @@ class RecipeModelTest extends BaseTestCase
                 'name' => 'Spaghetti Bolognese',
                 'short_description' => 'Bolognese, like mama used to make!',
                 'long_description' => 'Our best-ever spaghetti Bolognese is super easy and a true classic. An Italian pasta favourite with a meaty, chilli sauce, this ultimate recipe comes courtesy of BBC Good Food user, Andrew Balmer.',
-                'method' => 'Put a large saucepan on a medium heat and add 1 tbsp olive oil. Add the bacon and fry for 10 mins until golden and crisp.;Reduce the heat and add the onion, carrot, celery, garlic and rosemary, then fry for 10 mins. Stir the veg often until it softens.;Increase the heat to medium-high, add the mince and cook stirring for 3-4 mins until the meat is browned all over.;Add the tinned tomatoes, chopped basil, oregano, bay leaves, tomato purée, stock cube, chilli, wine and cherry tomatoes. Stir with a wooden spoon, breaking up the plum tomatoes.;Bring to the boil, reduce to a gentle simmer and cover with a lid. Cook for 1 hr 15 mins stirring occasionally, until you have a rich, thick sauce. Add the Parmesan, check the seasoning and stir.;When the Bolognese is nearly finished cook the spaghetti following pack instructions. Drain the spaghetti and stir into the Bolognese sauce. Serve with grated Parmesan, the extra basil leaves and crusty bread.',
                 'serving_size' => 6,
                 'cuisine_type_id' => CuisineType::where('name', 'like', '%Italian%')->value('id')
             )
@@ -145,32 +230,6 @@ class RecipeModelTest extends BaseTestCase
     public function tearDown()
     {
         parent::tearDown();
-    }
-
-    public function testIngredientsRelationship()
-    {
-        $lettuceSalad = Recipe::find(1);
-        $this->assertTrue($lettuceSalad->ingredients->count() == 3);
-        $this->assertTrue($lettuceSalad->ingredients[0]->description == 'roughly chopped');
-    }
-
-    public function testCuisineTypeRelationship()
-    {
-        $lettuceSalad = Recipe::find(1);
-        $this->assertTrue($lettuceSalad->cuisine_type->name == 'Mediterranean');
-    }
-
-    public function testRatingsRelationship()
-    {
-        $lettuceSalad = Recipe::find(1);
-        $pizza = Recipe::find(2);
-        $spag = Recipe::find(3);
-
-        $this->assertTrue($lettuceSalad->ratings->count() == 2);
-        $this->assertTrue($pizza->ratings->count() == 2);
-        $this->assertTrue($spag->ratings->count() == 0);
-        $this->assertTrue($pizza->ratings[1]->rating == 3);
-
     }
 
 }
