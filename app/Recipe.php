@@ -1,42 +1,54 @@
 <?php
-
+/**
+ * Author: Pantry to Plate team Sept 2017
+ */
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 use Illuminate\Support\Facades\Config;
 
+/**
+ * Class Recipe
+ *
+ * Stores the image, ingredients, quantities, method and description for site recipes
+ *
+ * @package App\
+ */
+
 class Recipe extends Model
 {
+    // Columns
     protected $fillable = [
         'id', 'name', 'short_description', 'long_description', 'method', 'serving_size', 'cuisine_type_id', 'image_url', 'recipe_source'
     ];
 
+    // Relationship with Ingredient Model
     public function ingredients()
     {
         return $this->hasMany('App\IngredientRecipeMapping');
     }
-
+    // Relationship with CuisineType Model
     public function cuisine_type()
     {
         return $this->belongsTo('App\CuisineType');
     }
-
+    // Relationship to UserRecipeRating Model
     public function ratings()
     {
         return $this->hasMany('App\UserRecipeRating');
     }
-
+    // Relationship to NutritionalInfoPanel Model
     public function nutritional_info_panel()
     {
         return $this->hasOne('App\NutritionalInfoPanel');
     }
-
+    // Relationship to RecipeMethod Model
     public function method_steps()
     {
         return $this->hasMany('App\RecipeMethod', 'recipe_id', 'id')->orderBy('step_number');
     }
-
+    // Retrieves path for recipe image
     public function image_name()
     {
         return $this->image_url == '' ? 'default.jpg' : $this->image_url;

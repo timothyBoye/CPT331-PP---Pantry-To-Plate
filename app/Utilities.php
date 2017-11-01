@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Author: Pantry to Plate team Sept 2017
+ */
 namespace App;
 
 class Utilities
@@ -47,7 +49,7 @@ class Utilities
 
         return $string;
     }
-
+    // Converts foreign characters to ascii and spaces to dashes to ensure the saved file doesn't have filesystem issues
     public static function stripBadFileCharacters($string)
     {
         $replacements = array(
