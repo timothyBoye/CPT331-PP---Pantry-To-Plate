@@ -1,9 +1,9 @@
+<!--Import the main layout-->
 @extends('layouts.app')
 
+<!--Actual content for webpage-->
 @section('content')
-
     <div class="container-fluid content">
-
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3">
                 @if(session('message'))
@@ -40,7 +40,4 @@
             </div>
         </div> <!-- /container -->
     </div>
-
-
-
 @endsection
