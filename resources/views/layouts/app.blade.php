@@ -70,29 +70,29 @@
             <!--Nav items on the left hand side-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a id= "nav-home" href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-                    <li><a id= "nav-about" href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
-                    <li><a id= "nav-contact" href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
+                    <li><a class="nav-item" id= "nav-home" href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li><a class="nav-item" id= "nav-about" href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
+                    <li><a class="nav-item" id= "nav-contact" href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
                 </ul>
 
                 <!--Nav items on the right hand side-->
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}" ><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
-                        <li><a href="{{ route('register') }}" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
+                        <li><a class="nav-item" href="{{ route('login') }}" ><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
+                        <li><a class="nav-item" href="{{ route('register') }}" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
-                        <li><a id= "nav-cuisines" href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
+                        <li><a class="nav-item" id= "nav-cuisines" href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
                         <li><span><form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
                             </form></span></li>
-                        <li><a id= "nav-saved-recipe" href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
+                        <li><a class="nav-item" id= "nav-saved-recipe" href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
                     @endif
 
                     @if (Auth::user())
-                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
+                        <li><a class="nav-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
                         @if (Auth::user()->role->user_role_name == "Admin")
-                            <li><a href="{{ route('admin') }}"><span></span> Admin Dashboard</a></li>
+                            <li><a class="nav-item" href="{{ route('admin') }}"><span></span> Admin Dashboard</a></li>
                         @endif
                     @endif
                 </ul>
@@ -108,10 +108,38 @@
     </div>
 
 
-<div id="footer-row" class="row">
-    <footer class="col-xs-12">
+<div id="footer-row" class="row text-center">
+    <div class="col-md-6 col-sm-12">
+        <ul class="">
+            <li><a class="footer-nav-item" href="{{ route('home') }}" >Home</a></li>
+            <li><a class="footer-nav-item" href="{{ route('about') }}" >About</a></li>
+            <li><a class="footer-nav-item" href="{{ route('contact') }}" >Contact</a></li>
+        </ul>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <ul class="">
+            @if (Auth::guest())
+                <li><a class="footer-nav-item" href="{{ route('login') }}" >Login</a></li>
+                <li><a class="footer-nav-item" href="{{ route('register') }}" >Register</a></li>
+            @else
+                {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
+                <li><a class="footer-nav-item" id= "nav-cuisines" href="{{ route('profile.cuisines')}}" >Manage Cuisine Preferences</a></li>
+                <li><span><form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                {{ csrf_field() }}
+                            </form></span></li>
+                <li><a class="footer-nav-item" id= "nav-saved-recipe" href="{{Route('profile.saved_recipes')}}" >Saved Recipes</a></li>
+            @endif
+            @if (Auth::user())
+                <li><a class="footer-nav-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >Logout</a></li>
+                @if (Auth::user()->role->user_role_name == "Admin")
+                    <li><a class="footer-nav-item" href="{{ route('admin') }}">Admin Dashboard</a></li>
+                @endif
+            @endif
+        </ul>
+    </div>
+    <div class="col-xs-12" id="footer">
         Copyright &copy; Pantry to Plate 2017
-    </footer>
+    </div>
 </div>
 
     <!-- Scripts -->
