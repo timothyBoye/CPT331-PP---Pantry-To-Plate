@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#545255"/>
     <!--Mobile Web App option: For installing to the home screen https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
     <meta name=”apple-mobile-web-app-capable” content=”yes”>
     <!--End Mobile Web App option-->
@@ -12,6 +13,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="{{ asset('manifest.manifest') }}">
     <!-- Styles -->
     <link href="{{ asset('css/bootstro.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
