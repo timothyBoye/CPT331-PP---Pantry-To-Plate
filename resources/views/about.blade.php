@@ -1,5 +1,7 @@
+<!--Import the main layout-->
 @extends('layouts.app')
 
+<!--Actual content for webpage-->
 @section('content')
 <div class="container-fluid content about-green-bg">
     <div class="row">
