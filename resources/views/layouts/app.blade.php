@@ -58,7 +58,7 @@
                 <!--Left hand logo area-->
             {{--<a class="navbar-brand" href="{{ route('home') }}">Pantry to Plate (Logo)</a>--}}
             <!--Need to resize the image so that it is responsive and or update the logo-->
-                <a class="navbar-brand" href="{{ route('home') }}"><img class = "nav-logo" style="	width: 120px;" src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo"></a>
+                <a class="navbar-brand" href="{{ route('home') }}"><img class = "nav-logo" src="{{ URL::asset('img/logo-one.png') }}" alt="Pantry to Plate Logo"></a>
             </div>
 
 
@@ -102,6 +102,12 @@
         @yield('content')
     </div>
 
+
+<div id="footer-row" class="row">
+    <footer class="col-xs-12">
+        Copyright &copy; Pantry to Plate 2017
+    </footer>
+</div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
