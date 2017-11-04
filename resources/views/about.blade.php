@@ -8,7 +8,7 @@
         <section class="col-lg-8 col-md-offset-2">
             <div class="about-content">
                 <div class="center-about-logo">
-                    <img class="about-logo-img" src="{{ URL::asset('img/logo-p2p.png') }}">
+                    <img class="about-logo-img" alt="Pantry to Plate logo" src="{{ URL::asset('img/logo-p2p.png') }}">
                 </div>
                 <div class="about-green-section">
                     <h2><strong class="about-headings">Why</strong> are we here?</h2>
