@@ -8,13 +8,14 @@ ul  {
 
 #footer-row {
     margin-top: 20px;
-    padding-left: 10px;
-}
-
-footer {
+    padding: 20px;
     border-top: 1px solid #090909;
     color: #ffffff;
     background-color: #545255;
+}
+
+#footer {
+    font-size: 15pt;
 }
 
 #finished {
@@ -342,13 +343,13 @@ footer {
     white-space: nowrap;
 }
 
-.navbar-inverse .navbar-nav > li > a {
+.navbar-inverse .navbar-nav > li > a, .footer-nav-item {
     color: #ffffff;
     font-size: 16px;
 }
 
 
-.navbar-inverse .navbar-nav > li > a:hover {
+.navbar-inverse .navbar-nav > li > a:hover, .footer-nav-item:hover {
     color: #4ed08d;
 }
 
