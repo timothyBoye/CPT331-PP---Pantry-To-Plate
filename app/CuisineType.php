@@ -24,7 +24,10 @@ class CuisineType extends Model
         'name'
     ];
 
-    // Relationship with Recipe Model
+    /**
+     * Returns all recipes that are of this cuisine type.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function recipes()
     {
         return $this->hasMany('App\Recipe', 'cuisine_type_id', 'id');

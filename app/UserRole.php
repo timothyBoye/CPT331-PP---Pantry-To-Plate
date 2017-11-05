@@ -15,11 +15,16 @@ use Illuminate\Database\Eloquent\Model;
 class UserRole extends Model
 {
     public $timestamps = false;
+
     // Columns
     protected $fillable = [
         'user_role_name'
     ];
-    // Relationship with User Model
+
+    /**
+     * Returns the users that are of this user role type
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function users()
     {
         return $this->hasMany('App\User');

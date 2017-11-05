@@ -34,17 +34,29 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    // Relationship to RecipeUserMapping Model
+
+    /**
+     * Returns the users saved recipe mappings
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function savedRecipes()
     {
         return $this->hasMany('App\RecipeUserMapping');
     }
-    // Relationship to UserRole Model
+
+    /**
+     * Returns the user role type of the user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role()
     {
         return $this->belongsTo('App\UserRole', 'user_role_id', 'id');
     }
-    // Relationship to UserRecipeRating Model
+
+    /**
+     * Returns the recipe ratings the user has submitted.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function ratings()
     {
         return $this->hasMany('App\UserRecipeRating');

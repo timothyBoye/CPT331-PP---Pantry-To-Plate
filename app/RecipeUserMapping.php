@@ -19,17 +19,30 @@ class RecipeUserMapping extends Model
     protected $fillable = [
         'recipe_id', 'user_id'
     ];
-    // Relationship to User Model
+
+    /**
+     * Returns the user that saved this recipe mapping
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
-    // Relationship to Recipe Model
+
+    /**
+     * Returns the saved recipe
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function recipe()
     {
         return $this->belongsTo('App\Recipe', 'recipe_id', 'id');
     }
-    // Checks whether a user has saved a given recipe
+
+    /**
+     * Checks whether a user has saved a given recipe
+     * @param $recipe_id
+     * @return mixed
+     */
     public static function has_saved_recipe($recipe_id)
     {
         $user_id = Auth::User() ->id;

@@ -21,13 +21,19 @@ class IngredientCategory extends Model
         'name'
     ];
 
-    // Relationship with Ingredient Model
+    /**
+     * Returns all ingredients that are of this category type
+     * @return mixed
+     */
     public function ingredients()
     {
         return $this->hasMany('App\Ingredient')->orderBy('name');
     }
 
-    // Retrieves ingredients grouped according to their category
+    /**
+     * Returns all ingredients that are of this category type AND used in at least one recipe.
+     * @return mixed
+     */
     public function recipeIngredients()
     {
         return $this->ingredients()

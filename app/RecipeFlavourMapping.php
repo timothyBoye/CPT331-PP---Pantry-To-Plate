@@ -19,12 +19,20 @@ class RecipeFlavourMapping extends Model
     protected $fillable = [
         'recipe_id', 'flavour_id', 'flavour_intensity'
     ];
-    // Relationship with Recipe Model
+
+    /**
+     * Returns the recipe that this mapping belongs to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function recipe()
     {
         return $this->belongsTo('App\Recipe', 'recipe_id', 'id');
     }
-    // Relationship with Flavour Model
+
+    /**
+     * Returns the flavour that this mapping belongs to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function flavour()
     {
         return $this->belongsTo('App\Flavour', 'flavour_id', 'id');
