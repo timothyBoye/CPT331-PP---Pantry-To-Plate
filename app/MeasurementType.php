@@ -21,7 +21,10 @@ class MeasurementType extends Model
         'name', 'comparable_size'
     ];
 
-    // Relationship with Ingredient Model
+    /**
+     * Returns the Ingredient Recipe Mappings that use this measurement type.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function ingredients()
     {
         return $this->hasMany('App\IngredientRecipeMapping');

@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\
  */
-
 class IngredientRecipeMapping extends Model
 {
     // Columns
@@ -21,7 +20,11 @@ class IngredientRecipeMapping extends Model
         'recipe_id', 'ingredient_id', 'measurement_type_id', 'quantity', 'description'
     ];
 
-    // Returns singular/plural name of ingredient, depending on quantity specified in recipe
+    /**
+     * Returns the name of the ingredient that this mapping relates to for displaying to the user, if the mapping
+     * relates to a quantity greater than 1 it returns the plural form of the ingredient name.
+     * @return mixed
+     */
     public function ingredient_name()
     {
         if ($this->ingredient->plural != '' && $this->quantity > 1) {
@@ -31,28 +34,43 @@ class IngredientRecipeMapping extends Model
         }
     }
 
-    // Relationship with Recipe Model
+    /**
+     * Returns the recipe that this mapping relates to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function recipe()
     {
         return $this->belongsTo('App\Recipe');
     }
 
-    // Relationship with Ingredient Model
+    /**
+     * Returns the ingredient that this mapping relates to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function ingredient()
     {
         return $this->belongsTo('App\Ingredient');
     }
 
-    // Relationship with MeasurementType Model
+    /**
+     * Returns the measurement type that this mapping relates to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function measure()
     {
         return $this->belongsTo('App\MeasurementType', 'measurement_type_id', 'id');
     }
 
-    /*
-     *  Takes an array of ingredient ids and the user's filter values.
-     *  Finds recipe ids that contain any of the listed ingredients and filters out any recipes
-     *  that do not meet the filter criteria. Returns recipe ids that satisfy criteria via an array.
+    /**
+     * Takes an array of ingredient ids and the user's filter values.
+     * Finds recipe ids that contain any of the listed ingredients and filters out any recipes
+     * that do not meet the filter criteria. Returns recipe ids that satisfy criteria via an array.
+     *
+     * @param $ingredient_ids
+     * @param $cuisine_type_filter
+     * @param $rating_filter_value
+     * @param $ingredient_filter_value
+     * @return array
      */
     public static function get_matching_recipe_ids($ingredient_ids, $cuisine_type_filter, $rating_filter_value, $ingredient_filter_value)
     {
@@ -101,8 +119,15 @@ class IngredientRecipeMapping extends Model
         return $recipe_ids;
 
     }
-    // Queries Ingredients table for the ingredient ids for a given array of ingredient names
-    public static function get_matching_recipe_names($ingredient_names){
+
+
+    /**
+     * Queries Ingredients table for the ingredient ids for a given array of ingredient names
+     * @param $ingredient_names
+     * @return array
+     */
+    public static function get_matching_recipe_names($ingredient_names)
+    {
         $ingredient_ids = [];
 
         foreach ($ingredient_names as $name) {

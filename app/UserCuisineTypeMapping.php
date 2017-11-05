@@ -18,16 +18,31 @@ class UserCuisineTypeMapping extends Model
     // Columns
     protected $fillable = ['user_id', 'cuisine_type_id', 'rating'];
 
-    // Relationship to CuisineType Model
-    public function cuisine_type(){
+    /**
+     * Returns the cuisine type that this mapping belongs to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cuisine_type()
+    {
         return $this->belongsTo('App\CuisineType');
     }
-    // Relationship to User Model
-    public function user(){
+
+    /**
+     * Returns the user that this mapping belongs to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
-    // Maps users' cuisine ratings to each cuisine and returns an array sorted by rating
-    public static function create_user_mappings($cuisines){
+
+    /**
+     * Maps users' cuisine ratings to each cuisine and returns an array sorted by rating
+     * @param $cuisines
+     * @return mixed
+     */
+    public static function create_user_mappings($cuisines)
+    {
         $i = 0;
         foreach($cuisines as $cuisine){
             UserCuisineTypeMapping::create(array(

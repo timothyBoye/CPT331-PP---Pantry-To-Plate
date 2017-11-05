@@ -1,11 +1,25 @@
 <?php
 /**
- * Author: Pantry to Plate team Sept 2017
+ * Author: Timothy Boye 2017
  */
 namespace App;
 
+/**
+ * Class Utilities
+ *
+ * This class stores general use string utilities used by the controllers and views
+ *
+ * @package App
+ */
 class Utilities
 {
+    /**
+     * Takes a number input and returns a string of the approximate fractional representation to be displayed
+     * on the website for ingredient quantities.
+     *
+     * @param $float
+     * @return bool|string
+     */
     public static function approximatedFractionString($float)
     {
         // Bad input
@@ -49,7 +63,13 @@ class Utilities
 
         return $string;
     }
-    // Converts foreign characters to ascii and spaces to dashes to ensure the saved file doesn't have filesystem issues
+
+    /**
+     * Converts foreign characters to ascii and spaces to dashes to ensure the saved file doesn't have filesystem issues
+     *
+     * @param $string
+     * @return string
+     */
     public static function stripBadFileCharacters($string)
     {
         $replacements = array(

@@ -23,39 +23,66 @@ class Recipe extends Model
         'id', 'name', 'short_description', 'long_description', 'method', 'serving_size', 'cuisine_type_id', 'image_url', 'recipe_source'
     ];
 
-    // Relationship with Ingredient Model
+    /**
+     * Returns the ingredient recipe mappings that use this recipe
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function ingredients()
     {
         return $this->hasMany('App\IngredientRecipeMapping');
     }
-    // Relationship with CuisineType Model
+
+    /**
+     * Returns the cuisine type that this recipe belongs to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function cuisine_type()
     {
         return $this->belongsTo('App\CuisineType');
     }
-    // Relationship to UserRecipeRating Model
+
+    /**
+     * Returns all user recipe ratings for this recipe
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function ratings()
     {
         return $this->hasMany('App\UserRecipeRating');
     }
-    // Relationship to NutritionalInfoPanel Model
+
+    /**
+     * Returns this recipes nutritional panel
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function nutritional_info_panel()
     {
         return $this->hasOne('App\NutritionalInfoPanel');
     }
-    // Relationship to RecipeMethod Model
+
+    /**
+     * Returns the recipe method steps for this recipe
+     * @return mixed
+     */
     public function method_steps()
     {
         return $this->hasMany('App\RecipeMethod', 'recipe_id', 'id')->orderBy('step_number');
     }
-    // Retrieves path for recipe image
+
+    /**
+     * Returns the image name of this recipe, if this recipe doesn't have an image name than the default is returned
+     * @return mixed|string
+     */
     public function image_name()
     {
         return $this->image_url == '' ? 'default.jpg' : $this->image_url;
     }
 
 
-    // PHPStorm can't find where this method is used is this orphaned?
+    /**
+     * Takes a set of recipe ids and returns an ordered array of matching recipe objects.
+     * @param $recipe_ids
+     * @return array
+     */
     public static function get_recipes_from_ids($recipe_ids)
     {
         $recipes = [];
@@ -66,8 +93,13 @@ class Recipe extends Model
         return $recipes;
     }
 
-    // Should return a bunch of recipe ids which have been sorted based on the points system
-    // used by the algorithm, so it's compatible with the current view
+
+    /**
+     * Should return a bunch of recipe ids which have been sorted based on the points system
+     * used by the algorithm, so it's compatible with the current view
+     * @param $occurrences
+     * @return mixed
+     */
     public static function sort_recipe_ids_by_cuisine_algorithm($occurrences)
     {
         if(!Auth::check()){

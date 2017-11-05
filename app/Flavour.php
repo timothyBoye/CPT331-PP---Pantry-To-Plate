@@ -24,7 +24,10 @@ class Flavour extends Model
         'name'
     ];
 
-    // Relationship with Recipe Model
+    /**
+     * Returns all RecipeFlavourMappings that are of this flavour type to link this flavour type to related recipes.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function recipes()
     {
         return $this->hasMany('App\RecipeFlavourMapping');

@@ -22,7 +22,10 @@ class NutritionalInfoPanel extends Model
         'gram_protein', 'mg_sodium', 'recipe_id'
     ];
 
-    // Relationship with Recipe Model
+    /**
+     * Returns the recipe that this nutritional panel belongs to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function recipe()
     {
         $this->belongsTo('App\Recipe', 'recipe_id', 'id');
