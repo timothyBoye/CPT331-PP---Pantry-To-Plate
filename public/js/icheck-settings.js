@@ -1,4 +1,4 @@
-/* checkboxes */
+/* checkbox settings */
 $(document).ready(function(){
     $('.icheck-field').each(function(){
         var self = $(this),

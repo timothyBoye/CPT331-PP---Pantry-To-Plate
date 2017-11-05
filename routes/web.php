@@ -34,8 +34,10 @@ Route::get('search','SearchResultsController@getSearchResults')->name('search');
 
 
 /*
- * ADMIN
- */
+|--------------------------------------------------------------------------
+| Admin Web Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/dashboard', 'AdminController@index')->name('admin');
 // Cuisines
 Route::get('/dashboard/cuisines', 'AdminCuisinesController@cuisines')->name('admin.cuisines');
