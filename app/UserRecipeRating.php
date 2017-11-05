@@ -20,17 +20,30 @@ class UserRecipeRating extends Model
     protected $fillable = [
         'recipe_id', 'user_id', 'rating'
     ];
-    // Relationship with User Model
+
+    /**
+     * Returns the user that this rating belongs to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
-    // Relationship with Recipe Model
+
+    /**
+     * Returns the recipe that this rating is for
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function recipe()
     {
         return $this->belongsTo('App\Recipe', 'recipe_id', 'id');
     }
-    // Returns an array of ratings by a specified user for a given array of recipes
+
+    /**
+     * Returns an array of ratings by a specified user for a given array of recipes
+     * @param $recipes
+     * @return array
+     */
     public static function get_ratings_for_user($recipes)
     {
         $userRatings = [];

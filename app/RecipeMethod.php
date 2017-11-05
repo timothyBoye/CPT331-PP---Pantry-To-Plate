@@ -20,7 +20,11 @@ class RecipeMethod extends Model
     protected $fillable = [
         'recipe_id', 'step_number', 'description', 'image_url'
     ];
-    // Relationship with Recipe Model
+
+    /**
+     * Returns the recipe that this recipe method step belongs to
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function recipe()
     {
         return $this->belongsTo('App\Recipe', 'recipe_id', 'id');
