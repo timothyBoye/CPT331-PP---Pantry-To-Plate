@@ -149,6 +149,7 @@
     <script src="{{ asset('js/jsCookie.js') }}"></script>
     <script src="{{ asset('js/csrf_init.js') }}"></script>
     <script src="{{ asset('js/storageService.js') }}"></script>
+    <script src="{{ asset('js/paginationService.js') }}"></script>
     <script src="{{ asset('js/bootstro.js') }}"></script>
     <script src="{{ asset('js/nav.js') }}"></script>
     <script src="{{ asset('js/icheck.min.js') }}"></script>
