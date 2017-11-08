@@ -55,7 +55,7 @@
 
         }
     };
-    
+
     // update filter values and call function to send values to controller
     function setupFilterChangeListeners(){
         $(document).on('change', '#select-cuisine-type-filter', function(){
