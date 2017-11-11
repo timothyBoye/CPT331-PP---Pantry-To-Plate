@@ -43,14 +43,17 @@ class UserCuisineTypeMapping extends Model
      */
     public static function create_user_mappings($cuisines)
     {
-        $i = 0;
-        foreach($cuisines as $cuisine){
-            UserCuisineTypeMapping::create(array(
-                'user_id' => Auth::user()->id,
-                'cuisine_type_id' => $cuisine->id,
-                'rating' => $i++
-            ));
+        UserCuisineTypeMapping::where('user_id', '=',Auth::user()->id)->delete();
+        foreach($cuisines as $cuisine) {
+            if (UserCuisineTypeMapping::where([['user_id', Auth::user()->id], ['cuisine_type_id', $cuisine->id]])->get()->count() != 1) {
+                UserCuisineTypeMapping::create(array(
+                    'user_id' => Auth::user()->id,
+                    'cuisine_type_id' => $cuisine->id,
+                    'rating' => UserCuisineTypeMapping::where('user_id', '=', Auth::user()->id)->max('rating')+1
+                ));
+            }
         }
+
         return UserCuisineTypeMapping::where('user_id', '=', Auth::user()->id)->orderBy('rating')->get();
     }
 }

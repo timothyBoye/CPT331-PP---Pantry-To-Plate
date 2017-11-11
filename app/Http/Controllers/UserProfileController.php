@@ -34,8 +34,9 @@ class UserProfileController extends Controller
             ->orderBy('rating')
             ->get();
 
-        if(count($data) == 0){
-            $cuisines = CuisineType::all();
+        $cuisines = CuisineType::all();
+
+        if(count($data) != count($cuisines)) {
             $data = UserCuisineTypeMapping::create_user_mappings($cuisines);
         }
 
