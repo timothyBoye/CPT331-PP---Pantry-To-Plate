@@ -156,6 +156,7 @@
     <script src="{{ asset('js/icheck-settings.js') }}"></script>
     <script src="{{ asset('js/contactForm.js') }}"></script>
     <script src="{{ asset('js/saveRecipeController.js') }}"></script>
+    <script src="{{ asset('js/onboarding.js') }}"></script>
 
     @yield('footer')
 </body>
