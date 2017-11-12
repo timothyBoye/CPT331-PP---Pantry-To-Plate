@@ -25,6 +25,18 @@ class SelectIngredientsTest extends DuskTestCase
         });
     }
 
+    public function testSelectIngredientUsingTextSearch(){
+        $this->browse(function(Browser $browser){
+            $browser->visit('/')
+                ->type('#ingredient-input', 'pepper')
+                ->press('#ingredient-search-button')
+                ->pause(1000)
+                ->waitFor('.recipe-container')
+                ->assertSeeIn('#app > div > div > div.col-md-9.home-recipe-container > div.selected-ingredients-anchor.bootstro > ul', 'pepper')
+                ->press('Clear All Selected Ingredients');
+        });
+    }
+
     public function testCuisineFilter(){
         $this->browse(function(Browser $browser){
             $french_id = CuisineType::where('name', '=', 'French')->value('id');
