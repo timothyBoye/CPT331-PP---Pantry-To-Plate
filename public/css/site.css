@@ -284,6 +284,7 @@ ul  {
 
 #ingredient-search-group {
     margin-bottom: 20px;
+    z-index: 1;
 }
 
 .ingredient-img {
