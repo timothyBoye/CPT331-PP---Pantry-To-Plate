@@ -14,7 +14,7 @@
                         <label for="cuisine-preference-checkbox">Apply my cuisine preferences</label>
                     </div>
                 @endif
-                <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type or a star rating to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
+                <div id= "ingredient-selection-menu" class="bootstro" data-bootstro-title="Filter your matched recipes" data-bootstro-content="Select a cuisine type, star rating, total recipe ingredients or a number of ingredients needed to narrow down your search" data-bootstro-step="3" data-bootstro-placement ="auto" data-bootstro-nextButtonText="Next">
                     {{--<label class="checkbox-inline">--}}
                          {{--<input type="checkbox">STAR RATING--}}
                     {{--</label>--}}
