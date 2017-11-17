@@ -70,23 +70,23 @@
             <!--Nav items on the left hand side-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a class="nav-item" id= "nav-home" href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-                    <li><a class="nav-item" id= "nav-about" href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
-                    <li><a class="nav-item" id= "nav-contact" href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
+                    <li><a class="nav-item {{Request::path() == '/' ? ' nav-active': ''}}" id= "nav-home" href="{{ route('home') }}" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li><a class="nav-item {{Request::path() == 'about' ? ' nav-active': ''}}" id= "nav-about" href="{{ route('about') }}" ><span class="glyphicon glyphicon-book" aria-hidden="true"></span> About</a></li>
+                    <li><a class="nav-item {{Request::path() == 'contact' ? 'nav-active': ''}}" id= "nav-contact" href="{{ route('contact') }}" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>
                 </ul>
 
                 <!--Nav items on the right hand side-->
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                        <li><a class="nav-item" href="{{ route('login') }}" ><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
-                        <li><a class="nav-item" href="{{ route('register') }}" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
+                        <li><a class="nav-item  {{Request::path() == 'login' ? 'nav-active': ''}}" href="{{ route('login') }}" ><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
+                        <li><a class="nav-item  {{Request::path() == 'register' ? 'nav-active': ''}}" href="{{ route('register') }}" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
                     @else
                         {{--<a href="#"> Hi {{ Auth::user()->name }}</a>--}}
-                        <li><a class="nav-item" id= "nav-cuisines" href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
+                        <li><a class="nav-item  {{Request::path() == 'profile/cuisines' ? 'nav-active': ''}}" id= "nav-cuisines" href="{{ route('profile.cuisines')}}" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manage Cuisine Preferences</a></li>
                         <li><span><form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
                             </form></span></li>
-                        <li><a class="nav-item" id= "nav-saved-recipe" href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
+                        <li><a class="nav-item  {{Request::path() == 'profile/saved_recipes' ? 'nav-active': ''}}" id= "nav-saved-recipe" href="{{Route('profile.saved_recipes')}}" ><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Saved Recipes</a></li>
                     @endif
 
                     @if (Auth::user())
@@ -149,13 +149,14 @@
     <script src="{{ asset('js/jsCookie.js') }}"></script>
     <script src="{{ asset('js/csrf_init.js') }}"></script>
     <script src="{{ asset('js/storageService.js') }}"></script>
+    <script src="{{ asset('js/paginationService.js') }}"></script>
     <script src="{{ asset('js/bootstro.js') }}"></script>
-    <script src="{{ asset('js/nav.js') }}"></script>
     <script src="{{ asset('js/icheck.min.js') }}"></script>
     <script src="{{ asset('js/saveRecipeController.js') }}"></script>
     <script src="{{ asset('js/icheck-settings.js') }}"></script>
     <script src="{{ asset('js/contactForm.js') }}"></script>
     <script src="{{ asset('js/saveRecipeController.js') }}"></script>
+    <script src="{{ asset('js/onboarding.js') }}"></script>
 
     @yield('footer')
 </body>
