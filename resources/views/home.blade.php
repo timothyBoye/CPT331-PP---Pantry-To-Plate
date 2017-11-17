@@ -123,7 +123,7 @@
                 </div>
 {{--                <img src="{{ URL::asset('img/right-chevron-gr.png') }}" class="next" alt="Next">--}}
             </div>
-            <div class="bootstro overlay" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="All of your matched recipes will appear here. <img class ='bootstro-recipe-img' src='{{ asset('/img/result-recipe.png') }}'/><img class = 'match-show-count' src='{{ asset('/img/match-show-count.png') }}'/> Indicates how many of your selected ingredients match the total ingredients needed for the recipe" data-bootstro-step="2" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next"></div>
+            <div class="bootstro overlay" data-bootstro-title="Selected Ingredients" data-bootstro-html="true" data-bootstro-content="All of your matched recipes will appear here. <img class ='bootstro-recipe-img' src='{{ asset('/img/onboarding-matched.png') }}'/><img class = 'match-show-count' src='{{ asset('/img/num-matched-onboarding.png') }}'/> Indicates how many of your selected ingredients match the recipe" data-bootstro-step="2" data-bootstro-placement ="bottom" data-bootstro-nextButtonText="Next"></div>
             <!-- Get started instructions -->
             <div class ="intro-message">
                 <div class="intro-header"><h4 class="intro-heading">Get Started</h4></div>
