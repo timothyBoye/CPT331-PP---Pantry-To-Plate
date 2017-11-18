@@ -1255,3 +1255,8 @@ img[src*="default-step"] {
     font-size: 18px;
     padding-top: 100px;
 }
+
+.login-container, .register-container, .reset-container {
+    padding-top:150px;
+    min-height:700px;
+}

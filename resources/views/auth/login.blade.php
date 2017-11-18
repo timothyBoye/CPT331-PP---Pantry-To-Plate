@@ -2,7 +2,7 @@
 <!-- User login page -->
 @section('content')
 <div class="container content">
-    <div class="row">
+    <div class="row login-container">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
