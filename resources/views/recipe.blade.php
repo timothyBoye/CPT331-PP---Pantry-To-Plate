@@ -100,6 +100,7 @@
                         @endif
                     </div>
                     <div class="col-md-4">
+                        <img class ='recipe-icon' src='{{ asset('/img/recipe.png') }}'/> <br>
                         @if(filter_var($recipe->recipe_source, FILTER_VALIDATE_URL))
                             <a class="source-link" href=" {{$recipe->recipe_source}}" target="_blank">Original Recipe</a>
                         @else
