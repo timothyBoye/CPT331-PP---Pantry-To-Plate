@@ -18,8 +18,15 @@
             @if(isset($measurement))
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4><i class="icon fa fa-check"></i> Success!</h4>
+                <h4><i class="icon fa fa-cross"></i> Success!</h4>
                 Measurement type "{{ $measurement->name }}" stored in the database.
+            </div>
+            @endif
+            @if(isset($failedInUse))
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-exclamation"></i> Can not delete object!</h4>
+                Object "{{ $failedInUse->name }}" cannot be deleted as it is being used by {{ $failedInUse->ingredients->count() }} recipe ingredients.
             </div>
             @endif
                 <div id="seed_string"></div>

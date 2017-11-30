@@ -49,6 +49,9 @@ class AdminMeasurementsController extends Controller
         if (session('measurement')) {
             $measurement = session('measurement');
             return view('admin.admin-measurements', compact('title', 'measurement'));
+        } elseif (session('failedInUse')) {
+            $failedInUse = session('failedInUse');
+            return view('admin.admin-measurements', compact('title', 'failedInUse'));
         } else {
             return view('admin.admin-measurements', compact('title'));
         }
@@ -247,8 +250,12 @@ DELETE;
     {
         $measurement = MeasurementType::find($id);
         if ($measurement) {
-            $measurement->delete();
-            return redirect()->route('admin.measurements');
+            if (count($measurement->ingredients) == 0) {
+                $measurement->delete();
+                return redirect()->route('admin.measurements');
+            } else {
+                return redirect()->route('admin.measurements')->with(['failedInUse' => $measurement]);
+            }
         } else {
             return redirect()->route('admin.measurements');
         }

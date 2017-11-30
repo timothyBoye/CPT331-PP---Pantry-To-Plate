@@ -49,6 +49,9 @@ class AdminCuisinesController extends Controller
         if (session('cuisine')) {
             $cuisine = session('cuisine');
             return view('admin.admin-cuisines', compact('title', 'cuisine'));
+        } elseif (session('failedInUse')) {
+            $failedInUse = session('failedInUse');
+            return view('admin.admin-cuisines', compact('title', 'failedInUse'));
         } else {
             return view('admin.admin-cuisines', compact('title'));
         }
@@ -255,8 +258,12 @@ DELETE;
     {
         $cuisine = CuisineType::find($id);
         if ($cuisine) {
-            $cuisine->delete();
-            return redirect()->route('admin.cuisines');
+            if (count($cuisine->recipes) == 0) {
+                $cuisine->delete();
+                return redirect()->route('admin.cuisines');
+            } else {
+                return redirect()->route('admin.cuisines')->with(['failedInUse' => $cuisine]);
+            }
         } else {
             return redirect()->route('admin.cuisines');
         }

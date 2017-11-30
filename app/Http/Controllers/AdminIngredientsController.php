@@ -51,6 +51,9 @@ class AdminIngredientsController extends Controller
         if (session('ingredient')) {
             $ingredient = session('ingredient');
             return view('admin.admin-ingredients', compact('title', 'ingredient'));
+        } elseif (session('failedInUse')) {
+            $failedInUse = session('failedInUse');
+            return view('admin.admin-ingredients', compact('title', 'failedInUse'));
         } else {
             return view('admin.admin-ingredients', compact('title'));
         }
@@ -282,8 +285,12 @@ DELETE;
     {
         $ingredient = Ingredient::find($id);
         if ($ingredient) {
-            $ingredient->delete();
-            return redirect()->route('admin.ingredients');
+            if (count($ingredient->recipes) == 0) {
+                $ingredient->delete();
+                return redirect()->route('admin.ingredients');
+            } else {
+                return redirect()->route('admin.ingredients')->with(['failedInUse' => $ingredient]);
+            }
         } else {
             return redirect()->route('admin.ingredients');
         }
