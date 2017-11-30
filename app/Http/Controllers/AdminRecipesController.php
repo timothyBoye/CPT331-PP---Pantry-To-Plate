@@ -10,6 +10,7 @@ use App\MeasurementType;
 use App\NutritionalInfoPanel;
 use App\Recipe;
 use App\RecipeMethod;
+use App\RecipeUserMapping;
 use App\User;
 use App\UserRole;
 use App\Utilities;
@@ -337,6 +338,7 @@ DELETE;
             RecipeMethod::where('recipe_id', '=', $id)->delete();
             IngredientRecipeMapping::where('recipe_id', '=', $id)->delete();
             NutritionalInfoPanel::where('recipe_id', '=', $id)->delete();
+            RecipeUserMapping::where('recipe_id', '=', $id)->delete();
             $recipe->delete();
             return redirect()->route('admin.recipes');
         } else {
